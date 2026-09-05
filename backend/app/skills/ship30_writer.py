@@ -24,10 +24,11 @@ Your objective is to transform the provided podcast transcript excerpts into a h
 6. Tactical Conclusion:
    - Conclude with a concrete, step-by-step operational checklist or implementation framework the reader can execute this Monday morning.
 7. Side-by-Side Artifact Output:
-   - Present a concise 1-sentence intro, then wrap the complete ~1,250-word essay inside an artifact container so it renders in the interactive viewer:
+   - Present a concise 1-sentence intro in the chat, then wrap the complete ~1,250-word essay inside raw artifact container tags so it renders directly in the interactive viewer:
      <artifact type="markdown" title="Ship 30 Essay: [Headline]">
      [Full Essay Content Here]
      </artifact>
+   - CRITICAL: Output exact raw `<artifact>` and `</artifact>` tags without surrounding markdown bold asterisks or backticks.
 
 ---
 Context Material from Lenny's Podcast Archive:

@@ -49,6 +49,7 @@ Your mission is to synthesize insights from Lenny's Podcast into clear, structur
 async def chat_stream(
     req: ChatRequest,
     x_llm_provider: Optional[str] = Header(None, alias="X-LLM-Provider"),
+    x_api_key: Optional[str] = Header(None, alias="X-API-Key"),
     db: AsyncSession = Depends(get_db)
 ):
     """
@@ -77,7 +78,8 @@ async def chat_stream(
 
     # 2. Select Provider (request body > header > default)
     selected_provider = req.provider or x_llm_provider or settings.DEFAULT_PROVIDER
-    llm = get_llm_provider(selected_provider)
+    custom_key = req.api_key or x_api_key
+    llm = get_llm_provider(selected_provider, custom_api_key=custom_key)
 
     # Detect /ship or /ship30 skill command in prompt or mode
     is_ship = (req.mode in ["ship", "ship30"])
@@ -154,7 +156,17 @@ async def chat_stream(
 
         full_assistant_response = ""
 
-        # Step C: Check if this is an artifact request on prior conversation
+        # Step C: Check if this is an ungrounded query (0 chunks retrieved)
+        if not chunks and not (is_artifact_request and last_assistant_msg):
+            # Grounding refusal circuit-breaker for ungrounded queries
+            logger.info(f"Refusal triggered: query '{clean_message[:40]}' had 0 chunks above {settings.SIMILARITY_THRESHOLD}")
+            yield f"data: {json.dumps({'type': 'token', 'content': REFUSAL_MESSAGE})}\n\n"
+            full_assistant_response = REFUSAL_MESSAGE
+            yield "data: [DONE]\n\n"
+            await _persist_conversation(session_uuid, req.message, full_assistant_response, [])
+            return
+
+        # Step D: Check if this is an artifact request on prior conversation
         if is_artifact_request and last_assistant_msg:
             system_prompt = (
                 "You are an elite product editor and technical writer.\n"
@@ -170,14 +182,6 @@ async def chat_stream(
             messages = [
                 {"role": "user", "content": f"Please convert this content into a dedicated Markdown artifact file:\n\n{last_assistant_msg}"}
             ]
-        elif not chunks:
-            # Grounding refusal circuit-breaker for ungrounded queries
-            logger.info(f"Refusal triggered: query '{clean_message[:40]}' had 0 chunks above {settings.SIMILARITY_THRESHOLD}")
-            yield f"data: {json.dumps({'type': 'token', 'content': REFUSAL_MESSAGE})}\n\n"
-            full_assistant_response = REFUSAL_MESSAGE
-            yield "data: [DONE]\n\n"
-            await _persist_conversation(session_uuid, req.message, full_assistant_response, chunks)
-            return
         elif is_ship:
             system_prompt = "You are an elite ghostwriter following the Ship 30 for 30 framework."
             user_prompt = build_ship30_prompt(clean_message, chunks)
@@ -203,12 +207,13 @@ async def chat_stream(
                     "role": "user", 
                     "content": (
                         f"{conv_history}"
-                        f"Please provide a clear, context-aware answer to the question using the podcast insights below.\n\n"
+                        f"Please provide a clear, strictly grounded answer to the user's question using the podcast insights below.\n\n"
                         f"USER QUESTION:\n{clean_message}\n\n"
                         f"PODCAST INSIGHTS:\n{context_block}\n\n"
-                        f"INSTRUCTIONS:\n"
-                        f"- Synthesize the answer in your own clear words to directly answer: \"{clean_message}\".\n"
-                        f"- DO NOT copy verbatim sentences or interview dialogue.\n"
+                        f"STRICT GROUNDING INSTRUCTIONS:\n"
+                        f"- Base your answer ONLY on facts and strategies explicitly discussed in the PODCAST INSIGHTS.\n"
+                        f"- If the question is about an unrelated topic (e.g. cooking, general trivia, sports, coding syntax) or the provided insights do not directly answer it, reply EXACTLY with: \"{REFUSAL_MESSAGE}\".\n"
+                        f"- DO NOT stretch or metaphorically apply business advice to unrelated topics.\n"
                         f"- Use structured markdown with bullet points and **bold anchor keywords**."
                     )
                 }
@@ -226,25 +231,33 @@ async def chat_stream(
             yield f"data: {json.dumps({'type': 'token', 'content': err_msg})}\n\n"
 
         # Step F: Extract and notify client of any generated artifacts
+        from app.skills.artifact_generator import extract_artifacts_from_text, clean_artifact_content, clean_response_text
         extracted_artifacts = extract_artifacts_from_text(full_assistant_response)
         if is_ship and not extracted_artifacts and len(full_assistant_response) > 50:
             # Guarantee artifact generation for /ship requests even if LLM missed enclosing tags
             title = f"Ship 30 Essay: {clean_message[:45]}"
+            cleaned_body = clean_artifact_content(full_assistant_response)
             extracted_artifacts = [{
                 "artifact_type": "markdown",
                 "title": title,
-                "content": full_assistant_response.strip()
+                "content": cleaned_body
             }]
 
         if extracted_artifacts:
             for art in extracted_artifacts:
+                art["content"] = clean_artifact_content(art.get("content", ""))
                 yield f"data: {json.dumps({'type': 'artifact', 'data': art})}\n\n"
 
         yield "data: [DONE]\n\n"
 
         # Step G: Persist messages and artifacts asynchronously
-        from app.skills.artifact_generator import clean_response_text
-        cleaned_saved_response = clean_response_text(full_assistant_response) or full_assistant_response
+        cleaned_saved_response = clean_response_text(full_assistant_response)
+        if not cleaned_saved_response and extracted_artifacts:
+            art_title = extracted_artifacts[0].get("title", "Artifact")
+            cleaned_saved_response = f"I have created the **{art_title}** in the side-by-side artifact workspace."
+        if not cleaned_saved_response:
+            cleaned_saved_response = full_assistant_response.strip()
+
         await _persist_conversation(session_uuid, req.message, cleaned_saved_response, chunks, extracted_artifacts)
 
     return StreamingResponse(
@@ -256,6 +269,23 @@ async def chat_stream(
             "X-Accel-Buffering": "no"
         }
     )
+
+def format_session_title(query: str) -> str:
+    """Derives a clean, concise session title from the initial user query."""
+    clean = query.strip()
+    if clean.lower().startswith("/ship30"):
+        clean = clean[7:].strip()
+    elif clean.lower().startswith("/ship"):
+        clean = clean[5:].strip()
+    clean = clean.strip("\"' ")
+    if not clean:
+        return "Growth Discussion"
+    if len(clean) > 42:
+        cut = clean[:42]
+        if " " in cut:
+            cut = cut.rsplit(" ", 1)[0]
+        return cut + "..."
+    return clean
 
 async def _persist_conversation(
     session_id: uuid.UUID,
@@ -283,33 +313,53 @@ async def _persist_conversation(
             })
 
     # Always persist in in-memory session if available
+    from app.api.sessions import IN_MEMORY_SESSIONS, save_in_memory_sessions
     sess = IN_MEMORY_SESSIONS.get(str(session_id))
-    if sess:
-        user_m = {
-            "id": str(uuid.uuid4()),
-            "session_id": str(session_id),
-            "role": "user",
-            "content": user_msg,
+    if not sess:
+        sess = {
+            "id": str(session_id),
+            "title": format_session_title(user_msg),
             "created_at": now.isoformat(),
-            "sources": []
+            "updated_at": now.isoformat(),
+            "messages": []
         }
-        asst_m = {
-            "id": asst_id,
-            "session_id": str(session_id),
-            "role": "assistant",
-            "content": assistant_msg,
-            "created_at": now.isoformat(),
-            "sources": sources,
-            "artifacts": formatted_artifacts
-        }
-        sess.setdefault("messages", []).extend([user_m, asst_m])
-        sess["updated_at"] = now
+        IN_MEMORY_SESSIONS[str(session_id)] = sess
+
+    current_title = sess.get("title", "")
+    if not current_title or current_title.startswith(("New", "Session")):
+        sess["title"] = format_session_title(user_msg)
+
+    user_m = {
+        "id": str(uuid.uuid4()),
+        "session_id": str(session_id),
+        "role": "user",
+        "content": user_msg,
+        "created_at": now.isoformat(),
+        "sources": []
+    }
+    asst_m = {
+        "id": asst_id,
+        "session_id": str(session_id),
+        "role": "assistant",
+        "content": assistant_msg,
+        "created_at": now.isoformat(),
+        "sources": sources,
+        "artifacts": formatted_artifacts
+    }
+    sess.setdefault("messages", []).extend([user_m, asst_m])
+    sess["updated_at"] = now.isoformat() if isinstance(now, datetime) else str(now)
+    save_in_memory_sessions()
 
     if AsyncSessionLocal is None:
         return
 
     try:
         async with AsyncSessionLocal() as session:
+            res = await session.execute(select(SessionModel).where(SessionModel.id == session_id))
+            session_obj = res.scalar_one_or_none()
+            if session_obj and (not session_obj.title or session_obj.title.startswith(("New", "Session"))):
+                session_obj.title = format_session_title(user_msg)
+
             user_record = MessageModel(
                 session_id=session_id,
                 role="user",

@@ -1,20 +1,56 @@
-# backend/app/api/sessions.py
+import os
+import json
+import logging
+from pathlib import Path
+from datetime import datetime
+import uuid
+from typing import List, Dict, Any
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select, desc
 from sqlalchemy.orm import selectinload
-from typing import List, Dict, Any
-from datetime import datetime
-import uuid
 
 from app.database import get_db
 from app.models.db_models import SessionModel, MessageModel, ArtifactModel
 from app.models.schemas import SessionCreate, SessionResponse, SessionDetail
 
+logger = logging.getLogger(__name__)
+
 router = APIRouter(prefix="/api/sessions", tags=["Sessions"])
 
-# In-memory fallback session store when database is uninitialized or disconnected
-IN_MEMORY_SESSIONS: Dict[str, Dict[str, Any]] = {}
+DATA_DIR = Path(__file__).resolve().parent.parent.parent / "data"
+SESSIONS_STORE_PATH = DATA_DIR / "sessions_store.json"
+
+def _load_sessions_from_disk() -> Dict[str, Dict[str, Any]]:
+    if SESSIONS_STORE_PATH.exists():
+        try:
+            with open(SESSIONS_STORE_PATH, "r", encoding="utf-8") as f:
+                data = json.load(f)
+                return data if isinstance(data, dict) else {}
+        except Exception as e:
+            logger.warning(f"Could not load sessions from disk: {e}")
+    return {}
+
+def save_in_memory_sessions():
+    try:
+        DATA_DIR.mkdir(parents=True, exist_ok=True)
+        serializable = {}
+        for sid, sdata in IN_MEMORY_SESSIONS.items():
+            s_copy = dict(sdata)
+            s_copy["id"] = str(s_copy["id"])
+            if isinstance(s_copy.get("created_at"), datetime):
+                s_copy["created_at"] = s_copy["created_at"].isoformat()
+            if isinstance(s_copy.get("updated_at"), datetime):
+                s_copy["updated_at"] = s_copy["updated_at"].isoformat()
+            serializable[sid] = s_copy
+            
+        with open(SESSIONS_STORE_PATH, "w", encoding="utf-8") as f:
+            json.dump(serializable, f, indent=2, ensure_ascii=False)
+    except Exception as e:
+        logger.warning(f"Could not save sessions to disk: {e}")
+
+# In-memory fallback session store backed by disk persistence
+IN_MEMORY_SESSIONS: Dict[str, Dict[str, Any]] = _load_sessions_from_disk()
 
 @router.post("", response_model=SessionResponse, status_code=status.HTTP_201_CREATED)
 async def create_session(payload: SessionCreate, db: AsyncSession = Depends(get_db)):
@@ -34,13 +70,14 @@ async def create_session(payload: SessionCreate, db: AsyncSession = Depends(get_
             pass
 
     session_dict = {
-        "id": session_id,
+        "id": str(session_id),
         "title": title,
-        "created_at": now,
-        "updated_at": now,
+        "created_at": now.isoformat(),
+        "updated_at": now.isoformat(),
         "messages": []
     }
     IN_MEMORY_SESSIONS[str(session_id)] = session_dict
+    save_in_memory_sessions()
     return SessionResponse(**session_dict)
 
 @router.get("", response_model=List[SessionResponse])
@@ -110,18 +147,19 @@ async def get_session(session_id: str, db: AsyncSession = Depends(get_db)):
     # Resilient auto-provisioning for any string ID
     now = datetime.utcnow()
     try:
-        su = uuid.UUID(session_id)
+        su = str(uuid.UUID(session_id))
     except Exception:
-        su = uuid.uuid5(uuid.NAMESPACE_DNS, session_id)
+        su = str(uuid.uuid5(uuid.NAMESPACE_DNS, session_id))
     new_sess = {
         "id": su,
         "title": "New Conversation",
-        "created_at": now,
-        "updated_at": now,
+        "created_at": now.isoformat(),
+        "updated_at": now.isoformat(),
         "messages": []
     }
     IN_MEMORY_SESSIONS[str(session_id)] = new_sess
-    IN_MEMORY_SESSIONS[str(su)] = new_sess
+    IN_MEMORY_SESSIONS[su] = new_sess
+    save_in_memory_sessions()
     return SessionDetail(**new_sess)
 
 @router.delete("/{session_id}", status_code=status.HTTP_204_NO_CONTENT)
@@ -139,5 +177,13 @@ async def delete_session(session_id: str, db: AsyncSession = Depends(get_db)):
         except Exception:
             pass
 
+    deleted = False
     if str(session_id) in IN_MEMORY_SESSIONS:
         del IN_MEMORY_SESSIONS[str(session_id)]
+        deleted = True
+    for k, v in list(IN_MEMORY_SESSIONS.items()):
+        if str(v.get("id")) == str(session_id):
+            del IN_MEMORY_SESSIONS[k]
+            deleted = True
+    if deleted:
+        save_in_memory_sessions()

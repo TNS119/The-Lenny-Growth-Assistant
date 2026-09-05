@@ -1,30 +1,61 @@
 # PRODUCT REQUIREMENTS DOCUMENT (PRD)
 ## The Lenny Growth Assistant
-**Document Version:** 1.0.0  
+**Document Version:** 1.1.0  
 **Status:** Approved for Implementation  
 **Role:** Forward Deployed Engineer (FDE)  
 **File Location:** `docs/PRD.md`  
 
 ---
 
-## 1. Executive Brief & Problem Statement
+## 1. Discovery Brief
 
-### 1.1 The Operational Challenge
-Product managers, growth leaders, and startup founders operate under intense pressure to formulate and execute high-stakes growth strategies: pricing revamps, viral loop mechanics, product-led onboarding funnels, and retention flywheels. *Lenny’s Podcast* is the tech industry’s most authoritative operational archive, featuring over 200+ hours of candid, tactical interviews with elite operators (e.g., Brian Chesky, Elena Verna, Shreyas Doshi, Julie Zhuo). 
+### 1.1 User and Problem Statement
+* **Primary User:** Growth Product Managers, Heads of Growth, VPs of Product, and Early-Stage Founders making high-stakes decisions on acquisition loops, pricing tiers, retention mechanics, and team execution.
+* **The Job-to-be-Done (JTBD):** When facing complex product growth challenges, users need to formulate verified, battle-tested growth strategies and shareable executive assets without spending hundreds of hours listening to podcast episodes.
+* **Pain Removed by Assistant:**
+  1. **Dense Audio & Transcript Discovery Friction:** Eliminates manual scanning across 200+ episodes (~2.5M words) of *Lenny's Podcast* by providing instant, semantic retrieval.
+  2. **The Hallucination & Speculation Trap:** Replaces ungrounded, generic AI answers with source-attributed quotes with explicit guest attribution and timestamps.
+  3. **The Actionability Gap:** Bridges conversational chat with actionable deliverables via the **Ship 30 for 30 Content Engine** (~1,250-word atomic essays) and interactive tools (CAC/LTV payback, K-Factor calculators).
+  4. **Client-Side Security Hazards:** Removes XSS and DOM hijacking risks when rendering AI-generated HTML/JS tools through sandboxed iframe containers.
 
-However, this critical knowledge remains locked in dense audio and linear transcripts:
-1. **Information Density & Discovery Friction:** An operator with a specific tactical question (e.g., *"How do early-stage B2B freemium apps prevent churn during seat-tier upgrades?"*) cannot afford to listen to 90-minute episodes or manually search unindexed transcripts.
-2. **The Hallucination & Speculation Trap:** Generic commercial LLMs generate plausible-sounding but ungrounded advice that lacks operational authenticity and source validation.
-3. **The Actionability Gap:** Standard conversational chat outputs text answers that remain theoretical. Operators need structured, high-retention essays (using proven frameworks like *Ship 30 for 30*) or interactive tools (calculators, simulators) they can share with their teams immediately.
-4. **Client-Side Security Vulnerabilities:** Rendering AI-generated HTML/CSS tools directly in a web application introduces severe Cross-Site Scripting (XSS) and credential exfiltration hazards.
+### 1.2 Measurable Success Metrics
+* **Product Quality Metric (M-01):** $\\ge 90\\%$ retrieval citation accuracy on factual claims in Grounded QA mode, citing verified `[Episode: Guest Name, Timestamp/Topic]` segments.
+* **Operational Guardrail Metric (M-02):** $100\\%$ precision on out-of-domain refusal circuit-breaker (cosine similarity $< 0.65$), strictly returning: *"I do not have sufficient information in Lenny's podcast archive to answer this."*
+* **Latency & Performance Metric (M-03):** Sub-second Time-to-First-Token ($\\text{TTFT} < 1.0\\text{s}$) when streaming from local Ollama (`llama3.2:3b`) on standard 8-core CPU / 16 GB RAM hardware.
+* **Security & Isolation Metric (M-04):** **0 XSS Vulnerabilities** — complete isolation of parent DOM, cookies (`document.cookie`), and session storage (`localStorage`) from within rendered HTML artifacts.
+* **Content Adherence Metric (M-05):** $\\ge 95\\%$ adherence to Ship 30 for 30 heuristics (1,100–1,400 words, curiosity hook in lines 1–3, $\\le 3$ sentences per paragraph, bold anchors on bullets, actionable checklist conclusion).
+* **Developer / Evaluator Onboarding Metric (M-06):** $< 5\\text{ minutes}$ single-command deployment time via `docker-compose up` on clean machines.
 
-### 1.2 The Solution
-**The Lenny Growth Assistant** is an enterprise-grade, retrieval-augmented generation (RAG) web application. It ingests the complete transcript archive of *Lenny’s Podcast*, indexes it into PostgreSQL with `pgvector` HNSW cosine similarity search, and provides:
-* **Grounded, source-attributed answers** citing guests and timestamps.
-* A deterministic refusal circuit-breaker for out-of-domain topics.
-* A **Ship 30 for 30 Content Engine** that transforms answers into structured, 1,250-word essays.
-* A **Side-by-Side Claude-Style Artifact Viewer** running interactive tools inside a hardened, isolated container (`sandbox="allow-scripts"` without `allow-same-origin`, sanitized via `DOMPurify`).
-* A **Dual Model Layer** supporting 100% free local inference via Ollama (`llama3.2:3b` / `llama3.1:8b`) alongside cloud providers (Claude 3.5 Sonnet, OpenAI GPT-4o, and free Groq/Gemini).
+### 1.3 Discovery Assumptions
+1. **Curated Transcript Repository:** Primary knowledge base is derived from pre-transcribed Markdown/JSON archives (`ChatPRD/lennys-podcast-transcripts`, 269 episodes). Live Whisper audio processing of streaming podcasts is not required.
+2. **Evaluator Environment & Zero-Cost Mandate:** Evaluators must be able to run the full application 100% free locally via Ollama (`llama3.2:3b` / `llama3.1:8b`). Free cloud adapters (Groq Llama 3.3 70B and Google Gemini 2.0 Flash) are provided to test high-throughput cloud streaming without paid credits.
+3. **Multi-Turn Session Isolation:** Multi-user tenancy is handled via isolated session IDs and in-memory/PostgreSQL persistence without requiring external enterprise SSO or Stripe billing integration.
+4. **Embedding Dimensions:** Dense vector representation uses `sentence-transformers/all-MiniLM-L6-v2` (384 dimensions) for optimal CPU inference speed and memory footprint.
+
+### 1.4 Scope Choices (Inclusions vs. Intentional Exclusions)
+* **What is Included:**
+  * Automated transcript ingestion pipeline with recursive character chunking ($500\\text{--}800$ tokens, $100$-token overlap) and PostgreSQL `pgvector` HNSW indexing.
+  * Grounded QA conversational interface with real-time SSE token streaming and clickable source citation pills.
+  * Out-of-domain refusal circuit-breaker triggered on low similarity.
+  * Dedicated Ship 30 for 30 essay compiler (`/ship <topic>`).
+  * Side-by-side Claude-style Sandboxed Artifact Viewer (`sandbox="allow-scripts"` without `allow-same-origin`, sanitized via `DOMPurify`).
+  * Pluggable Dual Model Layer (Local Ollama, Groq, Gemini, Claude 3.5 Sonnet, GPT-4o) with embedded DropUp switcher and masked API key manager.
+  * Full-height sidebar navigation with dynamic initial-query session titling.
+* **What is Intentionally Excluded (& Why):**
+  * *Live Real-Time Audio Streaming:* Excluded to keep local CPU and RAM within standard developer laptop limits (avoids heavy local Whisper pipelines).
+  * *Unbounded Open Web Search:* Excluded to enforce 100% authoritative grounding exclusively on *Lenny's Podcast* archives.
+  * *Payment / SaaS Billing Portals:* Excluded as the system is architected as an internal operational decision support tool.
+
+### 1.5 Key Risks, Trade-offs & Mitigation Matrix
+
+| Risk Dimension | Description & Impact | Technical Mitigation / Architectural Trade-off |
+| :--- | :--- | :--- |
+| **Hallucination & Speculation** | LLM generating plausible but ungrounded advice absent from podcast transcripts. | **Deterministic 0.65 Cosine Circuit-Breaker:** Direct retrieval from PostgreSQL `pgvector` HNSW index; queries failing similarity threshold return immediate standard refusal without passing to LLM. |
+| **Latency & TTFT** | Slow generation on local hardware creating frustrating conversational delays. | **HNSW Indexing + Lightweight 3B Models:** Sub-50ms vector lookup via HNSW index; default local model set to `llama3.2:3b` for sub-second TTFT streaming over SSE. |
+| **Cost & API Billing Friction** | Evaluators or teams unable to test due to paid API keys (Anthropic/OpenAI lack free tiers). | **Dual-Model Architecture:** Fully functional zero-cost local Ollama inference bundled with zero-cost free cloud providers (Groq Llama 3.3 70B & Gemini 2.0 Flash). |
+| **Local-Model Quality Trade-offs** | Smaller 3B models have tighter context limits and struggle with multi-thousand-word essays. | **Dynamic Model Switcher & Dual Heuristics:** Grounded QA works cleanly on `llama3.2:3b`; user can switch dynamically to Groq/Gemini/Claude via the DropUp menu for long-form essays and complex artifacts. |
+| **Data Leakage & Privacy** | Accidental exposure of private API credentials or session state. | **Client-Side Key Masking & In-Memory Fallbacks:** UI masks API keys (`gsk_••••••••••••3x9A`); zero hardcoded keys committed; server stores keys in volatile session headers. |
+| **Unsafe Artifact Rendering (XSS)** | AI-generated HTML/JS scripts executing malicious code, stealing cookies, or hijacking DOM. | **Two-Tier Isolation Sandbox:** All HTML artifacts sanitized via `DOMPurify` and mounted inside `<iframe>` configured with `sandbox="allow-scripts"` and strictly **omitting** `allow-same-origin`. Unique origin (`null`) prevents access to parent cookies, local storage, and DOM tree. |
 
 ---
 
@@ -42,59 +73,9 @@ However, this critical knowledge remains locked in dense audio and linear transc
 
 ---
 
-## 3. Measurable Success Metrics
+## 3. System Architecture & User Flows
 
-| Metric ID | Dimension | Target | Measurement Method |
-| :--- | :--- | :--- | :--- |
-| **M-01** | **Retrieval Citation Accuracy** | $\ge 90\%$ | Proportion of factual claims in Grounded QA mode containing a valid `[Episode: Guest Name, Timestamp/Topic]` citation verified against retrieved chunks. |
-| **M-02** | **Grounded Refusal Precision** | $100\%$ | Strict circuit-breaker trigger on out-of-domain queries (all chunks $< 0.65$ cosine similarity), returning: *"I do not have sufficient information in Lenny's podcast archive to answer this."* |
-| **M-03** | **Local Inference Latency** | $< 4.0\text{s}$ | Time-to-First-Token (TTFT) when streaming from local Ollama (`llama3.2:3b`) on standard 8-core CPU / 16 GB RAM hardware. |
-| **M-04** | **Artifact Security & Isolation** | **0 XSS Vulnerabilities** | Zero access to parent DOM, cookies (`document.cookie`), or local storage (`localStorage`) from within generated HTML artifacts. Verified via penetration tests. |
-| **M-05** | **Ship 30 for 30 Heuristic Adherence** | $\ge 95\%$ | Word count between 1,100–1,400 words, hook present in lines 1–3, paragraphs $\le 3$ sentences, bold anchors on bullet points, and an operational checklist conclusion. |
-| **M-06** | **Operational Time-to-Demo** | $< 5$ minutes | Time required for an evaluator to run `docker-compose up` and access the live application on a clean machine. |
-
----
-
-## 4. Discovery Assumptions, Scope Boundaries & Trade-offs
-
-### 4.1 Key Assumptions
-1. **Transcript Source:** The primary knowledge base consists of pre-transcribed text archives from the public repository `ChatPRD/lennys-podcast-transcripts` (269 episodes). Live real-time audio transcription is not required.
-2. **Access & Security:** The application is an internal operational tool deployed inside an engineering perimeter. Authentication and SSO are assumed to be handled by an enterprise reverse proxy or VPN; the application focuses on multi-session state isolation.
-3. **Local Evaluation Environment:** The evaluator’s machine has Ollama installed with at least 16 GB RAM. The default local evaluation model is `llama3.2:3b` to prevent memory thrashing.
-4. **Cloud API Billing:** Commercial frontier APIs (Anthropic Claude, OpenAI) are paid. To ensure evaluators can test cloud streaming without incurring charges, free cloud endpoints (Groq `llama-3.3-70b-versatile` and Google Gemini `gemini-2.0-flash`) are integrated into the cloud layer.
-
-### 4.2 Scope Boundaries
-
-#### In Scope
-* **Ingestion Pipeline:** Automated downloader and chunking script (`ingest.py`) with recursive splitting ($500\text{--}800$ tokens, $100$-token overlap), dense embeddings (`all-MiniLM-L6-v2`), and PostgreSQL `pgvector` HNSW indexing.
-* **Dual Model Layer:** Pluggable LLM interface (`BaseLLMProvider`) driving local Ollama and cloud providers with interactive in-between toggling in the UI.
-* **RAG Retrieval Engine:** Asynchronous cosine similarity search with a hard $0.65$ similarity score threshold.
-* **Ship 30 for 30 Skill:** Dedicated prompt engineering compiler applying the 4A paths, curiosity hooks, and bold anchor formatting.
-* **Side-by-Side Artifact Viewer:** Claude-style split screen with Markdown syntax rendering and sandboxed `<iframe>` isolation (`sandbox="allow-scripts"` without `allow-same-origin`) sanitized via `DOMPurify`.
-* **FastAPI Persistence:** PostgreSQL persistence for sessions, multi-turn messages with JSONB source citations, and generated artifacts.
-* **Deployment & Testing:** Docker Compose multi-service setup, comprehensive pytest suite, and agent transcript logs.
-
-#### Out of Scope (Intentionally Excluded)
-* **Real-time Audio Streaming:** Live podcast recording or Whisper audio processing on the fly.
-* **Unbounded Web Search:** The assistant does not search Google or Wikipedia; its authority is strictly bounded to *Lenny’s Podcast* archive.
-* **Multi-tenant Billing / Payment Processing:** No Stripe or SaaS subscription billing logic.
-
-### 4.3 Technical Trade-offs & Rationale
-* **Local 3B/8B Models vs. Frontier Cloud Models:**  
-  * *Trade-off:* 3B/8B local models have smaller context windows and higher sensitivity to complex formatting compared to Claude 3.5 Sonnet.  
-  * *Decision:* Use `llama3.2:3b` for fast, zero-cost local evaluation and provide an instant UI toggle to Claude 3.5 Sonnet or Groq 70B for deep essay and code generation.
-* **HNSW Vector Indexing vs. Exact Flat Search (IVFFlat):**  
-  * *Trade-off:* HNSW consumes slightly more RAM during index construction but delivers logarithmic search latency ($O(\log N)$).  
-  * *Decision:* Implement HNSW (`m=16, ef_construction=64`) to guarantee sub-50ms vector retrieval on multi-thousand chunk corpora.
-* **Sandboxed Iframe (`allow-scripts`) vs. Direct DOM Injection:**  
-  * *Trade-off:* Rendering HTML directly in the parent React DOM allows full styling inheritance but creates an open attack vector for XSS and cookie theft.  
-  * *Decision:* Mount a sandboxed iframe with `sandbox="allow-scripts"` and strictly omit `allow-same-origin`. This forces the iframe into a unique origin (`null`), completely walling off parent cookies, local storage, and session tokens while allowing interactive JavaScript to function.
-
----
-
-## 5. Functional Requirements & User Flows
-
-### 5.1 Flow 1: Grounded Conversational QA
+### 3.1 Flow 1: Grounded Conversational QA
 ```
 User Enters Query
        │
@@ -119,9 +100,9 @@ Query PostgreSQL pgvector (HNSW Cosine Search)
   2. The UI renders citation badges listing episode title, guest name, and timestamp. Clicking a pill displays the underlying transcript excerpt.
   3. If no relevant chunks meet the $0.65$ similarity threshold, the assistant immediately returns: *"I do not have sufficient information in Lenny's podcast archive to answer this."*
 
-### 5.2 Flow 2: Ship 30 for 30 Essay Generation
+### 3.2 Flow 2: Ship 30 for 30 Essay Generation
 ```
-User Selects "Ship 30 for 30" Mode & Submits Topic
+User Types "/ship <topic>" or Selects Ship 30 Mode
        │
        ▼
 Retrieve Top Transcript Chunks (Elena Verna, Brian Chesky, etc.)
@@ -135,14 +116,14 @@ Compile Ship 30 Heuristic Prompt:
   - Concrete Checklist / Framework Conclusion
        │
        ▼
-Stream High-Retention Essay to Chat & Store Snapshot in Database
+Stream High-Retention Essay to Chat & Auto-Generate Artifact in Workspace
 ```
 * **Acceptance Criteria:**
-  1. Output adheres to the structural heuristics of the Ship 30 for 30 guide.
+  1. Output adheres to the structural heuristics of the Ship 30 for 30 methodology.
   2. Claims are attributed directly to episode guests.
   3. Formatted with H2/H3 headers, bullet lists with bold anchors, and single-sentence impact lines.
 
-### 5.3 Flow 3: Claude-Style Artifact Generation & Viewing
+### 3.3 Flow 3: Claude-Style Artifact Generation & Viewing
 ```
 Assistant Generates Output with Delimiters:
 <artifact type="html|markdown" title="...">
@@ -168,23 +149,23 @@ Closing Tag Received (</artifact>)
   3. HTML artifacts render inside an `<iframe>` with `sandbox="allow-scripts"` and `DOMPurify` sanitization.
   4. Header provides controls to toggle between Rendered Preview and Raw Code, copy content, view full-screen, and close the drawer.
 
-### 5.4 Flow 4: Interactive In-Between Model Toggle
+### 3.4 Flow 4: Interactive In-Between Model Toggle
 * **Acceptance Criteria:**
-  1. The UI header includes a model selector dropdown populated with:
-     * `Ollama (Local) - llama3.2:3b` (Default)
-     * `Claude 3.5 Sonnet`
-     * `OpenAI GPT-4o`
-     * `Groq Llama 3.3 70B (Free)`
-     * `Google Gemini 2.0 Flash (Free)`
+  1. The UI input toolbar includes an embedded model selector DropUp menu populated with:
+     * `Ollama (Local) - llama3.2:3b` (Default - Free)
+     * `Groq Llama 3.3 70B` (Free Tier)
+     * `Google Gemini 2.0 Flash` (Free Tier)
+     * `Claude 3.5 Sonnet` (Paid Config)
+     * `OpenAI GPT-4o` (Paid Config)
   2. Switching models does not interrupt active chat history or reset the session.
   3. The request header `X-LLM-Provider` or body parameter `provider` routes the subsequent request to the selected engine.
   4. If a cloud key is missing, the backend emits a status warning event and falls back to local Ollama seamlessly.
 
 ---
 
-## 6. Non-Functional Requirements (NFRs)
+## 4. Non-Functional Requirements (NFRs)
 
-* **Performance:** Sub-second TTFT ($< 1.0\text{s}$) on local Ollama `llama3.2:3b`; sub-50ms vector retrieval in pgvector.
-* **Reliability & Resilience:** All exceptions (network timeouts, unpulled Ollama models, DB connection drops) return structured JSON errors with human-actionable troubleshooting advice.
-* **Security:** Strict iframe sandbox attributes, DOMPurify HTML sanitization, zero committed credentials, and environment-driven secrets.
-* **Usability & Design:** Built following the Impeccable UI methodology in dark slate Obsidian (`#0B0F17`), with accessible color contrast (WCAG AA), responsive breakpoints (mobile, tablet, desktop), and full keyboard navigation.
+* **Performance:** Sub-second TTFT ($< 1.0\\text{s}$) on local Ollama `llama3.2:3b`; sub-50ms vector retrieval in pgvector.
+* **Reliability & Resilience:** All exceptions (network timeouts, unpulled Ollama models, DB connection drops) return structured JSON errors with human-actionable troubleshooting advice and in-memory session persistence fallbacks.
+* **Security:** Strict iframe sandbox attributes (`allow-scripts` without `allow-same-origin`), DOMPurify HTML sanitization, zero committed credentials, and masked API key modal.
+* **Usability & Design:** Built following the Warm Editorial palette (`#F5EBE0` Cream, `#EDEDE9` Alabaster, `#D6CCC2` Bone, `#E3D5CA` Sand, `#1C1917` Charcoal) with high-contrast text, accessible color contrast (WCAG AA), responsive breakpoints, and full keyboard navigation.

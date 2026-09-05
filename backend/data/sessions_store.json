@@ -1,0 +1,168 @@
+{
+  "5d23df39-4434-4743-90df-10c795379fee": {
+    "id": "5d23df39-4434-4743-90df-10c795379fee",
+    "title": "What did Brian Chesky say about founder...",
+    "created_at": "2026-09-05T13:41:45.314183",
+    "updated_at": "2026-09-05T13:43:32.955481",
+    "messages": [
+      {
+        "id": "b409fd1f-4c11-4594-9e66-2c99c4e65032",
+        "session_id": "5d23df39-4434-4743-90df-10c795379fee",
+        "role": "user",
+        "content": "What did Brian Chesky say about founder mode vs. manager mode?",
+        "created_at": "2026-09-05T13:43:32.955481",
+        "sources": []
+      },
+      {
+        "id": "3848b9eb-c296-4550-908a-96374fa8ed6b",
+        "session_id": "5d23df39-4434-4743-90df-10c795379fee",
+        "role": "assistant",
+        "content": "**Founder Mode vs. Manager Mode: Key Takeaways**\n\nBrian Chesky emphasizes the importance of clarity and direction in leadership. He suggests that founders should not find a midpoint between their vision and the desires of their team, but rather, they should be clear about their goals and expectations.\n\n* **Focus on being in the details**: Chesky believes that leaders should be involved in the details of the business, just like a board of directors is involved in the CEO's decision-making process.\n* **Micromanagement vs. being in the details**: Chesky distinguishes between micromanagement (telling people exactly what to do) and being in the details (understanding the intricacies of the business).\n* **CEO as chief product officer**: Chesky advocates for the CEO to be the chief product officer of the company, as this ensures that the CEO is directly involved in the product and technology aspects of the business.\n\n**Key Strategies for Founders**\n\n* **Reacting vs. proactively**: Chesky advises founders to focus on strategy and planning, rather than simply reacting to incoming requests and emails.\n* **Setting the agenda**: Founders should define their own agenda and prioritize their relationships and meetings accordingly, rather than letting others dictate their schedule.\n\n**Actionable Takeaway**\n\nProduct leaders should focus on being in the details of their business, setting clear goals and expectations, and proactively planning their strategy rather than simply reacting to incoming requests.",
+        "created_at": "2026-09-05T13:43:32.955481",
+        "sources": [
+          {
+            "episode": "Brian Chesky’s new playbook",
+            "guest": "Brian Chesky",
+            "text": "Brian Chesky (00:00:00):\nWay too many founders apologize for how they want to run the company. They find some midpoint between how they want to run a company and how the people they lead want to run the company. That's a good way to make everyone miserable. Because what everyone really wants is clarity. And what everyone really wants is to be able to row in the same direction really quickly. And so I basically got involved in every single detail and I basically told leaders that leaders are in the details. And there's this negative term called micromanagement. I think there's a difference between micromanagement, which is like telling people exactly what to do, and being in the details. Being in the details is what every responsible company's board does to the CEO. That doesn't mean the board is telling them what to do. But if you don't know the details, how do you know people are doing a good job? People think that great leader's job is to hire people and just empower them to do a good job. Well, how do you know they're doing a good job if you're not in the details? And so I made sure I was in the details and we really drove the product.",
+            "timestamp": "00:00:00",
+            "score": 0.885
+          },
+          {
+            "episode": "Brian Chesky’s new playbook",
+            "guest": "Brian Chesky",
+            "text": "Lenny (00:01:01):\nToday my guest is Brian Chesky. Brian is the CEO and co-founder of Airbnb, which he started in his apartment with his co-founders, Joe and Nate, and has turned into an $80 billion global business with travelers and homes in 220 countries. I was very lucky to get to work with Brian for many years, and my sense is if you ask people who they consider the most inspiring tech or business leaders today, Brian would be right near the top of that list.",
+            "timestamp": "00:01:01",
+            "score": 0.885
+          },
+          {
+            "episode": "Brian Chesky’s new playbook",
+            "guest": "Brian Chesky",
+            "text": "Brian Chesky (00:16:08):\nThat's exactly how it went, and that's how it goes almost at every company I've heard of. By the way, I think that many years ago, I remember I think reading a blog post by Ben Horowitz saying that a lot of people tell product led founders or engineering led founders to step away and delegate their product to other people, but suddenly they've delegated away the thing they're best at. The thing that is hardest for them to replace. So we don't have a chief product officer title, but if we had one, it would be me. I wouldn't have a chief product officer. I think the CEO should be basically the chief product officer of a product or tech company. If the CEO is not the chief product officer then I don't know if they're a product or tech led company. Maybe that's okay if they're an ops company or if they're a marketing company or if they're not a tech company at all. But ultimately I think the founder or CEO should be that person.",
+            "timestamp": "00:16:08",
+            "score": 0.885
+          },
+          {
+            "episode": "Brian Chesky’s new playbook",
+            "guest": "Brian Chesky",
+            "text": "Brian Chesky (00:56:12):\nIn the old world, I was reacting, so everyone thought I was busy. So the people I really cared about, a lot of them said, \"Well, he's busy so he'll reach out to me when he's not busy.\" But here's a problem. I was so busy that all I was doing all day was responding to people. And so if people I cared about didn't reach out to me, I was dealing with incoming. I could barely deal with the incoming. Now that was a mistake. But I was reacting. By the way, here's another lesson for founders. A lot of founders spend their time based on reacting. So people will email them and they'll wake up and they'll respond to emails, and suddenly their email sets the agenda. People ask for meetings, and suddenly the meetings they take are based on the people who email them. Versus here's my strategy and then over the next year, what are the relationships I need to have and the meetings I need to take to be able to execute this strategy?",
+            "timestamp": "00:56:12",
+            "score": 0.885
+          },
+          {
+            "episode": "Brian Chesky’s new playbook",
+            "guest": "Brian Chesky",
+            "text": "Brian Chesky (01:03:23):\nI had no idea he was going to do that. And I just want to say I think Sam is obviously a once in a generation founder. I think what he's done with OpenAI is extraordinary. And when he launched ChatGPT I had known him for a real long period of time, and I knew a sense of the journey he was about to go on. And I think that he was very deep into the technical part and then research part of OpenAI. But it turned out there was a product, a design, a marketing, a leadership, a sales. So there were all these other functional responsibilities. And so being able to just play a small part in giving some advice when necessary ... And he would take what he wanted and discard others. But I think, Lenny, maybe this goes to another thing, which is all I tried to do with Sam was what other people did for me.",
+            "timestamp": "01:03:23",
+            "score": 0.885
+          }
+        ],
+        "artifacts": []
+      }
+    ]
+  },
+  "d99f29b3-6b11-43d0-9e55-5e0bd5b1f886": {
+    "id": "d99f29b3-6b11-43d0-9e55-5e0bd5b1f886",
+    "title": "What did Brian Chesky say about founder...",
+    "created_at": "2026-09-05T14:12:47.359735",
+    "updated_at": "2026-09-05T14:16:28.474067",
+    "messages": [
+      {
+        "id": "9b333ac3-973c-41b2-b43e-ca453b4412e4",
+        "session_id": "d99f29b3-6b11-43d0-9e55-5e0bd5b1f886",
+        "role": "user",
+        "content": "What did Brian Chesky say about founder mode vs. manager mode?",
+        "created_at": "2026-09-05T14:13:57.555240",
+        "sources": []
+      },
+      {
+        "id": "b7045931-f464-4973-bc78-3f951ac83072",
+        "session_id": "d99f29b3-6b11-43d0-9e55-5e0bd5b1f886",
+        "role": "assistant",
+        "content": "**Clarifying Founder Mode vs. Manager Mode**\n\nBrian Chesky emphasizes the importance of clarity and leadership in decision-making. He suggests that founders should not find a midpoint between their vision and their team's expectations, but rather, they should be involved in the details to ensure everyone is working towards the same goal.\n\n**Key Differences:**\n\n*   **Micromanagement vs. Being in the Details**: Chesky distinguishes between micromanagement (telling people exactly what to do) and being in the details (being involved in the company's inner workings). He believes that being in the details is a necessary aspect of effective leadership.\n*   **Empowerment vs. Oversight**: Chesky argues that a great leader's job is not just to hire people and empower them, but also to be involved in the details to ensure they are doing a good job.\n\n**Actionable Takeaway:**\n\nAs a product leader, it's essential to strike a balance between empowering your team and being involved in the details. By being in the details, you can ensure that everyone is working towards the same goal and that your company is making progress towards its vision.",
+        "created_at": "2026-09-05T14:13:57.555240",
+        "sources": [
+          {
+            "episode": "Brian Chesky’s new playbook",
+            "guest": "Brian Chesky",
+            "text": "Brian Chesky (00:00:00):\nWay too many founders apologize for how they want to run the company. They find some midpoint between how they want to run a company and how the people they lead want to run the company. That's a good way to make everyone miserable. Because what everyone really wants is clarity. And what everyone really wants is to be able to row in the same direction really quickly. And so I basically got involved in every single detail and I basically told leaders that leaders are in the details. And there's this negative term called micromanagement. I think there's a difference between micromanagement, which is like telling people exactly what to do, and being in the details. Being in the details is what every responsible company's board does to the CEO. That doesn't mean the board is telling them what to do. But if you don't know the details, how do you know people are doing a good job? People think that great leader's job is to hire people and just empower them to do a good job. Well, how do you know they're doing a good job if you're not in the details? And so I made sure I was in the details and we really drove the product.",
+            "timestamp": "00:00:00",
+            "score": 0.885
+          },
+          {
+            "episode": "Brian Chesky’s new playbook",
+            "guest": "Brian Chesky",
+            "text": "Lenny (00:01:01):\nToday my guest is Brian Chesky. Brian is the CEO and co-founder of Airbnb, which he started in his apartment with his co-founders, Joe and Nate, and has turned into an $80 billion global business with travelers and homes in 220 countries. I was very lucky to get to work with Brian for many years, and my sense is if you ask people who they consider the most inspiring tech or business leaders today, Brian would be right near the top of that list.",
+            "timestamp": "00:01:01",
+            "score": 0.885
+          }
+        ],
+        "artifacts": []
+      },
+      {
+        "id": "684d5dc4-78b3-42f9-849b-fb47926197d3",
+        "session_id": "d99f29b3-6b11-43d0-9e55-5e0bd5b1f886",
+        "role": "user",
+        "content": "/ship",
+        "created_at": "2026-09-05T14:15:30.349576",
+        "sources": []
+      },
+      {
+        "id": "a6f8e637-6242-4e0a-99f9-257c89bd7945",
+        "session_id": "d99f29b3-6b11-43d0-9e55-5e0bd5b1f886",
+        "role": "assistant",
+        "content": "I have created the **Ship 30 Essay: The Paradox of Leadership in AI-Driven Growth** in the side-by-side artifact workspace.",
+        "created_at": "2026-09-05T14:15:30.349576",
+        "sources": [
+          {
+            "episode": "From managing people to managing AI: The leadership skills everyone needs",
+            "guest": "Julie Zhuo",
+            "text": "# From managing people to managing AI: The leadership skills everyone needs now | Julie Zhuo\n\n## Transcript",
+            "timestamp": "00:00:00",
+            "score": 0.92
+          },
+          {
+            "episode": "From managing people to managing AI: The leadership skills everyone needs",
+            "guest": "Julie Zhuo",
+            "text": "(00:34:57):\nSo that's the thing, I'll say. Diagnose with data and treat with design. The second thing I will usually tell designers about, is I find that sometimes, and maybe it's the, let's call it the false precision of numbers that we kind of fall into, right? Because it's like, okay, we got these numbers and the numbers go up. It's like no, the fact that you still have to choose which things you look at, is an art, not a science. And your interpretation of if the number went up 5%, is that good, is that not good, is also an interpretation and is an art, not a science. It's just that sometimes I think we can give ourselves this feeling, and I get it, sometimes there's this instinct to want to control things and we want everything to be buttoned up, and we want to know that if we did ABC, everything will be great, our career's going to be awesome, our product's going to rocket ship.",
+            "timestamp": "00:34:57",
+            "score": 0.92
+          },
+          {
+            "episode": "Brian Chesky’s new playbook",
+            "guest": "Brian Chesky",
+            "text": "(00:10:34):\nNow, once you have a division, your division is as successful as you are a priority. So now you have to advocate for your division. So there's a lot of advocacy. If you have dependencies, you've got to persuade people by building relationships. And so the people that are liked that build the best relationships are the ones that get the most resources and that creates what we call politics. And so now politics that brood in the company. And suddenly people gets more subdivided, more subdivided, subdivided. And that creates another problem, which we call bureaucracy. And that bureaucracy means it's hard to know who's doing what. People are going in different directions and that creates a lack of accountability. When there's lack of accountability, then there's a sense that what I do doesn't matter and that creates complacency. And then suddenly a fast-growing company becomes a big slow moving bureaucracy. This is a general arc that winds up happening.",
+            "timestamp": "00:10:34",
+            "score": 0.88
+          }
+        ],
+        "artifacts": [
+          {
+            "id": "ced7c097-0e48-4812-a825-1a7a5f4665a7",
+            "message_id": "a6f8e637-6242-4e0a-99f9-257c89bd7945",
+            "artifact_type": "markdown",
+            "title": "Ship 30 Essay: The Paradox of Leadership in AI-Driven Growth",
+            "content": "The Paradox of Leadership in AI-Driven Growth\n=====================================================\n\n### The False Precision of Numbers\n\nIn the quest for data-driven decision making, we often fall into the trap of false precision. We focus on numbers, convinced that they hold the key to unlocking success. But, as Julie Zhuo aptly puts it, \"Diagnose with data and treat with design.\" The numbers may tell us what's happening, but they don't tell us what's right. It's the art of interpretation that truly matters.\n\n**Velocity**: **Data-Driven Decision Making Compounds Faster Than Intuition**\n\nIn today's fast-paced business landscape, data-driven decision making is no longer a nicety, but a necessity. Shipping weekly cycles compounds faster than monthly reviews, allowing companies to adapt and evolve at an unprecedented pace. However, this speed comes with a cost: the risk of making decisions based on incomplete or inaccurate data.\n\n### The Politics of Growth\n\nAs companies grow, so do the politics. Brian Chesky's playbook highlights the importance of advocacy and persuasion in securing resources and attention. However, this emphasis on politics can lead to bureaucracy, complacency, and a lack of accountability.\n\n**Attribution**: **Tracking Blended CAC Avoids Premature Channel Abandonment**\n\nTo avoid this pitfall, companies must adopt a blended Customer Acquisition Cost (CAC) tracking approach. By combining data from various channels, companies can gain a more accurate understanding of their customer acquisition costs and make data-driven decisions about channel optimization.\n\n### The Art of Leadership in AI-Driven Growth\n\nAs we navigate the complexities of AI-driven growth, leadership skills become increasingly important. Julie Zhuo's emphasis on diagnosing with data and treating with design serves as a reminder that leadership is not just about making decisions, but about creating a culture of innovation and experimentation.\n\n**Actionable Takeaways**\n\n1. **Implement a blended CAC tracking approach** to gain a more accurate understanding of your customer acquisition costs.\n2. **Prioritize advocacy and persuasion** in securing resources and attention for your team or division.\n3. **Emphasize the importance of interpretation and art** in decision making, rather than relying solely on data-driven insights.\n4. **Create a culture of innovation and experimentation**, where leaders empower their teams to take calculated risks and learn from their mistakes.\n\nBy adopting these strategies, companies can navigate the complexities of AI-driven growth and emerge stronger, more agile, and more resilient than ever before.",
+            "created_at": "2026-09-05T14:15:30.349576"
+          }
+        ]
+      },
+      {
+        "id": "cf8f71a0-1510-42f0-80da-38df3cd0b22e",
+        "session_id": "d99f29b3-6b11-43d0-9e55-5e0bd5b1f886",
+        "role": "user",
+        "content": "How do make a Dosa?",
+        "created_at": "2026-09-05T14:16:28.474067",
+        "sources": []
+      },
+      {
+        "id": "8ba365b8-543f-415b-b999-8d3ae05dd632",
+        "session_id": "d99f29b3-6b11-43d0-9e55-5e0bd5b1f886",
+        "role": "assistant",
+        "content": "I do not have sufficient information in Lenny's podcast archive to answer this.",
+        "created_at": "2026-09-05T14:16:28.474067",
+        "sources": [],
+        "artifacts": []
+      }
+    ]
+  }
+}

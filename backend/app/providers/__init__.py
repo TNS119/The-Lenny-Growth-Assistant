@@ -7,49 +7,54 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-def get_llm_provider(provider_name: str = None) -> BaseLLMProvider:
+def get_llm_provider(provider_name: str = None, custom_api_key: str = None) -> BaseLLMProvider:
     """
     Dynamic factory routing inference between local Ollama and cloud options.
+    If custom_api_key is provided or configured in settings, routes to that provider.
     If cloud keys are missing, gracefully defaults to local Ollama.
     """
     settings = get_settings()
     name = (provider_name or settings.DEFAULT_PROVIDER).lower()
 
     if name == "claude":
-        if settings.ANTHROPIC_API_KEY:
+        key = custom_api_key or settings.ANTHROPIC_API_KEY
+        if key:
             return CloudProvider(
                 service="claude",
-                api_key=settings.ANTHROPIC_API_KEY,
+                api_key=key,
                 model=settings.ANTHROPIC_MODEL
             )
         logger.warning("Anthropic API key not found. Falling back to local Ollama.")
         return OllamaProvider(base_url=settings.OLLAMA_BASE_URL, model=settings.OLLAMA_MODEL)
 
     elif name == "openai":
-        if settings.OPENAI_API_KEY:
+        key = custom_api_key or settings.OPENAI_API_KEY
+        if key:
             return CloudProvider(
                 service="openai",
-                api_key=settings.OPENAI_API_KEY,
+                api_key=key,
                 model=settings.OPENAI_MODEL
             )
         logger.warning("OpenAI API key not found. Falling back to local Ollama.")
         return OllamaProvider(base_url=settings.OLLAMA_BASE_URL, model=settings.OLLAMA_MODEL)
 
     elif name == "groq":
-        if settings.GROQ_API_KEY:
+        key = custom_api_key or settings.GROQ_API_KEY
+        if key:
             return CloudProvider(
                 service="groq",
-                api_key=settings.GROQ_API_KEY,
+                api_key=key,
                 model=settings.GROQ_MODEL
             )
         logger.warning("Groq API key not found. Falling back to local Ollama.")
         return OllamaProvider(base_url=settings.OLLAMA_BASE_URL, model=settings.OLLAMA_MODEL)
 
     elif name == "gemini":
-        if settings.GEMINI_API_KEY:
+        key = custom_api_key or settings.GEMINI_API_KEY
+        if key:
             return CloudProvider(
                 service="gemini",
-                api_key=settings.GEMINI_API_KEY,
+                api_key=key,
                 model=settings.GEMINI_MODEL
             )
         logger.warning("Gemini API key not found. Falling back to local Ollama.")
