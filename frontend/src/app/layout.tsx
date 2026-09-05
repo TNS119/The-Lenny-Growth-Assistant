@@ -1,6 +1,19 @@
 // frontend/src/app/layout.tsx
 import type { Metadata } from "next";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "The Lenny Growth Assistant",
@@ -13,8 +26,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark">
-      <body className="antialiased selection:bg-brand-sky selection:text-obsidian-950">
+    <html lang="en" className={`dark ${inter.variable} ${jetbrainsMono.variable}`}>
+      <body className="antialiased selection:bg-brand-teal selection:text-white font-sans bg-obsidian-950 text-obsidian-100">
         {children}
       </body>
     </html>

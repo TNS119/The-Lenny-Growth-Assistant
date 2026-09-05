@@ -26,6 +26,18 @@ function cleanArtifactTags(text: string): string {
   return cleaned.trimStart();
 }
 
+function cleanArtifactContent(content: string): string {
+  if (!content) return "";
+  let cleaned = content.trim();
+  cleaned = cleaned.replace(/^<artifact\s+type=['"][^'"]*['"]\s+title=['"][^'"]*['"]\s*>/i, "");
+  cleaned = cleaned.replace(/^<artifact[^>]*>/i, "");
+  cleaned = cleaned.replace(/<\/artifact>\s*$/i, "");
+  cleaned = cleaned.replace(/<\/artifact>/gi, "");
+  cleaned = cleaned.replace(/^\s*={3,}\s*\n/g, "");
+  cleaned = cleaned.replace(/^\s*-{3,}\s*\n/g, "");
+  return cleaned.trim();
+}
+
 export function useChatStream({ sessionId, onStreamFinish }: UseChatStreamProps) {
   const [isStreaming, setIsStreaming] = useState(false);
   const [currentStatus, setCurrentStatus] = useState<string | null>(null);
@@ -53,9 +65,11 @@ export function useChatStream({ sessionId, onStreamFinish }: UseChatStreamProps)
       messageText: string,
       mode: "default" | "ship" | "ship30",
       provider: "ollama" | "claude" | "openai" | "groq" | "gemini",
-      onTokenUpdate: (accumulatedText: string, sources: any[]) => void
+      onTokenUpdate: (accumulatedText: string, sources: any[]) => void,
+      explicitSessionId?: string
     ) => {
-      if (!sessionId || !messageText.trim()) return;
+      const targetSessionId = explicitSessionId || sessionId || (typeof crypto !== "undefined" && crypto.randomUUID ? crypto.randomUUID() : `session-${Date.now()}`);
+      if (!messageText.trim()) return;
 
       setIsStreaming(true);
       setCurrentStatus("Contacting assistant...");
@@ -71,7 +85,7 @@ export function useChatStream({ sessionId, onStreamFinish }: UseChatStreamProps)
             "X-LLM-Provider": provider,
           },
           body: JSON.stringify({
-            session_id: sessionId,
+            session_id: targetSessionId,
             message: messageText,
             mode: mode,
             provider: provider,
@@ -131,7 +145,7 @@ export function useChatStream({ sessionId, onStreamFinish }: UseChatStreamProps)
                   message_id: String(Date.now()),
                   artifact_type: artData.artifact_type,
                   title: artData.title,
-                  content: artData.content,
+                  content: cleanArtifactContent(artData.content),
                   created_at: new Date().toISOString(),
                 };
                 setActiveArtifact(newArtifact);

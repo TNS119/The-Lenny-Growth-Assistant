@@ -23,6 +23,22 @@ interface ArtifactViewerProps {
   onClose: () => void;
 }
 
+function cleanArtifactDisplay(content: string): string {
+  if (!content) return "";
+  let cleaned = content.trim();
+  // Strip leading <artifact...> tag variants (standard, bolded, backticked)
+  cleaned = cleaned.replace(/^(?:\*{0,3}|`{0,3}|\[)?\s*<artifact\s+type=['"][^'"]*['"]\s+title=['"][^'"]*['"]\s*>(?:\*{0,3}|`{0,3}|\])?\s*/i, "");
+  cleaned = cleaned.replace(/^(?:\*{1,3}|`{1,3})\s*artifact\s+type=['"][^'"]*['"]\s+title=['"][^'"]*['"]\s*(?:\*{1,3}|`{1,3})\s*/i, "");
+  cleaned = cleaned.replace(/^<artifact[^>]*>\s*/i, "");
+  // Strip trailing </artifact> variants
+  cleaned = cleaned.replace(/\s*(?:\*{0,3}|`{0,3}|\[)?\s*<\/artifact\s*>(?:\*{0,3}|`{0,3}|\])?\s*$/i, "");
+  cleaned = cleaned.replace(/<\/artifact>/gi, "");
+  // Strip decorative leading underlines
+  cleaned = cleaned.replace(/^\s*={3,}\s*\n/g, "");
+  cleaned = cleaned.replace(/^\s*-{3,}\s*\n/g, "");
+  return cleaned.trim();
+}
+
 export const ArtifactViewer: React.FC<ArtifactViewerProps> = ({
   artifact,
   isOpen,
@@ -74,7 +90,7 @@ export const ArtifactViewer: React.FC<ArtifactViewerProps> = ({
               Quick Tip
             </div>
             <p className="text-[11px] text-obsidian-400 leading-relaxed">
-              Type <code className="px-1.5 py-0.5 rounded bg-obsidian-700 text-brand-teal font-mono font-bold">/ship30 &lt;topic&gt;</code> in the prompt bar to generate a ~1,250-word grounded essay that automatically appears here.
+              Type <code className="px-1.5 py-0.5 rounded bg-obsidian-700 text-brand-teal font-mono font-bold">/ship &lt;topic&gt;</code> in the prompt bar to generate a ~1,250-word grounded essay that automatically appears here.
             </p>
           </div>
         </div>
@@ -82,15 +98,17 @@ export const ArtifactViewer: React.FC<ArtifactViewerProps> = ({
     );
   }
 
+  const polishedContent = cleanArtifactDisplay(artifact.content);
+
   const handleCopy = () => {
-    navigator.clipboard.writeText(artifact.content);
+    navigator.clipboard.writeText(polishedContent);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
 
   const handleDownload = () => {
     const ext = artifact.artifact_type === "html" ? "html" : "md";
-    const blob = new Blob([artifact.content], { type: "text/plain;charset=utf-8" });
+    const blob = new Blob([polishedContent], { type: "text/plain;charset=utf-8" });
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.href = url;
@@ -205,7 +223,7 @@ export const ArtifactViewer: React.FC<ArtifactViewerProps> = ({
         {viewMode === "preview" ? (
           artifact.artifact_type === "html" ? (
             <div className="h-full min-h-[500px]">
-              <SandboxedIframe content={artifact.content} title={artifact.title} />
+              <SandboxedIframe content={polishedContent} title={artifact.title} />
             </div>
           ) : (
             <div className="max-w-none p-6 sm:p-8 bg-obsidian-800 rounded-xl border border-obsidian-600 font-sans leading-relaxed text-obsidian-100 shadow-sm space-y-4">
@@ -224,13 +242,13 @@ export const ArtifactViewer: React.FC<ArtifactViewerProps> = ({
                   code: ({ node, ...props }) => <code className="bg-obsidian-700/40 text-brand-skyDark px-1.5 py-0.5 rounded font-mono text-xs border border-obsidian-600" {...props} />,
                 }}
               >
-                {artifact.content}
+                {polishedContent}
               </ReactMarkdown>
             </div>
           )
         ) : (
           <pre className="p-4 bg-obsidian-800 border border-obsidian-600 rounded-xl font-mono text-xs text-obsidian-200 overflow-x-auto whitespace-pre-wrap shadow-inner">
-            <code>{artifact.content}</code>
+            <code>{polishedContent}</code>
           </pre>
         )}
       </div>
