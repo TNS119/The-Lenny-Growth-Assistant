@@ -107,27 +107,28 @@ export default function Home() {
   useEffect(() => {
     async function init() {
       const sessList = await fetchSessions();
-      setSessions(sessList);
-      if (sessList.length > 0) {
+      if (sessList && sessList.length > 0) {
+        setSessions(sessList);
         const lastActive = typeof window !== "undefined" ? localStorage.getItem("lenny_last_active_session") : null;
         const matched = lastActive ? sessList.find((s) => s.id === lastActive) : null;
         const initialId = matched ? matched.id : sessList[0].id;
         setActiveSessionId(initialId);
       } else {
-        const newSess = await createSession("New Growth Conversation");
-        if (newSess) {
-          setSessions([newSess]);
-          setActiveSessionId(newSess.id);
-        } else {
-          const fallbackSess: Session = {
-            id: "local-session-1",
-            title: "New Growth Conversation",
-            created_at: new Date().toISOString(),
-            updated_at: new Date().toISOString(),
-          };
-          setSessions([fallbackSess]);
-          setActiveSessionId(fallbackSess.id);
+        const newId = (typeof crypto !== "undefined" && crypto.randomUUID) 
+          ? crypto.randomUUID() 
+          : `sess-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
+        const fallbackSess: Session = {
+          id: newId,
+          title: "New Growth Conversation",
+          created_at: new Date().toISOString(),
+          updated_at: new Date().toISOString(),
+        };
+        setSessions([fallbackSess]);
+        setActiveSessionId(fallbackSess.id);
+        if (typeof window !== "undefined") {
+          localStorage.setItem("lenny_last_active_session", fallbackSess.id);
         }
+        createSession("New Growth Conversation", newId).catch(() => {});
       }
     }
     init();
@@ -143,19 +144,26 @@ export default function Home() {
     const currentReqId = ++fetchSeqRef.current;
     async function loadMessages() {
       const detail = await fetchSessionDetail(activeSessionId);
-      if (fetchSeqRef.current === currentReqId && detail) {
-        setMessagesBySession((prev) => ({
-          ...prev,
-          [activeSessionId]: detail.messages,
-        }));
-        if (detail.title) {
-          setSessions((prev) =>
-            prev.map((s) => (s.id === activeSessionId ? { ...s, title: detail.title } : s))
-          );
+      if (fetchSeqRef.current === currentReqId) {
+        if (detail) {
+          setMessagesBySession((prev) => ({
+            ...prev,
+            [activeSessionId]: detail.messages || [],
+          }));
+          if (detail.title) {
+            setSessions((prev) =>
+              prev.map((s) => (s.id === activeSessionId ? { ...s, title: detail.title } : s))
+            );
+          }
+        } else {
+          // If detail is null (e.g. newly created session with 0 messages or network latency),
+          // preserve any existing local messages or default to empty list.
+          // NEVER filter or delete activeSessionId here!
+          setMessagesBySession((prev) => ({
+            ...prev,
+            [activeSessionId]: prev[activeSessionId] || [],
+          }));
         }
-      } else if (fetchSeqRef.current === currentReqId && detail === null) {
-        // If session returned 404 / deleted, remove from session list so it doesn't linger
-        setSessions((prev) => prev.filter((s) => s.id !== activeSessionId));
       }
     }
     loadMessages();
@@ -163,23 +171,45 @@ export default function Home() {
 
   const handleNewSession = useCallback(async () => {
     try {
-      const newSess = await createSession("New Growth Conversation");
-      if (newSess) {
-        setSessions((prev) => [newSess, ...prev.filter((s) => s.id !== newSess.id)]);
-        setActiveSessionId(newSess.id);
-        setMessagesBySession((prev) => ({
-          ...prev,
-          [newSess.id]: [],
-        }));
-        setArtifactsBySession((prev) => ({
-          ...prev,
-          [newSess.id]: null,
-        }));
-        closeArtifact();
-        if (typeof window !== "undefined") {
-          localStorage.setItem("lenny_last_active_session", newSess.id);
-        }
+      // 1. Optimistically generate new UUID immediately
+      const newId = (typeof crypto !== "undefined" && crypto.randomUUID)
+        ? crypto.randomUUID()
+        : `sess-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
+
+      const newSess: Session = {
+        id: newId,
+        title: "New Growth Conversation",
+        created_at: new Date().toISOString(),
+        updated_at: new Date().toISOString(),
+      };
+
+      // 2. Immediately update state (0ms UI latency)
+      setSessions((prev) => [newSess, ...prev.filter((s) => s.id !== newId)]);
+      setActiveSessionId(newId);
+      setMessagesBySession((prev) => ({
+        ...prev,
+        [newId]: [],
+      }));
+      setArtifactsBySession((prev) => ({
+        ...prev,
+        [newId]: null,
+      }));
+      closeArtifact();
+
+      if (typeof window !== "undefined") {
+        localStorage.setItem("lenny_last_active_session", newId);
       }
+
+      // 3. Sync to backend asynchronously (fire-and-reconcile in background)
+      createSession("New Growth Conversation", newId).then((serverSess) => {
+        if (serverSess) {
+          setSessions((prev) =>
+            prev.map((s) => (s.id === newId ? { ...s, ...serverSess } : s))
+          );
+        }
+      }).catch((e) => {
+        console.warn("Backend session creation sync error (optimistic session retained):", e);
+      });
     } catch (e) {
       console.error("Failed to create new session:", e);
     }

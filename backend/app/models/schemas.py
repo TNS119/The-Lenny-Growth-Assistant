@@ -36,6 +36,7 @@ class MessageResponse(BaseModel):
 
 class SessionCreate(BaseModel):
     title: Optional[str] = "New Conversation"
+    id: Optional[str] = None
 
 class SessionResponse(BaseModel):
     id: uuid.UUID

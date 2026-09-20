@@ -1,7 +1,5 @@
 // frontend/src/lib/api.ts
 
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
-
 export interface Session {
   id: string;
   title: string;
@@ -47,62 +45,108 @@ export interface HealthStatus {
   timestamp: string;
 }
 
+/**
+ * Normalizes and returns the target API base URL for both local and live deployments.
+ * Prevents trailing slashes, resolves relative proxies on live URLs, and supports runtime overrides.
+ */
+export function getApiBase(): string {
+  // 1. Runtime override stored in localStorage if custom backend URL configured
+  if (typeof window !== "undefined") {
+    try {
+      const customUrl = localStorage.getItem("lenny_backend_url");
+      if (customUrl && customUrl.trim()) {
+        return customUrl.trim().replace(/\/+$/, "");
+      }
+    } catch {}
+  }
+
+  // 2. Build-time / environment variable (strip any trailing slashes)
+  const envUrl = process.env.NEXT_PUBLIC_API_URL;
+  if (envUrl && envUrl.trim()) {
+    return envUrl.trim().replace(/\/+$/, "");
+  }
+
+  // 3. Browser environment fallback:
+  if (typeof window !== "undefined") {
+    // If running on localhost or 127.0.0.1, use default local backend port
+    if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") {
+      return "http://localhost:8000";
+    }
+    // In production live deployment, use relative path "" to leverage Next.js rewrite proxying
+    // and avoid mixed content or CORS preflight failures
+    return "";
+  }
+
+  return "http://localhost:8000";
+}
+
 export async function fetchSessions(): Promise<Session[]> {
   try {
-    const res = await fetch(`${API_BASE}/api/sessions`);
+    const base = getApiBase();
+    const res = await fetch(`${base}/api/sessions`);
     if (!res.ok) return [];
     return await res.json();
   } catch (err) {
-    console.error("Failed to fetch sessions:", err);
+    console.warn("Failed to fetch sessions from backend:", err);
     return [];
   }
 }
 
-export async function createSession(title?: string): Promise<Session | null> {
+export async function createSession(title?: string, explicitId?: string): Promise<Session | null> {
   try {
-    const res = await fetch(`${API_BASE}/api/sessions`, {
+    const base = getApiBase();
+    const res = await fetch(`${base}/api/sessions`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ title: title || "New Conversation" }),
+      body: JSON.stringify({
+        title: title || "New Conversation",
+        ...(explicitId ? { id: explicitId } : {}),
+      }),
     });
-    if (!res.ok) return null;
+    if (!res.ok) {
+      console.warn(`Backend session creation returned HTTP ${res.status}`);
+      return null;
+    }
     return await res.json();
   } catch (err) {
-    console.error("Failed to create session:", err);
+    console.warn("Backend session creation request failed (using optimistic session):", err);
     return null;
   }
 }
 
 export async function fetchSessionDetail(sessionId: string): Promise<SessionDetail | null> {
   try {
-    const res = await fetch(`${API_BASE}/api/sessions/${sessionId}`);
+    const base = getApiBase();
+    const res = await fetch(`${base}/api/sessions/${sessionId}`);
     if (!res.ok) return null;
     return await res.json();
   } catch (err) {
-    console.error("Failed to fetch session detail:", err);
+    console.warn(`Failed to fetch session detail for ${sessionId}:`, err);
     return null;
   }
 }
 
 export async function deleteSession(sessionId: string): Promise<boolean> {
   try {
-    const res = await fetch(`${API_BASE}/api/sessions/${sessionId}`, {
+    const base = getApiBase();
+    const res = await fetch(`${base}/api/sessions/${sessionId}`, {
       method: "DELETE",
     });
     return res.ok;
   } catch (err) {
-    console.error("Failed to delete session:", err);
+    console.warn(`Failed to delete session ${sessionId}:`, err);
     return false;
   }
 }
 
 export async function fetchHealth(): Promise<HealthStatus | null> {
   try {
-    const res = await fetch(`${API_BASE}/api/health`);
+    const base = getApiBase();
+    const res = await fetch(`${base}/api/health`);
     if (!res.ok) return null;
     return await res.json();
   } catch (err) {
-    console.error("Failed to fetch health probe:", err);
+    console.warn("Failed to fetch health probe:", err);
     return null;
   }
 }

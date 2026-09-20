@@ -38,10 +38,11 @@ app = FastAPI(
     lifespan=lifespan
 )
 
-# Configure CORS for Frontend access
+# Configure CORS for Frontend access (supports localhost, Vercel, Render, and custom domains)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Permits localhost:3000, production domains, and container networks
+    allow_origins=["*"],
+    allow_origin_regex=r"^https?://.*",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

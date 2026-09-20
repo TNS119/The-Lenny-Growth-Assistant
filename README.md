@@ -343,7 +343,6 @@ The backend exposes comprehensive endpoints and structured stdout logging format
 
 ---
 
-
 ## 📚 Deliverables Catalog
 
 * **Product Requirements Document:** [`docs/PRD.md`](docs/PRD.md)
@@ -352,3 +351,4 @@ The backend exposes comprehensive endpoints and structured stdout logging format
 * **Coding Agent Transcripts:** [`agent_transcripts/`](agent_transcripts/)
 * **Foundational Resources Catalog:** [`resources/README.md`](resources/README.md)
 * **Agent Invariant Rules:** [`AGENTS.md`](AGENTS.md)
+

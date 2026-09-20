@@ -79,27 +79,6 @@ cd backend
 python -m app.rag.ingest
 ```
 
-### 🎬 Video Pitch & Media Production Commands
-
-#### Fast Assembly (Voice-Dominant Mix + Concat Filter 30fps)
-```powershell
-cd "Growth_assistant pitch video/scripts"
-python fast_assemble.py
-```
-
-#### Test & Verify Audio Levels (Voice vs BGM dB Separation)
-```powershell
-cd "Growth_assistant pitch video/scripts"
-python test_audio_levels.py
-```
-
-#### Re-render Professional Intro / Outro Cards
-```powershell
-cd "Growth_assistant pitch video/scripts"
-python render_intro.py
-python render_outro.py
-```
-
 ---
 
 ## Project Structure Map
@@ -124,6 +103,7 @@ The Lenny Growth Assistant/
 │   │   │   └── useChatStream.ts   # SSE event stream consumer (status, sources, token, artifact)
 │   │   └── lib/
 │   │       └── api.ts             # REST client & TypeScript schemas
+│   ├── next.config.js             # Next.js rewrites proxy to backend and live deployment config
 │   └── tailwind.config.js         # Warm Editorial color tokens (obsidian, brand-teal, brand-sand)
 ├── backend/
 │   ├── app/
@@ -150,16 +130,6 @@ The Lenny Growth Assistant/
 │   │   ├── sync_manifest.py       # Syncs episodes_manifest.json from GitHub index/episodes.md
 │   │   └── download_transcripts.py# Downloads curated seed episodes
 │   └── tests/                     # Unit and integration test suite
-├── Growth_assistant pitch video/  # Production pitch video suite
-│   ├── scripts/
-│   │   ├── fast_assemble.py      # Concat filter assembly (+faststart, dual output)
-│   │   ├── mix_and_duck.py       # Minimal BGM mixer (27dB speech separation)
-│   │   ├── render_intro.py       # 7s dark atmospheric gradient + tech grid intro
-│   │   ├── render_outro.py       # 5s matching Thank You outro (clean typography)
-│   │   ├── test_audio_levels.py  # RMS audio separation & loudness verification
-│   │   └── voice_normalized.wav  # Enhanced dialogue track (mean -20.8 dB)
-│   ├── AUDIO.png                 # Reference thumbnail & branding palette
-│   └── Lenny's Growth Final Pitch.mp4 # Production deliverable (5:14, 95MB)
 └── resources/transcripts/         # Lenny's Podcast raw JSON transcripts
 ```
 
@@ -243,10 +213,6 @@ def save_chat(sess_id, msg):
 - **Maintain Theme Integrity:** Adhere to the Warm Editorial palette (`#F5EBE0`, `#EDEDE9`, `#D6CCC2`, `#E3D5CA`, `#1C1917`).
 - **Keep SSE Protocol Intact:** Maintain standard streaming events: `status`, `sources`, `token`, `artifact`, `[DONE]`.
 - **Sync AGENTS.md:** Proactively update this `AGENTS.md` whenever adding new API routes, UI components, or architectural patterns.
-- **Normalize Speech First in Video:** Always apply dynamic audio normalization (`dynaudnorm`) to dialogue before mixing.
-- **Enforce 20–27 dB Speech Separation:** BGM under speech must sit at least 20 dB to 27 dB below voice (`gain 0.015 - 0.035`, approx `-48 dBFS`) with `normalize=0` in `amix`.
-- **Concat Filter for Mixed Framerates:** Use FFmpeg `concat` filter with explicit `fps=30` and `scale=1920:1080` when joining screen recordings (e.g. 60fps) with title cards (30fps).
-- **Faststart Placement:** Always append `-movflags +faststart` to place the `moov` atom at byte 0.
 
 ### ⚠️ Ask First
 - **Database Schema Changes:** Modifying SQLAlchemy models, ChromaDB/pgvector chunking dimensions (384-dim).
@@ -258,9 +224,6 @@ def save_chat(sess_id, msg):
 - **Never commit secrets:** Never hardcode plaintext API keys in code or `.env`.
 - **Never place static command bars above input:** The `/ship` autocomplete must trigger dynamically only when typing `/`.
 - **Never add white rectangular highlight backgrounds to bold markdown text or headings.**
-- **Never let BGM exceed 5% volume (`-38 dBFS`) while speech is active in video production.**
-- **Never draw cursor pipes (`|`) or underline rectangle dividers across video intro/outro headings.**
-- **Never use crude flat color ellipses for video backgrounds**; use atmospheric gradients, tech grids, and glassmorphism.
 
 ---
 

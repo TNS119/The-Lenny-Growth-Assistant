@@ -13,10 +13,9 @@ import {
   Trash2,
   Loader2
 } from "lucide-react";
+import { getApiBase } from "@/lib/api";
 
 export type ProviderType = "ollama" | "claude" | "openai" | "groq" | "gemini";
-
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 
 interface ModelSelectorProps {
   currentProvider: ProviderType;
@@ -139,7 +138,7 @@ export const ModelSelector: React.FC<ModelSelectorProps> = ({
   const checkStatus = useCallback(async () => {
     setIsRefreshing(true);
     try {
-      const res = await fetch(`${API_BASE}/api/providers/status`);
+      const res = await fetch(`${getApiBase()}/api/providers/status`);
       if (res.ok) {
         const data = await res.json();
         const newStatus: Record<string, boolean> = {
@@ -216,7 +215,7 @@ export const ModelSelector: React.FC<ModelSelectorProps> = ({
     try {
       // 1. Verify key against endpoint
       if (!forceSave) {
-        const verifyRes = await fetch(`${API_BASE}/api/providers/verify`, {
+        const verifyRes = await fetch(`${getApiBase()}/api/providers/verify`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ provider: providerId, api_key: trimmedKey }),
@@ -233,7 +232,7 @@ export const ModelSelector: React.FC<ModelSelectorProps> = ({
       }
 
       // 2. Persist to server runtime & .env
-      const saveRes = await fetch(`${API_BASE}/api/providers/key`, {
+      const saveRes = await fetch(`${getApiBase()}/api/providers/key`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ provider: providerId, api_key: trimmedKey }),
@@ -268,7 +267,7 @@ export const ModelSelector: React.FC<ModelSelectorProps> = ({
     const providerId = activeConfigModel.id;
     setIsVerifying(true);
     try {
-      await fetch(`${API_BASE}/api/providers/key/${providerId}`, { method: "DELETE" });
+      await fetch(`${getApiBase()}/api/providers/key/${providerId}`, { method: "DELETE" });
       const updated = { ...customKeys };
       delete updated[providerId];
       setCustomKeys(updated);

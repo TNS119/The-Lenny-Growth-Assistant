@@ -1,8 +1,6 @@
 // frontend/src/hooks/useChatStream.ts
 import { useState, useCallback, useRef } from "react";
-import { Message, Artifact } from "@/lib/api";
-
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+import { Message, Artifact, getApiBase } from "@/lib/api";
 
 interface UseChatStreamProps {
   sessionId: string;
@@ -107,7 +105,8 @@ export function useChatStream({ sessionId, onStreamFinish, onArtifactGenerated }
       }
 
       try {
-        const response = await fetch(`${API_BASE}/api/chat`, {
+        const base = getApiBase();
+        const response = await fetch(`${base}/api/chat`, {
           method: "POST",
           headers,
           body: JSON.stringify({
