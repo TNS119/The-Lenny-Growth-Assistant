@@ -41,9 +41,9 @@ class TranscriptRetriever:
                     guest_name,
                     chunk_text,
                     timestamp_ref,
-                    1 - (embedding <=> :vector::vector) AS similarity_score
+                    1 - (embedding <=> CAST(:vector AS vector)) AS similarity_score
                 FROM transcript_chunks
-                WHERE 1 - (embedding <=> :vector::vector) >= :threshold
+                WHERE 1 - (embedding <=> CAST(:vector AS vector)) >= :threshold
                 ORDER BY similarity_score DESC
                 LIMIT :limit;
             """)

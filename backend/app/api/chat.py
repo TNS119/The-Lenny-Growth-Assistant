@@ -168,13 +168,15 @@ async def chat_stream(
             if matching_ep:
                 guest_label = matching_ep.get("guest", "episode")
                 logger.info(f"JIT discovery triggered for '{guest_label}' ({matching_ep['slug']})")
-                yield f"data: {json.dumps({'type': 'status', 'content': f'Found episode for {guest_label} in Lenny\'s podcast archive. Ingesting transcript...'})}\n\n"
+                status_found = f"Found episode for {guest_label} in Lenny's podcast archive. Ingesting transcript..."
+                yield f"data: {json.dumps({'type': 'status', 'content': status_found})}\n\n"
                 
                 try:
                     # Download raw transcript from GitHub CDN
                     local_path = discovery_service.fetch_and_cache_transcript(matching_ep["slug"])
                     # Ingest into Supabase pgvector non-destructively
-                    yield f"data: {json.dumps({'type': 'status', 'content': f'Indexing {guest_label} transcript into vector database...'})}\n\n"
+                    status_indexing = f"Indexing {guest_label} transcript into vector database..."
+                    yield f"data: {json.dumps({'type': 'status', 'content': status_indexing})}\n\n"
                     ingested_count = await ingest_single_episode(local_path)
                     logger.info(f"JIT ingestion indexed {ingested_count} chunks for {guest_label}")
 
