@@ -46,9 +46,12 @@ class CloudProvider(BaseLLMProvider):
             ):
                 yield token
         elif self.service == "groq":
+            groq_model = self.model or "qwen/qwen3.8-27b"
+            if "llama-3.3" in groq_model or "qwq" in groq_model:
+                groq_model = "qwen/qwen3.8-27b"
             async for token in self._stream_openai_compatible(
                 base_url="https://api.groq.com/openai/v1",
-                model=self.model or "llama-3.3-70b-versatile",
+                model=groq_model,
                 messages=messages,
                 system_prompt=system_prompt,
                 temperature=temperature

@@ -110,20 +110,28 @@ class TranscriptRetriever:
             "seeming", "seemed", "feel", "feels", "feeling", "felt", "try", "tries", "trying", "tried", "leave", 
             "leaves", "leaving", "left", "call", "calls", "calling", "called", "need", "needs", "needed", "help", 
             "helps", "helping", "helped", "like", "likes", "liked", "good", "best", "better", "bad", "worse", "worst", 
-            "way", "ways", "thing", "things", "time", "times", "year", "years", "day", "days", "people", "person", 
-            "world", "part", "place", "case", "point", "talk", "talks", "talking", "talked", "pm", "pms", "something", 
+            "way", "ways", "thing", "things", "year", "years", "day", "days", "people", "person", 
+            "world", "part", "place", "point", "talk", "talks", "talking", "talked", "something", 
             "anything", "nothing", "everything", "someone", "anyone", "everyone", "won", "one", "two", "three", 
             "first", "second", "last", "new", "old", "also", "just", "very", "really", "much", "many", "more", 
             "most", "some", "any", "all", "both", "each", "few", "other", "such", "only", "own", "same", "so", 
             "than", "too", "s", "t", "d", "ll", "m", "o", "re", "ve", "y"
         }
         
-        keywords = [w for w in query_words if w not in stop_words and len(w) > 2]
+        keywords = [w for w in query_words if w not in stop_words and len(w) > 1]
         
         # If user query has zero substantive domain keywords, refuse immediately
         if not keywords:
             logger.info(f"Query '{query[:40]}' contains zero domain keywords -> 0 chunks.")
             return []
+
+        def get_stems(w: str) -> list:
+            stems = [w]
+            if w.endswith("ing"): stems.extend([w[:-3], w[:-3] + "e"])
+            if w.endswith("ed"): stems.extend([w[:-2], w[:-1]])
+            if w.endswith("s") and len(w) > 3: stems.append(w[:-1])
+            if w.endswith("ment"): stems.append(w[:-4])
+            return list(set(stems))
 
         scored_chunks = []
 
@@ -154,58 +162,91 @@ class TranscriptRetriever:
                 title_lower = title.lower()
                 title_in_query = any(w in title_lower for w in keywords)
 
-                # Segment transcript by timestamps or paragraphs
-                sections = re.split(r'\n(?=[A-Za-z0-9\s]+\(\d{2}:\d{2}:\d{2}\):|\(\d{2}:\d{2}:\d{2}\):)', body)
-                current_time = "00:00:00"
+                # Segment transcript and merge small sub-turns into coherent conversational passages (600-1400 chars)
+                raw_sections = re.split(r'\n(?=[A-Za-z0-9\s]+\(\d{2}:\d{2}:\d{2}\):|\(\d{2}:\d{2}:\d{2}\):)', body)
+                merged_sections = []
+                curr_text = ""
+                curr_ts = "00:00:00"
 
-                for sec in sections:
-                    sec_clean = sec.strip()
+                for s in raw_sections:
+                    s_clean = s.strip()
+                    if not s_clean:
+                        continue
+                    tm = re.search(r'\((\d{2}:\d{2}:\d{2})\)', s_clean)
+                    if tm and not curr_text:
+                        curr_ts = tm.group(1)
+                    if len(curr_text) + len(s_clean) < 1300:
+                        curr_text = (curr_text + "\n\n" + s_clean).strip()
+                    else:
+                        if curr_text:
+                            merged_sections.append((curr_ts, curr_text))
+                        curr_text = s_clean
+                        if tm:
+                            curr_ts = tm.group(1)
+                if curr_text:
+                    merged_sections.append((curr_ts, curr_text))
+
+                # Separate guest identifier keywords from topical domain keywords
+                guest_kws = set(guest_parts)
+                topical_keywords = [kw for kw in keywords if kw not in guest_kws]
+                if not topical_keywords:
+                    topical_keywords = keywords
+
+                topical_stems = {kw: get_stems(kw) for kw in topical_keywords}
+
+                for current_time, sec_clean in merged_sections:
                     if len(sec_clean) < 100:
                         continue
-                    
-                    time_match = re.search(r'\((\d{2}:\d{2}:\d{2})\)', sec_clean)
-                    if time_match:
-                        current_time = time_match.group(1)
+                    # Skip YAML frontmatter residue and initial podcast host intro banter
+                    if sec_clean.startswith("---") or "publish_date:" in sec_clean or (current_time < "00:01:30" and "youtube_url" in sec_clean):
+                        continue
 
                     text_lower = sec_clean.lower()
-                    
-                    # Compute distinct matched keywords in this section
-                    matched_keywords = [kw for kw in keywords if kw in text_lower]
-                    matches = len(matched_keywords)
-                    
-                    # Strict Grounding Criteria:
-                    # 1. If guest/title is in query, require at least 1 keyword match or strong attribution
-                    # 2. If guest is not in query, require >= 75% of query domain keywords to be present in this passage
+
+                    matched_topical = set()
+                    term_freq = 0
+                    for kw, stems in topical_stems.items():
+                        freq = sum(text_lower.count(st) for st in stems)
+                        if freq > 0:
+                            matched_topical.add(kw)
+                            term_freq += freq
+
+                    matches = len(matched_topical)
+
+                    # Strict Grounding Criteria
                     is_relevant = False
                     if guest_in_query:
-                        if matches >= 1 or len(keywords) == 0:
+                        if matches >= 1 or len(topical_keywords) == 0:
                             is_relevant = True
                     elif title_in_query and matches >= 1:
                         is_relevant = True
-                    elif len(keywords) >= 2:
-                        match_ratio = matches / len(keywords)
-                        if match_ratio >= 0.75:
+                    elif len(topical_keywords) >= 2:
+                        match_ratio = matches / len(topical_keywords)
+                        if match_ratio >= 0.65:
                             is_relevant = True
-                    elif len(keywords) == 1 and matches == 1:
-                        # Single specific term (e.g. "onboarding", "retention", "pricing")
-                        kw = keywords[0]
-                        if text_lower.count(kw) >= 2 or len(kw) >= 6:
+                    elif len(topical_keywords) == 1 and matches == 1:
+                        kw = topical_keywords[0]
+                        if text_lower.count(kw) >= 2 or len(kw) >= 5:
                             is_relevant = True
 
                     if is_relevant:
-                        coverage = matches / max(1, len(keywords))
-                        base_score = 0.65 + (coverage * 0.23)
+                        coverage = matches / max(1, len(topical_keywords))
+                        base_score = 0.62 + (coverage * 0.22) + min(0.08, term_freq * 0.015)
                         if guest_in_query:
-                            base_score += 0.08
+                            base_score += 0.05
                         if title_in_query:
-                            base_score += 0.04
+                            base_score += 0.03
                         
+                        # Topical bonus for key PM frameworks (e.g. LNO, finite time, Delta 4)
+                        if "lno" in text_lower or "delta 4" in text_lower or "finite time" in text_lower or "growth loop" in text_lower:
+                            base_score += 0.06
+
                         final_score = round(min(0.96, base_score), 4)
                         if final_score >= similarity_threshold:
                             scored_chunks.append({
                                 "episode": title,
                                 "guest": guest,
-                                "text": sec_clean[:1200],
+                                "text": sec_clean[:1400],
                                 "timestamp": current_time,
                                 "score": final_score
                             })

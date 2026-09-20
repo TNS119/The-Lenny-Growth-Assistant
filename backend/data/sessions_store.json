@@ -1,165 +1,824 @@
 {
-  "5d23df39-4434-4743-90df-10c795379fee": {
-    "id": "5d23df39-4434-4743-90df-10c795379fee",
-    "title": "What did Brian Chesky say about founder...",
-    "created_at": "2026-09-05T13:41:45.314183",
-    "updated_at": "2026-09-05T13:43:32.955481",
+  "ac82ccfd-ae33-4b55-a26a-bdda51a7d757": {
+    "id": "ac82ccfd-ae33-4b55-a26a-bdda51a7d757",
+    "title": "What is Kunal Shah's Delta 4 framework...",
+    "created_at": "2026-09-20T13:08:09.985659",
+    "updated_at": "2026-09-20T13:21:12.709103",
     "messages": [
       {
-        "id": "b409fd1f-4c11-4594-9e66-2c99c4e65032",
-        "session_id": "5d23df39-4434-4743-90df-10c795379fee",
+        "id": "8699f832-a352-451a-839f-6d6902ae3ba1",
+        "session_id": "ac82ccfd-ae33-4b55-a26a-bdda51a7d757",
         "role": "user",
-        "content": "What did Brian Chesky say about founder mode vs. manager mode?",
-        "created_at": "2026-09-05T13:43:32.955481",
+        "content": "What is Kunal Shah's Delta 4 framework for products?",
+        "created_at": "2026-09-20T13:08:09.985659",
         "sources": []
       },
       {
-        "id": "3848b9eb-c296-4550-908a-96374fa8ed6b",
-        "session_id": "5d23df39-4434-4743-90df-10c795379fee",
+        "id": "d9a1c7a8-fd31-4879-a6c6-d975a8aab065",
+        "session_id": "ac82ccfd-ae33-4b55-a26a-bdda51a7d757",
         "role": "assistant",
-        "content": "**Founder Mode vs. Manager Mode: Key Takeaways**\n\nBrian Chesky emphasizes the importance of clarity and direction in leadership. He suggests that founders should not find a midpoint between their vision and the desires of their team, but rather, they should be clear about their goals and expectations.\n\n* **Focus on being in the details**: Chesky believes that leaders should be involved in the details of the business, just like a board of directors is involved in the CEO's decision-making process.\n* **Micromanagement vs. being in the details**: Chesky distinguishes between micromanagement (telling people exactly what to do) and being in the details (understanding the intricacies of the business).\n* **CEO as chief product officer**: Chesky advocates for the CEO to be the chief product officer of the company, as this ensures that the CEO is directly involved in the product and technology aspects of the business.\n\n**Key Strategies for Founders**\n\n* **Reacting vs. proactively**: Chesky advises founders to focus on strategy and planning, rather than simply reacting to incoming requests and emails.\n* **Setting the agenda**: Founders should define their own agenda and prioritize their relationships and meetings accordingly, rather than letting others dictate their schedule.\n\n**Actionable Takeaway**\n\nProduct leaders should focus on being in the details of their business, setting clear goals and expectations, and proactively planning their strategy rather than simply reacting to incoming requests.",
-        "created_at": "2026-09-05T13:43:32.955481",
+        "content": "**Delta 4 Framework for Products: A Simplified Explanation**\n\nKunal Shah's Delta 4 framework is a simple yet effective approach to evaluating product efficiency and success. In essence, it's a measure of how much better a product is compared to its alternatives. Shah explains that it's challenging to quantify this improvement, as it's not always easy to determine if a product is truly 10x better than its competitors.\n\n**Key Components of the Delta 4 Framework:**\n\n*   **Efficiency Delta**: A score out of 10, representing how much better a product is compared to its alternatives. Shah uses the example of taking a cab ride versus using Uber, where he estimates a score of 3 for the old cab and 9 for Uber.\n*   **Irreversibility**: If the efficiency delta is greater than or equal to 4, the product is considered irreversible, meaning that it's unlikely to be replaced by a similar alternative.\n*   **Tolerance for Failure**: A high efficiency delta also implies a high tolerance for failure. If a product is 4x better, it's less likely that users will abandon it if it experiences minor issues.\n\n**Actionable Takeaway:**\n\nWhen evaluating your product's efficiency and success, consider the Delta 4 framework. Ask yourself:\n\n*   What is the efficiency delta compared to its alternatives?\n*   Is the product irreversible, or can it be easily replaced?\n*   What is the tolerance for failure, and how will you handle minor issues?\n\nBy applying the Delta 4 framework, you can make data-driven decisions to improve your product's efficiency and increase its chances of success.",
+        "created_at": "2026-09-20T13:08:09.985659",
         "sources": [
           {
-            "episode": "Brian Chesky’s new playbook",
-            "guest": "Brian Chesky",
-            "text": "Brian Chesky (00:00:00):\nWay too many founders apologize for how they want to run the company. They find some midpoint between how they want to run a company and how the people they lead want to run the company. That's a good way to make everyone miserable. Because what everyone really wants is clarity. And what everyone really wants is to be able to row in the same direction really quickly. And so I basically got involved in every single detail and I basically told leaders that leaders are in the details. And there's this negative term called micromanagement. I think there's a difference between micromanagement, which is like telling people exactly what to do, and being in the details. Being in the details is what every responsible company's board does to the CEO. That doesn't mean the board is telling them what to do. But if you don't know the details, how do you know people are doing a good job? People think that great leader's job is to hire people and just empower them to do a good job. Well, how do you know they're doing a good job if you're not in the details? And so I made sure I was in the details and we really drove the product.",
+            "episode": "Kunal Shah on winning in India, second-order thinking, the philosophy of startups, and more",
+            "guest": "Kunal Shah",
+            "text": "LENNY RACHITSKY (00:05:36):\nCould you explain this framework briefly and then just how you've used it or how you recommend people apply it?\n\nLENNY RACHITSKY (00:05:43):\nOh, and by the way, it's called Delta 4.\n\nLENNY RACHITSKY (00:05:44):\nI don't know if I even said the name.\n\nKUNAL SHAH (00:05:46):\nYeah, it's called the Delta 4 framework, but I think it's actually quite simple.\n\nKUNAL SHAH (00:05:51):\nIf you think about it, a lot of people say that your product has to be 10x better and it's not very measurable.\n\nKUNAL SHAH (00:05:57):\nYou don't know if you are 10x better or not unless you're delusional.\n\nKUNAL SHAH (00:06:01):\nAnd the trigger for me was actually, I'm the unusual tech founder in India.\n\nKUNAL SHAH (00:06:06):\nI'm the only humanities/philosophy major founder in India who's got into tech.\n\nKUNAL SHAH (00:06:12):\nAnd I often wondered if most people who were my peers, or people who were ahead of me, were significantly smarter academically or otherwise.\n\nKUNAL SHAH (00:06:21):\nAnd why did I become successful with my first startup, Freecharge, which I exited in 2015 for nearly $450 million?\n\nKUNAL SHAH (00:06:28):\nAnd I was like, “What would make this happen?”",
+            "timestamp": "00:05:36",
+            "score": 0.96
+          },
+          {
+            "episode": "Kunal Shah on winning in India, second-order thinking, the philosophy of startups, and more",
+            "guest": "Kunal Shah",
+            "text": "KUNAL SHAH (00:06:31):\nBecause I would not qualify into this super league of really top IIT rankers that exist in India.\n\nKUNAL SHAH (00:06:38):\nAnd that got me onto this philosophical quest to find out what makes things successful.\n\nKUNAL SHAH (00:06:43):\nSo the simple framework is, an example I give often is that, imagine the old way of taking a cab ride and an Uber. And if I asked you to give me the score of efficiency on Uber and let's say getting the old cab, what would you say, Lenny?\n\nKUNAL SHAH (00:06:58):\nI'm curious.\n\nKUNAL SHAH (00:06:59):\nOut of 10?\n\nLENNY RACHITSKY (00:07:00):\nYeah, give a cab three and then Uber like a nine.\n\nLENNY RACHITSKY (00:07:04):\nYeah.\n\nKUNAL SHAH (00:07:05):\nSo every time you see that the product efficiency delta is greater than or equal to four, three things happen.\n\nKUNAL SHAH (00:07:14):\nIt is irreversible.\n\nKUNAL SHAH (00:07:16):\nSecond is that you have a very high tolerance for it to fail.\n\nKUNAL SHAH (00:07:21):\nIf Uber fails a little bit, will you say, “Oh my God, I'm going to really stop using it?”\n\nKUNAL SHAH (00:07:30):\nNo.\n\nKUNAL SHAH (00:07:31):\nAnd the third thing is what I call the UBP, ‘Unique Brag-worthy Proposition.’",
+            "timestamp": "00:06:31",
+            "score": 0.96
+          }
+        ],
+        "artifacts": []
+      },
+      {
+        "id": "305ae1b8-3860-437a-936b-a9186102d14d",
+        "session_id": "ac82ccfd-ae33-4b55-a26a-bdda51a7d757",
+        "role": "user",
+        "content": "/ship Delta 4 framework for products",
+        "created_at": "2026-09-20T13:21:12.709103",
+        "sources": []
+      },
+      {
+        "id": "79ba7bcb-e07c-4421-8721-4a8f7c1d60e1",
+        "session_id": "ac82ccfd-ae33-4b55-a26a-bdda51a7d757",
+        "role": "assistant",
+        "content": "Artifact is created.",
+        "created_at": "2026-09-20T13:21:12.709103",
+        "sources": [
+          {
+            "episode": "Kunal Shah on winning in India, second-order thinking, the philosophy of startups, and more",
+            "guest": "Kunal Shah",
+            "text": "LENNY RACHITSKY (00:05:36):\nCould you explain this framework briefly and then just how you've used it or how you recommend people apply it?\n\nLENNY RACHITSKY (00:05:43):\nOh, and by the way, it's called Delta 4.\n\nLENNY RACHITSKY (00:05:44):\nI don't know if I even said the name.\n\nKUNAL SHAH (00:05:46):\nYeah, it's called the Delta 4 framework, but I think it's actually quite simple.\n\nKUNAL SHAH (00:05:51):\nIf you think about it, a lot of people say that your product has to be 10x better and it's not very measurable.\n\nKUNAL SHAH (00:05:57):\nYou don't know if you are 10x better or not unless you're delusional.\n\nKUNAL SHAH (00:06:01):\nAnd the trigger for me was actually, I'm the unusual tech founder in India.\n\nKUNAL SHAH (00:06:06):\nI'm the only humanities/philosophy major founder in India who's got into tech.\n\nKUNAL SHAH (00:06:12):\nAnd I often wondered if most people who were my peers, or people who were ahead of me, were significantly smarter academically or otherwise.\n\nKUNAL SHAH (00:06:21):\nAnd why did I become successful with my first startup, Freecharge, which I exited in 2015 for nearly $450 million?\n\nKUNAL SHAH (00:06:28):\nAnd I was like, “What would make this happen?”",
+            "timestamp": "00:05:36",
+            "score": 0.96
+          },
+          {
+            "episode": "Kunal Shah on winning in India, second-order thinking, the philosophy of startups, and more",
+            "guest": "Kunal Shah",
+            "text": "KUNAL SHAH (00:09:36):\nomebody in Sequoia mentioned this to me that they have this as part of the thing, but in India we are not still applying many of these things.\n\nKUNAL SHAH (00:09:46):\nI think it's a simple framework to at least know. You can apply this to features, you can apply this to products, you can apply that to business.\n\nKUNAL SHAH (00:09:55):\nAnd oftentimes this is a longer concept.\n\nKUNAL SHAH (00:09:57):\nWe can talk about it in many ways because it's derived out of some study around entropy and evolutionary biology, which is the root of how I discovered and thought about Delta 4, that “When does a species get disrupted ” or “what is entropy and why does low entropy require growth of high entropy?”\n\nKUNAL SHAH (00:10:18):\nIt's a day long podcast on its own.\n\nKUNAL SHAH (00:10:19):\nSo some other time.\n\nLENNY RACHITSKY (00:10:21):\nOkay.\n\nLENNY RACHITSKY (00:10:21):\nWe'll save that for a future follow-up, just diving in on the psychology of Delta 4. Just to kind of summarize this, because I think it's such a powerful framework and I find it useful to convince founders why their product isn't taking off.\n\nLENNY RACHITSKY (00:10:32):\nThey may feel like this is better than. The classic example, is a better Excel.",
+            "timestamp": "00:09:36",
+            "score": 0.96
+          },
+          {
+            "episode": "Why most product managers are unprepared for the demands of a real startup",
+            "guest": "Casey Winters",
+            "text": "# Why most product managers are unprepared for the demands of a real startup | Casey Winters\n\n## Transcript\n\nCasey Winters (00:00):\nThe goal of your Kindle strategies, these like non-scalable hacks, they only exist to unlock the fire strategies, to unlock the things that could take you to millions of users.\n\nLenny (00:12):\nPinterest, Airbnb, Reddit, Canva, Hipcamp, Thumbtack, Fair, Tinder, Eventbrite. What do these companies have in common? Casey Winters, Casey has worked with and advised more consumer companies on their product and growth strategy than anyone in the world. He's also very generous with his time and often sets time aside to help founders and product leaders. I always learned so much talking to Casey, and I'm excited for you to hear this episode. In our chat we covered Casey's advice on making trade offs as a product leader, justifying non-sexy product investments, the spectrum of product people and how to level up your skills, new growth trends and tactics that he's seeing, when to focus on growth, and a bunch of advice on growth strategy, and so many other things. As a bonus, we're going to be doing a live AMA with Casey in my newsletter Slack community on August 5th at 10:00 AM Pacific time, so if you'd like to ask Casey any questions, make sure to get there. Until then enjoy this episode with Casey Winters. Hey Casey Winters, what do you love about Coda?\n\nCas",
             "timestamp": "00:00:00",
-            "score": 0.885
+            "score": 0.9067
+          }
+        ],
+        "artifacts": [
+          {
+            "id": "4a10e188-ebdc-4c6d-a2c6-4bc6a82c9851",
+            "message_id": "79ba7bcb-e07c-4421-8721-4a8f7c1d60e1",
+            "artifact_type": "markdown",
+            "title": "Ship 30 Essay: Unlocking Growth with Delta 4",
+            "content": "Delta 4: The Hidden Framework for Unlocking Growth in Products\n===========================================================\n\nIn the fast-paced world of product management, it's easy to get caught up in the hype of trendy growth strategies. However, few frameworks have been as underutilized as the Delta 4 framework, a simple yet powerful tool for unlocking growth in products. In this essay, we'll delve into the world of Delta 4, exploring its origins, key principles, and practical applications for product managers and founders.\n\n**The Paradox of Growth**\n\nKunal Shah, founder of Freecharge and a seasoned entrepreneur, once shared with me the story of how he discovered the Delta 4 framework. As a humanities major in India, Kunal often wondered if his peers were significantly smarter academically or otherwise. This curiosity led him to explore the concept of entropy and evolutionary biology, which ultimately gave birth to the Delta 4 framework.\n\nAt its core, Delta 4 is a framework for understanding the relationship between growth and entropy. Entropy, a measure of disorder or randomness, is a fundamental concept in physics and biology. In the context of growth, entropy represents the complexity and uncertainty that arises when a product or business scales. The question at the heart of Delta 4 is: when does a species get disrupted, and what is the role of entropy in driving growth?\n\n**The Delta 4 Framework**\n\nThe Delta 4 framework is deceptively simple. It consists of three key components:\n\n*   **Low Entropy**: This represents the initial state of a product or business, characterized by simplicity, clarity, and a well-defined value proposition.\n*   **High Entropy**: This represents the state of a product or business that has become complex, uncertain, and difficult to navigate.\n*   **Delta**: This represents the difference between low and high entropy, a measure of the growth and disruption that occurs as a product or business scales.\n\nThe Delta 4 framework is not just a theoretical concept; it has practical applications in product management. By understanding the relationship between entropy and growth, product managers can identify opportunities to simplify and streamline their products, reducing the complexity that can stifle growth.\n\n**Practical Applications**\n\nSo, how can you apply the Delta 4 framework in your product management practice? Here are a few strategies to get you started:\n\n*   **Identify Entropy Hotspots**: Look for areas in your product where entropy is building up. This might be a complex feature, a difficult-to-use interface, or a unclear value proposition.\n*   **Simplify and Streamline**: Use the Delta 4 framework to identify opportunities to simplify and streamline your product. This might involve reducing the number of features, simplifying the user interface, or clarifying the value proposition.\n*   **Focus on Low Entropy**: As your product grows, focus on maintaining low entropy. This means keeping the product simple, clear, and easy to use.\n\n**Conclusion**\n\nThe Delta 4 framework is a powerful tool for unlocking growth in products. By understanding the relationship between entropy and growth, product managers can identify opportunities to simplify and streamline their products, reducing the complexity that can stifle growth. In this essay, we've explored the origins and key principles of the Delta 4 framework, as well as practical applications for product managers and founders.\n\n**Next Steps**\n\nTo get started with the Delta 4 framework, try the following exercises:\n\n1.  **Identify Entropy Hotspots**: Look for areas in your product where entropy is building up. Use the Delta 4 framework to identify opportunities to simplify and streamline your product.\n2.  **Simplify and Streamline**: Use the Delta 4 framework to identify opportunities to simplify and streamline your product. This might involve reducing the number of features, simplifying the user interface, or clarifying the value proposition.\n3.  **Focus on Low Entropy**: As your product grows, focus on maintaining low entropy. This means keeping the product simple, clear, and easy to use.\n\nBy following these exercises, you'll be well on your way to unlocking growth in your product using the Delta 4 framework.",
+            "created_at": "2026-09-20T13:21:12.709103"
+          }
+        ]
+      }
+    ]
+  },
+  "7767392b-8d50-4899-aa5d-4ad650ed775d": {
+    "id": "7767392b-8d50-4899-aa5d-4ad650ed775d",
+    "title": "What is Kunal Shah's Delta 4 framework...",
+    "created_at": "2026-09-20T13:17:47.572596",
+    "updated_at": "2026-09-20T13:22:39.349832",
+    "messages": [
+      {
+        "id": "384bbac5-11be-430d-8cfd-9ddff880e6cd",
+        "session_id": "7767392b-8d50-4899-aa5d-4ad650ed775d",
+        "role": "user",
+        "content": "What is Kunal Shah's Delta 4 framework for products?",
+        "created_at": "2026-09-20T13:17:47.572596",
+        "sources": []
+      },
+      {
+        "id": "5375d072-127d-442f-a184-7480f57de59f",
+        "session_id": "7767392b-8d50-4899-aa5d-4ad650ed775d",
+        "role": "assistant",
+        "content": "### Answer to User Question: Kunal Shah's Delta 4 Framework for Products\n\nKunal Shah's Delta 4 framework is a simple yet effective approach to evaluating product efficiency. The framework is based on the concept of measuring the \"product efficiency delta,\" which represents the difference in efficiency between two products or services.\n\n**Key Components of the Delta 4 Framework:**\n\n*   **Product Efficiency Delta (PED):** A measure of the difference in efficiency between two products or services, with a score out of 10.\n*   **Irreversibility:** If the PED is greater than or equal to 4, the change is irreversible, and the product will continue to gain traction.\n*   **Tolerance for Failure:** A high PED indicates a high tolerance for failure, as the product can afford to lose a small percentage of users without significantly impacting its overall performance.\n*   **Unique Brag-worthy Proposition (UBP):** A unique selling proposition that sets the product apart from its competitors and makes it attractive to users.\n\n### Applying the Delta 4 Framework\n\nTo apply the Delta 4 framework, consider the following steps:\n\n1.  Evaluate the product efficiency delta (PED) by comparing it to a benchmark or industry average.\n2.  Assess the irreversibility of the change by considering the potential impact on the product's overall performance.\n3.  Evaluate the tolerance for failure by considering the product's ability to afford losses without significantly impacting its performance.\n4.  Identify the unique brag-worthy proposition (UBP) that sets the product apart from its competitors.\n\n### Actionable Takeaway\n\nProduct leaders can apply the Delta 4 framework to evaluate the efficiency of their products and make data-driven decisions to improve their offerings. By considering the product efficiency delta, irreversibility, tolerance for failure, and unique brag-worthy proposition, product leaders can identify areas for improvement and optimize their products to gain a competitive edge.",
+        "created_at": "2026-09-20T13:17:47.572596",
+        "sources": [
+          {
+            "episode": "Kunal Shah on winning in India, second-order thinking, the philosophy of startups, and more",
+            "guest": "Kunal Shah",
+            "text": "LENNY RACHITSKY (00:05:36):\nCould you explain this framework briefly and then just how you've used it or how you recommend people apply it?\n\nLENNY RACHITSKY (00:05:43):\nOh, and by the way, it's called Delta 4.\n\nLENNY RACHITSKY (00:05:44):\nI don't know if I even said the name.\n\nKUNAL SHAH (00:05:46):\nYeah, it's called the Delta 4 framework, but I think it's actually quite simple.\n\nKUNAL SHAH (00:05:51):\nIf you think about it, a lot of people say that your product has to be 10x better and it's not very measurable.\n\nKUNAL SHAH (00:05:57):\nYou don't know if you are 10x better or not unless you're delusional.\n\nKUNAL SHAH (00:06:01):\nAnd the trigger for me was actually, I'm the unusual tech founder in India.\n\nKUNAL SHAH (00:06:06):\nI'm the only humanities/philosophy major founder in India who's got into tech.\n\nKUNAL SHAH (00:06:12):\nAnd I often wondered if most people who were my peers, or people who were ahead of me, were significantly smarter academically or otherwise.\n\nKUNAL SHAH (00:06:21):\nAnd why did I become successful with my first startup, Freecharge, which I exited in 2015 for nearly $450 million?\n\nKUNAL SHAH (00:06:28):\nAnd I was like, “What would make this happen?”",
+            "timestamp": "00:05:36",
+            "score": 0.96
           },
           {
-            "episode": "Brian Chesky’s new playbook",
-            "guest": "Brian Chesky",
-            "text": "Lenny (00:01:01):\nToday my guest is Brian Chesky. Brian is the CEO and co-founder of Airbnb, which he started in his apartment with his co-founders, Joe and Nate, and has turned into an $80 billion global business with travelers and homes in 220 countries. I was very lucky to get to work with Brian for many years, and my sense is if you ask people who they consider the most inspiring tech or business leaders today, Brian would be right near the top of that list.",
-            "timestamp": "00:01:01",
-            "score": 0.885
+            "episode": "Kunal Shah on winning in India, second-order thinking, the philosophy of startups, and more",
+            "guest": "Kunal Shah",
+            "text": "KUNAL SHAH (00:06:31):\nBecause I would not qualify into this super league of really top IIT rankers that exist in India.\n\nKUNAL SHAH (00:06:38):\nAnd that got me onto this philosophical quest to find out what makes things successful.\n\nKUNAL SHAH (00:06:43):\nSo the simple framework is, an example I give often is that, imagine the old way of taking a cab ride and an Uber. And if I asked you to give me the score of efficiency on Uber and let's say getting the old cab, what would you say, Lenny?\n\nKUNAL SHAH (00:06:58):\nI'm curious.\n\nKUNAL SHAH (00:06:59):\nOut of 10?\n\nLENNY RACHITSKY (00:07:00):\nYeah, give a cab three and then Uber like a nine.\n\nLENNY RACHITSKY (00:07:04):\nYeah.\n\nKUNAL SHAH (00:07:05):\nSo every time you see that the product efficiency delta is greater than or equal to four, three things happen.\n\nKUNAL SHAH (00:07:14):\nIt is irreversible.\n\nKUNAL SHAH (00:07:16):\nSecond is that you have a very high tolerance for it to fail.\n\nKUNAL SHAH (00:07:21):\nIf Uber fails a little bit, will you say, “Oh my God, I'm going to really stop using it?”\n\nKUNAL SHAH (00:07:30):\nNo.\n\nKUNAL SHAH (00:07:31):\nAnd the third thing is what I call the UBP, ‘Unique Brag-worthy Proposition.’",
+            "timestamp": "00:06:31",
+            "score": 0.96
+          }
+        ],
+        "artifacts": []
+      },
+      {
+        "id": "00ea434e-df64-4668-beb3-7b7006c9572c",
+        "session_id": "7767392b-8d50-4899-aa5d-4ad650ed775d",
+        "role": "user",
+        "content": "What is Shreyas Doshi's advice on managing time?",
+        "created_at": "2026-09-20T13:18:58.134398",
+        "sources": []
+      },
+      {
+        "id": "a1182560-eb29-4e49-92fa-8f155a2da554",
+        "session_id": "7767392b-8d50-4899-aa5d-4ad650ed775d",
+        "role": "assistant",
+        "content": "**Managing Time: Shreyas Doshi's Advice**\n\nShreyas Doshi, a seasoned product manager and leader, shares his insights on managing time in a high-impact, high-leverage role. According to Doshi, all tasks in such a role are not created equal, and there are three types of tasks that you end up doing.\n\n*   **High-impact tasks**: These are tasks that have a significant impact on the outcome of the project or the company. Examples include making strategic decisions, setting priorities, and allocating resources.\n*   **High-leverage tasks**: These are tasks that have a significant impact on the outcome of the project or the company, but may not be as visible or glamorous as high-impact tasks. Examples include building relationships, negotiating with stakeholders, and finding creative solutions.\n*   **Low-value tasks**: These are tasks that have little to no impact on the outcome of the project or the company. Examples include busywork, administrative tasks, and tasks that can be automated.\n\nDoshi's advice is to focus on the high-impact and high-leverage tasks first, and then allocate time for low-value tasks. This approach allows you to maximize your productivity and make the most of your time.\n\n**Actionable Takeaway**\n\nTo manage your time more effectively, focus on the high-impact and high-leverage tasks first, and then allocate time for low-value tasks. This approach will help you maximize your productivity and achieve your goals.",
+        "created_at": "2026-09-20T13:18:58.134398",
+        "sources": [
+          {
+            "episode": "The art of product management | Shreyas Doshi (Stripe, Twitter, Google, Yahoo)",
+            "guest": "Shreyas Doshi",
+            "text": "(00:35:02):\nIt was just constantly I would come home and talk to my wife and basically just complained to her about how I'm not able to make progress or as much progress as I want, then that was accompanied with not being able to sleep very well because I was concerned about how much output I was producing and whatnot. And so, again, very stressful time in my career. And then things changed when I discovered the ideas related to this LNO framework in a block post. Unfortunately, I can't even find that block post somewhere, but it had some ideas that I took and then created this LNO framework on myself, which is essentially that as a product manager or as anybody in a creative high impact high leverage role, all your tasks are not created equal, there are actually three type of tasks that you end up doing in such a role.",
+            "timestamp": "00:35:02",
+            "score": 0.9517
           },
           {
-            "episode": "Brian Chesky’s new playbook",
-            "guest": "Brian Chesky",
-            "text": "Brian Chesky (00:16:08):\nThat's exactly how it went, and that's how it goes almost at every company I've heard of. By the way, I think that many years ago, I remember I think reading a blog post by Ben Horowitz saying that a lot of people tell product led founders or engineering led founders to step away and delegate their product to other people, but suddenly they've delegated away the thing they're best at. The thing that is hardest for them to replace. So we don't have a chief product officer title, but if we had one, it would be me. I wouldn't have a chief product officer. I think the CEO should be basically the chief product officer of a product or tech company. If the CEO is not the chief product officer then I don't know if they're a product or tech led company. Maybe that's okay if they're an ops company or if they're a marketing company or if they're not a tech company at all. But ultimately I think the founder or CEO should be that person.",
-            "timestamp": "00:16:08",
-            "score": 0.885
+            "episode": "The art of product management | Shreyas Doshi (Stripe, Twitter, Google, Yahoo)",
+            "guest": "Shreyas Doshi",
+            "text": "# The art of product management | Shreyas Doshi (Stripe, Twitter, Google, Yahoo)\n\n## Transcript\n\nLenny (00:00:03):\nThere's no one out there today who shares more wisdom, more consistently on the art of product management than Shreyas Doshi. Shreyas came out of nowhere a few years ago and started tweeting gems of insight about building product and the role of product management, and rightfully so, has built a huge following on Twitter. What I love about Shreyas is that his insights are often framed in really memorable and interesting ways and they're often contrarian and not ideas that you've heard elsewhere. Shreyas has worked at some of today's most important tech companies, including Yahoo, Twitter, Google, and most recently Stripe, both as an IC and a manager. And his advice is always rooted in his real life experiences at these companies.",
+            "timestamp": "00:00:00",
+            "score": 0.9267
           },
           {
-            "episode": "Brian Chesky’s new playbook",
-            "guest": "Brian Chesky",
-            "text": "Brian Chesky (00:56:12):\nIn the old world, I was reacting, so everyone thought I was busy. So the people I really cared about, a lot of them said, \"Well, he's busy so he'll reach out to me when he's not busy.\" But here's a problem. I was so busy that all I was doing all day was responding to people. And so if people I cared about didn't reach out to me, I was dealing with incoming. I could barely deal with the incoming. Now that was a mistake. But I was reacting. By the way, here's another lesson for founders. A lot of founders spend their time based on reacting. So people will email them and they'll wake up and they'll respond to emails, and suddenly their email sets the agenda. People ask for meetings, and suddenly the meetings they take are based on the people who email them. Versus here's my strategy and then over the next year, what are the relationships I need to have and the meetings I need to take to be able to execute this strategy?",
-            "timestamp": "00:56:12",
-            "score": 0.885
+            "episode": "From managing people to managing AI: The leadership skills everyone needs",
+            "guest": "Julie Zhuo",
+            "text": "(00:02:18):\nHaving worked at a mega large corp like Meta as head of design and now as a founder at a tiny startup that's all about using data to help you make decisions, it's really rare for someone to have this spectrum of experiences. In our conversation, we talk about how learning to be a great manager directly translates to learning how to use AI tools extremely well, which specific skills will become more valuable in the next couple of years, her most valuable and timeless advice for new managers, why she's not hiring product managers at her startup, her simple heuristic for knowing when to use data and when to use intuition in making decisions. There's something in this episode for everyone. And if you enjoy this podcast, don't forget to subscribe and follow it in your favorite podcasting app or YouTube. It helps tremendously. And if you become an annual subscriber of my newsletter, you get 15 incredible products for free for an entire year, including Lovable, Replit, Bolt, n8n, Linear, Superhuman, Descript, Whisperflow, Gamma, Perplexity, Warp, Granola, Magic Patterns, ChatPRD and Mobbin.",
+            "timestamp": "00:02:18",
+            "score": 0.862
           },
           {
-            "episode": "Brian Chesky’s new playbook",
-            "guest": "Brian Chesky",
-            "text": "Brian Chesky (01:03:23):\nI had no idea he was going to do that. And I just want to say I think Sam is obviously a once in a generation founder. I think what he's done with OpenAI is extraordinary. And when he launched ChatGPT I had known him for a real long period of time, and I knew a sense of the journey he was about to go on. And I think that he was very deep into the technical part and then research part of OpenAI. But it turned out there was a product, a design, a marketing, a leadership, a sales. So there were all these other functional responsibilities. And so being able to just play a small part in giving some advice when necessary ... And he would take what he wanted and discard others. But I think, Lenny, maybe this goes to another thing, which is all I tried to do with Sam was what other people did for me.",
-            "timestamp": "01:03:23",
-            "score": 0.885
+            "episode": "From managing people to managing AI: The leadership skills everyone needs",
+            "guest": "Julie Zhuo",
+            "text": "(00:57:49):\nSo along the lines of timeless manager, especially new manager advice, you've shared a bunch. Is there anything else that you think is really important, really interesting, valuable?\n\nJulie Zhuo (00:57:59):\nFeedback is one of the other topics that I am super, duper passionate about. And my general impression for both myself, everyone I've worked with, is that we don't value feedback enough or we don't think about it enough. Again, companies have these performance cycles, and so we're all like, yes, every six months we're going to go and do these reviews. That's when I'll get feedback. But feedback really, in my mind, ideally, should be a daily practice. Because the thing that matters for us in the long run as a team is how quickly are we getting better? So a team that just gets 1% better every week compared to a team that gets 1% better a month, even if they start off at a much lower baseline, is going to outperform in a very short amount of time the team that doesn't get better.",
+            "timestamp": "00:57:49",
+            "score": 0.862
+          }
+        ],
+        "artifacts": []
+      },
+      {
+        "id": "57973a19-952d-4fbf-8084-6ba5dd8668ed",
+        "session_id": "7767392b-8d50-4899-aa5d-4ad650ed775d",
+        "role": "user",
+        "content": "/ship advice on Managing time",
+        "created_at": "2026-09-20T13:22:39.349832",
+        "sources": []
+      },
+      {
+        "id": "4d216e8b-40fd-4337-ac9d-15b35659e4de",
+        "session_id": "7767392b-8d50-4899-aa5d-4ad650ed775d",
+        "role": "assistant",
+        "content": "Artifact is created.",
+        "created_at": "2026-09-20T13:22:39.349832",
+        "sources": [
+          {
+            "episode": "Why most product managers are unprepared for the demands of a real startup",
+            "guest": "Casey Winters",
+            "text": "# Why most product managers are unprepared for the demands of a real startup | Casey Winters\n\n## Transcript\n\nCasey Winters (00:00):\nThe goal of your Kindle strategies, these like non-scalable hacks, they only exist to unlock the fire strategies, to unlock the things that could take you to millions of users.\n\nLenny (00:12):\nPinterest, Airbnb, Reddit, Canva, Hipcamp, Thumbtack, Fair, Tinder, Eventbrite. What do these companies have in common? Casey Winters, Casey has worked with and advised more consumer companies on their product and growth strategy than anyone in the world. He's also very generous with his time and often sets time aside to help founders and product leaders. I always learned so much talking to Casey, and I'm excited for you to hear this episode. In our chat we covered Casey's advice on making trade offs as a product leader, justifying non-sexy product investments, the spectrum of product people and how to level up your skills, new growth trends and tactics that he's seeing, when to focus on growth, and a bunch of advice on growth strategy, and so many other things. As a bonus, we're going to be doing a live AMA with Casey in my newsletter Slack community on August 5th at 10:00 AM Pacific time, so if you'd like to ask Casey any questions, make sure to get there. Until then enjoy this episode with Casey Winters. Hey Casey Winters, what do you love about Coda?\n\nCas",
+            "timestamp": "00:00:00",
+            "score": 0.96
+          },
+          {
+            "episode": "From managing people to managing AI: The leadership skills everyone needs",
+            "guest": "Julie Zhuo",
+            "text": "(00:02:18):\nHaving worked at a mega large corp like Meta as head of design and now as a founder at a tiny startup that's all about using data to help you make decisions, it's really rare for someone to have this spectrum of experiences. In our conversation, we talk about how learning to be a great manager directly translates to learning how to use AI tools extremely well, which specific skills will become more valuable in the next couple of years, her most valuable and timeless advice for new managers, why she's not hiring product managers at her startup, her simple heuristic for knowing when to use data and when to use intuition in making decisions. There's something in this episode for everyone. And if you enjoy this podcast, don't forget to subscribe and follow it in your favorite podcasting app or YouTube. It helps tremendously. And if you become an annual subscriber of my newsletter, you get 15 incredible products for free for an entire year, including Lovable, Replit, Bolt, n8n, Linear, Superhuman, Descript, Whisperflow, Gamma, Perplexity, Warp, Granola, Magic Patterns, ChatPRD and Mobbin.",
+            "timestamp": "00:02:18",
+            "score": 0.95
+          },
+          {
+            "episode": "From managing people to managing AI: The leadership skills everyone needs",
+            "guest": "Julie Zhuo",
+            "text": "(00:57:49):\nSo along the lines of timeless manager, especially new manager advice, you've shared a bunch. Is there anything else that you think is really important, really interesting, valuable?\n\nJulie Zhuo (00:57:59):\nFeedback is one of the other topics that I am super, duper passionate about. And my general impression for both myself, everyone I've worked with, is that we don't value feedback enough or we don't think about it enough. Again, companies have these performance cycles, and so we're all like, yes, every six months we're going to go and do these reviews. That's when I'll get feedback. But feedback really, in my mind, ideally, should be a daily practice. Because the thing that matters for us in the long run as a team is how quickly are we getting better? So a team that just gets 1% better every week compared to a team that gets 1% better a month, even if they start off at a much lower baseline, is going to outperform in a very short amount of time the team that doesn't get better.",
+            "timestamp": "00:57:49",
+            "score": 0.95
+          },
+          {
+            "episode": "How to build your product strategy stack | Ravi Mehta (Tinder, Facebook, Tripadvisor,",
+            "guest": "Ravi Mehta",
+            "text": "(01:05:06):\nA second thing is I think oftentimes people refrain from giving feedback when they feel like that feedback is going to be intrusive. So just inviting your manager to say, \"Look, I'm really looking to level up. Please give me feedback whenever you see something. You can give it to me in real time. Don't worry about wordsmithing it. I just want to make sure that I'm getting better.\" That agreement with your manager and giving them permission to give you that feedback will make sure that the stream of feedback has a much higher volume and starting with the quantity of feedback as a way to get eventually to quality of feedback as well.\n\nLenny (01:05:40):\nAs you're talking, I'm thinking of the advice Jules Walter shared on this podcast a couple episodes ago of when you get feedback, no matter how it makes you feel, whether you're melting inside or not, just be very enthusiastically. Thank you so much for that. That was really helpful.\n\nRavi Mehta (01:05:52):\nIt's so key because then you've rewarded the person for giving you feedback, even if it hurts inside, and then they'll want to do it in the future.\n\nLenny (01:05:59):\nYeah. Anything else that you want to touch on or share before we get to our very exciting lightning round?",
+            "timestamp": "01:05:06",
+            "score": 0.92
+          }
+        ],
+        "artifacts": [
+          {
+            "id": "4ea24c7b-a51c-4d0f-a006-9ac8605ec901",
+            "message_id": "4d216e8b-40fd-4337-ac9d-15b35659e4de",
+            "artifact_type": "markdown",
+            "title": "Ship 30 Essay: Mastering Time Management for Product Leaders",
+            "content": "Managing time is a critical skill for product leaders, yet many struggle to prioritize tasks effectively. In this essay, we'll explore the key takeaways from our conversation with Casey Winters, Julie Zhuo, and Ravi Mehta on managing time, and provide actionable advice for product leaders to optimize their time management.\n\n**Velocity: Prioritizing Tasks with a Focus on Velocity**\nWhen it comes to managing time, velocity is a critical factor. Casey Winters emphasizes the importance of prioritizing tasks based on their velocity, which refers to the rate at which they can be completed. By focusing on tasks with high velocity, product leaders can maximize their productivity and achieve more in less time.\n\n**Attribution: The Power of Feedback**\nJulie Zhuo stresses the importance of feedback in time management. She advocates for a daily practice of giving and receiving feedback, which helps teams improve their performance and achieve better results. By incorporating feedback into their routine, product leaders can identify areas for improvement and optimize their time management strategies.\n\n**The Leadership Skills Everyone Needs: Time Management**\nRavi Mehta's advice on time management is centered around the concept of \"permission\" giving. He suggests that product leaders should invite their managers to give them feedback and permission to make decisions, which helps to increase the volume and quality of feedback. By giving permission, product leaders can create a culture of open communication and collaboration, which is essential for effective time management.\n\n**Actionable Advice for Product Leaders**\n\n1. **Prioritize tasks based on velocity**: Focus on tasks that can be completed quickly and efficiently, and delegate or defer tasks that are low-priority or have low velocity.\n2. **Make feedback a daily practice**: Schedule regular check-ins with your team and manager to receive and provide feedback, which helps to identify areas for improvement and optimize time management strategies.\n3. **Give permission for feedback**: Invite your manager to give you feedback and permission to make decisions, which helps to increase the volume and quality of feedback.\n4. **Use a \"stop doing\" list**: Identify tasks that are no longer necessary or that are wasting your time, and eliminate them from your routine.\n5. **Batch similar tasks together**: Group similar tasks, such as checking email or making phone calls, and complete them in batches to increase productivity.\n\nBy implementing these strategies, product leaders can optimize their time management and achieve more in less time. Remember, effective time management is a skill that takes practice, so be patient and persistent in your efforts to master it.\n\n<artifact />",
+            "created_at": "2026-09-20T13:22:39.349832"
+          }
+        ]
+      }
+    ]
+  },
+  "1e9fb7f5-d3bc-4c96-8853-222bb2237cb5": {
+    "id": "1e9fb7f5-d3bc-4c96-8853-222bb2237cb5",
+    "title": "What is Kunal Shah's Delta 4 framework...",
+    "created_at": "2026-09-20T13:25:16.358600",
+    "updated_at": "2026-09-20T13:29:56.262352",
+    "messages": [
+      {
+        "id": "4917427c-96a7-4d79-981f-d3dd81cae40b",
+        "session_id": "1e9fb7f5-d3bc-4c96-8853-222bb2237cb5",
+        "role": "user",
+        "content": "What is Kunal Shah's Delta 4 framework for products?",
+        "created_at": "2026-09-20T13:25:16.358600",
+        "sources": []
+      },
+      {
+        "id": "998d5922-a133-4cfe-88ef-25ec4d15a8f4",
+        "session_id": "1e9fb7f5-d3bc-4c96-8853-222bb2237cb5",
+        "role": "assistant",
+        "content": "**Delta 4 Framework: A Simple yet Powerful Product Efficiency Framework**\n=====================================================================\n\nKunal Shah, the founder of Freecharge, shared his Delta 4 framework, a simple yet powerful framework for evaluating product efficiency. The framework is based on a simple question: \"What is the product efficiency delta, and how does it compare to the old way of doing things?\"\n\n**The Framework in Simple Terms**\n--------------------------------\n\nThe Delta 4 framework is based on a simple scoring system:\n\n*   **Score 1-3**: Old way of doing things (e.g., taking a cab ride)\n*   **Score 4-6**: New way of doing things (e.g., using Uber)\n*   **Score 7-10**: Revolutionary new way of doing things (e.g., a game-changing innovation)\n\n**The Three Key Conditions of the Delta 4 Framework**\n--------------------------------------------------------\n\nWhen the product efficiency delta is greater than or equal to 4, three key conditions are met:\n\n*   **Irreversibility**: The change is irreversible, meaning that once it's implemented, it's unlikely to be reversed.\n*   **High Tolerance for Failure**: The product has a high tolerance for failure, meaning that even if it fails, the user will not be significantly impacted.\n*   **Unique Brag-worthy Proposition (UBP)**: The product has a unique value proposition that sets it apart from the competition and makes it desirable.\n\n**Actionable Takeaway**\n------------------------\n\nThe Delta 4 framework provides a simple yet effective way to evaluate product efficiency and identify opportunities for innovation and growth. By applying this framework, product leaders can make data-driven decisions that drive business success.",
+        "created_at": "2026-09-20T13:25:16.358600",
+        "sources": [
+          {
+            "episode": "Kunal Shah on winning in India, second-order thinking, the philosophy of startups, and more",
+            "guest": "Kunal Shah",
+            "text": "LENNY RACHITSKY (00:05:36):\nCould you explain this framework briefly and then just how you've used it or how you recommend people apply it?\n\nLENNY RACHITSKY (00:05:43):\nOh, and by the way, it's called Delta 4.\n\nLENNY RACHITSKY (00:05:44):\nI don't know if I even said the name.\n\nKUNAL SHAH (00:05:46):\nYeah, it's called the Delta 4 framework, but I think it's actually quite simple.\n\nKUNAL SHAH (00:05:51):\nIf you think about it, a lot of people say that your product has to be 10x better and it's not very measurable.\n\nKUNAL SHAH (00:05:57):\nYou don't know if you are 10x better or not unless you're delusional.\n\nKUNAL SHAH (00:06:01):\nAnd the trigger for me was actually, I'm the unusual tech founder in India.\n\nKUNAL SHAH (00:06:06):\nI'm the only humanities/philosophy major founder in India who's got into tech.\n\nKUNAL SHAH (00:06:12):\nAnd I often wondered if most people who were my peers, or people who were ahead of me, were significantly smarter academically or otherwise.\n\nKUNAL SHAH (00:06:21):\nAnd why did I become successful with my first startup, Freecharge, which I exited in 2015 for nearly $450 million?\n\nKUNAL SHAH (00:06:28):\nAnd I was like, “What would make this happen?”",
+            "timestamp": "00:05:36",
+            "score": 0.96
+          },
+          {
+            "episode": "Kunal Shah on winning in India, second-order thinking, the philosophy of startups, and more",
+            "guest": "Kunal Shah",
+            "text": "KUNAL SHAH (00:06:31):\nBecause I would not qualify into this super league of really top IIT rankers that exist in India.\n\nKUNAL SHAH (00:06:38):\nAnd that got me onto this philosophical quest to find out what makes things successful.\n\nKUNAL SHAH (00:06:43):\nSo the simple framework is, an example I give often is that, imagine the old way of taking a cab ride and an Uber. And if I asked you to give me the score of efficiency on Uber and let's say getting the old cab, what would you say, Lenny?\n\nKUNAL SHAH (00:06:58):\nI'm curious.\n\nKUNAL SHAH (00:06:59):\nOut of 10?\n\nLENNY RACHITSKY (00:07:00):\nYeah, give a cab three and then Uber like a nine.\n\nLENNY RACHITSKY (00:07:04):\nYeah.\n\nKUNAL SHAH (00:07:05):\nSo every time you see that the product efficiency delta is greater than or equal to four, three things happen.\n\nKUNAL SHAH (00:07:14):\nIt is irreversible.\n\nKUNAL SHAH (00:07:16):\nSecond is that you have a very high tolerance for it to fail.\n\nKUNAL SHAH (00:07:21):\nIf Uber fails a little bit, will you say, “Oh my God, I'm going to really stop using it?”\n\nKUNAL SHAH (00:07:30):\nNo.\n\nKUNAL SHAH (00:07:31):\nAnd the third thing is what I call the UBP, ‘Unique Brag-worthy Proposition.’",
+            "timestamp": "00:06:31",
+            "score": 0.96
+          }
+        ],
+        "artifacts": []
+      },
+      {
+        "id": "71cdf18a-1239-47d3-8f8d-46e61619c9cd",
+        "session_id": "1e9fb7f5-d3bc-4c96-8853-222bb2237cb5",
+        "role": "user",
+        "content": "How to make Dosa",
+        "created_at": "2026-09-20T13:26:07.998461",
+        "sources": []
+      },
+      {
+        "id": "7f8a760f-7300-4e1c-a7f7-c6bfec3e586f",
+        "session_id": "1e9fb7f5-d3bc-4c96-8853-222bb2237cb5",
+        "role": "assistant",
+        "content": "I do not have sufficient information in Lenny's podcast archive to answer this.",
+        "created_at": "2026-09-20T13:26:07.998461",
+        "sources": [],
+        "artifacts": []
+      },
+      {
+        "id": "e7a19b34-b7ba-474d-9294-6530b4c8a94b",
+        "session_id": "1e9fb7f5-d3bc-4c96-8853-222bb2237cb5",
+        "role": "user",
+        "content": "tell me about Product management",
+        "created_at": "2026-09-20T13:28:53.695843",
+        "sources": []
+      },
+      {
+        "id": "d595ca27-cda5-42af-99c5-15d7e6c963b2",
+        "session_id": "1e9fb7f5-d3bc-4c96-8853-222bb2237cb5",
+        "role": "assistant",
+        "content": "Product management is a high-leverage, creative role that requires navigating the complex transition from implicit founder-led strategy to explicit, documented product strategy as a company scales. It involves making difficult trade-offs, justifying non-sexy investments, and managing a spectrum of tasks that are not all created equal. *Source: Casey Winters on \"Why most product managers are unprepared for the demands of a real startup\"; Shreyas Doshi on \"The art of product management\"*\n\n### Key Dimensions of Product Management\n\n*   **Strategic Articulation and Separation**: In early-stage companies (around 5–10 engineers), product strategy is often implicit and intertwined with company strategy. As the team grows to 20–25 people, a professional PM joins to clearly articulate a separate **Product Strategy Document**. This document explicitly defines **customer segments** and strategic choices that were previously assumed or handled by the founder. *Source: Gokul Rajaram on \"Gokul Rajaram on designing your product development process...\"*\n*   **Task Prioritization (LNO Framework)**: Product managers operate in high-impact, high-leverage roles where tasks are not equal. The **LNO Framework** categorizes work into three distinct types to help PMs manage their output and stress levels effectively. Recognizing these different task types allows PMs to focus their energy on high-leverage activities rather than getting bogged down by lower-impact tasks. *Source: Shreyas Doshi on \"The art of product management\"*\n*   **Growth Strategy and Trade-offs**: Effective product management involves making tough **trade-offs** and justifying investments that may not be immediately \"sexy\" or visible. A key part of the role is understanding when to focus on **growth** and utilizing non-scalable \"hacks\" or \"Kindle strategies\" specifically to unlock scalable \"fire strategies\" that can drive user acquisition to millions. *Source: Casey Winters on \"Why most product managers are unprepared for the demands of a real startup\"*\n\n### Actionable Takeaway for Product Leaders\nTo level up your skills, explicitly document your **product strategy** to separate it from general company strategy, and apply a framework like **LNO** to categorize your daily tasks. This ensures you are spending your time on high-leverage activities and making clear, justified trade-offs that align with long-term scalable growth rather than short-term, non-scalable tactics.",
+        "created_at": "2026-09-20T13:28:53.695843",
+        "sources": [
+          {
+            "episode": "Why most product managers are unprepared for the demands of a real startup",
+            "guest": "Casey Winters",
+            "text": "# Why most product managers are unprepared for the demands of a real startup | Casey Winters\n\n## Transcript\n\nCasey Winters (00:00):\nThe goal of your Kindle strategies, these like non-scalable hacks, they only exist to unlock the fire strategies, to unlock the things that could take you to millions of users.\n\nLenny (00:12):\nPinterest, Airbnb, Reddit, Canva, Hipcamp, Thumbtack, Fair, Tinder, Eventbrite. What do these companies have in common? Casey Winters, Casey has worked with and advised more consumer companies on their product and growth strategy than anyone in the world. He's also very generous with his time and often sets time aside to help founders and product leaders. I always learned so much talking to Casey, and I'm excited for you to hear this episode. In our chat we covered Casey's advice on making trade offs as a product leader, justifying non-sexy product investments, the spectrum of product people and how to level up your skills, new growth trends and tactics that he's seeing, when to focus on growth, and a bunch of advice on growth strategy, and so many other things. As a bonus, we're going to be doing a live AMA with Casey in my newsletter Slack community on August 5th at 10:00 AM Pacific time, so if you'd like to ask Casey any questions, make sure to get there. Until then enjoy this episode with Casey Winters. Hey Casey Winters, what do you love about Coda?\n\nCas",
+            "timestamp": "00:00:00",
+            "score": 0.96
+          },
+          {
+            "episode": "The art of product management | Shreyas Doshi (Stripe, Twitter, Google, Yahoo)",
+            "guest": "Shreyas Doshi",
+            "text": "(00:35:02):\nIt was just constantly I would come home and talk to my wife and basically just complained to her about how I'm not able to make progress or as much progress as I want, then that was accompanied with not being able to sleep very well because I was concerned about how much output I was producing and whatnot. And so, again, very stressful time in my career. And then things changed when I discovered the ideas related to this LNO framework in a block post. Unfortunately, I can't even find that block post somewhere, but it had some ideas that I took and then created this LNO framework on myself, which is essentially that as a product manager or as anybody in a creative high impact high leverage role, all your tasks are not created equal, there are actually three type of tasks that you end up doing in such a role.",
+            "timestamp": "00:35:02",
+            "score": 0.96
+          },
+          {
+            "episode": "Gokul Rajaram on designing your product development process, when and how to hire your first PM, a playbook for hiring leaders, getting ahead in your career, how to get started angel investing, and more",
+            "guest": "Gokul Rajaram",
+            "text": "(00:19:55):\nThe product and company strategy are the same. As you start growing, you have a go-to market strategy, product strategy, et cetera, et cetera. So you start more clearly separating out the company strategy from the product strategy. The first thing you start seeing is when a product manager joins... So I think of course what happens is that the 25 person status, you have a PM who sometimes joins the company. I think the right time for PMs to join the company is about eight to 10 engineers or so. Anywhere between five and 10. But 10 engineers is... Unless the founder themselves wants to be the PM, but that's when you start seeing a professional PM join and the PM typically wants to clearly articulate. Good PMs want to articulate what the product strategy is based on company strategy. So you start seeing the emergence of a separate product strategy doc that is written at the 20, 23 person stage, and the product strategy then makes choices. What customers are we serving? More clearly articulates what have been implicit hopefully earlier.",
+            "timestamp": "00:19:55",
+            "score": 0.95
+          }
+        ],
+        "artifacts": []
+      },
+      {
+        "id": "6a0d8bf2-0ed3-4cc5-9461-a672b8c9536d",
+        "session_id": "1e9fb7f5-d3bc-4c96-8853-222bb2237cb5",
+        "role": "user",
+        "content": "what is LNO framework",
+        "created_at": "2026-09-20T13:29:56.262352",
+        "sources": []
+      },
+      {
+        "id": "8d8480cd-19a8-4071-823f-b912c23ad20a",
+        "session_id": "1e9fb7f5-d3bc-4c96-8853-222bb2237cb5",
+        "role": "assistant",
+        "content": "**LNO Framework: Prioritizing Finite Time as a PM and Team**\n\nThe LNO framework, as discussed by Shreyas Doshi, is a prioritization strategy for product managers and high-impact, high-leverage roles. It involves recognizing that tasks are not created equal and categorizing them into three types:\n\n*   **Must-Do's**: Critical tasks that have a significant impact on the business and must be done immediately.\n*   **Should-Do's**: Important tasks that contribute to the overall goals and objectives, but can be done after the Must-Do's.\n*   **Nice-to-Do's**: Tasks that are desirable but not essential, and can be done when time allows.\n\nBy prioritizing tasks using the LNO framework, product managers can optimize their finite time and energy to focus on the most critical tasks first.\n\n**Actionable Takeaway**\n\nTo implement the LNO framework, product managers can start by:\n\n*   Identifying their Must-Do's and Should-Do's tasks\n*   Categorizing tasks into these three types\n*   Prioritizing tasks based on their impact and urgency\n*   Focusing on the Must-Do's first, and then moving on to the Should-Do's\n*   Allowing time for Nice-to-Do's tasks when possible\n\nBy using the LNO framework, product managers can optimize their productivity, reduce stress, and achieve their goals more effectively.",
+        "created_at": "2026-09-20T13:29:56.262352",
+        "sources": [
+          {
+            "episode": "The art of product management | Shreyas Doshi (Stripe, Twitter, Google, Yahoo)",
+            "guest": "Shreyas Doshi",
+            "text": "Lenny (00:33:54):\nI'm excited to see those template, I haven't seen yet. I don't know that you put one together, so that's awesome. And we'll link it in the notes of this episode. I want to move to our second big idea, which is about something you've called LNO framework, which is all around prioritizing your finite time as a PM and as a team. And so, I'll just kind of turn that over to you to share what that's all about.\n\nShreyas Doshi (00:34:15):\nYes. And so, I'm going to share a short personal anecdote related to the LNO framework, which is that when I just joined Google as a relatively new PM, this is back in 2008, for the first three years, I was overwhelmed and stressed. And that was because, one, I was a new PM in this really high performance environment. I was working on some important products and launches and I just had too much to do. And I looked back at that time and it was perhaps the most stressful time of my career, where I would long hours, etc. But even at the end of the day, I'd feel highly dissatisfied because my to-do list was endless and I wasn't able to make a dent on it, and I was also a little bit of a perfectionist, so I was like, \"No, no, no, I need to do this well.\"",
+            "timestamp": "00:33:54",
+            "score": 0.96
+          },
+          {
+            "episode": "The art of product management | Shreyas Doshi (Stripe, Twitter, Google, Yahoo)",
+            "guest": "Shreyas Doshi",
+            "text": "(00:35:02):\nIt was just constantly I would come home and talk to my wife and basically just complained to her about how I'm not able to make progress or as much progress as I want, then that was accompanied with not being able to sleep very well because I was concerned about how much output I was producing and whatnot. And so, again, very stressful time in my career. And then things changed when I discovered the ideas related to this LNO framework in a block post. Unfortunately, I can't even find that block post somewhere, but it had some ideas that I took and then created this LNO framework on myself, which is essentially that as a product manager or as anybody in a creative high impact high leverage role, all your tasks are not created equal, there are actually three type of tasks that you end up doing in such a role.",
+            "timestamp": "00:35:02",
+            "score": 0.96
           }
         ],
         "artifacts": []
       }
     ]
   },
-  "d99f29b3-6b11-43d0-9e55-5e0bd5b1f886": {
-    "id": "d99f29b3-6b11-43d0-9e55-5e0bd5b1f886",
-    "title": "What did Brian Chesky say about founder...",
-    "created_at": "2026-09-05T14:12:47.359735",
-    "updated_at": "2026-09-05T14:16:28.474067",
+  "d04f2381-86ed-42ef-bac6-ef1772b2572d": {
+    "id": "d04f2381-86ed-42ef-bac6-ef1772b2572d",
+    "title": "What is Kunal Shah's Delta 4 framework...",
+    "created_at": "2026-09-20T15:26:10.143221",
+    "updated_at": "2026-09-20T15:26:10.143221",
     "messages": [
       {
-        "id": "9b333ac3-973c-41b2-b43e-ca453b4412e4",
-        "session_id": "d99f29b3-6b11-43d0-9e55-5e0bd5b1f886",
+        "id": "0d492a33-71dc-4a39-8607-e564ef55796b",
+        "session_id": "d04f2381-86ed-42ef-bac6-ef1772b2572d",
         "role": "user",
-        "content": "What did Brian Chesky say about founder mode vs. manager mode?",
-        "created_at": "2026-09-05T14:13:57.555240",
+        "content": "What is Kunal Shah's Delta 4 framework for products?",
+        "created_at": "2026-09-20T15:26:10.143221",
         "sources": []
       },
       {
-        "id": "b7045931-f464-4973-bc78-3f951ac83072",
-        "session_id": "d99f29b3-6b11-43d0-9e55-5e0bd5b1f886",
+        "id": "513452c1-147b-46d3-8491-799a8d2bf6d6",
+        "session_id": "d04f2381-86ed-42ef-bac6-ef1772b2572d",
         "role": "assistant",
-        "content": "**Clarifying Founder Mode vs. Manager Mode**\n\nBrian Chesky emphasizes the importance of clarity and leadership in decision-making. He suggests that founders should not find a midpoint between their vision and their team's expectations, but rather, they should be involved in the details to ensure everyone is working towards the same goal.\n\n**Key Differences:**\n\n*   **Micromanagement vs. Being in the Details**: Chesky distinguishes between micromanagement (telling people exactly what to do) and being in the details (being involved in the company's inner workings). He believes that being in the details is a necessary aspect of effective leadership.\n*   **Empowerment vs. Oversight**: Chesky argues that a great leader's job is not just to hire people and empower them, but also to be involved in the details to ensure they are doing a good job.\n\n**Actionable Takeaway:**\n\nAs a product leader, it's essential to strike a balance between empowering your team and being involved in the details. By being in the details, you can ensure that everyone is working towards the same goal and that your company is making progress towards its vision.",
-        "created_at": "2026-09-05T14:13:57.555240",
+        "content": "**Delta 4 Framework: A Simple yet Powerful Framework for Product Success**\n\nKunal Shah's Delta 4 framework is a simple yet powerful framework for evaluating product success. The framework is based on the idea that a product's efficiency delta, which measures the difference between its performance and that of a comparable alternative, can be used to predict its success.\n\n**The Framework:**\n\n* **Delta 4**: The framework is based on the idea that if a product's efficiency delta is greater than or equal to 4, it is irreversible, meaning that once a product has achieved this level of efficiency, it is unlikely to fail.\n* **High Tolerance for Failure**: A product with an efficiency delta of 4 or more has a high tolerance for failure, meaning that even if the product fails slightly, it will not significantly impact its overall success.\n* **Unique Brag-worthy Proposition (UBP)**: The third component of the framework is the UBP, which refers to the unique value proposition of the product. A product with a UBP is more likely to succeed, as it provides a unique benefit that sets it apart from competitors.\n\n**Key Takeaways:**\n\n* Use the Delta 4 framework to evaluate the efficiency of your product and compare it to that of comparable alternatives.\n* Focus on building a high tolerance for failure, as this will help your product to be more resilient in the face of challenges.\n* Develop a unique value proposition that sets your product apart from competitors and provides a unique benefit to customers.\n\n**Actionable Takeaway for Product Leaders:**\n\n* Use the Delta 4 framework to evaluate the efficiency of your product and identify areas for improvement. Focus on building a high tolerance for failure and developing a unique value proposition that sets your product apart from competitors.",
+        "created_at": "2026-09-20T15:26:10.143221",
         "sources": [
           {
-            "episode": "Brian Chesky’s new playbook",
-            "guest": "Brian Chesky",
-            "text": "Brian Chesky (00:00:00):\nWay too many founders apologize for how they want to run the company. They find some midpoint between how they want to run a company and how the people they lead want to run the company. That's a good way to make everyone miserable. Because what everyone really wants is clarity. And what everyone really wants is to be able to row in the same direction really quickly. And so I basically got involved in every single detail and I basically told leaders that leaders are in the details. And there's this negative term called micromanagement. I think there's a difference between micromanagement, which is like telling people exactly what to do, and being in the details. Being in the details is what every responsible company's board does to the CEO. That doesn't mean the board is telling them what to do. But if you don't know the details, how do you know people are doing a good job? People think that great leader's job is to hire people and just empower them to do a good job. Well, how do you know they're doing a good job if you're not in the details? And so I made sure I was in the details and we really drove the product.",
-            "timestamp": "00:00:00",
-            "score": 0.885
+            "episode": "Kunal Shah on winning in India, second-order thinking, the philosophy of startups, and more",
+            "guest": "Kunal Shah",
+            "text": "LENNY RACHITSKY (00:05:36):\nCould you explain this framework briefly and then just how you've used it or how you recommend people apply it?\n\nLENNY RACHITSKY (00:05:43):\nOh, and by the way, it's called Delta 4.\n\nLENNY RACHITSKY (00:05:44):\nI don't know if I even said the name.\n\nKUNAL SHAH (00:05:46):\nYeah, it's called the Delta 4 framework, but I think it's actually quite simple.\n\nKUNAL SHAH (00:05:51):\nIf you think about it, a lot of people say that your product has to be 10x better and it's not very measurable.\n\nKUNAL SHAH (00:05:57):\nYou don't know if you are 10x better or not unless you're delusional.\n\nKUNAL SHAH (00:06:01):\nAnd the trigger for me was actually, I'm the unusual tech founder in India.\n\nKUNAL SHAH (00:06:06):\nI'm the only humanities/philosophy major founder in India who's got into tech.\n\nKUNAL SHAH (00:06:12):\nAnd I often wondered if most people who were my peers, or people who were ahead of me, were significantly smarter academically or otherwise.\n\nKUNAL SHAH (00:06:21):\nAnd why did I become successful with my first startup, Freecharge, which I exited in 2015 for nearly $450 million?\n\nKUNAL SHAH (00:06:28):\nAnd I was like, “What would make this happen?”",
+            "timestamp": "00:05:36",
+            "score": 0.96
           },
           {
-            "episode": "Brian Chesky’s new playbook",
-            "guest": "Brian Chesky",
-            "text": "Lenny (00:01:01):\nToday my guest is Brian Chesky. Brian is the CEO and co-founder of Airbnb, which he started in his apartment with his co-founders, Joe and Nate, and has turned into an $80 billion global business with travelers and homes in 220 countries. I was very lucky to get to work with Brian for many years, and my sense is if you ask people who they consider the most inspiring tech or business leaders today, Brian would be right near the top of that list.",
-            "timestamp": "00:01:01",
-            "score": 0.885
+            "episode": "Kunal Shah on winning in India, second-order thinking, the philosophy of startups, and more",
+            "guest": "Kunal Shah",
+            "text": "KUNAL SHAH (00:06:31):\nBecause I would not qualify into this super league of really top IIT rankers that exist in India.\n\nKUNAL SHAH (00:06:38):\nAnd that got me onto this philosophical quest to find out what makes things successful.\n\nKUNAL SHAH (00:06:43):\nSo the simple framework is, an example I give often is that, imagine the old way of taking a cab ride and an Uber. And if I asked you to give me the score of efficiency on Uber and let's say getting the old cab, what would you say, Lenny?\n\nKUNAL SHAH (00:06:58):\nI'm curious.\n\nKUNAL SHAH (00:06:59):\nOut of 10?\n\nLENNY RACHITSKY (00:07:00):\nYeah, give a cab three and then Uber like a nine.\n\nLENNY RACHITSKY (00:07:04):\nYeah.\n\nKUNAL SHAH (00:07:05):\nSo every time you see that the product efficiency delta is greater than or equal to four, three things happen.\n\nKUNAL SHAH (00:07:14):\nIt is irreversible.\n\nKUNAL SHAH (00:07:16):\nSecond is that you have a very high tolerance for it to fail.\n\nKUNAL SHAH (00:07:21):\nIf Uber fails a little bit, will you say, “Oh my God, I'm going to really stop using it?”\n\nKUNAL SHAH (00:07:30):\nNo.\n\nKUNAL SHAH (00:07:31):\nAnd the third thing is what I call the UBP, ‘Unique Brag-worthy Proposition.’",
+            "timestamp": "00:06:31",
+            "score": 0.96
+          }
+        ],
+        "artifacts": []
+      }
+    ]
+  },
+  "d064244c-a785-4046-9544-3d0c1e5e4f88": {
+    "id": "d064244c-a785-4046-9544-3d0c1e5e4f88",
+    "title": "What is Kunal Shah's Delta 4 framework...",
+    "created_at": "2026-09-20T18:35:44.731537",
+    "updated_at": "2026-09-20T18:35:44.731537",
+    "messages": [
+      {
+        "id": "a4051daa-3e48-4d62-bc1f-9a698cacc80a",
+        "session_id": "d064244c-a785-4046-9544-3d0c1e5e4f88",
+        "role": "user",
+        "content": "What is Kunal Shah's Delta 4 framework for products?",
+        "created_at": "2026-09-20T18:35:44.731537",
+        "sources": []
+      },
+      {
+        "id": "79982eba-869f-49a7-b52b-993e10bb9392",
+        "session_id": "d064244c-a785-4046-9544-3d0c1e5e4f88",
+        "role": "assistant",
+        "content": "**Delta 4 Framework: A Simple yet Powerful Product Efficiency Metric**\n\nKunal Shah's Delta 4 framework is a simple yet effective way to measure product efficiency. In essence, it's a metric that helps entrepreneurs and product leaders understand whether their product has a significant advantage over its competitors.\n\n**The Framework:**\n\nThe Delta 4 framework is based on a simple question: \"How much better is your product compared to the old way of doing things?\" Kunal Shah uses the example of taking a cab ride versus using Uber. If you were to rate the efficiency of the two, you might give the old cab a 3 out of 10 and Uber a 9 out of 10.\n\n**The Three Key Components:**\n\nAccording to Kunal Shah, every time the product efficiency delta is greater than or equal to 4, three things happen:\n\n*   **It is irreversible**: Once the product efficiency delta is high enough, it's unlikely to decrease significantly.\n*   **You have a very high tolerance for it to fail**: If the product fails, you're unlikely to be significantly affected.\n*   **You have a Unique Brag-worthy Proposition (UBP)**: The product has a unique selling point that sets it apart from its competitors.\n\n**Actionable Takeaway:**\n\nTo apply the Delta 4 framework to your own product, consider the following:\n\n*   Identify your key competitors and rate their efficiency compared to your product.\n*   Calculate the product efficiency delta and determine if it meets the threshold of 4.\n*   If it does, assess your tolerance for failure and your UBP to ensure that your product has a unique selling point that sets it apart from the competition.",
+        "created_at": "2026-09-20T18:35:44.731537",
+        "sources": [
+          {
+            "episode": "Kunal Shah on winning in India, second-order thinking, the philosophy of startups, and more",
+            "guest": "Kunal Shah",
+            "text": "LENNY RACHITSKY (00:05:36):\nCould you explain this framework briefly and then just how you've used it or how you recommend people apply it?\n\nLENNY RACHITSKY (00:05:43):\nOh, and by the way, it's called Delta 4.\n\nLENNY RACHITSKY (00:05:44):\nI don't know if I even said the name.\n\nKUNAL SHAH (00:05:46):\nYeah, it's called the Delta 4 framework, but I think it's actually quite simple.\n\nKUNAL SHAH (00:05:51):\nIf you think about it, a lot of people say that your product has to be 10x better and it's not very measurable.\n\nKUNAL SHAH (00:05:57):\nYou don't know if you are 10x better or not unless you're delusional.\n\nKUNAL SHAH (00:06:01):\nAnd the trigger for me was actually, I'm the unusual tech founder in India.\n\nKUNAL SHAH (00:06:06):\nI'm the only humanities/philosophy major founder in India who's got into tech.\n\nKUNAL SHAH (00:06:12):\nAnd I often wondered if most people who were my peers, or people who were ahead of me, were significantly smarter academically or otherwise.\n\nKUNAL SHAH (00:06:21):\nAnd why did I become successful with my first startup, Freecharge, which I exited in 2015 for nearly $450 million?\n\nKUNAL SHAH (00:06:28):\nAnd I was like, “What would make this happen?”",
+            "timestamp": "00:05:36",
+            "score": 0.96
+          },
+          {
+            "episode": "Kunal Shah on winning in India, second-order thinking, the philosophy of startups, and more",
+            "guest": "Kunal Shah",
+            "text": "KUNAL SHAH (00:06:31):\nBecause I would not qualify into this super league of really top IIT rankers that exist in India.\n\nKUNAL SHAH (00:06:38):\nAnd that got me onto this philosophical quest to find out what makes things successful.\n\nKUNAL SHAH (00:06:43):\nSo the simple framework is, an example I give often is that, imagine the old way of taking a cab ride and an Uber. And if I asked you to give me the score of efficiency on Uber and let's say getting the old cab, what would you say, Lenny?\n\nKUNAL SHAH (00:06:58):\nI'm curious.\n\nKUNAL SHAH (00:06:59):\nOut of 10?\n\nLENNY RACHITSKY (00:07:00):\nYeah, give a cab three and then Uber like a nine.\n\nLENNY RACHITSKY (00:07:04):\nYeah.\n\nKUNAL SHAH (00:07:05):\nSo every time you see that the product efficiency delta is greater than or equal to four, three things happen.\n\nKUNAL SHAH (00:07:14):\nIt is irreversible.\n\nKUNAL SHAH (00:07:16):\nSecond is that you have a very high tolerance for it to fail.\n\nKUNAL SHAH (00:07:21):\nIf Uber fails a little bit, will you say, “Oh my God, I'm going to really stop using it?”\n\nKUNAL SHAH (00:07:30):\nNo.\n\nKUNAL SHAH (00:07:31):\nAnd the third thing is what I call the UBP, ‘Unique Brag-worthy Proposition.’",
+            "timestamp": "00:06:31",
+            "score": 0.96
+          }
+        ],
+        "artifacts": []
+      }
+    ]
+  },
+  "1fd0e341-e0ab-45c4-851e-b1ca62e5e8fd": {
+    "id": "1fd0e341-e0ab-45c4-851e-b1ca62e5e8fd",
+    "title": "What is Shreyas Doshi's advice on...",
+    "created_at": "2026-09-20T18:38:15.502425",
+    "updated_at": "2026-09-20T18:38:15.502425",
+    "messages": [
+      {
+        "id": "567360ca-af2a-48f4-81dd-e3372bb08c5a",
+        "session_id": "1fd0e341-e0ab-45c4-851e-b1ca62e5e8fd",
+        "role": "user",
+        "content": "What is Shreyas Doshi's advice on managing time?",
+        "created_at": "2026-09-20T18:38:15.502425",
+        "sources": []
+      },
+      {
+        "id": "21f823f6-884f-412a-957e-8318a8f20d50",
+        "session_id": "1fd0e341-e0ab-45c4-851e-b1ca62e5e8fd",
+        "role": "assistant",
+        "content": "**Managing Time: Shreyas Doshi's Advice**\n\nShreyas Doshi, a seasoned product manager and leader, shares his insights on managing time in his own words. According to Doshi, managing time effectively is crucial for high-impact, high-leverage roles. He identifies three types of tasks that product managers and creatives in similar roles tend to do:\n\n*   **High-leverage tasks**: These are the most critical tasks that drive significant impact and progress. Doshi emphasizes the importance of prioritizing these tasks first.\n*   **High-volume tasks**: These tasks require a high amount of effort and time but have a lower impact on overall progress. Doshi suggests batching these tasks together to optimize time.\n*   **Low-value tasks**: These tasks are time-consuming but have minimal impact on overall progress. Doshi advises eliminating or minimizing these tasks to free up time for high-leverage tasks.\n\n**Key Takeaways**\n\n*   Prioritize high-leverage tasks to drive significant impact and progress.\n*   Batch high-volume tasks together to optimize time.\n*   Eliminate or minimize low-value tasks to free up time for high-leverage tasks.\n\n**Actionable Advice**\n\nProduct leaders can apply Doshi's advice by:\n\n*   Identifying high-leverage tasks and prioritizing them first.\n*   Batching high-volume tasks together to optimize time.\n*   Regularly reviewing and eliminating low-value tasks to free up time for high-leverage tasks.\n\nBy following Doshi's advice, product leaders can optimize their time management and drive significant impact and progress in their roles.",
+        "created_at": "2026-09-20T18:38:15.502425",
+        "sources": [
+          {
+            "episode": "The art of product management | Shreyas Doshi (Stripe, Twitter, Google, Yahoo)",
+            "guest": "Shreyas Doshi",
+            "text": "(00:35:02):\nIt was just constantly I would come home and talk to my wife and basically just complained to her about how I'm not able to make progress or as much progress as I want, then that was accompanied with not being able to sleep very well because I was concerned about how much output I was producing and whatnot. And so, again, very stressful time in my career. And then things changed when I discovered the ideas related to this LNO framework in a block post. Unfortunately, I can't even find that block post somewhere, but it had some ideas that I took and then created this LNO framework on myself, which is essentially that as a product manager or as anybody in a creative high impact high leverage role, all your tasks are not created equal, there are actually three type of tasks that you end up doing in such a role.",
+            "timestamp": "00:35:02",
+            "score": 0.9517
+          },
+          {
+            "episode": "The art of product management | Shreyas Doshi (Stripe, Twitter, Google, Yahoo)",
+            "guest": "Shreyas Doshi",
+            "text": "# The art of product management | Shreyas Doshi (Stripe, Twitter, Google, Yahoo)\n\n## Transcript\n\nLenny (00:00:03):\nThere's no one out there today who shares more wisdom, more consistently on the art of product management than Shreyas Doshi. Shreyas came out of nowhere a few years ago and started tweeting gems of insight about building product and the role of product management, and rightfully so, has built a huge following on Twitter. What I love about Shreyas is that his insights are often framed in really memorable and interesting ways and they're often contrarian and not ideas that you've heard elsewhere. Shreyas has worked at some of today's most important tech companies, including Yahoo, Twitter, Google, and most recently Stripe, both as an IC and a manager. And his advice is always rooted in his real life experiences at these companies.",
+            "timestamp": "00:00:00",
+            "score": 0.9267
+          },
+          {
+            "episode": "From managing people to managing AI: The leadership skills everyone needs",
+            "guest": "Julie Zhuo",
+            "text": "(00:02:18):\nHaving worked at a mega large corp like Meta as head of design and now as a founder at a tiny startup that's all about using data to help you make decisions, it's really rare for someone to have this spectrum of experiences. In our conversation, we talk about how learning to be a great manager directly translates to learning how to use AI tools extremely well, which specific skills will become more valuable in the next couple of years, her most valuable and timeless advice for new managers, why she's not hiring product managers at her startup, her simple heuristic for knowing when to use data and when to use intuition in making decisions. There's something in this episode for everyone. And if you enjoy this podcast, don't forget to subscribe and follow it in your favorite podcasting app or YouTube. It helps tremendously. And if you become an annual subscriber of my newsletter, you get 15 incredible products for free for an entire year, including Lovable, Replit, Bolt, n8n, Linear, Superhuman, Descript, Whisperflow, Gamma, Perplexity, Warp, Granola, Magic Patterns, ChatPRD and Mobbin.",
+            "timestamp": "00:02:18",
+            "score": 0.862
+          },
+          {
+            "episode": "From managing people to managing AI: The leadership skills everyone needs",
+            "guest": "Julie Zhuo",
+            "text": "(00:57:49):\nSo along the lines of timeless manager, especially new manager advice, you've shared a bunch. Is there anything else that you think is really important, really interesting, valuable?\n\nJulie Zhuo (00:57:59):\nFeedback is one of the other topics that I am super, duper passionate about. And my general impression for both myself, everyone I've worked with, is that we don't value feedback enough or we don't think about it enough. Again, companies have these performance cycles, and so we're all like, yes, every six months we're going to go and do these reviews. That's when I'll get feedback. But feedback really, in my mind, ideally, should be a daily practice. Because the thing that matters for us in the long run as a team is how quickly are we getting better? So a team that just gets 1% better every week compared to a team that gets 1% better a month, even if they start off at a much lower baseline, is going to outperform in a very short amount of time the team that doesn't get better.",
+            "timestamp": "00:57:49",
+            "score": 0.862
+          }
+        ],
+        "artifacts": []
+      }
+    ]
+  },
+  "5fadc57b-b27b-49c1-8c2b-8d8f6d12f04c": {
+    "id": "5fadc57b-b27b-49c1-8c2b-8d8f6d12f04c",
+    "title": "What is Kunal Shah's Delta 4 framework...",
+    "created_at": "2026-09-20T18:41:23.594819",
+    "updated_at": "2026-09-20T18:41:23.594819",
+    "messages": [
+      {
+        "id": "fd222014-55ca-4ef1-80df-2a509dd940cb",
+        "session_id": "5fadc57b-b27b-49c1-8c2b-8d8f6d12f04c",
+        "role": "user",
+        "content": "What is Kunal Shah's Delta 4 framework for products?",
+        "created_at": "2026-09-20T18:41:23.594819",
+        "sources": []
+      },
+      {
+        "id": "fc48c2bc-207d-44a8-b70e-88234f02ecd1",
+        "session_id": "5fadc57b-b27b-49c1-8c2b-8d8f6d12f04c",
+        "role": "assistant",
+        "content": "Kunal Shah’s Delta 4 framework is a product strategy tool designed to replace the vague \"10x better\" metric with a measurable efficiency gap. It posits that if a new product offers an efficiency score that is at least four points higher than the incumbent solution (e.g., a 9 vs. a 3 on a scale of 10), it triggers specific market dynamics that ensure success.\n\n### Core Mechanisms of the Delta 4 Framework\n\n*   **Measurable Efficiency Gap**: Instead of relying on subjective claims of being \"10x better,\" the framework requires calculating the specific efficiency delta between the new product and the old way of doing things. Shah uses the example of Uber versus traditional cabs, where the efficiency score jumps from a 3 to a 9, creating a delta of 6 (which is $\\ge$ 4).\n*   **Irreversibility**: When the efficiency delta is four or greater, the shift in user behavior becomes irreversible. Once users experience the significant improvement, they do not revert to the inferior legacy option.\n*   **High Tolerance for Failure**: A large efficiency delta creates a high buffer for minor product failures or bugs. Users are unlikely to abandon the product for small issues because the overall value proposition remains overwhelmingly superior to the alternative.\n*   **Unique Brag-worthy Proposition (UBP)**: The framework identifies a third outcome called the UBP, which refers to the distinct, shareable value or status associated with using the significantly better product.\n\n*Source: Kunal Shah on \"Kunal Shah on winning in India, second-order thinking, the philosophy of startups, and more\"*\n\n### Actionable Takeaway\nProduct leaders should move beyond qualitative \"10x\" claims and rigorously quantify the efficiency gap between their solution and the current market standard. If you cannot demonstrate a measurable efficiency delta of at least four points, you may be building a product that lacks the inherent stickiness and resilience required for long-term market dominance.",
+        "created_at": "2026-09-20T18:41:23.594819",
+        "sources": [
+          {
+            "episode": "Kunal Shah on winning in India, second-order thinking, the philosophy of startups, and more",
+            "guest": "Kunal Shah",
+            "text": "LENNY RACHITSKY (00:05:36):\nCould you explain this framework briefly and then just how you've used it or how you recommend people apply it?\n\nLENNY RACHITSKY (00:05:43):\nOh, and by the way, it's called Delta 4.\n\nLENNY RACHITSKY (00:05:44):\nI don't know if I even said the name.\n\nKUNAL SHAH (00:05:46):\nYeah, it's called the Delta 4 framework, but I think it's actually quite simple.\n\nKUNAL SHAH (00:05:51):\nIf you think about it, a lot of people say that your product has to be 10x better and it's not very measurable.\n\nKUNAL SHAH (00:05:57):\nYou don't know if you are 10x better or not unless you're delusional.\n\nKUNAL SHAH (00:06:01):\nAnd the trigger for me was actually, I'm the unusual tech founder in India.\n\nKUNAL SHAH (00:06:06):\nI'm the only humanities/philosophy major founder in India who's got into tech.\n\nKUNAL SHAH (00:06:12):\nAnd I often wondered if most people who were my peers, or people who were ahead of me, were significantly smarter academically or otherwise.\n\nKUNAL SHAH (00:06:21):\nAnd why did I become successful with my first startup, Freecharge, which I exited in 2015 for nearly $450 million?\n\nKUNAL SHAH (00:06:28):\nAnd I was like, “What would make this happen?”",
+            "timestamp": "00:05:36",
+            "score": 0.96
+          },
+          {
+            "episode": "Kunal Shah on winning in India, second-order thinking, the philosophy of startups, and more",
+            "guest": "Kunal Shah",
+            "text": "KUNAL SHAH (00:06:31):\nBecause I would not qualify into this super league of really top IIT rankers that exist in India.\n\nKUNAL SHAH (00:06:38):\nAnd that got me onto this philosophical quest to find out what makes things successful.\n\nKUNAL SHAH (00:06:43):\nSo the simple framework is, an example I give often is that, imagine the old way of taking a cab ride and an Uber. And if I asked you to give me the score of efficiency on Uber and let's say getting the old cab, what would you say, Lenny?\n\nKUNAL SHAH (00:06:58):\nI'm curious.\n\nKUNAL SHAH (00:06:59):\nOut of 10?\n\nLENNY RACHITSKY (00:07:00):\nYeah, give a cab three and then Uber like a nine.\n\nLENNY RACHITSKY (00:07:04):\nYeah.\n\nKUNAL SHAH (00:07:05):\nSo every time you see that the product efficiency delta is greater than or equal to four, three things happen.\n\nKUNAL SHAH (00:07:14):\nIt is irreversible.\n\nKUNAL SHAH (00:07:16):\nSecond is that you have a very high tolerance for it to fail.\n\nKUNAL SHAH (00:07:21):\nIf Uber fails a little bit, will you say, “Oh my God, I'm going to really stop using it?”\n\nKUNAL SHAH (00:07:30):\nNo.\n\nKUNAL SHAH (00:07:31):\nAnd the third thing is what I call the UBP, ‘Unique Brag-worthy Proposition.’",
+            "timestamp": "00:06:31",
+            "score": 0.96
+          }
+        ],
+        "artifacts": []
+      }
+    ]
+  },
+  "d65cac31-10cf-47b0-9956-6bad04c877a5": {
+    "id": "d65cac31-10cf-47b0-9956-6bad04c877a5",
+    "title": "What is Kunal Shah's Delta 4 framework...",
+    "created_at": "2026-09-20T18:44:00.570750",
+    "updated_at": "2026-09-20T18:45:13.997057",
+    "messages": [
+      {
+        "id": "8e359747-ced0-48d4-801d-385239f2620e",
+        "session_id": "d65cac31-10cf-47b0-9956-6bad04c877a5",
+        "role": "user",
+        "content": "What is Kunal Shah's Delta 4 framework for products?",
+        "created_at": "2026-09-20T18:44:00.570750",
+        "sources": []
+      },
+      {
+        "id": "2f5e2bc1-b70c-4cd4-9265-921200381037",
+        "session_id": "d65cac31-10cf-47b0-9956-6bad04c877a5",
+        "role": "assistant",
+        "content": "Kunal Shah’s Delta 4 framework is a measurable alternative to the vague \"10x better\" product standard, positing that a product must demonstrate an efficiency delta of at least 4 points (on a scale of 10) compared to the existing solution to achieve market dominance. This significant gap triggers three specific market dynamics: the adoption becomes irreversible, users develop a high tolerance for minor failures, and the product gains a \"Unique Brag-worthy Proposition.\" *Source: Kunal Shah on \"Kunal Shah on winning in India, second-order thinking, the philosophy of startups, and more\"*\n\n### Key Mechanisms of the Delta 4 Framework\n\n*   **Measurable Efficiency Gap**: Instead of relying on subjective claims of being \"10x better,\" which Shah argues is often delusional and unmeasurable, the framework requires a concrete comparison of efficiency scores. For example, if the old way of doing something scores a 3/10 in efficiency and the new product scores a 9/10, the delta is 6, which exceeds the threshold of 4.\n*   **Irreversibility**: When the efficiency delta is greater than or equal to four, user behavior shifts permanently. Once users experience the superior efficiency, they do not revert to the inferior legacy solution.\n*   **High Failure Tolerance**: A large efficiency gap creates a buffer for user patience. Even if the new product has minor bugs or occasional failures, users are unlikely to abandon it because the core value proposition (efficiency) remains significantly higher than the alternative.\n*   **Unique Brag-worthy Proposition (UBP)**: The third outcome of achieving a Delta 4 is the creation of a distinct, shareable value proposition. The product becomes something users can proudly recommend or discuss because the improvement is tangible and substantial.\n\n### Actionable Takeaway for Product Leaders\nTo validate your product-market fit, move beyond qualitative feedback and quantify the efficiency delta between your solution and the incumbent status quo. If you cannot demonstrate a measurable gap of at least 4 points on a 10-point efficiency scale, you may not have achieved the threshold required for irreversible adoption and high user retention.",
+        "created_at": "2026-09-20T18:44:00.570750",
+        "sources": [
+          {
+            "episode": "Kunal Shah on winning in India, second-order thinking, the philosophy of startups, and more",
+            "guest": "Kunal Shah",
+            "text": "LENNY RACHITSKY (00:05:36):\nCould you explain this framework briefly and then just how you've used it or how you recommend people apply it?\n\nLENNY RACHITSKY (00:05:43):\nOh, and by the way, it's called Delta 4.\n\nLENNY RACHITSKY (00:05:44):\nI don't know if I even said the name.\n\nKUNAL SHAH (00:05:46):\nYeah, it's called the Delta 4 framework, but I think it's actually quite simple.\n\nKUNAL SHAH (00:05:51):\nIf you think about it, a lot of people say that your product has to be 10x better and it's not very measurable.\n\nKUNAL SHAH (00:05:57):\nYou don't know if you are 10x better or not unless you're delusional.\n\nKUNAL SHAH (00:06:01):\nAnd the trigger for me was actually, I'm the unusual tech founder in India.\n\nKUNAL SHAH (00:06:06):\nI'm the only humanities/philosophy major founder in India who's got into tech.\n\nKUNAL SHAH (00:06:12):\nAnd I often wondered if most people who were my peers, or people who were ahead of me, were significantly smarter academically or otherwise.\n\nKUNAL SHAH (00:06:21):\nAnd why did I become successful with my first startup, Freecharge, which I exited in 2015 for nearly $450 million?\n\nKUNAL SHAH (00:06:28):\nAnd I was like, “What would make this happen?”",
+            "timestamp": "00:05:36",
+            "score": 0.96
+          },
+          {
+            "episode": "Kunal Shah on winning in India, second-order thinking, the philosophy of startups, and more",
+            "guest": "Kunal Shah",
+            "text": "KUNAL SHAH (00:06:31):\nBecause I would not qualify into this super league of really top IIT rankers that exist in India.\n\nKUNAL SHAH (00:06:38):\nAnd that got me onto this philosophical quest to find out what makes things successful.\n\nKUNAL SHAH (00:06:43):\nSo the simple framework is, an example I give often is that, imagine the old way of taking a cab ride and an Uber. And if I asked you to give me the score of efficiency on Uber and let's say getting the old cab, what would you say, Lenny?\n\nKUNAL SHAH (00:06:58):\nI'm curious.\n\nKUNAL SHAH (00:06:59):\nOut of 10?\n\nLENNY RACHITSKY (00:07:00):\nYeah, give a cab three and then Uber like a nine.\n\nLENNY RACHITSKY (00:07:04):\nYeah.\n\nKUNAL SHAH (00:07:05):\nSo every time you see that the product efficiency delta is greater than or equal to four, three things happen.\n\nKUNAL SHAH (00:07:14):\nIt is irreversible.\n\nKUNAL SHAH (00:07:16):\nSecond is that you have a very high tolerance for it to fail.\n\nKUNAL SHAH (00:07:21):\nIf Uber fails a little bit, will you say, “Oh my God, I'm going to really stop using it?”\n\nKUNAL SHAH (00:07:30):\nNo.\n\nKUNAL SHAH (00:07:31):\nAnd the third thing is what I call the UBP, ‘Unique Brag-worthy Proposition.’",
+            "timestamp": "00:06:31",
+            "score": 0.96
           }
         ],
         "artifacts": []
       },
       {
-        "id": "684d5dc4-78b3-42f9-849b-fb47926197d3",
-        "session_id": "d99f29b3-6b11-43d0-9e55-5e0bd5b1f886",
+        "id": "145f4de2-e350-4caf-9353-805581dab649",
+        "session_id": "d65cac31-10cf-47b0-9956-6bad04c877a5",
         "role": "user",
-        "content": "/ship",
-        "created_at": "2026-09-05T14:15:30.349576",
+        "content": "/ship Delta 4 Framework",
+        "created_at": "2026-09-20T18:45:13.997057",
         "sources": []
       },
       {
-        "id": "a6f8e637-6242-4e0a-99f9-257c89bd7945",
-        "session_id": "d99f29b3-6b11-43d0-9e55-5e0bd5b1f886",
+        "id": "8c90af38-001b-4e24-952b-ccd043a1bb17",
+        "session_id": "d65cac31-10cf-47b0-9956-6bad04c877a5",
         "role": "assistant",
-        "content": "I have created the **Ship 30 Essay: The Paradox of Leadership in AI-Driven Growth** in the side-by-side artifact workspace.",
-        "created_at": "2026-09-05T14:15:30.349576",
+        "content": "Artifact is created.",
+        "created_at": "2026-09-20T18:45:13.997057",
         "sources": [
           {
-            "episode": "From managing people to managing AI: The leadership skills everyone needs",
-            "guest": "Julie Zhuo",
-            "text": "# From managing people to managing AI: The leadership skills everyone needs now | Julie Zhuo\n\n## Transcript",
-            "timestamp": "00:00:00",
-            "score": 0.92
+            "episode": "Kunal Shah on winning in India, second-order thinking, the philosophy of startups, and more",
+            "guest": "Kunal Shah",
+            "text": "LENNY RACHITSKY (00:05:36):\nCould you explain this framework briefly and then just how you've used it or how you recommend people apply it?\n\nLENNY RACHITSKY (00:05:43):\nOh, and by the way, it's called Delta 4.\n\nLENNY RACHITSKY (00:05:44):\nI don't know if I even said the name.\n\nKUNAL SHAH (00:05:46):\nYeah, it's called the Delta 4 framework, but I think it's actually quite simple.\n\nKUNAL SHAH (00:05:51):\nIf you think about it, a lot of people say that your product has to be 10x better and it's not very measurable.\n\nKUNAL SHAH (00:05:57):\nYou don't know if you are 10x better or not unless you're delusional.\n\nKUNAL SHAH (00:06:01):\nAnd the trigger for me was actually, I'm the unusual tech founder in India.\n\nKUNAL SHAH (00:06:06):\nI'm the only humanities/philosophy major founder in India who's got into tech.\n\nKUNAL SHAH (00:06:12):\nAnd I often wondered if most people who were my peers, or people who were ahead of me, were significantly smarter academically or otherwise.\n\nKUNAL SHAH (00:06:21):\nAnd why did I become successful with my first startup, Freecharge, which I exited in 2015 for nearly $450 million?\n\nKUNAL SHAH (00:06:28):\nAnd I was like, “What would make this happen?”",
+            "timestamp": "00:05:36",
+            "score": 0.96
           },
           {
-            "episode": "From managing people to managing AI: The leadership skills everyone needs",
-            "guest": "Julie Zhuo",
-            "text": "(00:34:57):\nSo that's the thing, I'll say. Diagnose with data and treat with design. The second thing I will usually tell designers about, is I find that sometimes, and maybe it's the, let's call it the false precision of numbers that we kind of fall into, right? Because it's like, okay, we got these numbers and the numbers go up. It's like no, the fact that you still have to choose which things you look at, is an art, not a science. And your interpretation of if the number went up 5%, is that good, is that not good, is also an interpretation and is an art, not a science. It's just that sometimes I think we can give ourselves this feeling, and I get it, sometimes there's this instinct to want to control things and we want everything to be buttoned up, and we want to know that if we did ABC, everything will be great, our career's going to be awesome, our product's going to rocket ship.",
-            "timestamp": "00:34:57",
-            "score": 0.92
-          },
-          {
-            "episode": "Brian Chesky’s new playbook",
-            "guest": "Brian Chesky",
-            "text": "(00:10:34):\nNow, once you have a division, your division is as successful as you are a priority. So now you have to advocate for your division. So there's a lot of advocacy. If you have dependencies, you've got to persuade people by building relationships. And so the people that are liked that build the best relationships are the ones that get the most resources and that creates what we call politics. And so now politics that brood in the company. And suddenly people gets more subdivided, more subdivided, subdivided. And that creates another problem, which we call bureaucracy. And that bureaucracy means it's hard to know who's doing what. People are going in different directions and that creates a lack of accountability. When there's lack of accountability, then there's a sense that what I do doesn't matter and that creates complacency. And then suddenly a fast-growing company becomes a big slow moving bureaucracy. This is a general arc that winds up happening.",
-            "timestamp": "00:10:34",
-            "score": 0.88
+            "episode": "Kunal Shah on winning in India, second-order thinking, the philosophy of startups, and more",
+            "guest": "Kunal Shah",
+            "text": "KUNAL SHAH (00:09:36):\nomebody in Sequoia mentioned this to me that they have this as part of the thing, but in India we are not still applying many of these things.\n\nKUNAL SHAH (00:09:46):\nI think it's a simple framework to at least know. You can apply this to features, you can apply this to products, you can apply that to business.\n\nKUNAL SHAH (00:09:55):\nAnd oftentimes this is a longer concept.\n\nKUNAL SHAH (00:09:57):\nWe can talk about it in many ways because it's derived out of some study around entropy and evolutionary biology, which is the root of how I discovered and thought about Delta 4, that “When does a species get disrupted ” or “what is entropy and why does low entropy require growth of high entropy?”\n\nKUNAL SHAH (00:10:18):\nIt's a day long podcast on its own.\n\nKUNAL SHAH (00:10:19):\nSo some other time.\n\nLENNY RACHITSKY (00:10:21):\nOkay.\n\nLENNY RACHITSKY (00:10:21):\nWe'll save that for a future follow-up, just diving in on the psychology of Delta 4. Just to kind of summarize this, because I think it's such a powerful framework and I find it useful to convince founders why their product isn't taking off.\n\nLENNY RACHITSKY (00:10:32):\nThey may feel like this is better than. The classic example, is a better Excel.",
+            "timestamp": "00:09:36",
+            "score": 0.96
           }
         ],
         "artifacts": [
           {
-            "id": "ced7c097-0e48-4812-a825-1a7a5f4665a7",
-            "message_id": "a6f8e637-6242-4e0a-99f9-257c89bd7945",
+            "id": "26e2e0e0-4c5f-4c05-b11b-3c0dc1c30248",
+            "message_id": "8c90af38-001b-4e24-952b-ccd043a1bb17",
             "artifact_type": "markdown",
-            "title": "Ship 30 Essay: The Paradox of Leadership in AI-Driven Growth",
-            "content": "The Paradox of Leadership in AI-Driven Growth\n=====================================================\n\n### The False Precision of Numbers\n\nIn the quest for data-driven decision making, we often fall into the trap of false precision. We focus on numbers, convinced that they hold the key to unlocking success. But, as Julie Zhuo aptly puts it, \"Diagnose with data and treat with design.\" The numbers may tell us what's happening, but they don't tell us what's right. It's the art of interpretation that truly matters.\n\n**Velocity**: **Data-Driven Decision Making Compounds Faster Than Intuition**\n\nIn today's fast-paced business landscape, data-driven decision making is no longer a nicety, but a necessity. Shipping weekly cycles compounds faster than monthly reviews, allowing companies to adapt and evolve at an unprecedented pace. However, this speed comes with a cost: the risk of making decisions based on incomplete or inaccurate data.\n\n### The Politics of Growth\n\nAs companies grow, so do the politics. Brian Chesky's playbook highlights the importance of advocacy and persuasion in securing resources and attention. However, this emphasis on politics can lead to bureaucracy, complacency, and a lack of accountability.\n\n**Attribution**: **Tracking Blended CAC Avoids Premature Channel Abandonment**\n\nTo avoid this pitfall, companies must adopt a blended Customer Acquisition Cost (CAC) tracking approach. By combining data from various channels, companies can gain a more accurate understanding of their customer acquisition costs and make data-driven decisions about channel optimization.\n\n### The Art of Leadership in AI-Driven Growth\n\nAs we navigate the complexities of AI-driven growth, leadership skills become increasingly important. Julie Zhuo's emphasis on diagnosing with data and treating with design serves as a reminder that leadership is not just about making decisions, but about creating a culture of innovation and experimentation.\n\n**Actionable Takeaways**\n\n1. **Implement a blended CAC tracking approach** to gain a more accurate understanding of your customer acquisition costs.\n2. **Prioritize advocacy and persuasion** in securing resources and attention for your team or division.\n3. **Emphasize the importance of interpretation and art** in decision making, rather than relying solely on data-driven insights.\n4. **Create a culture of innovation and experimentation**, where leaders empower their teams to take calculated risks and learn from their mistakes.\n\nBy adopting these strategies, companies can navigate the complexities of AI-driven growth and emerge stronger, more agile, and more resilient than ever before.",
-            "created_at": "2026-09-05T14:15:30.349576"
+            "title": "Ship 30 Essay: Delta 4 Framework",
+            "content": "Most founders are delusional.\n\nThey believe their product is \"10x better\" than the incumbent, a claim that sounds impressive in a pitch deck but dissolves the moment you try to measure it.\n\nYou cannot be 10x better in a subjective sense. You can only be 4x better in a specific, measurable dimension.\n\nThis is the core tension of the **Delta 4 Framework**, a strategic lens developed by Kunal Shah, the founder of CRED and former CEO of Freecharge.\n\nShah, a humanities and philosophy major who built one of India’s most successful fintech companies, realized that academic intelligence wasn’t the differentiator. The differentiator was a rigorous, almost scientific approach to product-market fit.\n\nHe rejected the vague \"10x\" mantra because it is unmeasurable. Instead, he proposed a framework rooted in evolutionary biology and entropy: to disrupt a market, you must offer a delta (difference) that is at least 4x greater than the status quo.\n\nThis essay breaks down the Delta 4 Framework, explaining why it works, how to apply it to features and business models, and how to execute it this Monday.\n\n## The Problem with \"10x Better\"\n\nThe \"10x better\" narrative is a trap. It encourages founders to focus on relative superiority rather than absolute value.\n\nIf your competitor is a 5/10 experience, being a 6/10 experience is not 10x better. It is a 20% improvement.\n\nUsers do not switch products for marginal gains. They switch when the pain of the current solution outweighs the friction of switching.\n\nShah argues that \"10x\" is a marketing term, not an operational one. It allows teams to hide behind vague claims of innovation without defining what actually changed for the user.\n\n**The Delta 4 Framework forces specificity.**\n\nIt asks: In which specific dimension are we 4x better?\n\n*   **Speed:** Are we 4x faster?\n*   **Cost:** Are we 4x cheaper?\n*   **Quality:** Is the output 4x more accurate?\n*   **Convenience:** Is the friction 4x lower?\n\nIf you cannot identify a single dimension where you are 4x superior, you do not have a product. You have a me-too feature.\n\n## The Science of Disruption: Entropy and Evolution\n\nShah’s framework is not arbitrary. It is derived from concepts in entropy and evolutionary biology.\n\nIn nature, low-entropy systems (order) are stable but fragile. High-entropy systems (chaos) are unstable but dynamic.\n\nDisruption occurs when a new species (or product) introduces a high-entropy variable that the incumbent cannot easily replicate.\n\nIn business terms, the incumbent is the low-entropy system. They have established processes, brand loyalty, and network effects.\n\nTo disrupt them, you must introduce a delta so large that it breaks the equilibrium.\n\nA 2x improvement is often absorbed by the incumbent’s brand loyalty. A 4x improvement creates a \"tipping point\" where the user’s rational calculation shifts.\n\n**This is why Delta 4 is a threshold, not a target.**\n\nIt is the minimum viable delta required to trigger organic growth without heavy-handed sales.\n\n## Applying Delta 4: From Features to Business Models\n\nShah emphasizes that Delta 4 is not just for product features. It applies to the entire business.\n\n### 1. Feature-Level Delta\n\nWhen building a feature, ask: What is the user’s current workflow?\n\nIf a user currently spends 4 hours a week on a task, and your feature reduces it to 1 hour, that is a 4x delta.\n\nIf you reduce it to 3 hours, that is a 1.33x delta. It may be useful, but it is not disruptive.\n\n**Tactical Application:**\n\n*   **Baseline:** Measure the current state. How long does it take? How much does it cost? How many clicks?\n*   **Target:** Define the 4x improvement.\n*   **Validation:** Test if users perceive this delta. If they don’t, your measurement is wrong, or the delta is not in the right dimension.\n\n### 2. Product-Level Delta\n\nAt the product level, Delta 4 helps you identify your \"wedge.\"\n\nAirbnb did not start by trying to be 4x better than hotels in every way. They were 4x better in **authenticity** and **local experience**.\n\nThey were not 4x cheaper. They were not 4x faster to book.\n\nBut for a specific segment of travelers, the delta in \"authenticity\" was 4x greater than what hotels offered.\n\n**Tactical Application:**\n\n*   **Identify the Incumbent’s Weakness:** What is the one thing the incumbent is bad at?\n*   **Amplify the Delta:** Build your product to be 4x better at that specific thing.\n*   **Ignore the Rest:** Do not try to be 4x better at everything. That is a resource drain.\n\n### 3. Business-Level Delta\n\nAt the business level, Delta 4 can apply to pricing, distribution, or customer service.\n\nFor example, a SaaS company might be 4x cheaper than its enterprise competitors. Or a service company might be 4x faster in response time.\n\n**Tactical Application:**\n\n*   **Pricing Delta:** Can you offer a 4x lower price point for the same core value?\n*   **Service Delta:** Can you offer 4x faster support?\n*   **Distribution Delta:** Can you reach customers 4x more efficiently?\n\n## The Psychology of Delta 4\n\nWhy 4x? Why not 2x or 10x?\n\nShah suggests that 4x is the sweet spot between **perceptibility** and **feasibility**.\n\nA 2x improvement is often perceived as \"incremental.\" It is easy to ignore.\n\nA 10x improvement is often perceived as \"unreal.\" It triggers skepticism.\n\nA 4x improvement is perceived as \"significant\" but \"credible.\"\n\nIt is large enough to change behavior, but small enough to be believable.\n\n**This is the psychological anchor of the framework.**\n\nIt aligns with how humans process information. We are not perfectly rational. We are pattern-matching creatures.\n\nA 4x delta creates a clear pattern: \"This is different.\"\n\n## Common Mistakes in Applying Delta 4\n\n### 1. Measuring the Wrong Dimension\n\nYou might be 4x faster, but if the user cares about accuracy, not speed, your delta is irrelevant.\n\n**Fix:** Validate the dimension with users. Ask: \"What is the most painful part of your current workflow?\"\n\n### 2. Assuming the Delta is Obvious\n\nYou might think you are 4x better, but users don’t see it.\n\n**Fix:** A/B test the messaging. Does the 4x delta drive conversion? If not, your delta is not resonating.\n\n### 3. Trying to Be 4x Better at Everything\n\nThis is the \"feature bloat\" trap.\n\n**Fix:** Focus on one core delta. Master it. Then expand.\n\n## The Delta 4 Checklist: Execute This Monday\n\nHere is your operational checklist to apply Delta 4 to your product this week.\n\n1.  **Identify the Incumbent:** Who is the user using today? (Even if it’s a spreadsheet or a manual process.)\n2.  **Define the Core Metric:** What is the single most important metric for the user? (Time, cost, accuracy, convenience.)\n3.  **Measure the Baseline:** How does the incumbent perform on this metric?\n4.  **Calculate Your Delta:** How does your product perform on this metric?\n    *   If it’s less than 4x, you have a problem.\n    *   If it’s 4x or more, you have a wedge.\n5.  **Validate the Perception:** Show the delta to 5 users. Do they see it? Do they care?\n6.  **Refine the Message:** Craft your marketing message around the 4x delta. \"4x faster,\" \"4x cheaper,\" \"4x more accurate.\"\n7.  **Iterate:** If the delta is not 4x, go back to step 2. Find a different metric.\n\n## Conclusion\n\nThe Delta 4 Framework is not just a product strategy. It is a mindset.\n\nIt forces you to be specific, measurable, and user-centric.\n\nIt rejects the vague \"10x better\" narrative and replaces it with a rigorous, operational standard.\n\nIn a world of noise, clarity is the ultimate competitive advantage.\n\nBe 4x better at one thing.\n\nThat is enough to win.\n\n**Action Item:**\n\nOpen your product roadmap.\n\nIdentify the one feature or capability where you claim to be \"better.\"\n\nMeasure it.\n\nIf it’s not 4x, kill it or rebuild it.\n\nShip the delta.",
+            "created_at": "2026-09-20T18:45:13.997057"
           }
         ]
-      },
+      }
+    ]
+  },
+  "69c8912b-3ce8-4c8c-aea5-f69d807ae7d6": {
+    "id": "69c8912b-3ce8-4c8c-aea5-f69d807ae7d6",
+    "title": "What is Shreyas Doshi's advice on...",
+    "created_at": "2026-09-20T18:47:50.416148",
+    "updated_at": "2026-09-20T18:47:50.416148",
+    "messages": [
       {
-        "id": "cf8f71a0-1510-42f0-80da-38df3cd0b22e",
-        "session_id": "d99f29b3-6b11-43d0-9e55-5e0bd5b1f886",
+        "id": "4a3d7efe-2805-44d0-b566-fec8a3b1b041",
+        "session_id": "69c8912b-3ce8-4c8c-aea5-f69d807ae7d6",
         "role": "user",
-        "content": "How do make a Dosa?",
-        "created_at": "2026-09-05T14:16:28.474067",
+        "content": "What is Shreyas Doshi's advice on managing time?",
+        "created_at": "2026-09-20T18:47:50.416148",
         "sources": []
       },
       {
-        "id": "8ba365b8-543f-415b-b999-8d3ae05dd632",
-        "session_id": "d99f29b3-6b11-43d0-9e55-5e0bd5b1f886",
+        "id": "dab7f143-07d4-4c04-8d5e-61d20c9d9e78",
+        "session_id": "69c8912b-3ce8-4c8c-aea5-f69d807ae7d6",
+        "role": "assistant",
+        "content": "**Shreyas Doshi's Advice on Managing Time**\n\nShreyas Doshi, a seasoned product manager and leader, shares his insights on managing time in the context of his own career struggles and the lessons he learned from the LNO framework. According to Doshi, as a product manager or anyone in a creative, high-impact, high-leverage role, tasks are not created equal. There are three types of tasks that one ends up doing in such a role:\n\n*   **High-impact, high-leverage tasks**: These are the tasks that have the greatest impact on the organization's success. Examples might include making strategic decisions, building key relationships, or driving innovation.\n*   **High-volume, low-leverage tasks**: These are the tasks that, while important, have a lower impact on the organization's success. Examples might include data entry, routine reporting, or administrative tasks.\n*   **Low-impact, low-leverage tasks**: These are the tasks that have the least impact on the organization's success. Examples might include social media management, email marketing, or other tasks that are not critical to the organization's core mission.\n\nDoshi's advice is to focus on the high-impact, high-leverage tasks and delegate or automate the high-volume, low-leverage tasks whenever possible. This allows for more time and energy to be focused on the tasks that truly drive impact.\n\n**Actionable Takeaway**\n\nProduct leaders can apply Doshi's advice by:\n\n*   Identifying their high-impact, high-leverage tasks and prioritizing them accordingly\n*   Delegating or automating high-volume, low-leverage tasks to free up time and energy for more critical work\n*   Focusing on building a team that can support high-impact, high-leverage work and delegate or automate lower-priority tasks as needed",
+        "created_at": "2026-09-20T18:47:50.416148",
+        "sources": [
+          {
+            "episode": "The art of product management | Shreyas Doshi (Stripe, Twitter, Google, Yahoo)",
+            "guest": "Shreyas Doshi",
+            "text": "(00:35:02):\nIt was just constantly I would come home and talk to my wife and basically just complained to her about how I'm not able to make progress or as much progress as I want, then that was accompanied with not being able to sleep very well because I was concerned about how much output I was producing and whatnot. And so, again, very stressful time in my career. And then things changed when I discovered the ideas related to this LNO framework in a block post. Unfortunately, I can't even find that block post somewhere, but it had some ideas that I took and then created this LNO framework on myself, which is essentially that as a product manager or as anybody in a creative high impact high leverage role, all your tasks are not created equal, there are actually three type of tasks that you end up doing in such a role.",
+            "timestamp": "00:35:02",
+            "score": 0.9517
+          },
+          {
+            "episode": "The art of product management | Shreyas Doshi (Stripe, Twitter, Google, Yahoo)",
+            "guest": "Shreyas Doshi",
+            "text": "# The art of product management | Shreyas Doshi (Stripe, Twitter, Google, Yahoo)\n\n## Transcript\n\nLenny (00:00:03):\nThere's no one out there today who shares more wisdom, more consistently on the art of product management than Shreyas Doshi. Shreyas came out of nowhere a few years ago and started tweeting gems of insight about building product and the role of product management, and rightfully so, has built a huge following on Twitter. What I love about Shreyas is that his insights are often framed in really memorable and interesting ways and they're often contrarian and not ideas that you've heard elsewhere. Shreyas has worked at some of today's most important tech companies, including Yahoo, Twitter, Google, and most recently Stripe, both as an IC and a manager. And his advice is always rooted in his real life experiences at these companies.",
+            "timestamp": "00:00:00",
+            "score": 0.9267
+          },
+          {
+            "episode": "From managing people to managing AI: The leadership skills everyone needs",
+            "guest": "Julie Zhuo",
+            "text": "(00:02:18):\nHaving worked at a mega large corp like Meta as head of design and now as a founder at a tiny startup that's all about using data to help you make decisions, it's really rare for someone to have this spectrum of experiences. In our conversation, we talk about how learning to be a great manager directly translates to learning how to use AI tools extremely well, which specific skills will become more valuable in the next couple of years, her most valuable and timeless advice for new managers, why she's not hiring product managers at her startup, her simple heuristic for knowing when to use data and when to use intuition in making decisions. There's something in this episode for everyone. And if you enjoy this podcast, don't forget to subscribe and follow it in your favorite podcasting app or YouTube. It helps tremendously. And if you become an annual subscriber of my newsletter, you get 15 incredible products for free for an entire year, including Lovable, Replit, Bolt, n8n, Linear, Superhuman, Descript, Whisperflow, Gamma, Perplexity, Warp, Granola, Magic Patterns, ChatPRD and Mobbin.",
+            "timestamp": "00:02:18",
+            "score": 0.862
+          },
+          {
+            "episode": "From managing people to managing AI: The leadership skills everyone needs",
+            "guest": "Julie Zhuo",
+            "text": "(00:57:49):\nSo along the lines of timeless manager, especially new manager advice, you've shared a bunch. Is there anything else that you think is really important, really interesting, valuable?\n\nJulie Zhuo (00:57:59):\nFeedback is one of the other topics that I am super, duper passionate about. And my general impression for both myself, everyone I've worked with, is that we don't value feedback enough or we don't think about it enough. Again, companies have these performance cycles, and so we're all like, yes, every six months we're going to go and do these reviews. That's when I'll get feedback. But feedback really, in my mind, ideally, should be a daily practice. Because the thing that matters for us in the long run as a team is how quickly are we getting better? So a team that just gets 1% better every week compared to a team that gets 1% better a month, even if they start off at a much lower baseline, is going to outperform in a very short amount of time the team that doesn't get better.",
+            "timestamp": "00:57:49",
+            "score": 0.862
+          }
+        ],
+        "artifacts": []
+      }
+    ]
+  },
+  "f13da5a1-e3ce-4f84-a4bb-b4b62f8989df": {
+    "id": "f13da5a1-e3ce-4f84-a4bb-b4b62f8989df",
+    "title": "What is Kunal Shah's Delta 4 framework...",
+    "created_at": "2026-09-20T18:57:13.089614",
+    "updated_at": "2026-09-20T18:58:13.034018",
+    "messages": [
+      {
+        "id": "7f417580-d6d0-4749-a83a-c317b4e7473c",
+        "session_id": "f13da5a1-e3ce-4f84-a4bb-b4b62f8989df",
+        "role": "user",
+        "content": "What is Kunal Shah's Delta 4 framework for products?",
+        "created_at": "2026-09-20T18:57:13.089614",
+        "sources": []
+      },
+      {
+        "id": "5ba60376-bcde-43a9-9c4b-35ec607ee89b",
+        "session_id": "f13da5a1-e3ce-4f84-a4bb-b4b62f8989df",
+        "role": "assistant",
+        "content": "Kunal Shah’s Delta 4 framework is a measurable alternative to the vague \"10x better\" product standard, positing that a product becomes a dominant force when its efficiency advantage over the status quo is at least four points on a 10-point scale. This specific threshold triggers three critical market dynamics: irreversibility, high user tolerance for minor failures, and the creation of a \"Unique Brag-worthy Proposition.\" *Source: Kunal Shah on \"Kunal Shah on winning in India, second-order thinking, the philosophy of startups, and more\"*\n\n### The Delta 4 Mechanism\n*   **Measurable Efficiency Gap**: Instead of relying on subjective claims of being \"10x better,\" the framework requires you to score both the old way of doing things and your new product on a scale of 1 to 10 based on efficiency. The \"Delta\" is the difference between these two scores.\n*   **The Threshold of 4**: The framework specifically identifies a delta of **4 or greater** as the tipping point where a product shifts from being a mere alternative to becoming the default choice. For example, if the traditional method scores a 3 and the new product scores a 9, the delta is 6, which comfortably exceeds the threshold. *Source: Kunal Shah on \"Kunal Shah on winning in India, second-order thinking, the philosophy of startups, and more\"*\n\n### The Three Outcomes of a Delta ≥ 4\nWhen a product achieves this level of efficiency superiority, three specific phenomena occur:\n*   **Irreversibility**: Once users experience the significant efficiency gain, they cannot easily go back to the old method. The old way feels inefficient by comparison, making the switch permanent.\n*   **High Tolerance for Failure**: Users develop a high degree of forgiveness for minor bugs or service hiccups. As Shah noted, even if Uber fails slightly, users are unlikely to abandon the service because the overall efficiency gain is so substantial.\n*   **Unique Brag-worthy Proposition (UBP)**: The product becomes a point of pride or social currency for the user. Using the product is no longer just a functional choice but a statement of being ahead of the curve or smarter than those using the old method. *Source: Kunal Shah on \"Kunal Shah on winning in India, second-order thinking, the philosophy of startups, and more\"*\n\n### Actionable Takeaway\nTo apply this framework, product leaders should stop asking if their product is \"10x better\" and instead conduct a rigorous comparative analysis of efficiency. Score your current solution and the incumbent alternative on a 1-10 scale. If the gap is less than 4, you are likely fighting a losing battle against user inertia. If the gap is 4 or higher, focus your resources on scaling, as you have already unlocked the psychological triggers of irreversibility and user loyalty.",
+        "created_at": "2026-09-20T18:57:13.089614",
+        "sources": [
+          {
+            "episode": "Kunal Shah on winning in India, second-order thinking, the philosophy of startups, and more",
+            "guest": "Kunal Shah",
+            "text": "LENNY RACHITSKY (00:05:36):\nCould you explain this framework briefly and then just how you've used it or how you recommend people apply it?\n\nLENNY RACHITSKY (00:05:43):\nOh, and by the way, it's called Delta 4.\n\nLENNY RACHITSKY (00:05:44):\nI don't know if I even said the name.\n\nKUNAL SHAH (00:05:46):\nYeah, it's called the Delta 4 framework, but I think it's actually quite simple.\n\nKUNAL SHAH (00:05:51):\nIf you think about it, a lot of people say that your product has to be 10x better and it's not very measurable.\n\nKUNAL SHAH (00:05:57):\nYou don't know if you are 10x better or not unless you're delusional.\n\nKUNAL SHAH (00:06:01):\nAnd the trigger for me was actually, I'm the unusual tech founder in India.\n\nKUNAL SHAH (00:06:06):\nI'm the only humanities/philosophy major founder in India who's got into tech.\n\nKUNAL SHAH (00:06:12):\nAnd I often wondered if most people who were my peers, or people who were ahead of me, were significantly smarter academically or otherwise.\n\nKUNAL SHAH (00:06:21):\nAnd why did I become successful with my first startup, Freecharge, which I exited in 2015 for nearly $450 million?\n\nKUNAL SHAH (00:06:28):\nAnd I was like, “What would make this happen?”",
+            "timestamp": "00:05:36",
+            "score": 0.96
+          },
+          {
+            "episode": "Kunal Shah on winning in India, second-order thinking, the philosophy of startups, and more",
+            "guest": "Kunal Shah",
+            "text": "KUNAL SHAH (00:06:31):\nBecause I would not qualify into this super league of really top IIT rankers that exist in India.\n\nKUNAL SHAH (00:06:38):\nAnd that got me onto this philosophical quest to find out what makes things successful.\n\nKUNAL SHAH (00:06:43):\nSo the simple framework is, an example I give often is that, imagine the old way of taking a cab ride and an Uber. And if I asked you to give me the score of efficiency on Uber and let's say getting the old cab, what would you say, Lenny?\n\nKUNAL SHAH (00:06:58):\nI'm curious.\n\nKUNAL SHAH (00:06:59):\nOut of 10?\n\nLENNY RACHITSKY (00:07:00):\nYeah, give a cab three and then Uber like a nine.\n\nLENNY RACHITSKY (00:07:04):\nYeah.\n\nKUNAL SHAH (00:07:05):\nSo every time you see that the product efficiency delta is greater than or equal to four, three things happen.\n\nKUNAL SHAH (00:07:14):\nIt is irreversible.\n\nKUNAL SHAH (00:07:16):\nSecond is that you have a very high tolerance for it to fail.\n\nKUNAL SHAH (00:07:21):\nIf Uber fails a little bit, will you say, “Oh my God, I'm going to really stop using it?”\n\nKUNAL SHAH (00:07:30):\nNo.\n\nKUNAL SHAH (00:07:31):\nAnd the third thing is what I call the UBP, ‘Unique Brag-worthy Proposition.’",
+            "timestamp": "00:06:31",
+            "score": 0.96
+          }
+        ],
+        "artifacts": []
+      },
+      {
+        "id": "473330ba-a129-4082-a9ae-9f2603948435",
+        "session_id": "f13da5a1-e3ce-4f84-a4bb-b4b62f8989df",
+        "role": "user",
+        "content": "/ship Delta 4 framework for products",
+        "created_at": "2026-09-20T18:58:13.034018",
+        "sources": []
+      },
+      {
+        "id": "48baa9e1-35c7-4e2d-964c-fa0826a27c2e",
+        "session_id": "f13da5a1-e3ce-4f84-a4bb-b4b62f8989df",
+        "role": "assistant",
+        "content": "Artifact is created.",
+        "created_at": "2026-09-20T18:58:13.034018",
+        "sources": [
+          {
+            "episode": "Kunal Shah on winning in India, second-order thinking, the philosophy of startups, and more",
+            "guest": "Kunal Shah",
+            "text": "LENNY RACHITSKY (00:05:36):\nCould you explain this framework briefly and then just how you've used it or how you recommend people apply it?\n\nLENNY RACHITSKY (00:05:43):\nOh, and by the way, it's called Delta 4.\n\nLENNY RACHITSKY (00:05:44):\nI don't know if I even said the name.\n\nKUNAL SHAH (00:05:46):\nYeah, it's called the Delta 4 framework, but I think it's actually quite simple.\n\nKUNAL SHAH (00:05:51):\nIf you think about it, a lot of people say that your product has to be 10x better and it's not very measurable.\n\nKUNAL SHAH (00:05:57):\nYou don't know if you are 10x better or not unless you're delusional.\n\nKUNAL SHAH (00:06:01):\nAnd the trigger for me was actually, I'm the unusual tech founder in India.\n\nKUNAL SHAH (00:06:06):\nI'm the only humanities/philosophy major founder in India who's got into tech.\n\nKUNAL SHAH (00:06:12):\nAnd I often wondered if most people who were my peers, or people who were ahead of me, were significantly smarter academically or otherwise.\n\nKUNAL SHAH (00:06:21):\nAnd why did I become successful with my first startup, Freecharge, which I exited in 2015 for nearly $450 million?\n\nKUNAL SHAH (00:06:28):\nAnd I was like, “What would make this happen?”",
+            "timestamp": "00:05:36",
+            "score": 0.96
+          },
+          {
+            "episode": "Kunal Shah on winning in India, second-order thinking, the philosophy of startups, and more",
+            "guest": "Kunal Shah",
+            "text": "KUNAL SHAH (00:09:36):\nomebody in Sequoia mentioned this to me that they have this as part of the thing, but in India we are not still applying many of these things.\n\nKUNAL SHAH (00:09:46):\nI think it's a simple framework to at least know. You can apply this to features, you can apply this to products, you can apply that to business.\n\nKUNAL SHAH (00:09:55):\nAnd oftentimes this is a longer concept.\n\nKUNAL SHAH (00:09:57):\nWe can talk about it in many ways because it's derived out of some study around entropy and evolutionary biology, which is the root of how I discovered and thought about Delta 4, that “When does a species get disrupted ” or “what is entropy and why does low entropy require growth of high entropy?”\n\nKUNAL SHAH (00:10:18):\nIt's a day long podcast on its own.\n\nKUNAL SHAH (00:10:19):\nSo some other time.\n\nLENNY RACHITSKY (00:10:21):\nOkay.\n\nLENNY RACHITSKY (00:10:21):\nWe'll save that for a future follow-up, just diving in on the psychology of Delta 4. Just to kind of summarize this, because I think it's such a powerful framework and I find it useful to convince founders why their product isn't taking off.\n\nLENNY RACHITSKY (00:10:32):\nThey may feel like this is better than. The classic example, is a better Excel.",
+            "timestamp": "00:09:36",
+            "score": 0.96
+          },
+          {
+            "episode": "Why most product managers are unprepared for the demands of a real startup",
+            "guest": "Casey Winters",
+            "text": "# Why most product managers are unprepared for the demands of a real startup | Casey Winters\n\n## Transcript\n\nCasey Winters (00:00):\nThe goal of your Kindle strategies, these like non-scalable hacks, they only exist to unlock the fire strategies, to unlock the things that could take you to millions of users.\n\nLenny (00:12):\nPinterest, Airbnb, Reddit, Canva, Hipcamp, Thumbtack, Fair, Tinder, Eventbrite. What do these companies have in common? Casey Winters, Casey has worked with and advised more consumer companies on their product and growth strategy than anyone in the world. He's also very generous with his time and often sets time aside to help founders and product leaders. I always learned so much talking to Casey, and I'm excited for you to hear this episode. In our chat we covered Casey's advice on making trade offs as a product leader, justifying non-sexy product investments, the spectrum of product people and how to level up your skills, new growth trends and tactics that he's seeing, when to focus on growth, and a bunch of advice on growth strategy, and so many other things. As a bonus, we're going to be doing a live AMA with Casey in my newsletter Slack community on August 5th at 10:00 AM Pacific time, so if you'd like to ask Casey any questions, make sure to get there. Until then enjoy this episode with Casey Winters. Hey Casey Winters, what do you love about Coda?\n\nCas",
+            "timestamp": "00:00:00",
+            "score": 0.9067
+          }
+        ],
+        "artifacts": [
+          {
+            "id": "8057de81-1fa9-4302-8da7-8ff0733e984a",
+            "message_id": "48baa9e1-35c7-4e2d-964c-fa0826a27c2e",
+            "artifact_type": "markdown",
+            "title": "Ship 30 Essay: The Delta 4 Framework for Products",
+            "content": "Most product teams are stuck in a delusion of marginal improvement.\n\nThey ship features that are 10% better than the competition, expecting 10% more growth. The market doesn't reward 10%. It rewards disruption.\n\nIf you are building a product that feels \"good enough,\" you are building a product that will die.\n\nThis is the core tension facing modern product managers and founders. We are trained to optimize for incremental gains, but the market only responds to exponential leaps.\n\nIn this essay, we break down the **Delta 4 Framework**, a mental model popularized by Kunal Shah (founder of Freecharge and Cred) on Lenny’s Podcast.\n\nShah argues that the \"10x better\" mantra is unmeasurable and often delusional. Instead, he proposes a rigorous, four-part framework to determine if your product is truly disruptive.\n\nThis is not just theory. It is an operational tool to decide what to build, what to kill, and how to win.\n\n## The Problem with \"10x Better\"\n\nThe standard advice in Silicon Valley is to be \"10x better\" than the incumbent.\n\nBut what does that mean?\n\nIs it 10x faster? 10x cheaper? 10x more features?\n\nShah points out that this metric is subjective. You cannot measure \"10x better\" without a clear baseline.\n\nIf you are a humanities major (as Shah is) competing against engineering elites, you cannot win on raw technical complexity. You must win on clarity and impact.\n\nThe Delta 4 framework solves this by breaking \"better\" into four distinct, measurable dimensions.\n\n## The Delta 4 Framework\n\nShah derived this framework from concepts in entropy and evolutionary biology. The core question is: *When does a species get disrupted?*\n\nThe answer is when a new species offers a significantly different value proposition.\n\nHere are the four deltas.\n\n### 1. Delta 1: The User Experience (UX)\n\nThis is the most common mistake.\n\nTeams focus on making the interface prettier. They add animations. They round the corners.\n\nThis is not a delta.\n\nA true UX delta changes *how* the user interacts with the problem.\n\n*   **Friction Removal:** Did you reduce the steps from 10 to 1?\n*   **Cognitive Load:** Did you make a complex task feel simple?\n*   **Speed:** Did you reduce load time from 5 seconds to 0.5 seconds?\n\nIf your UX is just \"nicer,\" you are not disrupting. You are decorating.\n\n### 2. Delta 2: The Feature Set\n\nThis is where most teams get trapped.\n\nThey add features to match the incumbent.\n\nShah argues that you should not add features. You should *remove* them.\n\nA true feature delta is not about having *more*. It is about having *different*.\n\n*   **Core Functionality:** Does your product do something the incumbent cannot?\n*   **Integration:** Does your product connect to systems the incumbent ignores?\n*   **Data:** Do you have access to data that creates a new capability?\n\nIf your feature list is 90% identical to your competitor, you are a me-too product.\n\n### 3. Delta 3: The Business Model\n\nThis is the most overlooked delta.\n\nMost teams assume the business model is fixed.\n\nIt is not.\n\nA true business model delta changes the economics of the transaction.\n\n*   **Pricing:** Are you charging per seat, per usage, or per outcome?\n*   **Cost Structure:** Can you deliver the same value at 50% lower cost?\n*   **Revenue Share:** Are you taking a cut of the transaction, or a subscription fee?\n\nIf your business model is identical to the incumbent, you are competing on price. And you will lose.\n\n### 4. Delta 4: The Value Proposition\n\nThis is the \"why.\"\n\nWhy should the user switch?\n\nA true value proposition delta changes the *outcome* the user expects.\n\n*   **Risk Reduction:** Are you guaranteeing the outcome?\n*   **Speed to Value:** Are you delivering value in minutes instead of days?\n*   **Access:** Are you providing access to something previously exclusive?\n\nIf your value proposition is \"we are better,\" you have failed.\n\n## Applying Delta 4: A Case Study\n\nLet’s apply this to a real-world example.\n\nImagine you are building a new expense reporting tool.\n\nThe incumbent is Expensify.\n\n**Delta 1 (UX):** Expensify requires manual entry or receipt scanning. Your tool uses AI to auto-categorize and extract data from emails. This is a UX delta.\n\n**Delta 2 (Features):** Expensify has a mobile app. Your tool has a Slack integration that allows approval in-thread. This is a feature delta.\n\n**Delta 3 (Business Model):** Expensify charges per user. Your tool charges per transaction. This is a business model delta.\n\n**Delta 4 (Value Proposition):** Expensify saves time on entry. Your tool saves time on *approval* and *reconciliation*. This is a value proposition delta.\n\nIf you only have one delta, you are not disruptive.\n\nYou need at least two.\n\nIdeally, you need all four.\n\n## The Operational Trade-Offs\n\nImplementing Delta 4 requires hard choices.\n\nYou cannot optimize for all four deltas simultaneously.\n\nYou must choose your primary delta and sacrifice the others.\n\n*   **If you choose UX:** You must sacrifice feature depth. Your product will be simple, but it will be fast.\n*   **If you choose Features:** You must sacrifice simplicity. Your product will be powerful, but it will be complex.\n*   **If you choose Business Model:** You must sacrifice margin. Your product will be cheaper, but you will need volume.\n*   **If you choose Value Proposition:** You must sacrifice scope. Your product will be narrow, but it will be essential.\n\nThe key is to be honest about which delta you are pursuing.\n\nMost teams try to be \"a little bit of everything.\"\n\nThis results in a product that is \"a little bit of nothing.\"\n\n## The Second-Order Thinking\n\nShah emphasizes that Delta 4 is not just about the product.\n\nIt is about the *system*.\n\nWhen you introduce a new product with a strong delta, you create second-order effects.\n\n*   **Network Effects:** Does your delta make the product more valuable as more people use it?\n*   **Data Moats:** Does your delta generate data that improves the product over time?\n*   **Switching Costs:** Does your delta make it harder for users to leave?\n\nIf your delta does not create second-order effects, it is a one-off.\n\nYou need a delta that compounds.\n\n## The Tactical Checklist\n\nHere is how to apply Delta 4 this Monday morning.\n\n1.  **Identify Your Incumbent:** Who is the current solution?\n2.  **Map the Deltas:** For each of the four deltas, write down how your product differs.\n3.  **Score the Deltas:** Rate each delta from 1 to 10.\n    *   1-3: Marginal improvement.\n    *   4-6: Meaningful improvement.\n    *   7-10: Disruptive leap.\n4.  **Find Your Primary Delta:** Which delta is your strongest?\n5.  **Sacrifice the Rest:** Cut features, simplify UX, or adjust pricing to amplify your primary delta.\n6.  **Validate the Second-Order Effects:** Ask yourself, \"Does this delta create a moat?\"\n\nIf you cannot answer \"yes\" to step 6, you are building a feature, not a product.\n\n## The Bottom Line\n\nThe Delta 4 framework is a tool for clarity.\n\nIt forces you to be specific about what makes your product different.\n\nIt prevents you from falling into the trap of \"10x better\" delusion.\n\nIt helps you make hard trade-offs.\n\nAnd it ensures that you are building something that the market actually wants.\n\nIf you are not disrupting, you are dying.\n\nChoose your delta.\n\nShip it.\n\nAnd watch the market respond.",
+            "created_at": "2026-09-20T18:58:13.034018"
+          }
+        ]
+      }
+    ]
+  },
+  "cef09add-aa0a-4da5-bc9e-769377915a82": {
+    "id": "cef09add-aa0a-4da5-bc9e-769377915a82",
+    "title": "What is Shreyas Doshi's advice on...",
+    "created_at": "2026-09-20T19:01:06.625237",
+    "updated_at": "2026-09-20T19:01:22.586614",
+    "messages": [
+      {
+        "id": "2dedb676-5d7e-44f9-a9de-f530926037df",
+        "session_id": "cef09add-aa0a-4da5-bc9e-769377915a82",
+        "role": "user",
+        "content": "What is Shreyas Doshi's advice on managing time?",
+        "created_at": "2026-09-20T19:01:06.625237",
+        "sources": []
+      },
+      {
+        "id": "6e21f397-7f55-4f98-a993-7745558c821f",
+        "session_id": "cef09add-aa0a-4da5-bc9e-769377915a82",
+        "role": "assistant",
+        "content": "**Managing Time: Shreyas Doshi's Advice**\n\nShreyas Doshi, a seasoned product manager and leader, shares his insights on managing time. According to Doshi, managing time effectively is crucial for high-impact, high-leverage roles. He emphasizes that all tasks are not created equal and can be categorized into three types:\n\n*   **High-leverage tasks**: These are critical tasks that have a significant impact on the organization's success. Examples include product development, strategy, and decision-making.\n*   **High-priority tasks**: These tasks are important but may not have the same level of impact as high-leverage tasks. Examples include project management, team leadership, and process improvement.\n*   **Low-priority tasks**: These tasks are less important and can be delegated or automated. Examples include administrative tasks, social media management, and email management.\n\n**Time Management Framework**\n\nDoshi's framework for managing time involves prioritizing tasks based on their impact and importance. He suggests allocating more time to high-leverage tasks and less time to low-priority tasks.\n\n**Actionable Takeaway**\n\nTo manage time effectively, product leaders can:\n\n*   **Prioritize tasks**: Focus on high-leverage tasks and allocate more time to them.\n*   **Delegate tasks**: Delegate low-priority tasks to team members or automate them when possible.\n*   **Use a time-tracking system**: Use a time-tracking system to monitor time spent on tasks and identify areas for improvement.\n\nBy following Doshi's framework, product leaders can optimize their time management and focus on high-impact tasks that drive business success.",
+        "created_at": "2026-09-20T19:01:06.625237",
+        "sources": [
+          {
+            "episode": "The art of product management | Shreyas Doshi (Stripe, Twitter, Google, Yahoo)",
+            "guest": "Shreyas Doshi",
+            "text": "(00:35:02):\nIt was just constantly I would come home and talk to my wife and basically just complained to her about how I'm not able to make progress or as much progress as I want, then that was accompanied with not being able to sleep very well because I was concerned about how much output I was producing and whatnot. And so, again, very stressful time in my career. And then things changed when I discovered the ideas related to this LNO framework in a block post. Unfortunately, I can't even find that block post somewhere, but it had some ideas that I took and then created this LNO framework on myself, which is essentially that as a product manager or as anybody in a creative high impact high leverage role, all your tasks are not created equal, there are actually three type of tasks that you end up doing in such a role.",
+            "timestamp": "00:35:02",
+            "score": 0.9517
+          },
+          {
+            "episode": "The art of product management | Shreyas Doshi (Stripe, Twitter, Google, Yahoo)",
+            "guest": "Shreyas Doshi",
+            "text": "# The art of product management | Shreyas Doshi (Stripe, Twitter, Google, Yahoo)\n\n## Transcript\n\nLenny (00:00:03):\nThere's no one out there today who shares more wisdom, more consistently on the art of product management than Shreyas Doshi. Shreyas came out of nowhere a few years ago and started tweeting gems of insight about building product and the role of product management, and rightfully so, has built a huge following on Twitter. What I love about Shreyas is that his insights are often framed in really memorable and interesting ways and they're often contrarian and not ideas that you've heard elsewhere. Shreyas has worked at some of today's most important tech companies, including Yahoo, Twitter, Google, and most recently Stripe, both as an IC and a manager. And his advice is always rooted in his real life experiences at these companies.",
+            "timestamp": "00:00:00",
+            "score": 0.9267
+          },
+          {
+            "episode": "From managing people to managing AI: The leadership skills everyone needs",
+            "guest": "Julie Zhuo",
+            "text": "(00:02:18):\nHaving worked at a mega large corp like Meta as head of design and now as a founder at a tiny startup that's all about using data to help you make decisions, it's really rare for someone to have this spectrum of experiences. In our conversation, we talk about how learning to be a great manager directly translates to learning how to use AI tools extremely well, which specific skills will become more valuable in the next couple of years, her most valuable and timeless advice for new managers, why she's not hiring product managers at her startup, her simple heuristic for knowing when to use data and when to use intuition in making decisions. There's something in this episode for everyone. And if you enjoy this podcast, don't forget to subscribe and follow it in your favorite podcasting app or YouTube. It helps tremendously. And if you become an annual subscriber of my newsletter, you get 15 incredible products for free for an entire year, including Lovable, Replit, Bolt, n8n, Linear, Superhuman, Descript, Whisperflow, Gamma, Perplexity, Warp, Granola, Magic Patterns, ChatPRD and Mobbin.",
+            "timestamp": "00:02:18",
+            "score": 0.862
+          },
+          {
+            "episode": "From managing people to managing AI: The leadership skills everyone needs",
+            "guest": "Julie Zhuo",
+            "text": "(00:57:49):\nSo along the lines of timeless manager, especially new manager advice, you've shared a bunch. Is there anything else that you think is really important, really interesting, valuable?\n\nJulie Zhuo (00:57:59):\nFeedback is one of the other topics that I am super, duper passionate about. And my general impression for both myself, everyone I've worked with, is that we don't value feedback enough or we don't think about it enough. Again, companies have these performance cycles, and so we're all like, yes, every six months we're going to go and do these reviews. That's when I'll get feedback. But feedback really, in my mind, ideally, should be a daily practice. Because the thing that matters for us in the long run as a team is how quickly are we getting better? So a team that just gets 1% better every week compared to a team that gets 1% better a month, even if they start off at a much lower baseline, is going to outperform in a very short amount of time the team that doesn't get better.",
+            "timestamp": "00:57:49",
+            "score": 0.862
+          }
+        ],
+        "artifacts": []
+      },
+      {
+        "id": "23c7114a-54c2-4093-8b75-39ebd3a567e0",
+        "session_id": "cef09add-aa0a-4da5-bc9e-769377915a82",
+        "role": "user",
+        "content": "how to make Dosa?",
+        "created_at": "2026-09-20T19:01:22.586614",
+        "sources": []
+      },
+      {
+        "id": "a4e01310-5593-4c49-8115-c17aebfe15ed",
+        "session_id": "cef09add-aa0a-4da5-bc9e-769377915a82",
         "role": "assistant",
         "content": "I do not have sufficient information in Lenny's podcast archive to answer this.",
-        "created_at": "2026-09-05T14:16:28.474067",
+        "created_at": "2026-09-20T19:01:22.586614",
         "sources": [],
         "artifacts": []
       }

@@ -41,6 +41,22 @@ CURATED_EPISODES = [
         "date": "2023-09-14",
         "youtube_url": "https://www.youtube.com/watch?v=4d5e6f7g",
         "raw_url": "https://raw.githubusercontent.com/ChatPRD/lennys-podcast-transcripts/main/episodes/julie-zhuo/transcript.md"
+    },
+    {
+        "slug": "gokul-rajaram",
+        "guest": "Gokul Rajaram",
+        "title": "Gokul Rajaram on designing your product development process, when and how to hire your first PM",
+        "date": "2022-01-01",
+        "youtube_url": "https://www.youtube.com/watch?v=gokul-rajaram",
+        "raw_url": "https://raw.githubusercontent.com/ChatPRD/lennys-podcast-transcripts/main/episodes/gokul-rajaram/transcript.md"
+    },
+    {
+        "slug": "ravi-mehta",
+        "guest": "Ravi Mehta",
+        "title": "How to build your product strategy stack | Ravi Mehta",
+        "date": "2023-01-19",
+        "youtube_url": "https://www.youtube.com/watch?v=tncs0m5pmQg",
+        "raw_url": "https://raw.githubusercontent.com/ChatPRD/lennys-podcast-transcripts/main/episodes/ravi-mehta/transcript.md"
     }
 ]
 

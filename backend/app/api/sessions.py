@@ -80,6 +80,38 @@ async def create_session(payload: SessionCreate, db: AsyncSession = Depends(get_
     save_in_memory_sessions()
     return SessionResponse(**session_dict)
 
+@router.post("/reset", status_code=status.HTTP_200_OK)
+async def reset_sessions(db: AsyncSession = Depends(get_db)):
+    """Reset all sessions to a single clean conversation."""
+    IN_MEMORY_SESSIONS.clear()
+    clean_id = str(uuid.uuid4())
+    now = datetime.utcnow().isoformat()
+    clean_sess = {
+        "id": clean_id,
+        "title": "New Growth Conversation",
+        "created_at": now,
+        "updated_at": now,
+        "messages": []
+    }
+    IN_MEMORY_SESSIONS[clean_id] = clean_sess
+    save_in_memory_sessions()
+    return {"status": "reset", "session": clean_sess}
+
+@router.post("/clear", status_code=status.HTTP_200_OK)
+@router.delete("", status_code=status.HTTP_200_OK)
+async def clear_all_sessions(db: AsyncSession = Depends(get_db)):
+    """Clear all sessions completely."""
+    if db is not None:
+        try:
+            from sqlalchemy import delete
+            await db.execute(delete(SessionModel))
+            await db.commit()
+        except Exception:
+            pass
+    IN_MEMORY_SESSIONS.clear()
+    save_in_memory_sessions()
+    return {"status": "cleared", "count": 0}
+
 @router.get("", response_model=List[SessionResponse])
 async def list_sessions(db: AsyncSession = Depends(get_db)):
     """List recent sessions sorted by updated_at descending."""
@@ -90,7 +122,11 @@ async def list_sessions(db: AsyncSession = Depends(get_db)):
         except Exception:
             pass
 
-    sorted_sess = sorted(IN_MEMORY_SESSIONS.values(), key=lambda s: s["updated_at"], reverse=True)
+    unique_sessions: Dict[str, Dict[str, Any]] = {}
+    for s in IN_MEMORY_SESSIONS.values():
+        if isinstance(s, dict) and "id" in s:
+            unique_sessions[str(s["id"])] = s
+    sorted_sess = sorted(unique_sessions.values(), key=lambda s: s.get("updated_at", ""), reverse=True)
     return [SessionResponse(**s) for s in sorted_sess]
 
 @router.get("/{session_id}", response_model=SessionDetail)
@@ -144,23 +180,10 @@ async def get_session(session_id: str, db: AsyncSession = Depends(get_db)):
             messages=sanitized_messages
         )
 
-    # Resilient auto-provisioning for any string ID
-    now = datetime.utcnow()
-    try:
-        su = str(uuid.UUID(session_id))
-    except Exception:
-        su = str(uuid.uuid5(uuid.NAMESPACE_DNS, session_id))
-    new_sess = {
-        "id": su,
-        "title": "New Conversation",
-        "created_at": now.isoformat(),
-        "updated_at": now.isoformat(),
-        "messages": []
-    }
-    IN_MEMORY_SESSIONS[str(session_id)] = new_sess
-    IN_MEMORY_SESSIONS[su] = new_sess
-    save_in_memory_sessions()
-    return SessionDetail(**new_sess)
+    raise HTTPException(
+        status_code=status.HTTP_404_NOT_FOUND, 
+        detail=f"Session '{session_id}' not found"
+    )
 
 @router.delete("/{session_id}", status_code=status.HTTP_204_NO_CONTENT)
 async def delete_session(session_id: str, db: AsyncSession = Depends(get_db)):

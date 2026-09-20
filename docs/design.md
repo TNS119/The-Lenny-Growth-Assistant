@@ -97,10 +97,33 @@ The application features a full-height collapsible sidebar and a dynamic split w
     │  User inputs prompt (or triggers "/ship <topic>") & clicks Send
     ▼
 [SEARCHING STATE]
-    │  Pulsing indicator: "Searching Lenny's Podcast transcripts..."
-    │  Backend executes HNSW cosine vector search
-    ▼
-[STREAMING TOKENS STATE]
+    │  Pulsing indicator: "Searching Lenny's podcast archive..."
+    │  Backend executes HNSW cosine vector search (threshold >= 0.65)
+    │
+    ├── Chunks Found (>= 0.65) ────────────────────────┐
+    │                                                   │
+    └── 0 Chunks Found                                  │
+         │                                              │
+         ▼                                              │
+    [JIT CATALOG SCAN]                                  │
+         │                                              │
+         ├── No Match (Off-topic/unrelated)             │
+         │    │                                         │
+         │    ▼                                         │
+         │   [REFUSAL STATE]                            │
+         │   "I do not have sufficient information..."  │
+         │                                              │
+         └── Match in 269-Episode Catalog               │
+              │                                         │
+              ▼                                         │
+         [JIT INGESTION STATE]                          │
+              │ Status: "Found episode for [Guest]...   │
+              │ Ingesting transcript..."                │
+              │ Downloads CDN -> Chunks -> Embeds       │
+              │ Additive Supabase upsert                │
+              │ Re-retrieves fresh chunks               │
+              ▼                                         │
+[STREAMING TOKENS STATE] <──────────────────────────────┘
     │  SSE stream pushes tokens delta-by-delta
     │  Message bubble auto-scrolls smoothly; citations accordion appears with retrieved episode sources
     ▼

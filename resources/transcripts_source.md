@@ -52,11 +52,28 @@ channel: "Lenny's Podcast"
 ---
 ```
 
-## 4. Ingestion Workflow for The Lenny Growth Assistant
+## 4. Ingestion Workflows for The Lenny Growth Assistant
 
-The ingestion script (`backend/scripts/download_transcripts.py` and `backend/scripts/ingest.py`):
-1. **Download:** Clones or downloads the transcript markdown files directly from GitHub using sparse checkout or the raw GitHub API.
-2. **Metadata Extraction:** Parses the YAML frontmatter (`guest`, `title`, `publish_date`, `youtube_url`).
-3. **Recursive Chunking:** Chunks transcript bodies into 500–800 tokens with 100-token overlap, preserving speaker transitions.
-4. **Vector Embeddings:** Computes 384-dimensional dense vectors using `sentence-transformers/all-MiniLM-L6-v2`.
-5. **HNSW Upsert:** Inserts chunks and vectors into the PostgreSQL `transcript_chunks` table.
+### 4.1 Master Catalog Synchronization (`sync_manifest.py`)
+To enable instantaneous lookup across all 269 episodes without hitting GitHub REST API rate limits, the system compiles `backend/data/episodes_manifest.json` by parsing `index/episodes.md` from the upstream repository:
+- Extracts guest names, slugs, summaries, and domain keywords.
+- Maps raw markdown download links directly to Fastly CDN (`https://raw.githubusercontent.com/...`).
+- Run sync via:
+  ```powershell
+  cd backend
+  python scripts/sync_manifest.py
+  ```
+
+### 4.2 Initial Seed Ingestion (`ingest.py`)
+- Reads baseline curated transcripts in `backend/data/transcripts/`.
+- Speaker-aware chunking (~400 tokens, 50-token overlap).
+- Embeddings: 384-dimensional dense vectors using `sentence-transformers/all-MiniLM-L6-v2`.
+- Upsert: Inserts into the Supabase `transcript_chunks` table with pgvector HNSW indexing.
+
+### 4.3 Just-In-Time (JIT) Dynamic Ingestion (`discovery.py`)
+When a user asks about an episode or guest not currently in the database:
+1. `EpisodeDiscoveryService` scans `episodes_manifest.json` in $<2\text{ms}$.
+2. If matched, streams status to the chat UI (*"Found episode for [Guest]... Ingesting transcript..."*).
+3. Downloads the raw markdown directly from GitHub CDN.
+4. Chunks, embeds, and executes an **additive upsert** (`ingest_single_episode`) into Supabase pgvector without wiping existing data.
+5. Re-runs retrieval and delivers the grounded response. Subsequent queries on that episode execute at sub-second cached speed.

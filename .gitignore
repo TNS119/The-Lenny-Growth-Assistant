@@ -76,6 +76,21 @@ logs/
 *.sqlite3
 *.db
 pgdata/
+backend/data/sessions_store.json
+
+# Local Transcript Cache (downloaded dynamically or seeded)
+backend/data/transcripts/
+
+# Media & Pitch Videos
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.webm
+
+# Root Scratch & Verification Scripts
+/scripts/
+enable_docker_virtualization.bat
 
 # IDE & Editor files
 .vscode/
@@ -99,3 +114,4 @@ Thumbs.db
 # Agent / AI local runs & caches
 .agent/
 .cache/
+

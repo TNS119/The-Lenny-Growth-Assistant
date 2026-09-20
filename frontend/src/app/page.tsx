@@ -1,7 +1,7 @@
 // frontend/src/app/page.tsx
 "use client";
 
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import { 
   fetchSessions, 
   createSession, 
@@ -15,7 +15,7 @@ import { ChatPane } from "@/components/Chat/ChatPane";
 import { ArtifactViewer } from "@/components/Artifact/ArtifactViewer";
 import type { ProviderType } from "@/components/Chat/ModelSelector";
 import { useChatStream } from "@/hooks/useChatStream";
-import { PanelLeft, Compass, Layers, PlusCircle, MessageSquare, Trash2, X } from "lucide-react";
+import { PanelLeft, Compass, Layers, PlusCircle, MessageSquare, Trash2, X, Loader2 } from "lucide-react";
 
 function formatSessionTitle(query: string): string {
   let clean = query.trim().replace(/^\/ship(30)?\s*/i, "").trim();
@@ -32,29 +32,57 @@ function formatSessionTitle(query: string): string {
 export default function Home() {
   const [sessions, setSessions] = useState<Session[]>([]);
   const [activeSessionId, setActiveSessionId] = useState<string>("");
-  const [messages, setMessages] = useState<Message[]>([]);
-  const [currentProvider, setCurrentProvider] = useState<ProviderType>("ollama");
+  
+  // Isolated per-session messages: { [sessionId: string]: Message[] }
+  const [messagesBySession, setMessagesBySession] = useState<Record<string, Message[]>>({});
+  
+  // Isolated per-session active artifacts: { [sessionId: string]: Artifact | null }
+  const [artifactsBySession, setArtifactsBySession] = useState<Record<string, Artifact | null>>({});
 
-  // Refresh messages and title from server upon stream finish
-  const handleStreamFinish = useCallback(async () => {
-    if (!activeSessionId) return;
-    const detail = await fetchSessionDetail(activeSessionId);
-    if (detail) {
-      setMessages(detail.messages);
-      if (detail.title) {
-        setSessions((prev) =>
-          prev.map((s) => (s.id === activeSessionId ? { ...s, title: detail.title } : s))
-        );
+  // Active streaming session ID (if any)
+  const [streamingSessionId, setStreamingSessionId] = useState<string | null>(null);
+
+  const [currentProvider, setCurrentProvider] = useState<ProviderType>("ollama");
+  const [deletingSessionId, setDeletingSessionId] = useState<string | null>(null);
+
+  // Track sequence of session detail fetches to discard stale network responses
+  const fetchSeqRef = useRef<number>(0);
+
+  // Refresh messages and title from server upon stream finish for that specific session
+  const handleStreamFinish = useCallback(async (finishedSessionId: string) => {
+    setStreamingSessionId((prev) => (prev === finishedSessionId ? null : prev));
+    if (!finishedSessionId) return;
+
+    try {
+      const detail = await fetchSessionDetail(finishedSessionId);
+      if (detail) {
+        setMessagesBySession((prev) => ({
+          ...prev,
+          [finishedSessionId]: detail.messages,
+        }));
+        if (detail.title) {
+          setSessions((prev) =>
+            prev.map((s) => (s.id === finishedSessionId ? { ...s, title: detail.title } : s))
+          );
+        }
       }
+    } catch (e) {
+      console.warn("Error refreshing session detail on stream finish:", e);
     }
-  }, [activeSessionId]);
+  }, []);
+
+  const handleArtifactGenerated = useCallback((art: Artifact, artSessionId: string) => {
+    setArtifactsBySession((prev) => ({
+      ...prev,
+      [artSessionId]: art,
+    }));
+  }, []);
 
   const {
     isStreaming,
     currentStatus,
-    activeArtifact,
     isDrawerOpen,
-    openArtifact,
+    openArtifact: openArtifactDrawer,
     closeArtifact,
     toggleDrawer,
     sendMessage,
@@ -62,7 +90,18 @@ export default function Home() {
   } = useChatStream({
     sessionId: activeSessionId,
     onStreamFinish: handleStreamFinish,
+    onArtifactGenerated: handleArtifactGenerated,
   });
+
+  const handleOpenArtifact = useCallback((art: Artifact) => {
+    if (activeSessionId) {
+      setArtifactsBySession((prev) => ({
+        ...prev,
+        [activeSessionId]: art,
+      }));
+    }
+    openArtifactDrawer(art, activeSessionId);
+  }, [activeSessionId, openArtifactDrawer]);
 
   // Initial Load: Fetch sessions with local persistence restore
   useEffect(() => {
@@ -72,7 +111,8 @@ export default function Home() {
       if (sessList.length > 0) {
         const lastActive = typeof window !== "undefined" ? localStorage.getItem("lenny_last_active_session") : null;
         const matched = lastActive ? sessList.find((s) => s.id === lastActive) : null;
-        setActiveSessionId(matched ? matched.id : sessList[0].id);
+        const initialId = matched ? matched.id : sessList[0].id;
+        setActiveSessionId(initialId);
       } else {
         const newSess = await createSession("New Growth Conversation");
         if (newSess) {
@@ -93,44 +133,124 @@ export default function Home() {
     init();
   }, []);
 
-  // Fetch messages when active session changes and save active ID to localStorage
+  // Fetch messages when active session changes, preventing stale out-of-order responses
   useEffect(() => {
     if (!activeSessionId) return;
     if (typeof window !== "undefined") {
       localStorage.setItem("lenny_last_active_session", activeSessionId);
     }
+
+    const currentReqId = ++fetchSeqRef.current;
     async function loadMessages() {
       const detail = await fetchSessionDetail(activeSessionId);
-      if (detail) {
-        setMessages(detail.messages);
-      } else {
-        setMessages([]);
+      if (fetchSeqRef.current === currentReqId && detail) {
+        setMessagesBySession((prev) => ({
+          ...prev,
+          [activeSessionId]: detail.messages,
+        }));
+        if (detail.title) {
+          setSessions((prev) =>
+            prev.map((s) => (s.id === activeSessionId ? { ...s, title: detail.title } : s))
+          );
+        }
+      } else if (fetchSeqRef.current === currentReqId && detail === null) {
+        // If session returned 404 / deleted, remove from session list so it doesn't linger
+        setSessions((prev) => prev.filter((s) => s.id !== activeSessionId));
       }
     }
     loadMessages();
   }, [activeSessionId]);
 
-  const handleNewSession = async () => {
-    const newSess = await createSession(`Session ${sessions.length + 1}`);
-    if (newSess) {
-      setSessions([newSess, ...sessions]);
-      setActiveSessionId(newSess.id);
-      setMessages([]);
-    }
-  };
-
-  const handleDeleteSession = async (id: string) => {
-    const success = await deleteSession(id);
-    if (success) {
-      const remaining = sessions.filter((s) => s.id !== id);
-      setSessions(remaining);
-      if (id === activeSessionId) {
-        if (remaining.length > 0) {
-          setActiveSessionId(remaining[0].id);
-        } else {
-          handleNewSession();
+  const handleNewSession = useCallback(async () => {
+    try {
+      const newSess = await createSession("New Growth Conversation");
+      if (newSess) {
+        setSessions((prev) => [newSess, ...prev.filter((s) => s.id !== newSess.id)]);
+        setActiveSessionId(newSess.id);
+        setMessagesBySession((prev) => ({
+          ...prev,
+          [newSess.id]: [],
+        }));
+        setArtifactsBySession((prev) => ({
+          ...prev,
+          [newSess.id]: null,
+        }));
+        closeArtifact();
+        if (typeof window !== "undefined") {
+          localStorage.setItem("lenny_last_active_session", newSess.id);
         }
       }
+    } catch (e) {
+      console.error("Failed to create new session:", e);
+    }
+  }, [closeArtifact]);
+
+  const handleDeleteSession = async (id: string) => {
+    if (deletingSessionId) return;
+    setDeletingSessionId(id);
+
+    // Stop active streaming immediately if it belongs to the session being deleted
+    if (isStreaming && (streamingSessionId === id || activeSessionId === id)) {
+      stopStream();
+      setStreamingSessionId(null);
+    }
+
+    const isDeletingActive = id === activeSessionId;
+    let targetNextActiveId: string | null = null;
+
+    // 1. Optimistic removal from sessions list
+    setSessions((prev) => {
+      const remaining = prev.filter((s) => s.id !== id);
+      if (isDeletingActive) {
+        targetNextActiveId = remaining.length > 0 ? remaining[0].id : null;
+      }
+      return remaining;
+    });
+
+    // 2. Clean up cache for deleted session
+    setMessagesBySession((prev) => {
+      const copy = { ...prev };
+      delete copy[id];
+      return copy;
+    });
+    setArtifactsBySession((prev) => {
+      const copy = { ...prev };
+      delete copy[id];
+      return copy;
+    });
+
+    // 3. Smooth active session switch
+    if (isDeletingActive) {
+      closeArtifact();
+      if (targetNextActiveId) {
+        setActiveSessionId(targetNextActiveId);
+        if (typeof window !== "undefined") {
+          localStorage.setItem("lenny_last_active_session", targetNextActiveId);
+        }
+      } else {
+        // No remaining sessions -> create a fresh session
+        try {
+          const freshSess = await createSession("New Growth Conversation");
+          if (freshSess) {
+            setSessions([freshSess]);
+            setActiveSessionId(freshSess.id);
+            if (typeof window !== "undefined") {
+              localStorage.setItem("lenny_last_active_session", freshSess.id);
+            }
+          }
+        } catch (e) {
+          console.error("Failed to create fresh session after deleting last session:", e);
+        }
+      }
+    }
+
+    // 4. Send background DELETE request to server
+    try {
+      await deleteSession(id);
+    } catch (err) {
+      console.error("Failed to delete session on server:", err);
+    } finally {
+      setDeletingSessionId(null);
     }
   };
 
@@ -158,7 +278,9 @@ export default function Home() {
       );
     }
 
-    // Optimistically append user message to UI
+    setStreamingSessionId(currentId);
+
+    // Optimistically append user and placeholder assistant messages strictly to currentId
     const tempUserMsg: Message = {
       id: String(Date.now()),
       session_id: currentId,
@@ -176,24 +298,31 @@ export default function Home() {
       created_at: new Date().toISOString(),
     };
 
-    setMessages((prev) => [...prev, tempUserMsg, tempAssistantMsg]);
+    setMessagesBySession((prev) => ({
+      ...prev,
+      [currentId]: [...(prev[currentId] || []), tempUserMsg, tempAssistantMsg],
+    }));
 
     sendMessage(
       text,
       mode,
       currentProvider,
-      (accumulatedText: string, sources: any[]) => {
-        setMessages((prev) => {
-          const updated = [...prev];
-          const lastIdx = updated.length - 1;
-          if (lastIdx >= 0 && updated[lastIdx].role === "assistant") {
-            updated[lastIdx] = {
-              ...updated[lastIdx],
+      (streamSessionId: string, accumulatedText: string, sources: any[]) => {
+        // Guarantee isolation: strictly update the session ID that owns this stream
+        setMessagesBySession((prev) => {
+          const sessionMsgs = prev[streamSessionId] ? [...prev[streamSessionId]] : [];
+          const lastIdx = sessionMsgs.length - 1;
+          if (lastIdx >= 0 && sessionMsgs[lastIdx].role === "assistant") {
+            sessionMsgs[lastIdx] = {
+              ...sessionMsgs[lastIdx],
               content: accumulatedText,
               sources: sources,
             };
           }
-          return updated;
+          return {
+            ...prev,
+            [streamSessionId]: sessionMsgs,
+          };
         });
       },
       currentId
@@ -309,37 +438,62 @@ export default function Home() {
           <span className="px-3 text-[10px] font-bold text-obsidian-500 uppercase tracking-wider block mb-1.5">
             Recent Conversations
           </span>
-          {sessions.map((sess) => (
-            <div
-              key={sess.id}
-              onClick={() => {
-                setActiveSessionId(sess.id);
-                if (typeof window !== "undefined" && window.innerWidth < 1024) {
-                  setIsSidebarOpen(false);
-                }
-              }}
-              className={`group flex items-center justify-between px-3 py-2 rounded-lg text-xs cursor-pointer transition-colors ${
-                sess.id === activeSessionId
-                  ? "bg-obsidian-700 text-obsidian-100 border border-obsidian-600 font-bold shadow-xs"
-                  : "text-obsidian-400 hover:bg-obsidian-800/60 hover:text-obsidian-200"
-              }`}
-            >
-              <div className="flex items-center gap-2 truncate">
-                <MessageSquare className="w-3.5 h-3.5 shrink-0 text-obsidian-500" />
-                <span className="truncate">{sess.title}</span>
-              </div>
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handleDeleteSession(sess.id);
-                }}
-                className="opacity-0 group-hover:opacity-100 p-1 hover:text-red-500 transition-opacity"
-                title="Delete session"
-              >
-                <Trash2 className="w-3.5 h-3.5" />
-              </button>
+          {sessions.length === 0 ? (
+            <div className="px-3 py-6 text-center text-obsidian-500 text-xs">
+              No conversations yet
             </div>
-          ))}
+          ) : (
+            sessions.map((sess) => {
+              const isActive = sess.id === activeSessionId;
+              const isDeleting = deletingSessionId === sess.id;
+              return (
+                <div
+                  key={sess.id}
+                  onClick={() => {
+                    if (isDeleting) return;
+                    setActiveSessionId(sess.id);
+                    if (typeof window !== "undefined" && window.innerWidth < 1024) {
+                      setIsSidebarOpen(false);
+                    }
+                  }}
+                  className={`group relative flex items-center justify-between gap-2 px-3 py-2.5 rounded-lg text-xs cursor-pointer transition-all duration-150 select-none ${
+                    isActive
+                      ? "bg-obsidian-800 text-obsidian-100 border border-obsidian-600 font-semibold shadow-xs"
+                      : "text-obsidian-400 hover:bg-obsidian-800/60 hover:text-obsidian-200 border border-transparent"
+                  } ${isDeleting ? "opacity-30 pointer-events-none" : ""}`}
+                >
+                  <div className="flex items-center gap-2 min-w-0 flex-1">
+                    <MessageSquare
+                      className={`w-3.5 h-3.5 shrink-0 transition-colors ${
+                        isActive ? "text-brand-teal" : "text-obsidian-500 group-hover:text-obsidian-400"
+                      }`}
+                    />
+                    <span className="truncate block leading-tight" title={sess.title}>
+                      {sess.title}
+                    </span>
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleDeleteSession(sess.id);
+                    }}
+                    disabled={isDeleting}
+                    className="opacity-0 group-hover:opacity-100 focus:opacity-100 p-1 rounded hover:bg-obsidian-700/80 text-obsidian-400 hover:text-red-400 transition-all shrink-0 cursor-pointer"
+                    title="Delete conversation"
+                    aria-label={`Delete ${sess.title}`}
+                  >
+                    {isDeleting ? (
+                      <Loader2 className="w-3.5 h-3.5 animate-spin text-obsidian-400" />
+                    ) : (
+                      <Trash2 className="w-3.5 h-3.5" />
+                    )}
+                  </button>
+                </div>
+              );
+            })
+          )}
         </div>
 
         {/* New Session Action (Placed at bottom of sidebar) */}
@@ -399,7 +553,7 @@ export default function Home() {
             >
               <Layers className="w-3.5 h-3.5 shrink-0" />
               <span>Artifacts</span>
-              {activeArtifact && (
+              {artifactsBySession[activeSessionId] && (
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shrink-0" />
               )}
             </button>
@@ -411,14 +565,14 @@ export default function Home() {
           {/* Chat Pane */}
           <div className="flex-1 h-full min-w-0 flex overflow-hidden">
             <ChatPane
-              messages={messages}
-              isStreaming={isStreaming}
-              currentStatus={currentStatus}
+              messages={activeSessionId ? (messagesBySession[activeSessionId] || []) : []}
+              isStreaming={isStreaming && streamingSessionId === activeSessionId}
+              currentStatus={streamingSessionId === activeSessionId ? currentStatus : null}
               currentProvider={currentProvider}
               onSelectProvider={setCurrentProvider}
               onSendMessage={handleSendMessage}
               onStopStream={stopStream}
-              onOpenArtifact={openArtifact}
+              onOpenArtifact={handleOpenArtifact}
             />
           </div>
 
@@ -443,7 +597,7 @@ export default function Home() {
               className="h-full shrink-0 relative flex flex-col overflow-hidden shadow-lg"
             >
               <ArtifactViewer
-                artifact={activeArtifact}
+                artifact={artifactsBySession[activeSessionId] || null}
                 isOpen={isDrawerOpen}
                 onClose={closeArtifact}
               />

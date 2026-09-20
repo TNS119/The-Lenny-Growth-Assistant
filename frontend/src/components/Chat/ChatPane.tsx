@@ -115,29 +115,29 @@ export const ChatPane: React.FC<ChatPaneProps> = ({
               <button
                 onClick={() => {
                   isAutoScrollEnabled.current = true;
-                  onSendMessage("What did Brian Chesky say about founder mode vs. manager mode?", "default");
+                  onSendMessage("What is Kunal Shah's Delta 4 framework for products?", "default");
                 }}
                 className="w-full p-2.5 rounded-lg bg-obsidian-800 hover:bg-obsidian-700 border border-obsidian-600 hover:border-brand-teal text-xs text-obsidian-300 hover:text-obsidian-100 transition-all shadow-sm group"
               >
-                <span className="text-brand-teal mr-1.5 font-bold">💡</span> "What did Brian Chesky say about founder mode vs. manager mode?"
+                <span className="text-brand-teal mr-1.5 font-bold">💡</span> "What is Kunal Shah's Delta 4 framework for products?"
               </button>
               <button
                 onClick={() => {
                   isAutoScrollEnabled.current = true;
-                  onSendMessage("Explain Elena Verna's viral loops and K-factor in B2B PLG.", "default");
+                  onSendMessage("What is Shreyas Doshi's advice on managing time?", "default");
                 }}
                 className="w-full p-2.5 rounded-lg bg-obsidian-800 hover:bg-obsidian-700 border border-obsidian-600 hover:border-brand-teal text-xs text-obsidian-300 hover:text-obsidian-100 transition-all shadow-sm group"
               >
-                <span className="text-brand-teal mr-1.5 font-bold">💡</span> "Explain Elena Verna's viral loops and K-factor in B2B PLG."
+                <span className="text-brand-teal mr-1.5 font-bold">💡</span> "What is Shreyas Doshi's advice on managing time?"
               </button>
               <button
                 onClick={() => {
                   isAutoScrollEnabled.current = true;
-                  onSendMessage("/ship Shreyas Doshi's LNO Framework for PMs", "ship");
+                  onSendMessage("/ship Elena Verna's B2B growth loops and viral product motion", "ship");
                 }}
                 className="w-full p-2.5 rounded-lg bg-obsidian-800 hover:bg-obsidian-700 border border-obsidian-600 hover:border-amber-400 text-xs text-amber-900/90 hover:text-amber-950 transition-all shadow-sm group font-medium"
               >
-                <span className="text-amber-700 mr-1.5 font-bold">✍️ [/ship Skill]</span> "Write a 1,250-word Ship 30 essay on Shreyas Doshi's LNO Framework"
+                <span className="text-amber-700 mr-1.5 font-bold">✍️ [/ship Skill]</span> "Write a 1,250-word Ship 30 essay on Elena Verna's B2B growth loops"
               </button>
             </div>
           </div>

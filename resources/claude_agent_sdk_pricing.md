@@ -35,9 +35,9 @@
 
 Because of the paid nature of Anthropic’s API, **The Lenny Growth Assistant** is specifically architected with a **Dual Model Layer**:
 
-1. **Local Model (Ollama) — 100% FREE & Mandatory for Evaluation:**
+1. **Local Model (Ollama) — 100% FREE & Recommended Default:**
    * Runs directly on your machine's hardware with **zero API fees**, zero rate limits, and full data privacy.
-   * Completely sufficient for running the evaluators' test suite and video demo.
+   * Completely sufficient for running the full test suite and local demonstration.
 2. **Cloud Model (Claude 3.5 Sonnet) — Optional Enterprise Extension:**
    * Plug-and-play via `ANTHROPIC_API_KEY` in `.env`.
    * If the API key is absent or credits expire, the system automatically falls back to local Ollama without crashing.
