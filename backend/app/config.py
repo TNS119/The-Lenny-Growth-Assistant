@@ -22,8 +22,8 @@ class Settings(BaseSettings):
         "postgresql+asyncpg://postgres:password123@localhost:5432/lenny_assistant"
     )
     
-    # LLM Configuration
-    DEFAULT_PROVIDER: str = os.getenv("DEFAULT_LLM_PROVIDER", "ollama")
+    # LLM Configuration (Groq default for instant, free inference on live deployments)
+    DEFAULT_PROVIDER: str = os.getenv("DEFAULT_LLM_PROVIDER", "groq")
     OLLAMA_BASE_URL: str = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
     OLLAMA_MODEL: str = os.getenv("OLLAMA_MODEL", "llama3.2:3b")
     
@@ -41,7 +41,7 @@ class Settings(BaseSettings):
     GEMINI_MODEL: str = os.getenv("GEMINI_MODEL", "gemini-2.0-flash")
     
     # RAG Retrieval Settings
-    SIMILARITY_THRESHOLD: float = float(os.getenv("SIMILARITY_THRESHOLD", "0.65"))
+    SIMILARITY_THRESHOLD: float = float(os.getenv("SIMILARITY_THRESHOLD", "0.35"))
     TOP_K_CHUNKS: int = int(os.getenv("TOP_K_CHUNKS", "5"))
     EMBEDDING_MODEL_NAME: str = os.getenv("EMBEDDING_MODEL_NAME", "all-MiniLM-L6-v2")
     EMBEDDING_DIMENSION: int = 384
@@ -50,6 +50,7 @@ class Settings(BaseSettings):
         env_file = (str(root_env), ".env")
         extra = "ignore"
 
-@lru_cache()
 def get_settings() -> Settings:
+    if root_env.exists():
+        load_dotenv(root_env, override=True)
     return Settings()

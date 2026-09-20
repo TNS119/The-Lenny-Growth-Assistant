@@ -65,6 +65,25 @@ cd backend
 python -m unittest discover -s tests
 ```
 
+### 🚢 Deployment & Production Commands
+
+#### Run via Docker Compose (Multi-Container: Postgres + Backend + Frontend)
+```powershell
+docker-compose up --build
+```
+
+#### Backend Cloud Deployment (Render / Railway / Fly.io)
+- **Root Directory:** `backend`
+- **Build Command:** `pip install -r requirements.txt`
+- **Start Command:** `uvicorn app.main:app --host 0.0.0.0 --port $PORT` (or use `backend/Procfile`)
+- **Required Env Vars:** `DATABASE_URL`, `DEFAULT_LLM_PROVIDER=groq`, `GROQ_API_KEY`, `SIMILARITY_THRESHOLD=0.35`
+
+#### Frontend Deployment (Vercel / Render Static / Netlify)
+- **Root Directory:** `frontend`
+- **Build Command:** `npm run build`
+- **Output Directory:** `.next`
+- **Required Env Vars:** `NEXT_PUBLIC_API_URL` (points to your live backend domain, e.g. `https://your-backend.onrender.com`), `BACKEND_URL`
+
 ### 📦 Transcript & Catalog Management
 
 #### Sync 269-Episode Catalog from GitHub

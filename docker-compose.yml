@@ -27,12 +27,12 @@ services:
       DATABASE_URL: postgresql+asyncpg://postgres:password123@db:5432/lenny_assistant
       OLLAMA_BASE_URL: http://host.docker.internal:11434
       OLLAMA_MODEL: ${OLLAMA_MODEL:-llama3.2:3b}
-      DEFAULT_LLM_PROVIDER: ${DEFAULT_LLM_PROVIDER:-ollama}
+      DEFAULT_LLM_PROVIDER: ${DEFAULT_LLM_PROVIDER:-groq}
       ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
       OPENAI_API_KEY: ${OPENAI_API_KEY:-}
       GROQ_API_KEY: ${GROQ_API_KEY:-}
       GEMINI_API_KEY: ${GEMINI_API_KEY:-}
-      SIMILARITY_THRESHOLD: ${SIMILARITY_THRESHOLD:-0.65}
+      SIMILARITY_THRESHOLD: ${SIMILARITY_THRESHOLD:-0.35}
       TOP_K_CHUNKS: ${TOP_K_CHUNKS:-5}
     ports:
       - "8000:8000"

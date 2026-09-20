@@ -11,7 +11,8 @@ import {
   CheckCircle2,
   AlertCircle,
   Trash2,
-  Loader2
+  Loader2,
+  Server
 } from "lucide-react";
 import { getApiBase } from "@/lib/api";
 
@@ -36,20 +37,10 @@ interface ProviderMeta {
 
 const PROVIDERS: ProviderMeta[] = [
   {
-    id: "ollama",
-    name: "Llama 3.2 3B",
-    shortName: "Llama 3.2 3B",
-    engine: "Local Ollama",
-    isLocalOrFree: true,
-    typeLabel: "Local (Free)",
-    keyName: "",
-    docsUrl: "https://ollama.com",
-  },
-  {
     id: "groq",
     name: "Groq Qwen 3.8 27B",
     shortName: "Qwen 27B",
-    engine: "Groq Cloud API",
+    engine: "Groq Cloud (Fast & Free)",
     isLocalOrFree: false,
     typeLabel: "Free Tier",
     keyName: "GROQ_API_KEY",
@@ -64,6 +55,16 @@ const PROVIDERS: ProviderMeta[] = [
     typeLabel: "Free Tier",
     keyName: "GEMINI_API_KEY",
     docsUrl: "https://aistudio.google.com/app/apikey",
+  },
+  {
+    id: "ollama",
+    name: "Llama 3.2 3B",
+    shortName: "Llama 3.2 3B",
+    engine: "Local Ollama",
+    isLocalOrFree: true,
+    typeLabel: "Local (Free)",
+    keyName: "",
+    docsUrl: "https://ollama.com",
   },
   {
     id: "claude",
@@ -114,8 +115,33 @@ export const ModelSelector: React.FC<ModelSelectorProps> = ({
     openai: false,
   });
 
+  const [isBackendConfigOpen, setIsBackendConfigOpen] = useState(false);
+  const [backendUrlInput, setBackendUrlInput] = useState("");
+  const [backendSaveMsg, setBackendSaveMsg] = useState<string | null>(null);
+
   const dropdownRef = useRef<HTMLDivElement>(null);
   const activeMeta = PROVIDERS.find((p) => p.id === currentProvider) || PROVIDERS[0];
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setBackendUrlInput(localStorage.getItem("lenny_backend_url") || "");
+    }
+  }, [isBackendConfigOpen]);
+
+  const handleSaveBackendUrl = () => {
+    const trimmed = backendUrlInput.trim().replace(/\/+$/, "");
+    if (typeof window !== "undefined") {
+      if (trimmed) {
+        localStorage.setItem("lenny_backend_url", trimmed);
+      } else {
+        localStorage.removeItem("lenny_backend_url");
+      }
+      setBackendSaveMsg("Saved! Reloading to apply changes...");
+      setTimeout(() => {
+        window.location.reload();
+      }, 700);
+    }
+  };
 
   // Load custom keys from localStorage on mount
   useEffect(() => {
@@ -425,6 +451,25 @@ export const ModelSelector: React.FC<ModelSelectorProps> = ({
                 </div>
               );
             })}
+
+            {/* Backend URL Connection Setting */}
+            <div className="pt-2 mt-1 border-t border-obsidian-750 flex items-center justify-between px-2 py-1 text-[11px] text-obsidian-400">
+              <div className="flex items-center gap-1.5 truncate">
+                <Server className="w-3 h-3 text-brand-teal shrink-0" />
+                <span className="truncate">Backend: {getApiBase() || "Relative Proxy"}</span>
+              </div>
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setIsOpen(false);
+                  setIsBackendConfigOpen(true);
+                }}
+                className="text-[10px] font-semibold text-brand-teal hover:underline shrink-0 ml-2 cursor-pointer"
+              >
+                Change
+              </button>
+            </div>
           </div>
         </div>
       )}
@@ -602,6 +647,90 @@ export const ModelSelector: React.FC<ModelSelectorProps> = ({
                   )}
                 </button>
               </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* 4. Backend Service URL Configuration Modal */}
+      {isBackendConfigOpen && (
+        <div
+          className="fixed inset-0 bg-black/50 backdrop-blur-xs flex items-center justify-center p-4 z-50 animate-in fade-in duration-150"
+          onClick={() => setIsBackendConfigOpen(false)}
+        >
+          <div
+            className="w-full max-w-md bg-obsidian-850 border border-obsidian-600 rounded-2xl p-5 shadow-2xl space-y-4"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between border-b border-obsidian-700/80 pb-3">
+              <div className="flex items-center gap-2.5">
+                <div className="p-2 rounded-xl bg-brand-sand text-brand-teal border border-brand-teal/30">
+                  <Server className="w-4 h-4" />
+                </div>
+                <div>
+                  <h3 className="text-sm font-bold text-obsidian-100">
+                    Backend Service URL
+                  </h3>
+                  <span className="text-[10px] text-obsidian-400">
+                    Live API connection configuration
+                  </span>
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={() => setIsBackendConfigOpen(false)}
+                className="p-1 rounded-lg text-obsidian-400 hover:text-obsidian-100 hover:bg-obsidian-700 transition-colors"
+                title="Close"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+
+            <div className="space-y-3 text-xs">
+              <p className="text-obsidian-300 leading-relaxed text-[11px]">
+                If your frontend is hosted separately from your FastAPI backend (e.g. on Vercel and Render), enter your public backend URL below.
+              </p>
+
+              <div className="space-y-1.5">
+                <label className="text-[11px] font-bold text-obsidian-200 uppercase tracking-wide">
+                  Backend API URL
+                </label>
+                <input
+                  type="text"
+                  value={backendUrlInput}
+                  onChange={(e) => setBackendUrlInput(e.target.value)}
+                  placeholder="https://your-backend.onrender.com"
+                  className="w-full bg-obsidian-900 border border-obsidian-700 focus:border-brand-teal focus:ring-1 focus:ring-brand-teal/50 rounded-xl px-3 py-2 text-xs font-mono text-obsidian-100 placeholder:text-obsidian-500 outline-hidden transition-colors"
+                />
+                <span className="text-[10px] text-obsidian-400 block">
+                  Leave empty to use automatic Next.js proxying or localhost:8000.
+                </span>
+              </div>
+
+              {backendSaveMsg && (
+                <div className="p-2.5 rounded-xl border text-xs bg-emerald-50 text-emerald-800 border-emerald-300 flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                  <span>{backendSaveMsg}</span>
+                </div>
+              )}
+            </div>
+
+            <div className="flex items-center justify-end gap-2 pt-3 border-t border-obsidian-700/80">
+              <button
+                type="button"
+                onClick={() => setIsBackendConfigOpen(false)}
+                className="px-3 py-1.5 rounded-lg bg-obsidian-750 hover:bg-obsidian-700 text-obsidian-300 hover:text-obsidian-100 text-xs font-semibold transition-colors"
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                onClick={handleSaveBackendUrl}
+                className="flex items-center gap-1.5 px-4 py-1.5 rounded-lg bg-brand-teal hover:bg-brand-skyDark text-white text-xs font-bold transition-all shadow-sm cursor-pointer"
+              >
+                <Check className="w-3.5 h-3.5" />
+                <span>Save & Connect</span>
+              </button>
             </div>
           </div>
         </div>

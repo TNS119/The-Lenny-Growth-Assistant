@@ -42,7 +42,7 @@ export default function Home() {
   // Active streaming session ID (if any)
   const [streamingSessionId, setStreamingSessionId] = useState<string | null>(null);
 
-  const [currentProvider, setCurrentProvider] = useState<ProviderType>("ollama");
+  const [currentProvider, setCurrentProvider] = useState<ProviderType>("groq");
   const [deletingSessionId, setDeletingSessionId] = useState<string | null>(null);
 
   // Track sequence of session detail fetches to discard stale network responses

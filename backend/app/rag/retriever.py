@@ -20,7 +20,7 @@ class TranscriptRetriever:
         self,
         query: str,
         top_k: int = 5,
-        similarity_threshold: float = 0.65
+        similarity_threshold: float = 0.35
     ) -> List[Dict[str, Any]]:
         """
         Compute query embedding and retrieve top K chunks with cosine similarity >= threshold.

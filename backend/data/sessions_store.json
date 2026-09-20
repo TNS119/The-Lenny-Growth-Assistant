@@ -1,1 +1,552 @@
-{}
+{
+  "cef09add-aa0a-4da5-bc9e-769377915a82": {
+    "id": "cef09add-aa0a-4da5-bc9e-769377915a82",
+    "title": "What is Kunal Shah's Delta 4 framework...",
+    "created_at": "2026-09-20T23:14:13.452451",
+    "updated_at": "2026-09-20T23:14:13.452451",
+    "messages": [
+      {
+        "id": "8ece4155-03bf-4099-8bb1-88075ceba411",
+        "session_id": "cef09add-aa0a-4da5-bc9e-769377915a82",
+        "role": "user",
+        "content": "What is Kunal Shah's Delta 4 framework for products?",
+        "created_at": "2026-09-20T23:14:13.452451",
+        "sources": []
+      },
+      {
+        "id": "0e324c71-a8f8-4199-85e9-040353f07398",
+        "session_id": "cef09add-aa0a-4da5-bc9e-769377915a82",
+        "role": "assistant",
+        "content": "I do not have sufficient information in Lenny's podcast archive to answer this.",
+        "created_at": "2026-09-20T23:14:13.452451",
+        "sources": [],
+        "artifacts": []
+      }
+    ]
+  },
+  "b5ca8536-21c7-4d84-ae36-666e69bb1596": {
+    "id": "b5ca8536-21c7-4d84-ae36-666e69bb1596",
+    "title": "What is Kunal Shah's Delta 4 framework...",
+    "created_at": "2026-09-20T23:14:16.654420",
+    "updated_at": "2026-09-20T23:28:58.242459",
+    "messages": [
+      {
+        "id": "67e55f26-326d-4883-bd13-a48f3135d073",
+        "session_id": "b5ca8536-21c7-4d84-ae36-666e69bb1596",
+        "role": "user",
+        "content": "What is Kunal Shah's Delta 4 framework for products?",
+        "created_at": "2026-09-20T23:14:16.654420",
+        "sources": []
+      },
+      {
+        "id": "0df81888-4363-47ea-ba38-a6e4eb4b3326",
+        "session_id": "b5ca8536-21c7-4d84-ae36-666e69bb1596",
+        "role": "assistant",
+        "content": "I do not have sufficient information in Lenny's podcast archive to answer this.",
+        "created_at": "2026-09-20T23:14:16.654420",
+        "sources": [],
+        "artifacts": []
+      },
+      {
+        "id": "7031d6e8-0257-451e-9376-7bbcdcb47653",
+        "session_id": "b5ca8536-21c7-4d84-ae36-666e69bb1596",
+        "role": "user",
+        "content": "What is Kunal Shah's Delta 4 framework for products?",
+        "created_at": "2026-09-20T23:22:05.164302",
+        "sources": []
+      },
+      {
+        "id": "64b97061-94eb-4855-a7ad-d4678d208619",
+        "session_id": "b5ca8536-21c7-4d84-ae36-666e69bb1596",
+        "role": "assistant",
+        "content": "I do not have sufficient information in Lenny's podcast archive to answer this.",
+        "created_at": "2026-09-20T23:22:05.164302",
+        "sources": [],
+        "artifacts": []
+      },
+      {
+        "id": "f64c0659-0c32-435f-9638-3ca67473d41d",
+        "session_id": "b5ca8536-21c7-4d84-ae36-666e69bb1596",
+        "role": "user",
+        "content": "What is Kunal Shah's Delta 4 framework for products?",
+        "created_at": "2026-09-20T23:23:12.264574",
+        "sources": []
+      },
+      {
+        "id": "ddab05a7-24f5-4b55-983d-e7690acc7b11",
+        "session_id": "b5ca8536-21c7-4d84-ae36-666e69bb1596",
+        "role": "assistant",
+        "content": "I do not have sufficient information in Lenny's podcast archive to answer this.",
+        "created_at": "2026-09-20T23:23:12.264574",
+        "sources": [],
+        "artifacts": []
+      },
+      {
+        "id": "5997cd72-95ba-4f98-9915-584a15af75e3",
+        "session_id": "b5ca8536-21c7-4d84-ae36-666e69bb1596",
+        "role": "user",
+        "content": "What is Kunal Shah's Delta 4 framework for products?",
+        "created_at": "2026-09-20T23:25:20.340524",
+        "sources": []
+      },
+      {
+        "id": "2c0410cb-5917-4bee-8f28-2381e22b3c06",
+        "session_id": "b5ca8536-21c7-4d84-ae36-666e69bb1596",
+        "role": "assistant",
+        "content": "I do not have sufficient information in Lenny's podcast archive to answer this.",
+        "created_at": "2026-09-20T23:25:20.340524",
+        "sources": [],
+        "artifacts": []
+      },
+      {
+        "id": "dfa06cdf-9c95-459a-ab2c-a65e6fdb7c64",
+        "session_id": "b5ca8536-21c7-4d84-ae36-666e69bb1596",
+        "role": "user",
+        "content": "What is Kunal Shah's Delta 4 framework for products?",
+        "created_at": "2026-09-20T23:27:29.811751",
+        "sources": []
+      },
+      {
+        "id": "bfa6fe52-900c-4d7c-b06e-a903950a5c1d",
+        "session_id": "b5ca8536-21c7-4d84-ae36-666e69bb1596",
+        "role": "assistant",
+        "content": "I do not have sufficient information in Lenny's podcast archive to answer this.",
+        "created_at": "2026-09-20T23:27:29.811751",
+        "sources": [],
+        "artifacts": []
+      },
+      {
+        "id": "c02c53d2-3147-48bb-960a-6b874a596c7c",
+        "session_id": "b5ca8536-21c7-4d84-ae36-666e69bb1596",
+        "role": "user",
+        "content": "What is Kunal Shah's Delta 4 framework for products?",
+        "created_at": "2026-09-20T23:28:58.242459",
+        "sources": []
+      },
+      {
+        "id": "069849b0-f9f9-484d-95be-c7259b568e41",
+        "session_id": "b5ca8536-21c7-4d84-ae36-666e69bb1596",
+        "role": "assistant",
+        "content": "I do not have sufficient information in Lenny's podcast archive to answer this.",
+        "created_at": "2026-09-20T23:28:58.242459",
+        "sources": [],
+        "artifacts": []
+      }
+    ]
+  },
+  "e3833dd8-f601-44a1-b0b3-f3b117515d58": {
+    "id": "e3833dd8-f601-44a1-b0b3-f3b117515d58",
+    "title": "What is Kunal Shah's Delta 4 framework...",
+    "created_at": "2026-09-20T23:42:21.330458",
+    "updated_at": "2026-09-20T23:42:21.330458",
+    "messages": [
+      {
+        "id": "4b1a69e2-01d0-4593-85d2-37fa3e280658",
+        "session_id": "e3833dd8-f601-44a1-b0b3-f3b117515d58",
+        "role": "user",
+        "content": "What is Kunal Shah's Delta 4 framework for products?",
+        "created_at": "2026-09-20T23:42:21.330458",
+        "sources": []
+      },
+      {
+        "id": "bc9d35eb-7487-4cd9-b1c5-87e725590882",
+        "session_id": "e3833dd8-f601-44a1-b0b3-f3b117515d58",
+        "role": "assistant",
+        "content": "Kunal Shah’s Delta 4 framework is a simple heuristic used to evaluate whether a product, feature, or business model offers a sufficiently large efficiency improvement over the status quo to drive organic adoption. A product is considered \"Delta 4\" if it is at least four times more efficient than the existing alternative, a threshold that triggers viral growth, low customer acquisition costs, and irreversible market shifts. *Source: Kunal Shah on winning in India, second-order thinking, the philosophy of startups, and more*\n\n### Core Mechanisms of Delta 4\n\n*   **The Efficiency Threshold**: The framework posits that for a product to truly disrupt a market, it must be significantly more efficient than the current solution. If the efficiency gain is less than four times (Delta < 4), the change is often \"reversible,\" meaning users may try it but will not brag about it or have zero tolerance for its shortcomings. *Source: Kunal Shah on winning in India, second-order thinking, the philosophy of startups, and more*\n*   **Organic Growth and Zero CAC**: Products that achieve Delta 4 status naturally have lower or zero Customer Acquisition Costs (CAC) because the value proposition is so obvious that users discover it through word-of-mouth rather than paid advertising. Shah cites Google as an example, noting that users discovered it through demos and shock (\"Oh my God, this is crazy\") rather than performance marketing. *Source: Kunal Shah on winning in India, second-order thinking, the philosophy of startups, and more*\n*   **The \"Better Excel\" Trap**: Founders often fail to reach Delta 4 by building products that are merely \"better\" than the incumbent (e.g., a spreadsheet that is easier to use than Excel) rather than fundamentally more efficient. If the delta is small, the product fails to take off because the switching costs or behavioral inertia outweigh the marginal benefit. *Source: Kunal Shah on winning in India, second-order thinking, the philosophy of startups, and more*\n*   **End-Result Efficiency vs. Process Efficiency**: A key insight is that adding technology does not automatically increase efficiency. Shah uses the example of buying a suit online versus offline; while the online process is \"all tech,\" the end result (a bad fit) was less efficient than the offline experience. Therefore, the delta must be calculated based on the **overall efficiency score** of the final outcome, not just the speed of the transaction. *Source: Kunal Shah on winning in India, second-order thinking, the philosophy of startups, and more*\n\n### Actionable Takeaway\n\nWhen evaluating your product roadmap, do not ask if your feature is \"better\" than the competition; ask if it is **four times more efficient** in terms of the end-user outcome. If the efficiency delta is less than four, expect high CAC, low organic virality, and user churn, as the improvement is not significant enough to overcome behavioral inertia or justify the switch.",
+        "created_at": "2026-09-20T23:42:21.330458",
+        "sources": [
+          {
+            "episode": "Kunal Shah on winning in India, second-order thinking, the philosophy of startups, and more",
+            "guest": "Kunal Shah",
+            "text": "09:21): So you're never going to buy a suit online. I can tell you that right now. 09:25): So I think it's a simple framework. 09:28): I believe that if many companies applied.. I know now many VCs in the US use this as part of the training program for analysts. 09:36): omebody in Sequoia mentioned this to me that they have this as part of the thing, but in India we are not still applying many of these things. 09:46): I think it's a simple framework to at least know. You can apply this to features, you can apply this to products, you can apply that to business. 09:55): And oftentimes this is a longer concept. 09:57): We can talk about it in many ways because it's derived out of some study around entropy and evolutionary biology, which is the root of how I discovered and thought about Delta 4, that “When does a species get disrupted ” or “what is entropy and why does low entropy require growth of high entropy?” 10:18): It's a day long podcast on its own. 10:19): So some other time. 10:21): Okay. 10:21): We'll save that for a future follow-up, just diving in on the psychology of Delta 4. Just to kind of summarize this, because I think it's such a powerful framework and I find it useful to convince founders why their product isn't taking off. 10:32): They may feel like this is better than. The classic example, is a better Excel. 10:36): Look, this is so much better than Excel. 10:38): It can do all these things. 10:39): You don't have to learn all these formulas.",
+            "timestamp": "00:09:21",
+            "score": 0.4742
+          },
+          {
+            "episode": "Kunal Shah on winning in India, second-order thinking, the philosophy of startups, and more",
+            "guest": "Kunal Shah",
+            "text": "07:46): And therefore all Delta 4 products will naturally have lower CAC or sometimes zero CAC because people, humans.. and think about it, Lenny, how you discovered Google, definitely not through an ad, definitely not through some performance marketing here and there. 07:57): Somebody showed you the demo and you were like, “Oh my God, this is crazy.” 08:01): And that's what I'm seeing right now, what's happening with everything on OpenAI and everything that is happening around LLM feels like magic and it's Delta 4 because the efficiency of doing things before and after is now showing that. 08:12): But failure is the real problem. 08:15): And making everything tech does not make things more efficient. 08:19): Let's take an example. 08:21): Buying a suit for yourself online versus offline, all tech, cool stuff, all the features built in. 08:30): What would you say the efficiency of buying a suit online is versus, let's say, buying a suit offline? 08:35): I've actually done that and it was a terrible fit. It did not fit at all. 08:39): And so it's efficient, but the end result was not, it's probably often not great. 08:45): So it's probably- 08:46): Overall efficiency score, what would you give? 08:48): Of buying a suit online? 08:50): Yeah, versus offline. 08:53): I'd probably give it five and five. 08:56): Offline is actually probably a better experience. 08:58): I give it a seven. 08:59): That's crazy because you've broken the principle, this is a tech product, but the efficiency is better offline. 09:06): And therefore when the delta is less than four, what you will discover is that it is reversible. 09:15): You will not see people bragging about it and you have zero tolerance for it.",
+            "timestamp": "00:07:46",
+            "score": 0.3992
+          },
+          {
+            "episode": "Kunal Shah on winning in India, second-order thinking, the philosophy of startups, and more",
+            "guest": "Kunal Shah",
+            "text": "29:11): So you will see that super apps, superstars, super companies all exist in low trust markets because the lack of trust creates concentration of trust, and therefore you will see one app can do 400 things. 29:24): For example, we have a company like Tata that can do salt to car to jewelry to anything and people will buy it because it's a Tata brand, because it comes from a low trust society trusting the brand and not being, “Oh, I'm going to prefer this new brand.” 29:42): The joy of trying new things is not so high in low trust nations. 29:47): Wow, I'm learning a lot here. 29:48): I didn't know all this. 29:49): So essentially the brand is even more, exponentially more important in Indian markets. 29:55): It's funny, but the oldest brand in the world is a brand called Chyavanprash. 30:00): It's a guy named Chavan who built a “prash” which is a sort of paste that you can have for good health, and it was built in India many, many, many, many centuries ago. 30:14): And lots of Indian businesses still have the name of the person behind it. 30:19): Even the US is like that. 30:21): JP Morgan, all these guys are not some fancy name. 30:23): They're the names of people. 30:25): And therefore in India, trust still comes from a lot of names of people who had a lot of trust behind them and reputation behind them. 30:33): I want to zoom out a little bit before we go in a different direction. 30:36): What do you see as either the most pressing challenges in India right now for tech and/or the biggest opportunity for Indian startups?",
+            "timestamp": "00:29:11",
+            "score": 0.3621
+          },
+          {
+            "episode": "How to build your product strategy stack | Ravi Mehta (Tinder, Facebook, Tripadvisor,",
+            "guest": "Ravi Mehta",
+            "text": "00:46): Welcome to Lenny's Podcast. I'm Lenny and my goal here is to help you get better at the craft of building and growing products. I interview world-class product leaders and growth experts to learn from their hard one experiences building and scaling today's most successful companies. Today my guest is Ravi Mehta. Ravi was chief product officer at Tinder, the product director at Facebook, VP of product at Tripadvisor, and now he's co-founder and CEO of a company called Outpace that he shares a bit about. Ravi is one of my favorite writers and sharers of product wisdom and he also helped create and teaches the Reforge programs on product leadership and product strategy, which is where we spend most of our time. We talk about how to get better at crafting product strategy, how to develop your skills as a product leader, and a bit about the differences between being a PM at a large company versus building your own company. Like I say in the intro, I feel like more people need to know about Ravi and I'm excited to help you with that. With that, I bring you Ravi Mehta after a short word from our wonderful sponsors. This episode is brought to you by Merge. Every product manager knows the pain of slowing product velocity when developers struggle to build and maintain integrations with other platforms. Merge's unified API can remove this blocker from your roadmap. With one API, your team can add over 150 HR, ATS, accounting, ticketing and CRM integrations right into your product. You can get your first integration into production in a matter of days and save countless weeks building custom integrations, letting you get back to building your core product. Merge's integrations speed up the product development process for companies",
+            "timestamp": "00:00:46",
+            "score": 0.3562
+          }
+        ],
+        "artifacts": []
+      }
+    ]
+  },
+  "dd8f9a31-8136-41e2-b74a-19639165c820": {
+    "id": "dd8f9a31-8136-41e2-b74a-19639165c820",
+    "title": "What is Shreyas Doshi's advice on...",
+    "created_at": "2026-09-20T23:42:56.861953",
+    "updated_at": "2026-09-20T23:52:58.027950",
+    "messages": [
+      {
+        "id": "4a59389e-f7e7-4695-ac44-d4165b4b76c5",
+        "session_id": "dd8f9a31-8136-41e2-b74a-19639165c820",
+        "role": "user",
+        "content": "What is Shreyas Doshi's advice on managing time?",
+        "created_at": "2026-09-20T23:42:56.861953",
+        "sources": []
+      },
+      {
+        "id": "ac333d5d-6b0c-4ef8-960b-b16607728060",
+        "session_id": "dd8f9a31-8136-41e2-b74a-19639165c820",
+        "role": "assistant",
+        "content": "Shreyas Doshi advises that the most critical aspect of managing time as a product manager is identifying and prioritizing \"L tasks\"—the high-impact activities that you are implicitly avoiding due to fear or the need for dedicated focus. Rather than using a lack of time as an excuse to procrastinate on strategic work, you must recognize that these tasks are the ones causing you the most anxiety precisely because they are essential to your role.\n\n*   **Identify Your \"L Tasks\"**: These are the high-leverage activities (such as defining strategy or writing complex PRDs) that you know you should be doing but are consistently putting off. Doshi notes that PMs often implicitly know what their L tasks are because they are the sources of their greatest professional discomfort. *Source: Shreyas Doshi on \"The art of product management\"*\n*   **Overcome the \"Time\" Excuse**: A common pitfall is telling yourself that you will tackle strategic work \"next month\" once the current firefighting subsides. Doshi argues that this is a false promise; the next month will always have new issues. The real barrier is not a lack of time, but a fear of whether you can formulate a good strategy or produce high-quality output. *Source: Shreyas Doshi on \"The art of product management\"*\n*   **Require Dedicated Attention**: L tasks cannot be done in the gaps between meetings or while multitasking. They require blocks of dedicated, uninterrupted attention. Procrastination often stems from the fear that you won't have anything interesting or valuable to say when you finally sit down to do the work. *Source: Shreyas Doshi on \"The art of product management\"*\n*   **Acknowledge Personal Bias**: Doshi emphasizes that this is a universal human tendency, not just a PM flaw. He admits to having been the person who procrastinated on L tasks, using the busyness of execution issues as a shield against the vulnerability of strategic thinking. *Source: Shreyas Doshi on \"The art of product management\"*\n\n**Actionable Takeaway:**\nAudit your current workload to identify your single most critical \"L task\"—the strategic or high-impact work you are avoiding. Instead of waiting for a \"free week,\" proactively block out dedicated, uninterrupted time on your calendar for this task immediately, acknowledging that the difficulty of the work, not the lack of time, is the primary obstacle.",
+        "created_at": "2026-09-20T23:42:56.861953",
+        "sources": [
+          {
+            "episode": "The art of product management | Shreyas Doshi (Stripe, Twitter, Google, Yahoo)",
+            "guest": "Shreyas Doshi",
+            "text": "00:03): There's no one out there today who shares more wisdom, more consistently on the art of product management than Shreyas Doshi. Shreyas came out of nowhere a few years ago and started tweeting gems of insight about building product and the role of product management, and rightfully so, has built a huge following on Twitter. What I love about Shreyas is that his insights are often framed in really memorable and interesting ways and they're often contrarian and not ideas that you've heard elsewhere. Shreyas has worked at some of today's most important tech companies, including Yahoo, Twitter, Google, and most recently Stripe, both as an IC and a manager. And his advice is always rooted in his real life experiences at these companies. In our chat, we focus on five topics and go deep on them. We talk about the power of pre-mortems. We talk about how to best use your time as a product manager. We look into the three levels of product work and how getting them wrong often leads to tension on your team. We dig into why most execution problems are really strategy problems. And we talk about a common pitfall in prioritization. And if you listen to the end, we actually throw in a bonus topic. I really appreciate that Shreyas made the time for our chat and I cannot wait for you to hear it. This episode is brought to you by Coda. Coda is an all in one doc that combines the best documents, spreadsheets, and apps in one place. I actually use Coda every single day. It's my home base for organizing my newsletter writing, it's where I plan my content calendar, capture my research and write the first drafts of each and every post. It's also where I curate",
+            "timestamp": "00:00:03",
+            "score": 0.4515
+          },
+          {
+            "episode": "The art of product management | Shreyas Doshi (Stripe, Twitter, Google, Yahoo)",
+            "guest": "Shreyas Doshi",
+            "text": "41:43): Yeah. So, turns out that the L tasks, PMs implicitly just deep down they know what their L tasks are, because those are the tasks that are bothering them the most because they are not doing them or because they're not doing them as well as they know they should. So, the classic example of this is the case where a PM will say, \"I know I need to work on getting our strategy right, but I don't have time because I'm busy firefighting. I'm busy just dealing with all these execution issues. And I just don't have time to work on the strategy piece.\" Sometimes we console ourselves by saying, \"Yeah. That's because we have all these things going on this month, but trust me, next month, we're going to have ample time and I'm going to just spend a whole week working on strategy.\" Well, the next month rolls around and it's the same thing, you've got other issues. The reason we procrastinate on these tasks are, one, because we know that they're L tasks, we know the impact they'll have, and we are a little scared. That's one. The second is they require dedicated attention. And again, we are afraid about whether we'll have anything interesting to say. That's the deep fear. Why many people procrastinate on strategy? Because deep down, they don't know if they can formulate a good strategy. So time becomes a convenient excuse for us where we say, \"Well, it's not me. It's just, I don't have time to work on it.\" And by the way, everything I say here, I have been that person. So I have been that person who's procrastinated on an L task, whether it's the strategy or whether it's writing the PRD for this really difficult feature,",
+            "timestamp": "00:41:43",
+            "score": 0.3821
+          },
+          {
+            "episode": "Gokul Rajaram on designing your product development process, when and how to hire your first PM, a playbook for hiring leaders, getting ahead in your career, how to get started angel investing, and more",
+            "guest": "Gokul Rajaram",
+            "text": "51:00): Time boxing. Exactly what you said, Lenny, it's time boxing. Most of the time ironically is spent on DoorDash and... Not ironically. Logically is spent on DoorDash even though it may not appear it. So I spend on DoorDash and what I do is a small percent of my time, I basically... I keep looking at my calendar to see, am I spending more than I've worked, say 10 hours a day? Am I spending more than two to three hours, maximum three, ideally two hours a day on things that are needed to do my work? And three hours actually is a lot. If you think about half an hour meetings with people, that's six meetings you can do a day, out of 10. And I also do two hours each on both Saturday and Sunday so that I can do four meetings each. So if you think about it, six times five is 30, or four times five is 20, plus another four, plus 4... 28 meetings, that's a lot of meetings you can do with people, et cetera, et cetera. Yeah, so I think it's really time boxing and knowing... I think it is knowing what matters. Because if you find yourself doing the opposite, where 70% of time is investing, then you should actually become a full-time investor. 51:59): That's amazing. I don't know how you keep your brain capacity focused on so many things. Meeting with that many founders, even outside the time, is a lot of mental load.",
+            "timestamp": "00:51:00",
+            "score": 0.3669
+          },
+          {
+            "episode": "The art of product management | Shreyas Doshi (Stripe, Twitter, Google, Yahoo)",
+            "guest": "Shreyas Doshi",
+            "text": "52:09): So there's these three levels of product work. Do you have advice for, should I just default to one of these normally based on just as a PM, I should always be thinking about impact or is it more, just make sure you're aligned with your leader with your team? Is that the more important takeaway?",
+            "timestamp": "00:52:09",
+            "score": 0.356
+          },
+          {
+            "episode": "How to build your product strategy stack | Ravi Mehta (Tinder, Facebook, Tripadvisor,",
+            "guest": "Ravi Mehta",
+            "text": "54:33): Okay, final topic, product management competencies. So this is a post you wrote a while ago. It's the post I've shared most of your many writings online, and I'm going to pull up this image on my screen. So another plug to check it out on YouTube or Spotify. Can you talk about what this is and why it's important for PMs to think of their career in this view and in general just understand what the components of a great PM are?",
+            "timestamp": "00:54:33",
+            "score": 0.3535
+          }
+        ],
+        "artifacts": []
+      },
+      {
+        "id": "8fba6561-2da6-4a6c-9efc-4fe7d0d4a583",
+        "session_id": "dd8f9a31-8136-41e2-b74a-19639165c820",
+        "role": "user",
+        "content": "What is Kunal Shah's Delta 4 framework for products?",
+        "created_at": "2026-09-20T23:43:20.051082",
+        "sources": []
+      },
+      {
+        "id": "eccef68a-24a6-4570-a711-4a1d5d817dcb",
+        "session_id": "dd8f9a31-8136-41e2-b74a-19639165c820",
+        "role": "assistant",
+        "content": "GROQ API Error (HTTP 429): {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01kv6arfxdebtsw8pxpsv1kbg2` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Used 810, Requested 610. Please try again in 25.2s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limit_exceeded\"}}",
+        "created_at": "2026-09-20T23:43:20.051082",
+        "sources": [
+          {
+            "episode": "Kunal Shah on winning in India, second-order thinking, the philosophy of startups, and more",
+            "guest": "Kunal Shah",
+            "text": "09:21): So you're never going to buy a suit online. I can tell you that right now. 09:25): So I think it's a simple framework. 09:28): I believe that if many companies applied.. I know now many VCs in the US use this as part of the training program for analysts. 09:36): omebody in Sequoia mentioned this to me that they have this as part of the thing, but in India we are not still applying many of these things. 09:46): I think it's a simple framework to at least know. You can apply this to features, you can apply this to products, you can apply that to business. 09:55): And oftentimes this is a longer concept. 09:57): We can talk about it in many ways because it's derived out of some study around entropy and evolutionary biology, which is the root of how I discovered and thought about Delta 4, that “When does a species get disrupted ” or “what is entropy and why does low entropy require growth of high entropy?” 10:18): It's a day long podcast on its own. 10:19): So some other time. 10:21): Okay. 10:21): We'll save that for a future follow-up, just diving in on the psychology of Delta 4. Just to kind of summarize this, because I think it's such a powerful framework and I find it useful to convince founders why their product isn't taking off. 10:32): They may feel like this is better than. The classic example, is a better Excel. 10:36): Look, this is so much better than Excel. 10:38): It can do all these things. 10:39): You don't have to learn all these formulas.",
+            "timestamp": "00:09:21",
+            "score": 0.4742
+          },
+          {
+            "episode": "Kunal Shah on winning in India, second-order thinking, the philosophy of startups, and more",
+            "guest": "Kunal Shah",
+            "text": "07:46): And therefore all Delta 4 products will naturally have lower CAC or sometimes zero CAC because people, humans.. and think about it, Lenny, how you discovered Google, definitely not through an ad, definitely not through some performance marketing here and there. 07:57): Somebody showed you the demo and you were like, “Oh my God, this is crazy.” 08:01): And that's what I'm seeing right now, what's happening with everything on OpenAI and everything that is happening around LLM feels like magic and it's Delta 4 because the efficiency of doing things before and after is now showing that. 08:12): But failure is the real problem. 08:15): And making everything tech does not make things more efficient. 08:19): Let's take an example. 08:21): Buying a suit for yourself online versus offline, all tech, cool stuff, all the features built in. 08:30): What would you say the efficiency of buying a suit online is versus, let's say, buying a suit offline? 08:35): I've actually done that and it was a terrible fit. It did not fit at all. 08:39): And so it's efficient, but the end result was not, it's probably often not great. 08:45): So it's probably- 08:46): Overall efficiency score, what would you give? 08:48): Of buying a suit online? 08:50): Yeah, versus offline. 08:53): I'd probably give it five and five. 08:56): Offline is actually probably a better experience. 08:58): I give it a seven. 08:59): That's crazy because you've broken the principle, this is a tech product, but the efficiency is better offline. 09:06): And therefore when the delta is less than four, what you will discover is that it is reversible. 09:15): You will not see people bragging about it and you have zero tolerance for it.",
+            "timestamp": "00:07:46",
+            "score": 0.3992
+          },
+          {
+            "episode": "Kunal Shah on winning in India, second-order thinking, the philosophy of startups, and more",
+            "guest": "Kunal Shah",
+            "text": "29:11): So you will see that super apps, superstars, super companies all exist in low trust markets because the lack of trust creates concentration of trust, and therefore you will see one app can do 400 things. 29:24): For example, we have a company like Tata that can do salt to car to jewelry to anything and people will buy it because it's a Tata brand, because it comes from a low trust society trusting the brand and not being, “Oh, I'm going to prefer this new brand.” 29:42): The joy of trying new things is not so high in low trust nations. 29:47): Wow, I'm learning a lot here. 29:48): I didn't know all this. 29:49): So essentially the brand is even more, exponentially more important in Indian markets. 29:55): It's funny, but the oldest brand in the world is a brand called Chyavanprash. 30:00): It's a guy named Chavan who built a “prash” which is a sort of paste that you can have for good health, and it was built in India many, many, many, many centuries ago. 30:14): And lots of Indian businesses still have the name of the person behind it. 30:19): Even the US is like that. 30:21): JP Morgan, all these guys are not some fancy name. 30:23): They're the names of people. 30:25): And therefore in India, trust still comes from a lot of names of people who had a lot of trust behind them and reputation behind them. 30:33): I want to zoom out a little bit before we go in a different direction. 30:36): What do you see as either the most pressing challenges in India right now for tech and/or the biggest opportunity for Indian startups?",
+            "timestamp": "00:29:11",
+            "score": 0.3621
+          },
+          {
+            "episode": "How to build your product strategy stack | Ravi Mehta (Tinder, Facebook, Tripadvisor,",
+            "guest": "Ravi Mehta",
+            "text": "00:46): Welcome to Lenny's Podcast. I'm Lenny and my goal here is to help you get better at the craft of building and growing products. I interview world-class product leaders and growth experts to learn from their hard one experiences building and scaling today's most successful companies. Today my guest is Ravi Mehta. Ravi was chief product officer at Tinder, the product director at Facebook, VP of product at Tripadvisor, and now he's co-founder and CEO of a company called Outpace that he shares a bit about. Ravi is one of my favorite writers and sharers of product wisdom and he also helped create and teaches the Reforge programs on product leadership and product strategy, which is where we spend most of our time. We talk about how to get better at crafting product strategy, how to develop your skills as a product leader, and a bit about the differences between being a PM at a large company versus building your own company. Like I say in the intro, I feel like more people need to know about Ravi and I'm excited to help you with that. With that, I bring you Ravi Mehta after a short word from our wonderful sponsors. This episode is brought to you by Merge. Every product manager knows the pain of slowing product velocity when developers struggle to build and maintain integrations with other platforms. Merge's unified API can remove this blocker from your roadmap. With one API, your team can add over 150 HR, ATS, accounting, ticketing and CRM integrations right into your product. You can get your first integration into production in a matter of days and save countless weeks building custom integrations, letting you get back to building your core product. Merge's integrations speed up the product development process for companies",
+            "timestamp": "00:00:46",
+            "score": 0.3562
+          }
+        ],
+        "artifacts": []
+      },
+      {
+        "id": "e71a18eb-5441-4fda-bffb-de15be6b8d9c",
+        "session_id": "dd8f9a31-8136-41e2-b74a-19639165c820",
+        "role": "user",
+        "content": "What is Kunal Shah's Delta 4 framework for products?",
+        "created_at": "2026-09-20T23:45:43.598838",
+        "sources": []
+      },
+      {
+        "id": "91f6b37e-e66e-4935-b3d6-6ec589a75ff9",
+        "session_id": "dd8f9a31-8136-41e2-b74a-19639165c820",
+        "role": "assistant",
+        "content": "**Delta 4 Framework for Products**\n\nKunal Shah's Delta 4 framework for products is a simple yet powerful concept that can be applied to features, products, and businesses. The framework is derived from the study of entropy and evolutionary biology, which explores the idea of \"When does a species get disrupted\" and \"what is entropy and why does low entropy require growth of high entropy?\"\n\n**Key Principles:**\n\n*   **Efficiency vs. Effectiveness**: Delta 4 products will naturally have lower Customer Acquisition Costs (CAC) or sometimes zero CAC because people, humans, and think about it, Lenny, how you discovered Google, definitely not through an ad, definitely not through some performance marketing here and there.\n*   **Reversibility**: When the delta is less than four, what you will discover is that it is reversible. You will not see people bragging about it and you have zero tolerance for it.\n*   **Low Trust Markets**: Super apps, superstars, super companies all exist in low trust markets because the lack of trust creates concentration of trust, and therefore you will see one app can do 400 things.\n\n**Actionable Takeaway:**\n\nWhen building a product, consider applying the Delta 4 framework to identify and prioritize \"L tasks\" – the high-impact activities that you are implicitly avoiding due to fear or the need for dedicated focus. By understanding the principles of Delta 4, you can create products that are more efficient, effective, and reversible, ultimately leading to better user experiences and business outcomes.",
+        "created_at": "2026-09-20T23:45:43.598838",
+        "sources": [
+          {
+            "episode": "Kunal Shah on winning in India, second-order thinking, the philosophy of startups, and more",
+            "guest": "Kunal Shah",
+            "text": "09:21): So you're never going to buy a suit online. I can tell you that right now. 09:25): So I think it's a simple framework. 09:28): I believe that if many companies applied.. I know now many VCs in the US use this as part of the training program for analysts. 09:36): omebody in Sequoia mentioned this to me that they have this as part of the thing, but in India we are not still applying many of these things. 09:46): I think it's a simple framework to at least know. You can apply this to features, you can apply this to products, you can apply that to business. 09:55): And oftentimes this is a longer concept. 09:57): We can talk about it in many ways because it's derived out of some study around entropy and evolutionary biology, which is the root of how I discovered and thought about Delta 4, that “When does a species get disrupted ” or “what is entropy and why does low entropy require growth of high entropy?” 10:18): It's a day long podcast on its own. 10:19): So some other time. 10:21): Okay. 10:21): We'll save that for a future follow-up, just diving in on the psychology of Delta 4. Just to kind of summarize this, because I think it's such a powerful framework and I find it useful to convince founders why their product isn't taking off. 10:32): They may feel like this is better than. The classic example, is a better Excel. 10:36): Look, this is so much better than Excel. 10:38): It can do all these things. 10:39): You don't have to learn all these formulas.",
+            "timestamp": "00:09:21",
+            "score": 0.4742
+          },
+          {
+            "episode": "Kunal Shah on winning in India, second-order thinking, the philosophy of startups, and more",
+            "guest": "Kunal Shah",
+            "text": "07:46): And therefore all Delta 4 products will naturally have lower CAC or sometimes zero CAC because people, humans.. and think about it, Lenny, how you discovered Google, definitely not through an ad, definitely not through some performance marketing here and there. 07:57): Somebody showed you the demo and you were like, “Oh my God, this is crazy.” 08:01): And that's what I'm seeing right now, what's happening with everything on OpenAI and everything that is happening around LLM feels like magic and it's Delta 4 because the efficiency of doing things before and after is now showing that. 08:12): But failure is the real problem. 08:15): And making everything tech does not make things more efficient. 08:19): Let's take an example. 08:21): Buying a suit for yourself online versus offline, all tech, cool stuff, all the features built in. 08:30): What would you say the efficiency of buying a suit online is versus, let's say, buying a suit offline? 08:35): I've actually done that and it was a terrible fit. It did not fit at all. 08:39): And so it's efficient, but the end result was not, it's probably often not great. 08:45): So it's probably- 08:46): Overall efficiency score, what would you give? 08:48): Of buying a suit online? 08:50): Yeah, versus offline. 08:53): I'd probably give it five and five. 08:56): Offline is actually probably a better experience. 08:58): I give it a seven. 08:59): That's crazy because you've broken the principle, this is a tech product, but the efficiency is better offline. 09:06): And therefore when the delta is less than four, what you will discover is that it is reversible. 09:15): You will not see people bragging about it and you have zero tolerance for it.",
+            "timestamp": "00:07:46",
+            "score": 0.3992
+          },
+          {
+            "episode": "Kunal Shah on winning in India, second-order thinking, the philosophy of startups, and more",
+            "guest": "Kunal Shah",
+            "text": "29:11): So you will see that super apps, superstars, super companies all exist in low trust markets because the lack of trust creates concentration of trust, and therefore you will see one app can do 400 things. 29:24): For example, we have a company like Tata that can do salt to car to jewelry to anything and people will buy it because it's a Tata brand, because it comes from a low trust society trusting the brand and not being, “Oh, I'm going to prefer this new brand.” 29:42): The joy of trying new things is not so high in low trust nations. 29:47): Wow, I'm learning a lot here. 29:48): I didn't know all this. 29:49): So essentially the brand is even more, exponentially more important in Indian markets. 29:55): It's funny, but the oldest brand in the world is a brand called Chyavanprash. 30:00): It's a guy named Chavan who built a “prash” which is a sort of paste that you can have for good health, and it was built in India many, many, many, many centuries ago. 30:14): And lots of Indian businesses still have the name of the person behind it. 30:19): Even the US is like that. 30:21): JP Morgan, all these guys are not some fancy name. 30:23): They're the names of people. 30:25): And therefore in India, trust still comes from a lot of names of people who had a lot of trust behind them and reputation behind them. 30:33): I want to zoom out a little bit before we go in a different direction. 30:36): What do you see as either the most pressing challenges in India right now for tech and/or the biggest opportunity for Indian startups?",
+            "timestamp": "00:29:11",
+            "score": 0.3621
+          },
+          {
+            "episode": "How to build your product strategy stack | Ravi Mehta (Tinder, Facebook, Tripadvisor,",
+            "guest": "Ravi Mehta",
+            "text": "00:46): Welcome to Lenny's Podcast. I'm Lenny and my goal here is to help you get better at the craft of building and growing products. I interview world-class product leaders and growth experts to learn from their hard one experiences building and scaling today's most successful companies. Today my guest is Ravi Mehta. Ravi was chief product officer at Tinder, the product director at Facebook, VP of product at Tripadvisor, and now he's co-founder and CEO of a company called Outpace that he shares a bit about. Ravi is one of my favorite writers and sharers of product wisdom and he also helped create and teaches the Reforge programs on product leadership and product strategy, which is where we spend most of our time. We talk about how to get better at crafting product strategy, how to develop your skills as a product leader, and a bit about the differences between being a PM at a large company versus building your own company. Like I say in the intro, I feel like more people need to know about Ravi and I'm excited to help you with that. With that, I bring you Ravi Mehta after a short word from our wonderful sponsors. This episode is brought to you by Merge. Every product manager knows the pain of slowing product velocity when developers struggle to build and maintain integrations with other platforms. Merge's unified API can remove this blocker from your roadmap. With one API, your team can add over 150 HR, ATS, accounting, ticketing and CRM integrations right into your product. You can get your first integration into production in a matter of days and save countless weeks building custom integrations, letting you get back to building your core product. Merge's integrations speed up the product development process for companies",
+            "timestamp": "00:00:46",
+            "score": 0.3562
+          }
+        ],
+        "artifacts": []
+      },
+      {
+        "id": "15cf0ca7-85c6-4bf9-beae-82269ebbc84b",
+        "session_id": "dd8f9a31-8136-41e2-b74a-19639165c820",
+        "role": "user",
+        "content": "/ship Delta 4 framework for product",
+        "created_at": "2026-09-20T23:50:25.149027",
+        "sources": []
+      },
+      {
+        "id": "7811dbc7-ca8f-4711-9f14-3436baaa6267",
+        "session_id": "dd8f9a31-8136-41e2-b74a-19639165c820",
+        "role": "assistant",
+        "content": "Artifact is created.",
+        "created_at": "2026-09-20T23:50:25.149027",
+        "sources": [
+          {
+            "episode": "Kunal Shah on winning in India, second-order thinking, the philosophy of startups, and more",
+            "guest": "Kunal Shah",
+            "text": "09:21): So you're never going to buy a suit online. I can tell you that right now. 09:25): So I think it's a simple framework. 09:28): I believe that if many companies applied.. I know now many VCs in the US use this as part of the training program for analysts. 09:36): omebody in Sequoia mentioned this to me that they have this as part of the thing, but in India we are not still applying many of these things. 09:46): I think it's a simple framework to at least know. You can apply this to features, you can apply this to products, you can apply that to business. 09:55): And oftentimes this is a longer concept. 09:57): We can talk about it in many ways because it's derived out of some study around entropy and evolutionary biology, which is the root of how I discovered and thought about Delta 4, that “When does a species get disrupted ” or “what is entropy and why does low entropy require growth of high entropy?” 10:18): It's a day long podcast on its own. 10:19): So some other time. 10:21): Okay. 10:21): We'll save that for a future follow-up, just diving in on the psychology of Delta 4. Just to kind of summarize this, because I think it's such a powerful framework and I find it useful to convince founders why their product isn't taking off. 10:32): They may feel like this is better than. The classic example, is a better Excel. 10:36): Look, this is so much better than Excel. 10:38): It can do all these things. 10:39): You don't have to learn all these formulas.",
+            "timestamp": "00:09:21",
+            "score": 0.5105
+          },
+          {
+            "episode": "Kunal Shah on winning in India, second-order thinking, the philosophy of startups, and more",
+            "guest": "Kunal Shah",
+            "text": "07:46): And therefore all Delta 4 products will naturally have lower CAC or sometimes zero CAC because people, humans.. and think about it, Lenny, how you discovered Google, definitely not through an ad, definitely not through some performance marketing here and there. 07:57): Somebody showed you the demo and you were like, “Oh my God, this is crazy.” 08:01): And that's what I'm seeing right now, what's happening with everything on OpenAI and everything that is happening around LLM feels like magic and it's Delta 4 because the efficiency of doing things before and after is now showing that. 08:12): But failure is the real problem. 08:15): And making everything tech does not make things more efficient. 08:19): Let's take an example. 08:21): Buying a suit for yourself online versus offline, all tech, cool stuff, all the features built in. 08:30): What would you say the efficiency of buying a suit online is versus, let's say, buying a suit offline? 08:35): I've actually done that and it was a terrible fit. It did not fit at all. 08:39): And so it's efficient, but the end result was not, it's probably often not great. 08:45): So it's probably- 08:46): Overall efficiency score, what would you give? 08:48): Of buying a suit online? 08:50): Yeah, versus offline. 08:53): I'd probably give it five and five. 08:56): Offline is actually probably a better experience. 08:58): I give it a seven. 08:59): That's crazy because you've broken the principle, this is a tech product, but the efficiency is better offline. 09:06): And therefore when the delta is less than four, what you will discover is that it is reversible. 09:15): You will not see people bragging about it and you have zero tolerance for it.",
+            "timestamp": "00:07:46",
+            "score": 0.4424
+          },
+          {
+            "episode": "Brian Chesky’s new playbook",
+            "guest": "Brian Chesky",
+            "text": "spending your days basically putting out fires. A better way is possible. Introducing Jira Product Discovery, the new prioritization and roadmapping tool built for product teams by Atlassian. With Jira Product Discovery, you can gather all your product ideas and insights in one place and prioritize confidently finally, replacing those endless spreadsheets. Create and share custom product roadmaps with any stakeholder in seconds and it's all built on Jira where your engineering team's already working so true collaboration is finally possible. Great products are built by great teams, not just engineers. Sales, support, leadership, even Greg from finance. Anyone that you want can contribute ideas, feedback, and insights in Jira Product Discovery for free. No catch. And it's only $10 a month for you. Say goodbye to your spreadsheets and the never ending alignment efforts. The old way of doing product management is over. Rediscover what's possible with Jira Product Discovery. Try for free at atlassian.com/lenny. That's atlassian.com/lenny. Brian, thank you so much for being here. Welcome to the podcast.",
+            "timestamp": "00:01:01",
+            "score": 0.4116
+          },
+          {
+            "episode": "10 growth tactics that never work | Elena Verna (Amplitude, Miro, Dropbox,",
+            "guest": "Elena Verna",
+            "text": "is a great starting point for you. Here are the things that I think will work very well for your company and for your product and take these elements. The rest you need to go and do themselves, so at least that way there's a starting point.\" And this is why I also started doing a lot more of my own, almost, prototypes, like skeletons of here's the elements that you should do in these flows. I have one for pricing page, I have one for homepage, but you need to put in your own [inaudible 00:32:36] into it, in order for it to actually work.",
+            "timestamp": "00:30:41",
+            "score": 0.371
+          },
+          {
+            "episode": "Why most product managers are unprepared for the demands of a real startup",
+            "guest": "Casey Winters",
+            "text": "that I naturally started working on optimizing those channels directly. And then I started going to do user research and understand how the product could be better so that we could convert leads better. And it was at that point that I got the feedback from the company that I was this weird marketing and product hybrid, and they didn't really know what to do with that, because those were two totally separate departments. It wasn't until I got to GrubHub and I was the 15th employee and they were like, dude, we don't care. (05:01): As long as you grow how many people order food, I don't care if you work on marketing, I don't care if you change the product, do whatever we'll have results. And we now call these roles growth, but that term didn't exist at the time, so I basically worked on growing the demand side of that business from Series A to IPO. We ended up creating a product management function out of my team there, but for the first four years we didn't have product titles either. That was kind of a newer idea, also. It wasn't until I went to Pinterest that I was actually formally labeled a product person. (05:37): I ended up leading the growth product team there. We basically had to rebuild the growth model of the business to reignite growth, so I was there from 40 million MAU to 150 million MAU. And it was around that time that I started doing some more advising with Airbnb on the demand side, with Pocket. And then I went to a VC named Greylock Partners and worked with their companies on growth and scaling. And then I just independently started working as a full-time advisor with companies like Eventbrite, Tinder,",
+            "timestamp": "00:00:00",
+            "score": 0.3572
+          }
+        ],
+        "artifacts": [
+          {
+            "id": "0e230f64-b10a-454f-a4fd-0bba3413ca1d",
+            "message_id": "7811dbc7-ca8f-4711-9f14-3436baaa6267",
+            "artifact_type": "markdown",
+            "title": "Ship 30 Essay: The Delta 4 Framework for Product Success",
+            "content": "Delta 4: The Hidden Framework for Product Success\n=====================================================\n\nIn the world of startups, growth is often touted as the ultimate goal. However, what if I told you that the key to sustainable growth lies not in the product itself, but in the way it's designed? Enter the Delta 4 framework, a simple yet powerful approach to product development that's been gaining traction among top product managers and founders.\n\n**The Paradox of Efficiency**\n-----------------------------\n\nConsider the humble suit. Buying one online versus offline, which is more efficient? According to Kunal Shah, founder of Zomato, the answer is offline. Despite the convenience of online shopping, the end result is often a poor fit, resulting in a lower overall efficiency score. This paradox highlights the importance of considering the entire customer journey, not just the tech itself.\n\n**The Delta 4 Framework**\n-------------------------\n\nDelta 4 is a framework developed by Kunal Shah, based on his research in entropy and evolutionary biology. It's a simple yet powerful approach to understanding product development. The framework consists of four key components:\n\n*   **Delta**: The difference between the current state and the desired state.\n*   **4**: The number of stages required to achieve the desired state.\n*   **Delta 4**: The efficiency of the product or service, measured by the number of stages required to achieve the desired state.\n\n**The Power of Delta 4**\n-------------------------\n\nDelta 4 has several key implications for product development:\n\n*   **Reversibility**: When the delta is less than 4, the product or service is reversible, meaning that it can be improved or changed without significant consequences.\n*   **Efficiency**: Delta 4 measures the efficiency of the product or service, taking into account the entire customer journey.\n*   **Second-Order Thinking**: Delta 4 encourages second-order thinking, considering the entire ecosystem and not just the product itself.\n\n**Real-World Applications**\n---------------------------\n\nDelta 4 has been applied in various industries, including:\n\n*   **E-commerce**: Zomato's own product development process is based on the Delta 4 framework.\n*   **Marketing**: Elena Verna, founder of Amplitude, uses Delta 4 to optimize marketing channels.\n*   **Product Management**: Casey Winters, former product manager at GrubHub and Pinterest, applied Delta 4 to drive growth and product development.\n\n**Implementation Framework**\n-----------------------------\n\nSo, how can you apply the Delta 4 framework to your own product development process? Here's a step-by-step guide:\n\n1.  **Define the Delta**: Identify the difference between the current state and the desired state.\n2.  **Determine the Number of Stages**: Determine the number of stages required to achieve the desired state.\n3.  **Measure Efficiency**: Measure the efficiency of the product or service using the Delta 4 formula.\n4.  **Apply Second-Order Thinking**: Consider the entire ecosystem and not just the product itself.\n\n**Conclusion**\n--------------\n\nThe Delta 4 framework offers a powerful approach to product development, focusing on the entire customer journey and not just the tech itself. By applying this framework, product managers and founders can drive sustainable growth and improve the efficiency of their products and services.\n\nTry the Delta 4 framework this Monday morning and watch your product development process transform.",
+            "created_at": "2026-09-20T23:50:25.149027"
+          }
+        ]
+      },
+      {
+        "id": "071fe7bf-152f-4d97-9b93-c0d6a2a1db35",
+        "session_id": "dd8f9a31-8136-41e2-b74a-19639165c820",
+        "role": "user",
+        "content": "What is Kunal Shah's Delta 4 framework for products?",
+        "created_at": "2026-09-20T23:52:58.027950",
+        "sources": []
+      },
+      {
+        "id": "35447c5c-e169-4fa7-ba22-ab855400e9d3",
+        "session_id": "dd8f9a31-8136-41e2-b74a-19639165c820",
+        "role": "assistant",
+        "content": "**Executive Answer**\nKunal Shah’s Delta 4 framework is a heuristic for evaluating product value by measuring the efficiency gap between a new solution and the status quo. A product achieves \"Delta 4\" status when it is at least four times more efficient than the existing alternative, a threshold that typically triggers organic adoption, low customer acquisition costs, and irreversible user behavior change.\n\n**Key Mechanisms of the Delta 4 Framework**\n\n*   **Efficiency as the Core Metric**: The framework is not about feature richness or \"tech for tech's sake,\" but strictly about the ratio of efficiency gained versus the previous method. Shah emphasizes that adding technology does not automatically increase efficiency; for example, buying a suit online might be technologically advanced but less efficient (and less satisfying) than buying one offline if the fit is poor. *Source: Kunal Shah on winning in India, second-order thinking, the philosophy of startups, and more*\n*   **The \"Delta 4\" Threshold**: When the efficiency improvement is less than 4x, the change is often \"reversible.\" Users may try the new product but will not brag about it, have low tolerance for friction, and are likely to revert to the old way of doing things. When the delta is 4x or higher, the product feels like \"magic\" (similar to early Google or current LLMs), leading to high retention and advocacy. *Source: Kunal Shah on winning in India, second-order thinking, the philosophy of startups, and more*\n*   **Organic Growth and Zero CAC**: Products that achieve Delta 4 status naturally command lower or zero Customer Acquisition Costs (CAC). Because the efficiency gain is so profound, users discover the product through word-of-mouth and demos rather than paid advertising. Shah notes that he discovered Google through a demo, not an ad, because the efficiency jump was undeniable. *Source: Kunal Shah on winning in India, second-order thinking, the philosophy of startups, and more*\n*   **Applicability Across Levels**: This framework is versatile and can be applied to individual features, entire products, or whole business models. It is rooted in concepts of entropy and evolutionary biology, specifically addressing when a \"species\" (or product) gets disrupted by a more efficient alternative. *Source: Kunal Shah on winning in India, second-order thinking, the philosophy of startups, and more*\n\n**Actionable Takeaway**\nWhen evaluating a new feature or product, do not ask \"Is this better?\" but rather \"Is this at least 4x more efficient than the current alternative?\" If the answer is no, expect high churn and high CAC. If the answer is yes, prioritize removing friction to let the efficiency gap drive organic adoption.",
+        "created_at": "2026-09-20T23:52:58.027950",
+        "sources": [
+          {
+            "episode": "Kunal Shah on winning in India, second-order thinking, the philosophy of startups, and more",
+            "guest": "Kunal Shah",
+            "text": "09:21): So you're never going to buy a suit online. I can tell you that right now. 09:25): So I think it's a simple framework. 09:28): I believe that if many companies applied.. I know now many VCs in the US use this as part of the training program for analysts. 09:36): omebody in Sequoia mentioned this to me that they have this as part of the thing, but in India we are not still applying many of these things. 09:46): I think it's a simple framework to at least know. You can apply this to features, you can apply this to products, you can apply that to business. 09:55): And oftentimes this is a longer concept. 09:57): We can talk about it in many ways because it's derived out of some study around entropy and evolutionary biology, which is the root of how I discovered and thought about Delta 4, that “When does a species get disrupted ” or “what is entropy and why does low entropy require growth of high entropy?” 10:18): It's a day long podcast on its own. 10:19): So some other time. 10:21): Okay. 10:21): We'll save that for a future follow-up, just diving in on the psychology of Delta 4. Just to kind of summarize this, because I think it's such a powerful framework and I find it useful to convince founders why their product isn't taking off. 10:32): They may feel like this is better than. The classic example, is a better Excel. 10:36): Look, this is so much better than Excel. 10:38): It can do all these things. 10:39): You don't have to learn all these formulas.",
+            "timestamp": "00:09:21",
+            "score": 0.4742
+          },
+          {
+            "episode": "Kunal Shah on winning in India, second-order thinking, the philosophy of startups, and more",
+            "guest": "Kunal Shah",
+            "text": "07:46): And therefore all Delta 4 products will naturally have lower CAC or sometimes zero CAC because people, humans.. and think about it, Lenny, how you discovered Google, definitely not through an ad, definitely not through some performance marketing here and there. 07:57): Somebody showed you the demo and you were like, “Oh my God, this is crazy.” 08:01): And that's what I'm seeing right now, what's happening with everything on OpenAI and everything that is happening around LLM feels like magic and it's Delta 4 because the efficiency of doing things before and after is now showing that. 08:12): But failure is the real problem. 08:15): And making everything tech does not make things more efficient. 08:19): Let's take an example. 08:21): Buying a suit for yourself online versus offline, all tech, cool stuff, all the features built in. 08:30): What would you say the efficiency of buying a suit online is versus, let's say, buying a suit offline? 08:35): I've actually done that and it was a terrible fit. It did not fit at all. 08:39): And so it's efficient, but the end result was not, it's probably often not great. 08:45): So it's probably- 08:46): Overall efficiency score, what would you give? 08:48): Of buying a suit online? 08:50): Yeah, versus offline. 08:53): I'd probably give it five and five. 08:56): Offline is actually probably a better experience. 08:58): I give it a seven. 08:59): That's crazy because you've broken the principle, this is a tech product, but the efficiency is better offline. 09:06): And therefore when the delta is less than four, what you will discover is that it is reversible. 09:15): You will not see people bragging about it and you have zero tolerance for it.",
+            "timestamp": "00:07:46",
+            "score": 0.3992
+          },
+          {
+            "episode": "Kunal Shah on winning in India, second-order thinking, the philosophy of startups, and more",
+            "guest": "Kunal Shah",
+            "text": "29:11): So you will see that super apps, superstars, super companies all exist in low trust markets because the lack of trust creates concentration of trust, and therefore you will see one app can do 400 things. 29:24): For example, we have a company like Tata that can do salt to car to jewelry to anything and people will buy it because it's a Tata brand, because it comes from a low trust society trusting the brand and not being, “Oh, I'm going to prefer this new brand.” 29:42): The joy of trying new things is not so high in low trust nations. 29:47): Wow, I'm learning a lot here. 29:48): I didn't know all this. 29:49): So essentially the brand is even more, exponentially more important in Indian markets. 29:55): It's funny, but the oldest brand in the world is a brand called Chyavanprash. 30:00): It's a guy named Chavan who built a “prash” which is a sort of paste that you can have for good health, and it was built in India many, many, many, many centuries ago. 30:14): And lots of Indian businesses still have the name of the person behind it. 30:19): Even the US is like that. 30:21): JP Morgan, all these guys are not some fancy name. 30:23): They're the names of people. 30:25): And therefore in India, trust still comes from a lot of names of people who had a lot of trust behind them and reputation behind them. 30:33): I want to zoom out a little bit before we go in a different direction. 30:36): What do you see as either the most pressing challenges in India right now for tech and/or the biggest opportunity for Indian startups?",
+            "timestamp": "00:29:11",
+            "score": 0.3621
+          },
+          {
+            "episode": "How to build your product strategy stack | Ravi Mehta (Tinder, Facebook, Tripadvisor,",
+            "guest": "Ravi Mehta",
+            "text": "00:46): Welcome to Lenny's Podcast. I'm Lenny and my goal here is to help you get better at the craft of building and growing products. I interview world-class product leaders and growth experts to learn from their hard one experiences building and scaling today's most successful companies. Today my guest is Ravi Mehta. Ravi was chief product officer at Tinder, the product director at Facebook, VP of product at Tripadvisor, and now he's co-founder and CEO of a company called Outpace that he shares a bit about. Ravi is one of my favorite writers and sharers of product wisdom and he also helped create and teaches the Reforge programs on product leadership and product strategy, which is where we spend most of our time. We talk about how to get better at crafting product strategy, how to develop your skills as a product leader, and a bit about the differences between being a PM at a large company versus building your own company. Like I say in the intro, I feel like more people need to know about Ravi and I'm excited to help you with that. With that, I bring you Ravi Mehta after a short word from our wonderful sponsors. This episode is brought to you by Merge. Every product manager knows the pain of slowing product velocity when developers struggle to build and maintain integrations with other platforms. Merge's unified API can remove this blocker from your roadmap. With one API, your team can add over 150 HR, ATS, accounting, ticketing and CRM integrations right into your product. You can get your first integration into production in a matter of days and save countless weeks building custom integrations, letting you get back to building your core product. Merge's integrations speed up the product development process for companies",
+            "timestamp": "00:00:46",
+            "score": 0.3562
+          }
+        ],
+        "artifacts": []
+      }
+    ]
+  },
+  "352703ff-0056-42c5-89ec-9299aa72467d": {
+    "id": "352703ff-0056-42c5-89ec-9299aa72467d",
+    "title": "What is Kunal Shah's Delta 4 framework...",
+    "created_at": "2026-09-20T23:43:09.728263",
+    "updated_at": "2026-09-20T23:43:10.580121",
+    "messages": [
+      {
+        "id": "b4cbe6ee-ea23-4143-a78e-cc3fbd9c1f05",
+        "session_id": "352703ff-0056-42c5-89ec-9299aa72467d",
+        "role": "user",
+        "content": "What is Kunal Shah's Delta 4 framework for products?",
+        "created_at": "2026-09-20T23:43:09.728263",
+        "sources": []
+      },
+      {
+        "id": "19b8b6f7-a5c0-4b11-a315-8d3cfdb64e6d",
+        "session_id": "352703ff-0056-42c5-89ec-9299aa72467d",
+        "role": "assistant",
+        "content": "Kunal Shah’s Delta 4 framework is a simple heuristic used to evaluate whether a product, feature, or business model is truly superior to the status quo by measuring the efficiency gap between the new solution and the existing alternative. A product is considered \"Delta 4\" if it is at least four times more efficient than the current method, creating a shift so significant that users perceive it as \"magic\" rather than just a tech improvement. This framework is rooted in concepts from entropy and evolutionary biology, helping founders understand why certain innovations disrupt markets while others fail to gain traction.\n\n### Key Mechanisms of the Delta 4 Framework\n\n*   **Efficiency Threshold**: The core metric is the ratio of efficiency between the new product and the old way of doing things. If the new solution is not at least 4x more efficient, it is unlikely to succeed. As Kunal notes, \"when the delta is less than four, what you will discover is that it is reversible,\" meaning users will not adopt it permanently or brag about it. *Source: Kunal Shah on winning in India, second-order thinking, the philosophy of startups, and more*\n*   **The \"Magic\" Perception**: True Delta 4 products feel like magic because the efficiency gain is so profound that it changes user behavior fundamentally. Kunal cites OpenAI and LLMs as current examples where the efficiency of doing things before and after the technology feels like magic, driving organic adoption. *Source: Kunal Shah on winning in India, second-order thinking, the philosophy of startups, and more*\n*   **Zero or Low CAC**: Because the value proposition is so clear and compelling, Delta 4 products often achieve zero Customer Acquisition Cost (CAC). Users discover these tools organically through word-of-mouth or demos rather than paid advertising. Kunal uses Google as a historical example, noting that most people discovered it through a demo or recommendation, not an ad. *Source: Kunal Shah on winning in India, second-order thinking, the philosophy of startups, and more*\n*   **Counter-Intuitive Efficiency**: Technology does not automatically equate to higher efficiency. Kunal provides the example of buying a suit online versus offline; despite the \"tech\" features, the offline experience was rated higher in overall efficiency (7/10 vs. 5/10) because the end result (fit) was better. This illustrates that if the delta is not positive and significant, the tech product will fail. *Source: Kunal Shah on winning in India, second-order thinking, the philosophy of startups, and more*\n*   **Applicability**: The framework is versatile and can be applied to individual features, entire products, or whole business models. It is currently used by some US VCs, such as Sequoia, in their analyst training programs to evaluate startup potential. *Source: Kunal Shah on winning in India, second-order thinking, the philosophy of startups, and more*\n\n### Actionable Takeaway for Product Leaders\n\nWhen evaluating your product roadmap, ask if your solution is at least 4x more efficient than the current alternative. If the efficiency gain is marginal, you are building a \"reversible\" product that users will likely abandon. Focus on identifying problems where the current solution is so inefficient that a 4x improvement feels like magic, as this is the only way to achieve organic growth and zero CAC.",
+        "created_at": "2026-09-20T23:43:09.728263",
+        "sources": [
+          {
+            "episode": "Kunal Shah on winning in India, second-order thinking, the philosophy of startups, and more",
+            "guest": "Kunal Shah",
+            "text": "09:21): So you're never going to buy a suit online. I can tell you that right now. 09:25): So I think it's a simple framework. 09:28): I believe that if many companies applied.. I know now many VCs in the US use this as part of the training program for analysts. 09:36): omebody in Sequoia mentioned this to me that they have this as part of the thing, but in India we are not still applying many of these things. 09:46): I think it's a simple framework to at least know. You can apply this to features, you can apply this to products, you can apply that to business. 09:55): And oftentimes this is a longer concept. 09:57): We can talk about it in many ways because it's derived out of some study around entropy and evolutionary biology, which is the root of how I discovered and thought about Delta 4, that “When does a species get disrupted ” or “what is entropy and why does low entropy require growth of high entropy?” 10:18): It's a day long podcast on its own. 10:19): So some other time. 10:21): Okay. 10:21): We'll save that for a future follow-up, just diving in on the psychology of Delta 4. Just to kind of summarize this, because I think it's such a powerful framework and I find it useful to convince founders why their product isn't taking off. 10:32): They may feel like this is better than. The classic example, is a better Excel. 10:36): Look, this is so much better than Excel. 10:38): It can do all these things. 10:39): You don't have to learn all these formulas.",
+            "timestamp": "00:09:21",
+            "score": 0.4742
+          },
+          {
+            "episode": "Kunal Shah on winning in India, second-order thinking, the philosophy of startups, and more",
+            "guest": "Kunal Shah",
+            "text": "07:46): And therefore all Delta 4 products will naturally have lower CAC or sometimes zero CAC because people, humans.. and think about it, Lenny, how you discovered Google, definitely not through an ad, definitely not through some performance marketing here and there. 07:57): Somebody showed you the demo and you were like, “Oh my God, this is crazy.” 08:01): And that's what I'm seeing right now, what's happening with everything on OpenAI and everything that is happening around LLM feels like magic and it's Delta 4 because the efficiency of doing things before and after is now showing that. 08:12): But failure is the real problem. 08:15): And making everything tech does not make things more efficient. 08:19): Let's take an example. 08:21): Buying a suit for yourself online versus offline, all tech, cool stuff, all the features built in. 08:30): What would you say the efficiency of buying a suit online is versus, let's say, buying a suit offline? 08:35): I've actually done that and it was a terrible fit. It did not fit at all. 08:39): And so it's efficient, but the end result was not, it's probably often not great. 08:45): So it's probably- 08:46): Overall efficiency score, what would you give? 08:48): Of buying a suit online? 08:50): Yeah, versus offline. 08:53): I'd probably give it five and five. 08:56): Offline is actually probably a better experience. 08:58): I give it a seven. 08:59): That's crazy because you've broken the principle, this is a tech product, but the efficiency is better offline. 09:06): And therefore when the delta is less than four, what you will discover is that it is reversible. 09:15): You will not see people bragging about it and you have zero tolerance for it.",
+            "timestamp": "00:07:46",
+            "score": 0.3992
+          },
+          {
+            "episode": "Kunal Shah on winning in India, second-order thinking, the philosophy of startups, and more",
+            "guest": "Kunal Shah",
+            "text": "29:11): So you will see that super apps, superstars, super companies all exist in low trust markets because the lack of trust creates concentration of trust, and therefore you will see one app can do 400 things. 29:24): For example, we have a company like Tata that can do salt to car to jewelry to anything and people will buy it because it's a Tata brand, because it comes from a low trust society trusting the brand and not being, “Oh, I'm going to prefer this new brand.” 29:42): The joy of trying new things is not so high in low trust nations. 29:47): Wow, I'm learning a lot here. 29:48): I didn't know all this. 29:49): So essentially the brand is even more, exponentially more important in Indian markets. 29:55): It's funny, but the oldest brand in the world is a brand called Chyavanprash. 30:00): It's a guy named Chavan who built a “prash” which is a sort of paste that you can have for good health, and it was built in India many, many, many, many centuries ago. 30:14): And lots of Indian businesses still have the name of the person behind it. 30:19): Even the US is like that. 30:21): JP Morgan, all these guys are not some fancy name. 30:23): They're the names of people. 30:25): And therefore in India, trust still comes from a lot of names of people who had a lot of trust behind them and reputation behind them. 30:33): I want to zoom out a little bit before we go in a different direction. 30:36): What do you see as either the most pressing challenges in India right now for tech and/or the biggest opportunity for Indian startups?",
+            "timestamp": "00:29:11",
+            "score": 0.3621
+          },
+          {
+            "episode": "How to build your product strategy stack | Ravi Mehta (Tinder, Facebook, Tripadvisor,",
+            "guest": "Ravi Mehta",
+            "text": "00:46): Welcome to Lenny's Podcast. I'm Lenny and my goal here is to help you get better at the craft of building and growing products. I interview world-class product leaders and growth experts to learn from their hard one experiences building and scaling today's most successful companies. Today my guest is Ravi Mehta. Ravi was chief product officer at Tinder, the product director at Facebook, VP of product at Tripadvisor, and now he's co-founder and CEO of a company called Outpace that he shares a bit about. Ravi is one of my favorite writers and sharers of product wisdom and he also helped create and teaches the Reforge programs on product leadership and product strategy, which is where we spend most of our time. We talk about how to get better at crafting product strategy, how to develop your skills as a product leader, and a bit about the differences between being a PM at a large company versus building your own company. Like I say in the intro, I feel like more people need to know about Ravi and I'm excited to help you with that. With that, I bring you Ravi Mehta after a short word from our wonderful sponsors. This episode is brought to you by Merge. Every product manager knows the pain of slowing product velocity when developers struggle to build and maintain integrations with other platforms. Merge's unified API can remove this blocker from your roadmap. With one API, your team can add over 150 HR, ATS, accounting, ticketing and CRM integrations right into your product. You can get your first integration into production in a matter of days and save countless weeks building custom integrations, letting you get back to building your core product. Merge's integrations speed up the product development process for companies",
+            "timestamp": "00:00:46",
+            "score": 0.3562
+          }
+        ],
+        "artifacts": []
+      },
+      {
+        "id": "3e8b3a7a-9ce0-4130-8ae8-a80f655a83da",
+        "session_id": "352703ff-0056-42c5-89ec-9299aa72467d",
+        "role": "user",
+        "content": "What is Kunal Shah's Delta 4 framework for products?",
+        "created_at": "2026-09-20T23:43:10.580121",
+        "sources": []
+      },
+      {
+        "id": "38616547-f26c-46b7-a83b-5a6582ae6e6d",
+        "session_id": "352703ff-0056-42c5-89ec-9299aa72467d",
+        "role": "assistant",
+        "content": "GROQ API Error (HTTP 429): {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01kv6arfxdebtsw8pxpsv1kbg2` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Used 969, Requested 306. Please try again in 16.5s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limit_exceeded\"}}",
+        "created_at": "2026-09-20T23:43:10.580121",
+        "sources": [
+          {
+            "episode": "Kunal Shah on winning in India, second-order thinking, the philosophy of startups, and more",
+            "guest": "Kunal Shah",
+            "text": "09:21): So you're never going to buy a suit online. I can tell you that right now. 09:25): So I think it's a simple framework. 09:28): I believe that if many companies applied.. I know now many VCs in the US use this as part of the training program for analysts. 09:36): omebody in Sequoia mentioned this to me that they have this as part of the thing, but in India we are not still applying many of these things. 09:46): I think it's a simple framework to at least know. You can apply this to features, you can apply this to products, you can apply that to business. 09:55): And oftentimes this is a longer concept. 09:57): We can talk about it in many ways because it's derived out of some study around entropy and evolutionary biology, which is the root of how I discovered and thought about Delta 4, that “When does a species get disrupted ” or “what is entropy and why does low entropy require growth of high entropy?” 10:18): It's a day long podcast on its own. 10:19): So some other time. 10:21): Okay. 10:21): We'll save that for a future follow-up, just diving in on the psychology of Delta 4. Just to kind of summarize this, because I think it's such a powerful framework and I find it useful to convince founders why their product isn't taking off. 10:32): They may feel like this is better than. The classic example, is a better Excel. 10:36): Look, this is so much better than Excel. 10:38): It can do all these things. 10:39): You don't have to learn all these formulas.",
+            "timestamp": "00:09:21",
+            "score": 0.4742
+          },
+          {
+            "episode": "Kunal Shah on winning in India, second-order thinking, the philosophy of startups, and more",
+            "guest": "Kunal Shah",
+            "text": "07:46): And therefore all Delta 4 products will naturally have lower CAC or sometimes zero CAC because people, humans.. and think about it, Lenny, how you discovered Google, definitely not through an ad, definitely not through some performance marketing here and there. 07:57): Somebody showed you the demo and you were like, “Oh my God, this is crazy.” 08:01): And that's what I'm seeing right now, what's happening with everything on OpenAI and everything that is happening around LLM feels like magic and it's Delta 4 because the efficiency of doing things before and after is now showing that. 08:12): But failure is the real problem. 08:15): And making everything tech does not make things more efficient. 08:19): Let's take an example. 08:21): Buying a suit for yourself online versus offline, all tech, cool stuff, all the features built in. 08:30): What would you say the efficiency of buying a suit online is versus, let's say, buying a suit offline? 08:35): I've actually done that and it was a terrible fit. It did not fit at all. 08:39): And so it's efficient, but the end result was not, it's probably often not great. 08:45): So it's probably- 08:46): Overall efficiency score, what would you give? 08:48): Of buying a suit online? 08:50): Yeah, versus offline. 08:53): I'd probably give it five and five. 08:56): Offline is actually probably a better experience. 08:58): I give it a seven. 08:59): That's crazy because you've broken the principle, this is a tech product, but the efficiency is better offline. 09:06): And therefore when the delta is less than four, what you will discover is that it is reversible. 09:15): You will not see people bragging about it and you have zero tolerance for it.",
+            "timestamp": "00:07:46",
+            "score": 0.3992
+          },
+          {
+            "episode": "Kunal Shah on winning in India, second-order thinking, the philosophy of startups, and more",
+            "guest": "Kunal Shah",
+            "text": "29:11): So you will see that super apps, superstars, super companies all exist in low trust markets because the lack of trust creates concentration of trust, and therefore you will see one app can do 400 things. 29:24): For example, we have a company like Tata that can do salt to car to jewelry to anything and people will buy it because it's a Tata brand, because it comes from a low trust society trusting the brand and not being, “Oh, I'm going to prefer this new brand.” 29:42): The joy of trying new things is not so high in low trust nations. 29:47): Wow, I'm learning a lot here. 29:48): I didn't know all this. 29:49): So essentially the brand is even more, exponentially more important in Indian markets. 29:55): It's funny, but the oldest brand in the world is a brand called Chyavanprash. 30:00): It's a guy named Chavan who built a “prash” which is a sort of paste that you can have for good health, and it was built in India many, many, many, many centuries ago. 30:14): And lots of Indian businesses still have the name of the person behind it. 30:19): Even the US is like that. 30:21): JP Morgan, all these guys are not some fancy name. 30:23): They're the names of people. 30:25): And therefore in India, trust still comes from a lot of names of people who had a lot of trust behind them and reputation behind them. 30:33): I want to zoom out a little bit before we go in a different direction. 30:36): What do you see as either the most pressing challenges in India right now for tech and/or the biggest opportunity for Indian startups?",
+            "timestamp": "00:29:11",
+            "score": 0.3621
+          },
+          {
+            "episode": "How to build your product strategy stack | Ravi Mehta (Tinder, Facebook, Tripadvisor,",
+            "guest": "Ravi Mehta",
+            "text": "00:46): Welcome to Lenny's Podcast. I'm Lenny and my goal here is to help you get better at the craft of building and growing products. I interview world-class product leaders and growth experts to learn from their hard one experiences building and scaling today's most successful companies. Today my guest is Ravi Mehta. Ravi was chief product officer at Tinder, the product director at Facebook, VP of product at Tripadvisor, and now he's co-founder and CEO of a company called Outpace that he shares a bit about. Ravi is one of my favorite writers and sharers of product wisdom and he also helped create and teaches the Reforge programs on product leadership and product strategy, which is where we spend most of our time. We talk about how to get better at crafting product strategy, how to develop your skills as a product leader, and a bit about the differences between being a PM at a large company versus building your own company. Like I say in the intro, I feel like more people need to know about Ravi and I'm excited to help you with that. With that, I bring you Ravi Mehta after a short word from our wonderful sponsors. This episode is brought to you by Merge. Every product manager knows the pain of slowing product velocity when developers struggle to build and maintain integrations with other platforms. Merge's unified API can remove this blocker from your roadmap. With one API, your team can add over 150 HR, ATS, accounting, ticketing and CRM integrations right into your product. You can get your first integration into production in a matter of days and save countless weeks building custom integrations, letting you get back to building your core product. Merge's integrations speed up the product development process for companies",
+            "timestamp": "00:00:46",
+            "score": 0.3562
+          }
+        ],
+        "artifacts": []
+      }
+    ]
+  }
+}

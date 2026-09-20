@@ -214,7 +214,11 @@ export function useChatStream({ sessionId, onStreamFinish, onArtifactGenerated }
       } catch (err: any) {
         if (err.name !== "AbortError") {
           console.error("Stream connection error:", err);
-          onTokenUpdate(targetSessionId, `\n[Connection Error: ${err.message}]`, []);
+          const is404 = err.message?.includes("404");
+          const errorHelp = is404
+            ? `\n[Connection Error: Server returned HTTP 404. Check that your backend API is deployed and running, or verify your Backend URL in Model Settings.]`
+            : `\n[Connection Error: ${err.message}]`;
+          onTokenUpdate(targetSessionId, errorHelp, []);
         }
       } finally {
         setIsStreaming(false);

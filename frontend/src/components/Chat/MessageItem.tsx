@@ -200,9 +200,29 @@ export const MessageItem: React.FC<MessageItemProps> = ({
                     strong: ({ node, ...props }) => (
                       <strong className="font-bold text-obsidian-100" {...props} />
                     ),
-                    blockquote: ({ node, ...props }) => (
-                      <blockquote className="border-l-3 border-brand-teal pl-3.5 py-1.5 my-2.5 bg-obsidian-700/20 rounded-r text-obsidian-300 italic text-xs" {...props} />
-                    ),
+                    blockquote: ({ node, children, ...props }) => {
+                      const textString = String((node?.children?.[0] as any)?.children?.[0]?.value || "");
+                      const isWarning = 
+                        textString.includes("⚠️") || 
+                        textString.includes("Notice") || 
+                        textString.includes("Limit") || 
+                        textString.includes("Error") ||
+                        displayContent.includes("Rate Limit Reached") ||
+                        displayContent.includes("API Error") ||
+                        displayContent.includes("Authentication Error");
+                      return (
+                        <blockquote
+                          className={`border-l-3 pl-3.5 py-2 my-2.5 rounded-r text-xs leading-relaxed ${
+                            isWarning
+                              ? "border-amber-500/90 bg-amber-500/10 text-obsidian-200"
+                              : "border-brand-teal bg-obsidian-700/20 text-obsidian-300 italic"
+                          }`}
+                          {...props}
+                        >
+                          {children}
+                        </blockquote>
+                      );
+                    },
                     code: ({ node, ...props }) => (
                       <code className="bg-obsidian-700/40 text-brand-skyDark px-1.5 py-0.5 rounded font-mono text-xs border border-obsidian-600/50" {...props} />
                     ),
@@ -273,6 +293,9 @@ export const MessageItem: React.FC<MessageItemProps> = ({
          displayContent.length > 0 && 
          !displayContent.toLowerCase().includes("i do not have sufficient information in lenny's podcast archive") &&
          !displayContent.toLowerCase().includes("api error") &&
+         !displayContent.toLowerCase().includes("api notice") &&
+         !displayContent.toLowerCase().includes("rate limit") &&
+         !displayContent.toLowerCase().includes("authentication error") &&
          !displayContent.toLowerCase().includes("error connecting") &&
          !displayContent.toLowerCase().includes("error: ") &&
          message.sources && 

@@ -22,6 +22,7 @@ settings = get_settings()
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     """Lifecycle manager: initializes DB tables and vector indexes on startup."""
+    settings = get_settings()
     logger.info(f"Starting {settings.PROJECT_NAME} v{settings.VERSION}...")
     try:
         await init_db()

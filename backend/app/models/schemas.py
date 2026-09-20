@@ -54,7 +54,7 @@ class ChatRequest(BaseModel):
     session_id: str
     message: str = Field(..., min_length=1, max_length=10000)
     mode: Optional[Literal["default", "ship", "ship30"]] = "default"
-    provider: Optional[Literal["ollama", "claude", "openai", "groq", "gemini"]] = "ollama"
+    provider: Optional[Literal["ollama", "claude", "openai", "groq", "gemini"]] = "groq"
     api_key: Optional[str] = None
 
 class HealthResponse(BaseModel):
