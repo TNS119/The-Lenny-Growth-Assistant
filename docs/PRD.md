@@ -219,3 +219,33 @@ Closing Tag Received (</artifact>)
 * **Reliability & Resilience:** All exceptions (network timeouts, unpulled Ollama models, DB connection drops) return structured JSON errors with human-actionable troubleshooting advice and in-memory session persistence fallbacks.
 * **Security:** Strict iframe sandbox attributes (`allow-scripts` without `allow-same-origin`), DOMPurify HTML sanitization, zero committed credentials, and masked API key modal.
 * **Usability & Design:** Built following the Warm Editorial palette (`#F5EBE0` Cream, `#EDEDE9` Alabaster, `#D6CCC2` Bone, `#E3D5CA` Sand, `#1C1917` Charcoal) with high-contrast text, accessible color contrast (WCAG AA), responsive breakpoints, and full keyboard navigation.
+
+---
+
+## 5. Phased Implementation & Delivery Plan
+
+The system implementation was executed in four structured, iterative phases:
+
+### Phase 1: Core Grounded RAG & Vector Foundation
+* Curated and downloaded the 269-episode podcast transcript corpus from `ChatPRD/lennys-podcast-transcripts`.
+* Engineered recursive character chunking ($500\text{--}800$ tokens with $100$-token overlap) and 384-dimensional dense embeddings (`sentence-transformers/all-MiniLM-L6-v2`).
+* Configured PostgreSQL 16 + `pgvector` with HNSW indexing (`m=16, ef_construction=64`) alongside resilient in-memory session and cosine similarity fallbacks.
+* Enforced hard similarity threshold gating ($< 0.65$) for deterministic out-of-domain refusals.
+
+### Phase 2: Decoupled Multi-Model Provider Architecture
+* Designed the unified `BaseLLMProvider` abstract contract and dynamic provider factory.
+* Integrated local Ollama streaming client (`llama3.2:3b` / `llama3.1:8b`) for 100% free, private evaluation.
+* Implemented unified cloud adapters supporting free tier endpoints (Groq Qwen 3.8 27B / Llama 3.3 70B and Google Gemini 2.0 Flash) alongside frontier commercial APIs (Claude 3.5 Sonnet, GPT-4o).
+* Built the embedded DropUp model switcher with client-side API key masking (`gsk_••••••••••••3x9A`).
+
+### Phase 3: Ship 30 for 30 Engine & Sandboxed Artifact Workspace
+* Developed the Ship 30 for 30 essay compiler (`app/skills/ship30_writer.py`) enforcing ~1,250-word atomic essays, lines 1–3 curiosity hooks, and bold bullet anchors.
+* Created the side-by-side Claude-style split workspace with auto-opening right-hand drawer.
+* Hardened the HTML execution environment via `SandboxedIframe.tsx` (`sandbox="allow-scripts"` strictly omitting `allow-same-origin`, sanitized with `DOMPurify`) to ensure 0 XSS vulnerabilities.
+* Implemented multi-stage regex defense-in-depth sanitization preventing raw XML tag leakages in conversational streams.
+
+### Phase 4: Dynamic 269-Episode Catalog Discovery & JIT Ingestion
+* Built master catalog discovery (`backend/app/rag/discovery.py`) parsing 269 episodes from `episodes_manifest.json`.
+* Engineered Just-In-Time (JIT) transcript fetching from GitHub CDN with automated additive single-episode indexing.
+* Implemented dynamic initial-query session titling (`format_session_title`) and full-height collapsible sidebar navigation.
+* Executed end-to-end unit testing (`python -m unittest discover -s tests`) and TypeScript verification (`npx tsc --noEmit`).

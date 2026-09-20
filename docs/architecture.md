@@ -99,6 +99,18 @@ graph TD
   - `app/rag/retriever.py` & `embeddings.py`: SentenceTransformers (`all-MiniLM-L6-v2`, 384-dim) vector retrieval and local cosine similarity fallback.
   - `app/skills/ship30_writer.py` & `artifact_generator.py`: Prompt builder (~1,250-word essay) and multi-stage XML artifact cleaners.
 
+### 2.3 API Endpoint Catalog & Request Contracts
+
+| Method | Endpoint | Description | Request Payload / Params | Response Format |
+| :--- | :--- | :--- | :--- | :--- |
+| `POST` | `/api/chat` | Server-Sent Events (SSE) streaming chat endpoint. Orchestrates RAG, JIT fallback, and multi-model generation. | `ChatRequest` (session_id, message, mode, provider) + headers (`X-LLM-Key`) | `text/event-stream` (`status`, `sources`, `token`, `artifact`, `[DONE]`) |
+| `GET` | `/api/sessions` | Retrieves all active conversation threads with dynamic titles. | None | `List[SessionResponse]` (JSON) |
+| `POST` | `/api/sessions` | Creates a new conversation thread. | `SessionCreate` (title) | `SessionResponse` (JSON) |
+| `GET` | `/api/sessions/{id}` | Retrieves full message history and artifacts for a specific session. | Path: `session_id` (UUID) | `SessionDetailResponse` (JSON) |
+| `GET` | `/api/providers/status` | Probes configuration status of all 5 LLM providers. | Query / Headers | `Dict[str, ProviderStatus]` (JSON) |
+| `POST` | `/api/providers/verify` | Live-tests and persists runtime API credentials. | `ProviderVerifyRequest` (provider, api_key) | `ProviderVerifyResponse` (JSON) |
+| `GET` | `/api/health` | Comprehensive system health probe reporting DB and local Ollama state. | None | `HealthResponse` (JSON) |
+
 ---
 
 ## 3. Database Schema & Data Contracts
@@ -185,3 +197,33 @@ sequenceDiagram
 1. **Two-Tier Iframe Sandbox:** All HTML/JS tools execute in `SandboxedIframe.tsx` using `sandbox="allow-scripts"` and strictly **omitting** `allow-same-origin`. This forces the iframe into a unique origin (`null`), blocking access to parent `document.cookie`, `localStorage`, and DOM trees.
 2. **DOMPurify Sanitization:** HTML strings are cleansed of malicious script injections before mounting.
 3. **API Key Safety:** Credentials in the frontend UI are masked (`gsk_••••••••••••3x9A`), sent via volatile session headers (`X-LLM-Key`), and never logged or persisted in plain text.
+
+---
+
+## 6. Multi-Container Deployment Topology
+
+```mermaid
+graph TD
+    subgraph Host_Machine [Host Environment / Developer Workstation]
+        subgraph Docker_Compose [Docker Compose Network: lenny-growth-net]
+            Frontend_Cont[Frontend Container: Next.js 14<br>Port 3000:3000<br>Node.js Alpine Runtime]
+            Backend_Cont[Backend Container: FastAPI + Uvicorn<br>Port 8000:8000<br>Python 3.11 Slim Runtime]
+            Postgres_Cont[Database Container: PostgreSQL 16 + pgvector<br>Port 5432:5432<br>Persistent Volume: pgdata]
+        end
+        
+        Ollama_Host[Local Ollama Daemon<br>Port 11434<br>Models: llama3.2:3b, llama3.1:8b]
+        Cloud_APIs[Cloud API Gateway<br>Groq, Gemini, Anthropic, OpenAI]
+    end
+
+    User((Operator / PM)) -->|HTTP: Port 3000| Frontend_Cont
+    Frontend_Cont -->|REST / SSE: Port 8000| Backend_Cont
+    Backend_Cont -->|SQLAlchemy Async: Port 5432| Postgres_Cont
+    Backend_Cont -->|HTTP: host.docker.internal:11434| Ollama_Host
+    Backend_Cont -->|HTTPS: Outbound TLS| Cloud_APIs
+```
+
+### 6.1 Container Specifications & Resilience Fallbacks
+- **Frontend Service (`lenny-frontend`):** Built with multi-stage Next.js standalone output. Proxies API requests to the FastAPI backend.
+- **Backend Service (`lenny-backend`):** FastAPI application managed by Uvicorn. Loads SentenceTransformers locally for vector embeddings. Automatically activates in-memory session persistence and local transcript cosine similarity if PostgreSQL is offline during standalone development.
+- **Database Service (`lenny-postgres`):** Official `pgvector/pgvector:pg16` image initializing the `pgvector` extension, HNSW indexes, and persistent volume storage (`pgdata`).
+- **Ollama Integration:** Accessible from within Docker via `http://host.docker.internal:11434` with zero API key requirement, guaranteeing complete private offline evaluation.
