@@ -1,7 +1,7 @@
 # AGENTS.md
 
 ## Project Overview
-The Lenny Growth Assistant (LENNY Growth-Assistant) is an enterprise-grade AI advisor and content generation engine built on 200+ curated transcripts from Lenny's Podcast (~2.5M words). It features hybrid RAG search over podcast archives, Ship 30 for 30 atomic essay generation (`/ship <topic>`), an interactive side-by-side Claude-style artifact workspace with sandboxed execution, and multi-model LLM generation (Local Ollama `llama3.2:3b`, Groq Llama 3.3 70B, Google Gemini 2.0 Flash, Claude 3.5 Sonnet, GPT-4o).
+The Lenny Growth Assistant (LENNY Growth-Assistant) is an enterprise-grade AI advisor and content generation engine built on 200+ curated transcripts from Lenny's Podcast (~2.5M words). It features hybrid RAG search over podcast archives, Ship 30 for 30 atomic essay generation (`/ship <topic>`), an interactive side-by-side Claude-style artifact workspace with sandboxed execution, and multi-model LLM generation (Local Ollama `llama3.2:3b`, Groq Qwen 3.8 27B, Google Gemini 2.0 Flash, Claude 3.5 Sonnet, GPT-4o).
 
 ---
 
@@ -10,7 +10,7 @@ The Lenny Growth Assistant (LENNY Growth-Assistant) is an enterprise-grade AI ad
 - **UI Design System:** Warm Editorial Palette (`#F5EBE0` Cream, `#EDEDE9` Alabaster, `#D6CCC2` Bone, `#E3D5CA` Sand, `#1C1917` Charcoal), Lucide React
 - **Backend Framework & Language:** Python 3.10+, FastAPI 0.115+, Uvicorn 0.32+, Pydantic v2
 - **Database & Vector Retrieval:** PostgreSQL + pgvector (with resilient in-memory session & transcript fallback), SentenceTransformers (`all-MiniLM-L6-v2` / 384-dim)
-- **LLM Providers:** Local Ollama (`llama3.2:3b`), Groq API (`llama-3.3-70b-versatile`), Google Gemini API (`gemini-2.0-flash`), Anthropic API (`claude-3-5-sonnet`), OpenAI API (`gpt-4o`)
+- **LLM Providers:** Local Ollama (`llama3.2:3b`), Groq API (`qwen/qwen3.8-27b`), Google Gemini API (`gemini-2.0-flash`), Anthropic API (`claude-3-5-sonnet`), OpenAI API (`gpt-4o`)
 - **Testing:** `pytest` (Backend), Vitest / TypeScript typecheck (Frontend)
 
 ---
@@ -47,25 +47,33 @@ npx tsc --noEmit
 
 ### 🧪 Testing Commands
 
+#### Run Discovery & Off-Topic Rejection Tests
+```powershell
+cd backend
+python -m unittest tests/test_discovery.py
+```
+
+#### Run JIT Ingestion & Additive Scaling Integration Test
+```powershell
+cd backend
+python -m unittest tests/test_jit_ingest.py
+```
+
 #### Run Full Backend Test Suite
 ```powershell
 cd backend
-pytest tests/ -v
+python -m unittest discover -s tests
 ```
 
-#### Run Single Test File
+### 📦 Transcript & Catalog Management
+
+#### Sync 269-Episode Catalog from GitHub
 ```powershell
 cd backend
-pytest tests/test_chat.py -v
+python scripts/sync_manifest.py
 ```
 
-#### Run Specific Test Method
-```powershell
-cd backend
-pytest tests/test_chat.py -k "test_grounded_answer" -v
-```
-
-### 📦 Transcript Vector Ingestion
+#### Seed Initial Batch Ingestion
 ```powershell
 cd backend
 python -m app.rag.ingest
@@ -99,20 +107,27 @@ The Lenny Growth Assistant/
 ├── backend/
 │   ├── app/
 │   │   ├── api/
-│   │   │   ├── chat.py            # SSE streaming endpoint, initial-query session naming, /ship
+│   │   │   ├── chat.py            # SSE streaming endpoint, JIT fallback, /ship
 │   │   │   ├── sessions.py        # Session CRUD with in-memory fallback & validation sanitizers
-│   │   │   ├── providers.py       # Multi-LLM status checks and live API key verification
+│   │   │   ├── providers.py       # Multi-LLM status checks, runtime key persistence, and live verification
 │   │   │   └── health.py          # Database and local Ollama health probes
 │   │   ├── rag/
+│   │   │   ├── discovery.py       # In-memory 269-episode catalog matching & GitHub CDN fetcher
 │   │   │   ├── retriever.py       # pgvector search + local transcript similarity fallback
 │   │   │   ├── embeddings.py      # Embedding generation pipeline (all-MiniLM-L6-v2)
-│   │   │   └── ingest.py          # Transcript chunking and vector indexing script
+│   │   │   └── ingest.py          # Additive single-episode ingestion & seed indexing
 │   │   ├── providers/             # Multi-LLM adapters (Ollama, Groq, Gemini, Claude, OpenAI)
 │   │   ├── skills/
 │   │   │   ├── ship30_writer.py   # Ship 30 for 30 prompt builder (~1,250 words, hooks, anchors)
 │   │   │   └── artifact_generator.py # Defense-in-depth artifact cleaner and regex extractor
 │   │   ├── models/                # SQLAlchemy db models and Pydantic request/response schemas
 │   │   └── main.py                # FastAPI factory, CORS middleware, router registrations
+│   ├── data/
+│   │   ├── episodes_manifest.json # Master 269-episode catalog (guests, summaries, keywords)
+│   │   └── transcripts/           # Locally cached episode Markdown transcripts
+│   ├── scripts/
+│   │   ├── sync_manifest.py       # Syncs episodes_manifest.json from GitHub index/episodes.md
+│   │   └── download_transcripts.py# Downloads curated seed episodes
 │   └── tests/                     # Unit and integration test suite
 └── resources/transcripts/         # Lenny's Podcast raw JSON transcripts
 ```
@@ -187,7 +202,13 @@ def save_chat(sess_id, msg):
 ## Boundaries & Permissions
 
 ### ✅ Always Do
-- **Verify Builds:** Run `npm run build` or `npx tsc --noEmit` before concluding frontend changes to guarantee 0 compiler errors.
+- **Verify Builds & Tests:** Run `python -m unittest discover -s tests` and `npx tsc --noEmit` before concluding changes to guarantee 0 compiler or test errors.
+- **PRD Completeness:** Maintain the complete 5-point Discovery Brief in `docs/PRD.md` (User & Problem, Success Metrics M-01 to M-06, Assumptions, Scope Inclusions/Exclusions, and Risk Mitigation Matrix).
+- **Architectural Diagrams:** Keep Mermaid system topologies and database ERDs in `README.md` and `docs/architecture.md` synchronized with codebase changes.
+- **Agent Transcripts:** Maintain clean, secret-redacted transcripts in `agent_transcripts/` capturing real engineering trajectories, failures, and resolutions.
+- **Executive Pitch Calibration:** Frame project capabilities around core technical innovations (HNSW Grounding, Iframe Security, Multi-Model Decoupling, Ship 30 Engine) rather than superficial UI tweaks.
+- **Anchored `.gitignore` in Monorepos:** In polyglot workspaces (Python + Node.js), always anchor Python artifact ignores (e.g., `/lib/`, `/dist/`) or explicitly preserve frontend source libraries (`!frontend/src/lib/`) to prevent Git from silently omitting frontend source files.
+- **CI/CD Tracked Files Verification:** Verify that all essential source modules are actively tracked by Git (`git ls-files` and `git status --ignored`) before concluding deployment fixes so remote build pipelines (Vercel, Render, Fly.io) match local environments.
 - **Maintain Theme Integrity:** Adhere to the Warm Editorial palette (`#F5EBE0`, `#EDEDE9`, `#D6CCC2`, `#E3D5CA`, `#1C1917`).
 - **Keep SSE Protocol Intact:** Maintain standard streaming events: `status`, `sources`, `token`, `artifact`, `[DONE]`.
 - **Sync AGENTS.md:** Proactively update this `AGENTS.md` whenever adding new API routes, UI components, or architectural patterns.

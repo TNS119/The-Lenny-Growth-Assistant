@@ -38,10 +38,12 @@ Your mission is to synthesize insights from Lenny's Podcast into clear, structur
 4. Strict Grounding:
    - Base all reasoning on the provided podcast insights. If the provided excerpts do not contain enough information to answer the question, state:
      "I do not have sufficient information in Lenny's podcast archive to answer this."
-5. Artifacts:
-   - When asked for a tool, calculator, or interactive model, wrap in:
+5. Artifact Invariants:
+   - DO NOT generate or output <artifact> tags unless the user EXPLICITLY requested a standalone artifact, interactive tool, calculator, simulator, or downloadable document file.
+   - For standard conversational questions, provide your complete, detailed answer directly in the conversational markdown response and NEVER output an artifact tag or container.
+   - ONLY when explicitly asked for an interactive tool, simulator, or calculator, wrap in:
      <artifact type="html" title="...">...</artifact>
-   - When asked for a comprehensive document or memo, wrap in:
+   - ONLY when explicitly asked to export/save as a dedicated document or memo file, wrap in:
      <artifact type="markdown" title="...">...</artifact>
 """
 
@@ -138,33 +140,64 @@ async def chat_stream(
                 last_assistant_msg = m.get("content", "").strip()
                 break
 
-    # 3. Retrieve relevant chunks from pgvector
-    retriever = TranscriptRetriever(db, get_embedding)
-    chunks = await retriever.retrieve_relevant_chunks(
-        query=clean_message,
-        top_k=settings.TOP_K_CHUNKS,
-        similarity_threshold=settings.SIMILARITY_THRESHOLD
-    )
-
     # 4. SSE Stream Generator
     async def event_generator():
-        # Step A: Dynamic Status notification
+        # Step A: Dynamic Status notification - yielded immediately for zero perceived latency
         yield f"data: {json.dumps({'type': 'status', 'content': status_msg})}\n\n"
+
+        # Step B: Retrieve relevant chunks from pgvector / local archive
+        retriever = TranscriptRetriever(db, get_embedding)
+        chunks = await retriever.retrieve_relevant_chunks(
+            query=clean_message,
+            top_k=settings.TOP_K_CHUNKS,
+            similarity_threshold=settings.SIMILARITY_THRESHOLD
+        )
         
-        # Step B: Yield sources
+        # Step C: Yield sources
         yield f"data: {json.dumps({'type': 'sources', 'data': chunks})}\n\n"
 
         full_assistant_response = ""
 
-        # Step C: Check if this is an ungrounded query (0 chunks retrieved)
+        # Step D: Check if this is an ungrounded query (0 chunks retrieved)
         if not chunks and not (is_artifact_request and last_assistant_msg):
-            # Grounding refusal circuit-breaker for ungrounded queries
-            logger.info(f"Refusal triggered: query '{clean_message[:40]}' had 0 chunks above {settings.SIMILARITY_THRESHOLD}")
-            yield f"data: {json.dumps({'type': 'token', 'content': REFUSAL_MESSAGE})}\n\n"
-            full_assistant_response = REFUSAL_MESSAGE
-            yield "data: [DONE]\n\n"
-            await _persist_conversation(session_uuid, req.message, full_assistant_response, [])
-            return
+            # Check upstream catalog for guest or topic match
+            from app.rag.discovery import discovery_service
+            from app.rag.ingest import ingest_single_episode
+
+            matching_ep = discovery_service.find_matching_episode(clean_message)
+            if matching_ep:
+                guest_label = matching_ep.get("guest", "episode")
+                logger.info(f"JIT discovery triggered for '{guest_label}' ({matching_ep['slug']})")
+                yield f"data: {json.dumps({'type': 'status', 'content': f'Found episode for {guest_label} in Lenny\'s podcast archive. Ingesting transcript...'})}\n\n"
+                
+                try:
+                    # Download raw transcript from GitHub CDN
+                    local_path = discovery_service.fetch_and_cache_transcript(matching_ep["slug"])
+                    # Ingest into Supabase pgvector non-destructively
+                    yield f"data: {json.dumps({'type': 'status', 'content': f'Indexing {guest_label} transcript into vector database...'})}\n\n"
+                    ingested_count = await ingest_single_episode(local_path)
+                    logger.info(f"JIT ingestion indexed {ingested_count} chunks for {guest_label}")
+
+                    # Re-run retrieval with freshly indexed episode
+                    yield f"data: {json.dumps({'type': 'status', 'content': 'Synthesizing podcast insights...'})}\n\n"
+                    chunks = await retriever.retrieve_relevant_chunks(
+                        query=clean_message,
+                        top_k=settings.TOP_K_CHUNKS,
+                        similarity_threshold=settings.SIMILARITY_THRESHOLD
+                    )
+                    # Update sources on client
+                    yield f"data: {json.dumps({'type': 'sources', 'data': chunks})}\n\n"
+                except Exception as jit_err:
+                    logger.error(f"JIT ingestion error for {matching_ep['slug']}: {jit_err}")
+
+            # If still no chunks found after JIT attempt (or no matching episode in catalog)
+            if not chunks:
+                logger.info(f"Refusal triggered: query '{clean_message[:40]}' had 0 chunks above {settings.SIMILARITY_THRESHOLD}")
+                yield f"data: {json.dumps({'type': 'token', 'content': REFUSAL_MESSAGE})}\n\n"
+                full_assistant_response = REFUSAL_MESSAGE
+                yield "data: [DONE]\n\n"
+                await _persist_conversation(session_uuid, req.message, full_assistant_response, [], raw_session_id=req.session_id)
+                return
 
         # Step D: Check if this is an artifact request on prior conversation
         if is_artifact_request and last_assistant_msg:
@@ -221,9 +254,19 @@ async def chat_stream(
 
         # Step E: Stream tokens from selected LLM
         try:
-            async for token in llm.generate_response(messages, system_prompt):
-                full_assistant_response += token
-                yield f"data: {json.dumps({'type': 'token', 'content': token})}\n\n"
+            if is_ship:
+                # For Ship 30, generate essay tokens in background without flooding chat response bubble
+                yield f"data: {json.dumps({'type': 'status', 'content': 'Drafting Ship 30 essay artifact (~1,250 words)...'})}\n\n"
+                token_count = 0
+                async for token in llm.generate_response(messages, system_prompt):
+                    full_assistant_response += token
+                    token_count += 1
+                    if token_count % 30 == 0:
+                        yield ": keepalive\n\n"
+            else:
+                async for token in llm.generate_response(messages, system_prompt):
+                    full_assistant_response += token
+                    yield f"data: {json.dumps({'type': 'token', 'content': token})}\n\n"
         except Exception as e:
             logger.error(f"Error during LLM stream generation: {e}")
             err_msg = f"\n[Generation error: {str(e)}]"
@@ -232,8 +275,16 @@ async def chat_stream(
 
         # Step F: Extract and notify client of any generated artifacts
         from app.skills.artifact_generator import extract_artifacts_from_text, clean_artifact_content, clean_response_text
-        extracted_artifacts = extract_artifacts_from_text(full_assistant_response)
-        if is_ship and not extracted_artifacts and len(full_assistant_response) > 50:
+        raw_artifacts = extract_artifacts_from_text(full_assistant_response)
+        
+        is_explicit_artifact_req = (
+            is_ship or 
+            is_artifact_request or 
+            any(k in lower_msg for k in ["calculator", "tool", "interactive", "artifact", "save as file", "make a file", "create a file", "export to file", "spreadsheet", "simulator", "html"])
+        )
+
+        extracted_artifacts = []
+        if is_ship and not raw_artifacts and len(full_assistant_response) > 50:
             # Guarantee artifact generation for /ship requests even if LLM missed enclosing tags
             title = f"Ship 30 Essay: {clean_message[:45]}"
             cleaned_body = clean_artifact_content(full_assistant_response)
@@ -242,23 +293,31 @@ async def chat_stream(
                 "title": title,
                 "content": cleaned_body
             }]
+        elif raw_artifacts:
+            for art in raw_artifacts:
+                art["content"] = clean_artifact_content(art.get("content", ""))
+                # Only dispatch artifact if user explicitly requested one, or if it is an interactive HTML tool, or if it is a substantial document (> 250 chars)
+                if is_explicit_artifact_req or art["artifact_type"] == "html" or len(art["content"]) > 250:
+                    extracted_artifacts.append(art)
 
         if extracted_artifacts:
             for art in extracted_artifacts:
-                art["content"] = clean_artifact_content(art.get("content", ""))
                 yield f"data: {json.dumps({'type': 'artifact', 'data': art})}\n\n"
+
+        # Step G: Persist messages and artifacts asynchronously
+        if is_ship:
+            cleaned_saved_response = "Artifact is created."
+            yield f"data: {json.dumps({'type': 'token', 'content': cleaned_saved_response})}\n\n"
+        else:
+            cleaned_saved_response = clean_response_text(full_assistant_response)
+            if not cleaned_saved_response and extracted_artifacts:
+                cleaned_saved_response = "Artifact is created."
+            if not cleaned_saved_response:
+                cleaned_saved_response = full_assistant_response.strip()
 
         yield "data: [DONE]\n\n"
 
-        # Step G: Persist messages and artifacts asynchronously
-        cleaned_saved_response = clean_response_text(full_assistant_response)
-        if not cleaned_saved_response and extracted_artifacts:
-            art_title = extracted_artifacts[0].get("title", "Artifact")
-            cleaned_saved_response = f"I have created the **{art_title}** in the side-by-side artifact workspace."
-        if not cleaned_saved_response:
-            cleaned_saved_response = full_assistant_response.strip()
-
-        await _persist_conversation(session_uuid, req.message, cleaned_saved_response, chunks, extracted_artifacts)
+        await _persist_conversation(session_uuid, req.message, cleaned_saved_response, chunks, extracted_artifacts, raw_session_id=req.session_id)
 
     return StreamingResponse(
         event_generator(),
@@ -292,10 +351,11 @@ async def _persist_conversation(
     user_msg: str,
     assistant_msg: str,
     sources: list,
-    artifacts: list = None
+    artifacts: list = None,
+    raw_session_id: Optional[str] = None
 ):
     """Save messages and artifacts in memory and fresh database session."""
-    from app.api.sessions import IN_MEMORY_SESSIONS
+    from app.api.sessions import IN_MEMORY_SESSIONS, save_in_memory_sessions
     from datetime import datetime
     now = datetime.utcnow()
     asst_id = str(uuid.uuid4())
@@ -313,8 +373,9 @@ async def _persist_conversation(
             })
 
     # Always persist in in-memory session if available
-    from app.api.sessions import IN_MEMORY_SESSIONS, save_in_memory_sessions
     sess = IN_MEMORY_SESSIONS.get(str(session_id))
+    if not sess and raw_session_id:
+        sess = IN_MEMORY_SESSIONS.get(str(raw_session_id))
     if not sess:
         sess = {
             "id": str(session_id),
@@ -324,6 +385,8 @@ async def _persist_conversation(
             "messages": []
         }
         IN_MEMORY_SESSIONS[str(session_id)] = sess
+    if raw_session_id and raw_session_id != str(session_id):
+        IN_MEMORY_SESSIONS[str(raw_session_id)] = sess
 
     current_title = sess.get("title", "")
     if not current_title or current_title.startswith(("New", "Session")):

@@ -1,17 +1,16 @@
 # SPECIFICATION DOCUMENT: THE LENNY GROWTH ASSISTANT
-**Document Version:** 1.0.0  
-**Role:** Forward Deployed Engineer (FDE) Work Specification  
+**Document Version:** 1.2.0  
 **System Name:** The Lenny Growth Assistant  
-**Target Environment:** Single-command Local Deployment (`docker-compose up`) + Evaluation Demonstration  
+**Target Environment:** Single-command Local Deployment (`docker-compose up`)
 
 ---
 
-## 1. Executive Summary & Forward Deployment Brief
+## 1. Executive Summary
 
 ### 1.1 Engagement Context & Problem Statement
-Product managers and growth leaders operate in high-velocity environments requiring rapid, battle-tested tactical decisions (pricing adjustments, viral loop mechanics, activation funnel optimization, PM hiring). While *Lenny’s Podcast* contains over 200+ hours of operational insights from the world’s top product and growth practitioners, this knowledge remains locked in dense audio and linear transcripts. 
+Product managers and growth leaders operate in high-velocity environments requiring rapid, battle-tested tactical decisions (pricing adjustments, viral loop mechanics, activation funnel optimization, PM hiring). While *Lenny’s Podcast* contains 269 candid, operational interviews (~3.5M words) from the world’s top product and growth practitioners, this knowledge remains locked in dense audio and linear transcripts. 
 
-**The Lenny Growth Assistant** is an enterprise-grade, full-stack Retrieval-Augmented Generation (RAG) conversational platform designed to unlock this archive. It transforms unstructured interview dialogue into grounded, source-attributed answers, produces structured 1,250-word essays formatted via the *Ship 30 for 30* framework, and renders dynamic Markdown and interactive HTML/CSS operational artifacts in a secure, sandboxed side-by-side drawer.
+**The Lenny Growth Assistant** is an enterprise-grade, full-stack Retrieval-Augmented Generation (RAG) conversational platform designed to unlock this archive. It transforms unstructured interview dialogue into grounded, source-attributed answers, features **Just-In-Time (JIT) Dynamic Episode Discovery & Additive Ingestion** across the entire 269-episode universe, produces structured 1,250-word essays formatted via the *Ship 30 for 30* framework, and renders dynamic Markdown and interactive HTML/CSS operational artifacts in a secure, sandboxed side-by-side drawer.
 
 ### 1.2 Target Persona & User Journey
 * **Primary Persona:** Growth Product Manager, VP of Product, or Early-Stage Founder.
@@ -19,13 +18,15 @@ Product managers and growth leaders operate in high-velocity environments requir
 * **Pain Points Addressed:**
   1. *Information Density:* Inability to scan audio/lengthy transcripts efficiently.
   2. *Hallucination & Speculation:* Generic LLMs offering ungrounded or fabricated growth frameworks.
-  3. *Actionability Gap:* Answers remaining theoretical rather than formatted into operational blueprints.
-  4. *Security & Isolation Risk:* Code and UI snippets executing directly in the client DOM without isolation.
+  3. *Archive Fragmentation:* Need to access any of the 269 episodes on demand without requiring massive upfront vector database compute.
+  4. *Actionability Gap:* Answers remaining theoretical rather than formatted into operational blueprints.
+  5. *Security & Isolation Risk:* Code and UI snippets executing directly in the client DOM without isolation.
 
 ### 1.3 Key Success Metrics
 * **Retrieval Citation Accuracy:** $\ge 90\%$ of generated factual claims must include precise source citations `[Episode: Guest Name, Timestamp/Topic]`.
 * **Grounded Rejection Rate:** $100\%$ refusal on out-of-domain queries below the cosine similarity threshold with the standard fallback string:  
-  `"I do not have sufficient information in Lenny's podcast archive to answer this"`.
+  `"I do not have sufficient information in Lenny's podcast archive to answer this."`
+* **JIT Episode Ingestion & Retrieval Latency:** $< 1.5\text{s}$ CDN download, $< 3.5\text{s}$ embedding computation, $< 100\text{ms}$ pgvector retrieval.
 * **Local Inference Latency:** Time-to-First-Token (TTFT) $< 4.0\text{s}$ when executing locally via Ollama (`llama3.2:3b` / `llama3.1:8b`).
 * **Artifact Render Safety:** $0$ Cross-Site Scripting (XSS) vulnerabilities via strict iframe sandboxing (`allow-scripts`, no `allow-same-origin`) and `DOMPurify` HTML sanitization.
 * **Operational Time-to-Demo:** $< 5$ minutes from fresh clone to full running system using single-command `docker-compose up`.
@@ -33,7 +34,8 @@ Product managers and growth leaders operate in high-velocity environments requir
 ### 1.4 Scope Boundaries & Architectural Trade-offs
 * **In Scope:**
   * Ingestion and HNSW vector indexing of Lenny's Podcast transcripts.
-  * Dual-layer LLM architecture: Local inference via Ollama (`llama3.2:3b`) and cloud fallback/toggle via Anthropic Claude (`claude-3-5-sonnet-20241022`) or OpenAI (`gpt-4o`).
+  * **Just-In-Time Dynamic Episode Discovery:** Live scanning of 269-episode catalog (`episodes_manifest.json`), dynamic raw transcript fetching from GitHub Fastly CDN, and additive non-destructive upserts into Supabase/PostgreSQL pgvector.
+  * Dual-layer LLM architecture: Local inference via Ollama (`llama3.2:3b`) and cloud fallback/toggle via Anthropic Claude (`claude-3-5-sonnet-20241022`), Groq Qwen 27B, Google Gemini 2.0 Flash, or OpenAI (`gpt-4o`).
   * Dedicated "Ship 30 for 30" writing skill engine producing ~1,250-word essays with hooks, short paragraphs, bold anchors, and actionable frameworks.
   * Dual-pane responsive UI featuring chat on the left and a collapsible Claude-style Artifact viewer on the right.
   * Multi-session persistence in PostgreSQL with conversation history and artifact tracking.
@@ -43,7 +45,8 @@ Product managers and growth leaders operate in high-velocity environments requir
   * External web-search integration (retrieval is strictly bounded to the podcast archive).
   * Multi-tenant authentication/OAuth (designed as an internal deployment ready for single-organization SSO integration).
 * **Key Architectural Trade-offs:**
-  * *Local 3B/8B Parameter Models vs. Cloud Frontier Models:* Local 3B/8B models offer zero API cost, data privacy, and complete local portability for evaluators, but possess smaller context windows and stricter reasoning limits. The architecture uses a unified provider interface allowing instant switching to Claude 3.5 Sonnet for high-capacity production synthesis.
+  * *On-Demand JIT Ingestion vs. Complete Upfront Batch Indexing:* Indexing all 269 transcripts upfront requires significant time and database storage. By pairing an in-memory 269-episode manifest with Fastly CDN streaming and additive vector upserts, the system starts in seconds and dynamically indexes new episodes in $<5$ seconds on first query.
+  * *Local 3B/8B Parameter Models vs. Cloud Frontier Models:* Local 3B/8B models offer zero API cost, data privacy, and complete local portability for developers, but possess smaller context windows and stricter reasoning limits. The architecture uses a unified provider interface allowing instant switching to Claude 3.5 Sonnet or Gemini 2.0 Flash for high-capacity production synthesis.
   * *Client-Side Sandboxed Iframe vs. Server-Side Rendering:* Sandboxing the HTML artifact rendering in an iframe (`sandbox="allow-scripts"`, omitting `allow-same-origin`) eliminates browser state contamination (cookies/localStorage) while allowing interactive UI components.
 
 ---
@@ -51,44 +54,41 @@ Product managers and growth leaders operate in high-velocity environments requir
 ## 2. System Architecture & Data Contracts
 
 ```
-+---------------------------------------------------------------------------------------+
-|                                    CLIENT BROWSER                                     |
-|  +--------------------------------------------+  +---------------------------------+  |
-|  |                 Left Pane                  |  |           Right Pane            |  |
-|  |   - Session Selector                       |  |   - Claude-Style Artifact       |  |
-|  |   - Model Selector (Ollama / Claude)       |  |     Viewer                      |  |
-|  |   - Chat Interface (SSE Stream)            |  |   - React-Markdown (MD)         |  |
-|  |   - Citations Drawer                       |  |   - Sandboxed Iframe (HTML/JS)  |  |
-|  +--------------------------------------------+  +---------------------------------+  |
-+------------------------------------------^--------------------------------------------+
-                                           | HTTP / SSE (EventSource/Fetch)
-                                           v
-+---------------------------------------------------------------------------------------+
-|                                 FASTAPI BACKEND                                       |
-|  +---------------------+  +----------------------+  +-------------------------------+ |
-|  | Session & Chat API  |  | Retrieval Engine     |  | Ship 30 for 30 Skill Engine   | |
-|  | - SSE Event Stream  |  | - HNSW Cosine Search |  | - 1,250-word Essay Heuristics | |
-|  | - Artifact Parser   |  | - Threshold Checking |  | - Guest Attribution Anchor   | |
-|  +----------+----------+  +----------+-----------+  +---------------+---------------+ |
-|             |                        |                              |                 |
-|             v                        v                              v                 |
-|  +----------------------------------------------------------------------------------+ |
-|  |                             Unified LLM Provider Layer                           | |
-|  |  +------------------------------------+  +------------------------------------+  | |
-|  |  | OllamaProvider (Local 3B/8B)       |  | CloudProvider (Claude 3.5 Sonnet)  |  | |
-|  |  | http://host.docker.internal:11434  |  | https://api.anthropic.com          |  | |
-|  |  +------------------------------------+  +------------------------------------+  | |
-|  +----------------------------------------------------------------------------------+ |
-+------------------------------------------+--------------------------------------------+
-                                           | Async Engine (SQLAlchemy + asyncpg)
-                                           v
-+---------------------------------------------------------------------------------------+
-|                           POSTGRESQL 16 + PGVECTOR                                    |
-|  - Table: sessions                                                                    |
-|  - Table: messages (role, content, sources JSONB)                                     |
-|  - Table: artifacts (message_id, artifact_type, content)                              |
-|  - Table: transcript_chunks (text, embedding vector(384), metadata, HNSW index)       |
-+---------------------------------------------------------------------------------------+
++------------------------------------------------------------------------------------------------+
+|                                         CLIENT BROWSER                                         |
+|  +--------------------------------------------------+  +------------------------------------+  |
+|  |                    Left Pane                     |  |             Right Pane             |  |
+|  |   - Session Selector (Full-Height Sidebar)       |  |   - Claude-Style Artifact Viewer   |  |
+|  |   - Model Selector (DropUp / Local / Cloud)      |  |   - React-Markdown (MD)            |  |
+|  |   - Chat Interface (Real-Time SSE Stream)        |  |   - Sandboxed Iframe (HTML/JS)     |  |
+|  |   - Citations Drawer & Dynamic JIT Status Pills  |  |     (null origin, DOMPurify)       |  |
+|  +--------------------------------------------------+  +------------------------------------+  |
++-----------------------------------------------^------------------------------------------------+
+                                                | HTTP / SSE (EventSource/Fetch)
+                                                v
++------------------------------------------------------------------------------------------------+
+|                                      FASTAPI BACKEND                                           |
+|  +---------------------+  +-------------------------+  +-------------------------------------+ |
+|  | Session & Chat API  |  | Retrieval Engine        |  | Ship 30 for 30 Skill Engine         | |
+|  | - SSE Event Stream  |  | - HNSW Cosine Search    |  | - 1,250-word Essay Heuristics       | |
+|  | - Artifact Parser   |  | - Grounding Circuit     |  | - Guest Attribution Anchor         | |
+|  +----------+----------+  +------------+------------+  +------------------+------------------+ |
+|             |                          |                                  |                    |
+|             v                          v                                  v                    |
+|  +---------------------+  +-------------------------+  +-------------------------------------+ |
+|  | JIT Discovery Svc   |  | Additive Ingest Engine  |  | Dynamic Provider Factory            | |
+|  | - 269 Manifest Scan |  | - Chunking & Embeddings |  | - Ollama, Groq, Gemini, Claude, OAI | |
+|  +----------+----------+  +------------+------------+  +-------------------------------------+ |
++-------------|--------------------------|-------------------------------------------------------+
+              |                          |
+              v (Fetch on Cache Miss)    v (Upsert New Chunks)
++-----------------------------+   +--------------------------------------------------------------+
+| GITHUB FASTLY CDN           |   | POSTGRESQL 16 + PGVECTOR                                     |
+| raw.githubusercontent.com   |   | - Table: sessions                                            |
+| 269 Markdown Transcripts    |   | - Table: messages (role, content, sources JSONB)            |
+| Rate-limit immune CDN       |   | - Table: artifacts (message_id, artifact_type, content)     |
+|                             |   | - Table: transcript_chunks (text, embedding vector(384))     |
++-----------------------------+   +--------------------------------------------------------------+
 ```
 
 ### 2.1 Database Schema & Pgvector Indexing
@@ -192,11 +192,13 @@ The frontend stream processor extracts the `<artifact>` block, rendering standar
 | **Backend** | Server Engine | Uvicorn | $\ge 0.28.0$ (standard workers) | Production ASGI implementation. |
 | **Backend** | ORM & DB Driver | SQLAlchemy (Async) + asyncpg | SQLAlchemy 2.0+, asyncpg $\ge 0.29.0$ | Pure asynchronous PostgreSQL pooling and query execution. |
 | **Database** | Relational + Vector | PostgreSQL + pgvector | PostgreSQL 16 (`pgvector/pgvector:pg16`) | Unified persistence for conversations, artifacts, and HNSW vector search. |
-| **Embedding** | Vectorizer | Sentence-Transformers or Ollama | `all-MiniLM-L6-v2` (384-dim) or `nomic-embed-text` | Fast local CPU/GPU embedding with high semantic retrieval quality. |
-| **LLM: Local** | Inference Engine | Ollama | Ollama 0.3+ (`llama3.2:3b`, `llama3.1:8b`) | Native local inference, zero API fees, local evaluation readiness. |
-| **LLM: Cloud** | Cloud Provider | Anthropic Claude or OpenAI | `claude-3-5-sonnet-20241022` / `gpt-4o` | Frontier model synthesis for complex 1,250-word essays and UI artifacts. |
-| **Frontend** | Framework | Next.js (App Router) or React + Vite | Next.js 14+ / React 18+ (TypeScript) | Type safety, component architecture, fast streaming re-renders. |
-| **Frontend** | Styling | Tailwind CSS | $\ge 3.4.0$ | Utility-first responsive design, modern dark/light styling. |
+| **Embedding** | Vectorizer | Sentence-Transformers | `all-MiniLM-L6-v2` (384-dim) | Fast local CPU/GPU embedding with high semantic retrieval quality. |
+| **Catalog & CDN** | Transcript Distribution | GitHub Fastly CDN + Local Manifest | `raw.githubusercontent.com`, `episodes_manifest.json` | Zero-rate-limit static file delivery across all 269 podcast transcripts. |
+| **Discovery Svc** | JIT Episode Matcher | Regex Word-Boundary Scanner | `EpisodeDiscoveryService` (Python) | Instant ($<2\text{ms}$) deterministic guest, slug, and topic matching with off-topic gating. |
+| **LLM: Local** | Inference Engine | Ollama | Ollama 0.3+ (`llama3.2:3b`, `llama3.1:8b`) | Native local inference, zero API fees, air-gapped deployment readiness. |
+| **LLM: Cloud** | Cloud Providers | Groq, Gemini, Claude, OpenAI | `qwen3.8-27b`, `gemini-2.0-flash`, `claude-3-5-sonnet`, `gpt-4o` | Frontier model synthesis for complex 1,250-word essays and UI artifacts. |
+| **Frontend** | Framework | Next.js 14 (App Router) | React 18+ (TypeScript 5) | Type safety, component architecture, fast streaming re-renders. |
+| **Frontend** | Styling | Tailwind CSS | $\ge 3.4.0$ | Utility-first responsive design, Warm Editorial palette tokens. |
 | **Frontend** | Markdown Engine | `react-markdown` + `remark-gfm` | `react-markdown` v9+ | GitHub-flavored markdown parsing, table, and codeblock support. |
 | **Frontend** | Sandboxing & Security | `DOMPurify` + HTML Iframe | `dompurify` $\ge 3.0.0$, `sandbox="allow-scripts"` | Zero parent context leak (`allow-same-origin` omitted), sanitized HTML. |
 | **DevOps** | Container Orchestration | Docker & Docker Compose | Docker Compose v2 (v24.x+) | Single-command reproducible startup for database, backend, and frontend. |
@@ -211,18 +213,23 @@ lenny-growth-assistant/
 ├── docker-compose.yml
 ├── README.md
 ├── spec.md
+├── AGENTS.md
 ├── docs/
 │   ├── PRD.md
 │   ├── architecture.md
 │   └── design.md
 ├── agent_transcripts/
 │   ├── 01_initial_scaffolding.md
-│   └── 02_debugging_pgvector_indexing.md
+│   ├── 02_ui_refinement_and_security.md
+│   └── 03_dynamic_episode_discovery_jit.md
 ├── backend/
 │   ├── Dockerfile
 │   ├── requirements.txt
+│   ├── data/
+│   │   ├── episodes_manifest.json
+│   │   └── transcripts/
 │   ├── scripts/
-│   │   ├── download_transcripts.py
+│   │   ├── sync_manifest.py
 │   │   └── ingest.py
 │   ├── app/
 │   │   ├── __init__.py
@@ -240,8 +247,10 @@ lenny-growth-assistant/
 │   │   │   └── cloud_provider.py
 │   │   ├── rag/
 │   │   │   ├── __init__.py
+│   │   │   ├── discovery.py
 │   │   │   ├── retriever.py
-│   │   │   └── embeddings.py
+│   │   │   ├── embeddings.py
+│   │   │   └── ingest.py
 │   │   ├── skills/
 │   │   │   ├── __init__.py
 │   │   │   ├── ship30_writer.py
@@ -250,10 +259,12 @@ lenny-growth-assistant/
 │   │       ├── __init__.py
 │   │       ├── sessions.py
 │   │       ├── chat.py
+│   │       ├── providers.py
 │   │       └── health.py
 │   └── tests/
 │       ├── __init__.py
-│       ├── conftest.py
+│       ├── test_discovery.py
+│       ├── test_jit_ingest.py
 │       ├── test_api.py
 │       ├── test_retrieval.py
 │       └── test_providers.py
@@ -262,6 +273,8 @@ lenny-growth-assistant/
     ├── package.json
     ├── tailwind.config.js
     ├── tsconfig.json
+    ├── PRODUCT.md
+    ├── DESIGN.md
     └── src/
         ├── app/
         │   ├── layout.tsx
@@ -296,17 +309,20 @@ lenny-growth-assistant/
 2. **`docs/architecture.md`**: Document end-to-end data contracts, pgvector HNSW indexing, streaming SSE schemas, and LLM abstraction layers.
 3. **`docs/design.md`**: Detail dual-column desktop and responsive mobile layout, state machines (idle, retrieving, streaming, artifact rendering), and accessibility (ARIA labels, keyboard navigation).
 
-### Step 2: Knowledge Ingestion & Vector Indexing Pipeline
-1. **Archive Acquisition (`backend/scripts/download_transcripts.py`):**
-   * Fetch transcripts from the public Lenny's Podcast transcript repository.
-   * Standardize text/markdown formats and save raw files to `backend/data/transcripts/`.
-2. **Chunking & Indexing Script (`backend/scripts/ingest.py`):**
-   * Iterate through episode files.
-   * Parse headers/metadata: `episode_title`, `guest_name`, `date`, `timestamp_ref`.
-   * Apply recursive character text splitting: Target chunk size = $500\text{--}800$ tokens ($\approx 2,000\text{--}3,200$ characters) with $100$-token overlap ($\approx 400$ characters).
-   * Compute embeddings using `sentence-transformers/all-MiniLM-L6-v2` (384 dimensions) or Ollama embeddings.
-   * Batch insert chunks into PostgreSQL table `transcript_chunks`.
-   * Verify creation of the HNSW cosine index `idx_transcript_chunks_hnsw_cosine`.
+### Step 2: Knowledge Ingestion & JIT Vector Indexing Pipeline
+1. **Catalog Manifest Synchronization (`backend/scripts/sync_manifest.py`):**
+   * Fetch `index/episodes.md` from `ChatPRD/lennys-podcast-transcripts` via Fastly CDN.
+   * Parse 269 episode rows: slug, guest name, episode title, publication date, raw transcript CDN URL, and extract domain keywords.
+   * Generate lightweight in-memory catalog `backend/data/episodes_manifest.json` (~120KB).
+2. **Just-In-Time Dynamic Discovery Service (`backend/app/rag/discovery.py`):**
+   * Perform instantaneous ($<2\text{ms}$) word-boundary regex matching across guest names, slugs, and domain keywords.
+   * Apply strict off-topic discard filters (cooking, sports, generic programming queries) to prevent spurious downloads.
+3. **Additive Ingestion Pipeline (`backend/app/rag/ingest.py`):**
+   * Fetch individual raw markdown transcripts from GitHub Fastly CDN with streaming timeout handling.
+   * Parse YAML frontmatter and apply recursive character text splitting ($500\text{--}800$ tokens with $100$-token overlap).
+   * Compute embeddings using `sentence-transformers/all-MiniLM-L6-v2` (384 dimensions).
+   * Perform non-destructive additive upsert into PostgreSQL/Supabase table `transcript_chunks` (`ingest_single_episode`).
+   * Preserve all pre-existing chunks; ensure HNSW cosine index `idx_transcript_chunks_hnsw_cosine` remains active.
 
 ### Step 3: Multi-Provider LLM & Routing Layer
 1. **Base Interface (`backend/app/providers/base.py`):**
@@ -740,7 +756,7 @@ volumes:
 
 ---
 
-## 8. Forward Deployment Handoff & Evaluation Deliverables
+## 8. Operational Handoff & Deployment Deliverables
 
 1. **Repository Structure:** Clean Git history, modular package boundaries, zero hardcoded credentials.
 2. **Documentation Suite:**
@@ -750,7 +766,7 @@ volumes:
    * `docs/design.md`: UX design rationale, dual-pane layout specs, and security boundaries.
 3. **Agent Logs & Transcripts (`agent_transcripts/`):**
    * Transparent record of AI coding agent interactions, debugging pgvector indexing, and prompt tuning.
-4. **Demonstration Video Outline (2–3 minutes):**
+4. **Product Walkthrough Outline (2–3 minutes):**
    * *0:00–0:30:* Problem context and persona (Growth PM unlocking Lenny's Podcast).
    * *0:30–1:15:* Live demo of Grounded QA with local Ollama (`llama3.2:3b`), showing source citations.
    * *1:15–1:45:* Ship 30 for 30 skill execution and Side-by-Side Artifact Viewer rendering an interactive tool.

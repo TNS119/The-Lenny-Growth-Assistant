@@ -21,7 +21,7 @@ This transcript documents the initial construction and scaffolding of **The Lenn
 ### 3. Multi-LLM Provider Layer
 - **Action:** Built `BaseLLMProvider` with concrete implementations:
   - `OllamaProvider`: Local `llama3.2:3b` streaming via `http://localhost:11434`.
-  - `CloudProvider`: Support for Groq (`llama-3.3-70b-versatile`), Gemini (`gemini-2.0-flash`), Claude (`claude-3-5-sonnet`), and OpenAI (`gpt-4o`).
+  - `CloudProvider`: Support for Groq (`qwen/qwen3.8-27b`), Gemini (`gemini-2.0-flash`), Claude (`claude-3-5-sonnet`), and OpenAI (`gpt-4o`).
 - **Encountered Issue:** Cloud providers failed abruptly when API keys were missing from `.env`.
 - **Correction:** Added graceful fallback to local Ollama with status alert events streamed via SSE so the user is never left with an unhandled exception.
 

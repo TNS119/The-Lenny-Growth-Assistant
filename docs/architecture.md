@@ -26,21 +26,25 @@ graph TD
         Router[FastAPI ASGI Router]
         SSE[SSE Streaming Pipeline - text/event-stream]
         Retriever[TranscriptRetriever - pgvector HNSW / Fallback]
+        Discovery[EpisodeDiscoveryService - Catalog Matcher]
+        Ingest[Additive Ingestion Pipeline - Ingest Single Episode]
         PromptEngine[Prompt & Skill Compiler - /ship 30 + Grounding]
         ProviderFactory[Dynamic Provider Factory]
     end
     
     subgraph Model_Layer [Multi-LLM Inference Tier]
         Ollama[Local Ollama - llama3.2:3b Free]
-        Groq[Groq API - llama-3.3-70b Free]
+        Groq[Groq API - Qwen 3.8 27B Free]
         Gemini[Google Gemini 2.0 Flash Free]
         Claude[Anthropic Claude 3.5 Sonnet]
         OpenAI[OpenAI GPT-4o]
     end
     
-    subgraph Storage_Layer [Persistence Tier]
-        PG[(PostgreSQL 16 + pgvector 384-dim)]
-        MemFallback[(In-Memory Session & JSON Transcripts Fallback)]
+    subgraph Storage_Layer [Persistence & Catalog Tier]
+        PG[(Supabase PostgreSQL 16 + pgvector 384-dim)]
+        Manifest[(269-Episode Catalog - episodes_manifest.json)]
+        GitHubCDN[(Upstream GitHub CDN - Fastly)]
+        MemFallback[(In-Memory Session & Local Markdown Fallback)]
     end
 
     Client --> Sidebar
@@ -52,6 +56,11 @@ graph TD
     Router --> SSE
     SSE --> Retriever
     Retriever --> PG
+    Retriever -.->|0 Chunks Found| Discovery
+    Discovery -->|In-Memory Scan <2ms| Manifest
+    Discovery -->|Fetch Raw Markdown| GitHubCDN
+    GitHubCDN --> Ingest
+    Ingest -->|Additive Upsert| PG
     Retriever -.->|Offline Fallback| MemFallback
     
     SSE --> PromptEngine
@@ -75,16 +84,18 @@ graph TD
 - **Framework:** Next.js 14 (App Router), React 18, TypeScript 5, Tailwind CSS 3.4.
 - **Key Modules:**
   - `src/app/page.tsx`: Full-height layout coordinator (`h-screen w-screen`), managing sidebar toggling, top header transitions, and dual workspace splits.
-  - `src/components/Chat/ChatPane.tsx`: Real-time streaming conversation container, dynamic initial-query titling, and `/ship` slash command trigger.
+  - `src/components/Chat/ChatPane.tsx`: Real-time streaming conversation container, dynamic initial-query titling, scenario-aware status pills, and `/ship` slash command trigger.
   - `src/components/Chat/ModelSelector.tsx`: DropUp model switcher with masked API key configuration modal (`gsk_••••••••••••3x9A`).
   - `src/components/Artifact/ArtifactViewer.tsx` & `SandboxedIframe.tsx`: Hardened iframe sandbox (`sandbox="allow-scripts"` without `allow-same-origin`) sanitized via `DOMPurify`.
 
 ### 2.2 Backend Application Tier (`backend/app/`)
 - **Framework:** FastAPI (Python 3.10+), Uvicorn ASGI server, Pydantic v2.
 - **Key Modules:**
-  - `app/api/chat.py`: SSE streaming endpoint (`/api/chat`), refusal circuit-breaker gating ($<0.65$ cosine similarity), and initial-query session namer.
+  - `app/api/chat.py`: SSE streaming endpoint (`/api/chat`), refusal circuit-breaker gating ($<0.65$ cosine similarity), JIT fallback trigger, and dynamic session titling.
   - `app/api/sessions.py`: Session CRUD with PostgreSQL and resilient in-memory fallbacks (`IN_MEMORY_SESSIONS`).
   - `app/api/providers.py`: Live provider status probes and masked API key validators.
+  - `app/rag/discovery.py`: In-memory 269-episode catalog matching engine (`find_matching_episode`) and GitHub CDN transcript downloader.
+  - `app/rag/ingest.py`: Additive non-destructive episode ingestion (`ingest_single_episode`) and bulk chunk indexing.
   - `app/rag/retriever.py` & `embeddings.py`: SentenceTransformers (`all-MiniLM-L6-v2`, 384-dim) vector retrieval and local cosine similarity fallback.
   - `app/skills/ship30_writer.py` & `artifact_generator.py`: Prompt builder (~1,250-word essay) and multi-stage XML artifact cleaners.
 

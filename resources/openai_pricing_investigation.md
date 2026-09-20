@@ -37,8 +37,8 @@
 Because **neither Claude nor OpenAI offers a permanent free tier**, our architectural decision is validated:
 
 1. **Default & Primary Engine: Local Ollama (`llama3.2:3b` / `llama3.1:8b`)**
-   * Meets the assignment's explicit requirement: *"Local LLM—mandatory for the demo: Run the submitted demo using Ollama and a model that works comfortably on your machine."*
-   * Delivers zero-cost evaluation for anyone testing the project.
+   * Fully self-contained local inference with zero API fees, zero rate limits, and complete data privacy.
+   * Delivers zero-cost operation for any developer or operator running the project.
 2. **Flexible Cloud Interface (`cloud_provider.py`):**
    * The codebase provides a plug-and-play abstraction supporting both Anthropic Claude (`claude-3-5-sonnet`) and OpenAI (`gpt-4o`/`gpt-4o-mini`).
    * When an API key is present in `.env`, the user can toggle to cloud inference instantly; if not, the system safely operates via local Ollama.

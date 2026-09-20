@@ -36,7 +36,7 @@ Given 16 GB total RAM and an AMD Ryzen 7 with Radeon 680M, the primary objective
 * **Inference Speed:** **15–25 tokens/second** on Ryzen 7 7735HS.
 * **Why use it:**
   * When executing the **Ship 30 for 30 Content Engine** (`mode="ship30"`), 8B models possess a deeper vocabulary and stronger long-context coherence across full 1,250-word narratives.
-  * Recommended to pull as a secondary model once initial demo testing is complete.
+  * Recommended to pull as a secondary model for production long-form essay generation.
 
 ### 🥉 Embedding Model: `sentence-transformers/all-MiniLM-L6-v2` or `nomic-embed-text`
 * **Option A (Python Backend):** `sentence-transformers/all-MiniLM-L6-v2` (90 MB download, 384 dimensions, zero Ollama dependency, runs CPU-threaded in Python).
@@ -49,7 +49,7 @@ Given 16 GB total RAM and an AMD Ryzen 7 with Radeon 680M, the primary objective
 Run in PowerShell or Command Prompt to download the recommended model into your local Ollama runtime:
 
 ```powershell
-# Recommended primary model (fast, light, perfect for demo)
+# Recommended primary model (fast, light, optimal for local inference)
 & "$env:LOCALAPPDATA\Programs\Ollama\ollama.exe" pull llama3.2:3b
 
 # Optional: Higher-capacity 8B model for long essays

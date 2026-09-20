@@ -135,4 +135,9 @@ def clean_response_text(text: str) -> str:
     cleaned = re.sub(r'(?:\*{0,3}|`{0,3}|\[)?\s*</artifact\s*>(?:\*{0,3}|`{0,3}|\])?', '', cleaned, flags=re.IGNORECASE)
     cleaned = re.sub(r'(?:\*{1,3}|`{1,3})\s*artifact\s+type=[\'"][^\'"]*[\'"]\s+title=[\'"][^\'"]*[\'"]\s*(?:\*{1,3}|`{1,3})', '', cleaned, flags=re.IGNORECASE)
 
+    # Strip any dangling artifact lead-in headers left behind (e.g. "**Artifact:", "**Artifact:**", "### Artifact:", "Artifact:")
+    cleaned = re.sub(r'(?:\n+|^)\s*(?:\*{0,3}|#{1,6}\s*)?Artifact(?:\s+created)?(?::|\*{0,2})?\s*$', '', cleaned, flags=re.IGNORECASE)
+    cleaned = re.sub(r'\*{1,3}Artifact:?\*{0,3}\s*$', '', cleaned, flags=re.IGNORECASE)
+    cleaned = re.sub(r'Artifact:\s*$', '', cleaned, flags=re.IGNORECASE)
+
     return cleaned.strip()

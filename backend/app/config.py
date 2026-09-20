@@ -2,7 +2,15 @@
 from pydantic_settings import BaseSettings
 from typing import Optional
 from functools import lru_cache
+from pathlib import Path
+from dotenv import load_dotenv
 import os
+
+# Load root .env
+root_env = Path(__file__).resolve().parent.parent.parent / ".env"
+if root_env.exists():
+    load_dotenv(root_env)
+load_dotenv()
 
 class Settings(BaseSettings):
     PROJECT_NAME: str = "The Lenny Growth Assistant"
@@ -27,7 +35,7 @@ class Settings(BaseSettings):
     OPENAI_MODEL: str = os.getenv("OPENAI_MODEL", "gpt-4o")
     
     GROQ_API_KEY: Optional[str] = os.getenv("GROQ_API_KEY", None)
-    GROQ_MODEL: str = os.getenv("GROQ_MODEL", "llama-3.3-70b-versatile")
+    GROQ_MODEL: str = os.getenv("GROQ_MODEL", "qwen/qwen3.8-27b")
     
     GEMINI_API_KEY: Optional[str] = os.getenv("GEMINI_API_KEY", None)
     GEMINI_MODEL: str = os.getenv("GEMINI_MODEL", "gemini-2.0-flash")
@@ -39,7 +47,7 @@ class Settings(BaseSettings):
     EMBEDDING_DIMENSION: int = 384
 
     class Config:
-        env_file = ".env"
+        env_file = (str(root_env), ".env")
         extra = "ignore"
 
 @lru_cache()

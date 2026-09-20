@@ -1,8 +1,8 @@
 # PRODUCT REQUIREMENTS DOCUMENT (PRD)
 ## The Lenny Growth Assistant
-**Document Version:** 1.1.0  
-**Status:** Approved for Implementation  
-**Role:** Forward Deployed Engineer (FDE)  
+**Document Version:** 1.2.0  
+**Status:** Approved & Implemented  
+
 **File Location:** `docs/PRD.md`  
 
 ---
@@ -13,34 +13,36 @@
 * **Primary User:** Growth Product Managers, Heads of Growth, VPs of Product, and Early-Stage Founders making high-stakes decisions on acquisition loops, pricing tiers, retention mechanics, and team execution.
 * **The Job-to-be-Done (JTBD):** When facing complex product growth challenges, users need to formulate verified, battle-tested growth strategies and shareable executive assets without spending hundreds of hours listening to podcast episodes.
 * **Pain Removed by Assistant:**
-  1. **Dense Audio & Transcript Discovery Friction:** Eliminates manual scanning across 200+ episodes (~2.5M words) of *Lenny's Podcast* by providing instant, semantic retrieval.
+  1. **Dense Audio & Transcript Discovery Friction:** Eliminates manual scanning across 269 episodes (~2.5M words) of *Lenny's Podcast* through hybrid semantic search and **Just-In-Time (JIT) Episode Discovery**.
   2. **The Hallucination & Speculation Trap:** Replaces ungrounded, generic AI answers with source-attributed quotes with explicit guest attribution and timestamps.
-  3. **The Actionability Gap:** Bridges conversational chat with actionable deliverables via the **Ship 30 for 30 Content Engine** (~1,250-word atomic essays) and interactive tools (CAC/LTV payback, K-Factor calculators).
-  4. **Client-Side Security Hazards:** Removes XSS and DOM hijacking risks when rendering AI-generated HTML/JS tools through sandboxed iframe containers.
+  3. **The Static Database Limitation:** Solves static dataset boundaries through on-demand retrieval from the 269-episode upstream archive (`ChatPRD/lennys-podcast-transcripts`), automatically chunking, embedding, and additively upserting newly queried episodes into Supabase pgvector on the fly.
+  4. **The Actionability Gap:** Bridges conversational chat with actionable deliverables via the **Ship 30 for 30 Content Engine** (~1,250-word atomic essays) and interactive tools (CAC/LTV payback, K-Factor calculators).
+  5. **Client-Side Security Hazards:** Removes XSS and DOM hijacking risks when rendering AI-generated HTML/JS tools through sandboxed iframe containers.
 
 ### 1.2 Measurable Success Metrics
-* **Product Quality Metric (M-01):** $\\ge 90\\%$ retrieval citation accuracy on factual claims in Grounded QA mode, citing verified `[Episode: Guest Name, Timestamp/Topic]` segments.
-* **Operational Guardrail Metric (M-02):** $100\\%$ precision on out-of-domain refusal circuit-breaker (cosine similarity $< 0.65$), strictly returning: *"I do not have sufficient information in Lenny's podcast archive to answer this."*
-* **Latency & Performance Metric (M-03):** Sub-second Time-to-First-Token ($\\text{TTFT} < 1.0\\text{s}$) when streaming from local Ollama (`llama3.2:3b`) on standard 8-core CPU / 16 GB RAM hardware.
-* **Security & Isolation Metric (M-04):** **0 XSS Vulnerabilities** — complete isolation of parent DOM, cookies (`document.cookie`), and session storage (`localStorage`) from within rendered HTML artifacts.
-* **Content Adherence Metric (M-05):** $\\ge 95\\%$ adherence to Ship 30 for 30 heuristics (1,100–1,400 words, curiosity hook in lines 1–3, $\\le 3$ sentences per paragraph, bold anchors on bullets, actionable checklist conclusion).
-* **Developer / Evaluator Onboarding Metric (M-06):** $< 5\\text{ minutes}$ single-command deployment time via `docker-compose up` on clean machines.
+* **Product Quality Metric (M-01):** $\ge 90\%$ retrieval citation accuracy on factual claims in Grounded QA mode, citing verified `[Episode: Guest Name, Timestamp/Topic]` segments.
+* **Operational Guardrail Metric (M-02):** $100\%$ precision on out-of-domain refusal circuit-breaker (cosine similarity $< 0.65$), strictly returning: *"I do not have sufficient information in Lenny's podcast archive to answer this."*
+* **Catalog Matching Precision (M-03):** $< 2\text{ms}$ in-memory catalog scan across 269 episodes, accurately routing queries by guest name or domain topic keywords (OKRs, growth loops, pricing).
+* **JIT Dynamic Ingestion Latency (M-04):** One-time dynamic ingestion of unindexed episodes from GitHub CDN into Supabase pgvector in $< 45\text{s}$, with real-time SSE user status notification. Subsequent queries execute at sub-second cached speed ($< 100\text{ms}$ retrieval).
+* **Security & Isolation Metric (M-05):** **0 XSS Vulnerabilities** — complete isolation of parent DOM, cookies (`document.cookie`), and session storage (`localStorage`) from within rendered HTML artifacts.
+* **Content Adherence Metric (M-06):** $\ge 95\%$ adherence to Ship 30 for 30 heuristics (1,100–1,400 words, curiosity hook in lines 1–3, $\le 3$ sentences per paragraph, bold anchors on bullets, actionable checklist conclusion).
+* **Additive Index Integrity (M-07):** $100\%$ additive persistence in Supabase `transcript_chunks` — dynamic single-episode indexing preserves all previously indexed guest chunks without data loss.
 
 ### 1.3 Discovery Assumptions
-1. **Curated Transcript Repository:** Primary knowledge base is derived from pre-transcribed Markdown/JSON archives (`ChatPRD/lennys-podcast-transcripts`, 269 episodes). Live Whisper audio processing of streaming podcasts is not required.
-2. **Evaluator Environment & Zero-Cost Mandate:** Evaluators must be able to run the full application 100% free locally via Ollama (`llama3.2:3b` / `llama3.1:8b`). Free cloud adapters (Groq Llama 3.3 70B and Google Gemini 2.0 Flash) are provided to test high-throughput cloud streaming without paid credits.
-3. **Multi-Turn Session Isolation:** Multi-user tenancy is handled via isolated session IDs and in-memory/PostgreSQL persistence without requiring external enterprise SSO or Stripe billing integration.
-4. **Embedding Dimensions:** Dense vector representation uses `sentence-transformers/all-MiniLM-L6-v2` (384 dimensions) for optimal CPU inference speed and memory footprint.
+1. **Curated Master Catalog:** Primary knowledge base is indexed against the complete 269-episode archive from `ChatPRD/lennys-podcast-transcripts`, utilizing `index/episodes.md` for keyword and summary extraction (`backend/data/episodes_manifest.json`).
+2. **Developer Environment & Zero-Cost Mandate:** Developers and operators can run the full application 100% free locally via Ollama (`llama3.2:3b`). Free cloud adapters (Groq Qwen 3.8 27B and Google Gemini 2.0 Flash) are provided for high-throughput cloud streaming.
+3. **Embedding Dimensions:** Dense vector representation uses `sentence-transformers/all-MiniLM-L6-v2` (384 dimensions) for optimal CPU inference speed and low memory footprint.
 
 ### 1.4 Scope Choices (Inclusions vs. Intentional Exclusions)
 * **What is Included:**
-  * Automated transcript ingestion pipeline with recursive character chunking ($500\\text{--}800$ tokens, $100$-token overlap) and PostgreSQL `pgvector` HNSW indexing.
-  * Grounded QA conversational interface with real-time SSE token streaming and clickable source citation pills.
-  * Out-of-domain refusal circuit-breaker triggered on low similarity.
+  * Automated transcript ingestion pipeline with speaker-aware chunking (~400 tokens, 50-token overlap) and Supabase PostgreSQL `pgvector` HNSW indexing.
+  * **Just-In-Time (JIT) Episode Discovery:** Dynamic fallback engine that detects unindexed guests/topics, downloads raw transcripts from GitHub CDN, computes embeddings, and additively stores them in Supabase.
+  * In-memory 269-episode catalog (`episodes_manifest.json`) for zero-latency off-topic rejection and keyword routing.
+  * Grounded QA conversational interface with real-time SSE token streaming, scenario-aware status pills, and clickable source citation cards.
+  * Out-of-domain refusal circuit-breaker triggered on low similarity with standard context-aware refusal.
   * Dedicated Ship 30 for 30 essay compiler (`/ship <topic>`).
   * Side-by-side Claude-style Sandboxed Artifact Viewer (`sandbox="allow-scripts"` without `allow-same-origin`, sanitized via `DOMPurify`).
   * Pluggable Dual Model Layer (Local Ollama, Groq, Gemini, Claude 3.5 Sonnet, GPT-4o) with embedded DropUp switcher and masked API key manager.
-  * Full-height sidebar navigation with dynamic initial-query session titling.
 * **What is Intentionally Excluded (& Why):**
   * *Live Real-Time Audio Streaming:* Excluded to keep local CPU and RAM within standard developer laptop limits (avoids heavy local Whisper pipelines).
   * *Unbounded Open Web Search:* Excluded to enforce 100% authoritative grounding exclusively on *Lenny's Podcast* archives.
@@ -50,12 +52,11 @@
 
 | Risk Dimension | Description & Impact | Technical Mitigation / Architectural Trade-off |
 | :--- | :--- | :--- |
-| **Hallucination & Speculation** | LLM generating plausible but ungrounded advice absent from podcast transcripts. | **Deterministic 0.65 Cosine Circuit-Breaker:** Direct retrieval from PostgreSQL `pgvector` HNSW index; queries failing similarity threshold return immediate standard refusal without passing to LLM. |
-| **Latency & TTFT** | Slow generation on local hardware creating frustrating conversational delays. | **HNSW Indexing + Lightweight 3B Models:** Sub-50ms vector lookup via HNSW index; default local model set to `llama3.2:3b` for sub-second TTFT streaming over SSE. |
-| **Cost & API Billing Friction** | Evaluators or teams unable to test due to paid API keys (Anthropic/OpenAI lack free tiers). | **Dual-Model Architecture:** Fully functional zero-cost local Ollama inference bundled with zero-cost free cloud providers (Groq Llama 3.3 70B & Gemini 2.0 Flash). |
-| **Local-Model Quality Trade-offs** | Smaller 3B models have tighter context limits and struggle with multi-thousand-word essays. | **Dynamic Model Switcher & Dual Heuristics:** Grounded QA works cleanly on `llama3.2:3b`; user can switch dynamically to Groq/Gemini/Claude via the DropUp menu for long-form essays and complex artifacts. |
-| **Data Leakage & Privacy** | Accidental exposure of private API credentials or session state. | **Client-Side Key Masking & In-Memory Fallbacks:** UI masks API keys (`gsk_••••••••••••3x9A`); zero hardcoded keys committed; server stores keys in volatile session headers. |
-| **Unsafe Artifact Rendering (XSS)** | AI-generated HTML/JS scripts executing malicious code, stealing cookies, or hijacking DOM. | **Two-Tier Isolation Sandbox:** All HTML artifacts sanitized via `DOMPurify` and mounted inside `<iframe>` configured with `sandbox="allow-scripts"` and strictly **omitting** `allow-same-origin`. Unique origin (`null`) prevents access to parent cookies, local storage, and DOM tree. |
+| **Hallucination & Speculation** | LLM generating plausible but ungrounded advice absent from podcast transcripts. | **Two-Tier Grounding Circuit-Breaker:** Vector similarity check ($\ge 0.65$) paired with in-memory catalog rejection; queries without transcript backing return immediate standard refusal. |
+| **API Rate Limiting on GitHub** | Dynamic retrieval hitting GitHub REST API 60-req/hr limits on repeated queries. | **Pre-Compiled Master Catalog + CDN Fetching:** All 269 episode metadata stored in `episodes_manifest.json` ($<2\text{ms}$ scan); raw markdown fetched directly from Fastly CDN (`raw.githubusercontent.com`) which has no API limits. |
+| **Ingestion Latency on New Episodes** | User waiting during one-time chunking and embedding of brand-new episodes. | **Streaming Status Updates:** SSE status events notify the user in real time (*"Found episode for [Guest]... Ingesting transcript..."*); once indexed, the episode is permanently cached in Supabase. |
+| **Database Data Overwrites** | Dynamic ingestion accidentally clearing previously indexed episodes. | **Additive Upsert Discipline:** Single-episode pipeline deletes only records matching the target `guest_name` before inserting new chunks, preserving all other episodes. |
+| **Security & Isolation Risk** | AI-generated HTML/JS scripts executing malicious code or stealing cookies. | **Two-Tier Isolation Sandbox:** All HTML artifacts sanitized via `DOMPurify` and mounted inside `<iframe>` configured with `sandbox="allow-scripts"` and strictly **omitting** `allow-same-origin`. |local storage, and DOM tree. |
 
 ---
 
@@ -75,7 +76,7 @@
 
 ## 3. System Architecture & User Flows
 
-### 3.1 Flow 1: Grounded Conversational QA
+### 3.1 Flow 1: Grounded Conversational QA with JIT Discovery
 ```
 User Enters Query
        │
@@ -83,22 +84,71 @@ User Enters Query
 Compute Vector Embedding (all-MiniLM-L6-v2)
        │
        ▼
-Query PostgreSQL pgvector (HNSW Cosine Search)
+Query Supabase pgvector (HNSW Cosine Search, threshold >= 0.65)
        │
-       ├── Top chunks score < 0.65 threshold ──► Yield Refusal Fallback & [DONE]
+       ├── Chunks found (>= 0.65) ──► Inject context into Grounded Prompt Template
+       │                                     │
+       │                                     ▼
+       │                              Stream SSE Tokens to Client + Render Citation Cards
        │
-       └── Top chunks score >= 0.65 threshold
+       └── 0 Chunks Found
               │
               ▼
-       Inject Context into Grounded Prompt Template
+       Scan In-Memory Master Catalog (backend/data/episodes_manifest.json)
               │
-              ▼
-       Stream SSE Tokens to Client + Render Citation Pills
+              ├── No Match (Off-topic or unknown guest)
+              │      │
+              │      ▼
+              │   Return Context-Aware Refusal:
+              │   "I do not have sufficient information in Lenny's podcast archive to answer this."
+              │
+              └── Match Found (e.g. Casey Winters, Christina Wodtke on OKRs)
+                     │
+                     ▼
+                  Execute Flow 5: Just-In-Time (JIT) Episode Ingestion
+                     │
+                     ▼
+                  Re-query Supabase pgvector with newly indexed chunks
+                     │
+                     ▼
+                  Stream Grounded Response + Source Citations
 ```
 * **Acceptance Criteria:**
   1. Every response streams token-by-token over Server-Sent Events (`text/event-stream`).
   2. The UI renders citation badges listing episode title, guest name, and timestamp. Clicking a pill displays the underlying transcript excerpt.
-  3. If no relevant chunks meet the $0.65$ similarity threshold, the assistant immediately returns: *"I do not have sufficient information in Lenny's podcast archive to answer this."*
+  3. If no relevant chunks meet the $0.65$ similarity threshold and the catalog has no match, the assistant immediately returns: *"I do not have sufficient information in Lenny's podcast archive to answer this."*
+
+### 3.2 Flow 5: Just-In-Time (JIT) Episode Discovery & Additive Ingestion
+```
+Match Detected in episodes_manifest.json
+       │
+       ▼
+Emit SSE Status: "Found episode for [Guest] in Lenny's archive. Ingesting transcript..."
+       │
+       ▼
+Download raw markdown from Fastly CDN: raw.githubusercontent.com/.../transcript.md
+       │
+       ▼
+Speaker-aware chunking (~400 tokens, 50-token overlap)
+       │
+       ▼
+Compute 384-dim embeddings via all-MiniLM-L6-v2 (batch size 32)
+       │
+       ▼
+Execute Additive Upsert into Supabase pgvector:
+  - DELETE FROM transcript_chunks WHERE guest_name = :guest;
+  - INSERT INTO transcript_chunks (...) VALUES (...);
+       │
+       ▼
+Emit SSE Status: "Episode indexed. Synthesizing answer..."
+       │
+       ▼
+Re-run retriever.retrieve_relevant_chunks(query) -> Returns top K chunks
+```
+* **Acceptance Criteria:**
+  1. Ingestion is additive and non-destructive: existing episode chunks remain completely intact.
+  2. The client receives live SSE status updates as the transcript downloads and embeds.
+  3. Total dynamic indexing duration completes in $< 45\text{s}$, and all subsequent queries for that episode execute at sub-second cached speed.
 
 ### 3.2 Flow 2: Ship 30 for 30 Essay Generation
 ```
@@ -153,7 +203,7 @@ Closing Tag Received (</artifact>)
 * **Acceptance Criteria:**
   1. The UI input toolbar includes an embedded model selector DropUp menu populated with:
      * `Ollama (Local) - llama3.2:3b` (Default - Free)
-     * `Groq Llama 3.3 70B` (Free Tier)
+     * `Groq Qwen 3.8 27B` (Free Tier)
      * `Google Gemini 2.0 Flash` (Free Tier)
      * `Claude 3.5 Sonnet` (Paid Config)
      * `OpenAI GPT-4o` (Paid Config)
