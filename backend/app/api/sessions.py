@@ -31,8 +31,22 @@ def _load_sessions_from_disk() -> Dict[str, Dict[str, Any]]:
             logger.warning(f"Could not load sessions from disk: {e}")
     return {}
 
+MAX_IN_MEMORY_SESSIONS = 50
+
+def _trim_in_memory_sessions():
+    """Keeps only the most recent MAX_IN_MEMORY_SESSIONS in RAM to prevent unbounded memory growth."""
+    if len(IN_MEMORY_SESSIONS) > MAX_IN_MEMORY_SESSIONS:
+        sorted_keys = sorted(
+            IN_MEMORY_SESSIONS.keys(),
+            key=lambda k: str(IN_MEMORY_SESSIONS[k].get("updated_at", "")),
+            reverse=True
+        )
+        for old_k in sorted_keys[MAX_IN_MEMORY_SESSIONS:]:
+            del IN_MEMORY_SESSIONS[old_k]
+
 def save_in_memory_sessions():
     try:
+        _trim_in_memory_sessions()
         DATA_DIR.mkdir(parents=True, exist_ok=True)
         serializable = {}
         for sid, sdata in IN_MEMORY_SESSIONS.items():
@@ -51,6 +65,7 @@ def save_in_memory_sessions():
 
 # In-memory fallback session store backed by disk persistence
 IN_MEMORY_SESSIONS: Dict[str, Dict[str, Any]] = _load_sessions_from_disk()
+_trim_in_memory_sessions()
 
 @router.post("", response_model=SessionResponse, status_code=status.HTTP_201_CREATED)
 @router.post("/", response_model=SessionResponse, status_code=status.HTTP_201_CREATED)

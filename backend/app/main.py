@@ -29,6 +29,14 @@ async def lifespan(app: FastAPI):
         logger.info("Database initialized successfully.")
     except Exception as e:
         logger.warning(f"Database initialization warning (will retry on first query): {e}")
+
+    try:
+        from app.rag.embeddings import get_sentence_transformer_model
+        model = get_sentence_transformer_model()
+        model.encode("Lenny Growth Assistant", normalize_embeddings=True)
+        logger.info("SentenceTransformer pre-warmed and ready.")
+    except Exception as emb_err:
+        logger.warning(f"Embedding pre-warm notice: {emb_err}")
     yield
     logger.info("Shutting down application...")
 

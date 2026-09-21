@@ -41,8 +41,8 @@ TRANSCRIPTS_DIR    = _BACKEND_DIR / "data" / "transcripts"
 CHUNK_TARGET_TOKENS = 400
 CHUNK_OVERLAP_TOKENS = 50
 WORDS_PER_TOKEN    = 0.75
-BATCH_SIZE         = 32
-UPSERT_BATCH_SIZE  = 100
+BATCH_SIZE         = 16
+UPSERT_BATCH_SIZE  = 50
 
 # ── Frontmatter ───────────────────────────────────────────────────────────────
 FRONTMATTER_RE  = re.compile(r"^---\s*\n(.*?)\n---\s*\n", re.DOTALL)

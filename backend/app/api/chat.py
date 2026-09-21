@@ -7,6 +7,7 @@ import json
 import uuid
 import logging
 from typing import Optional
+from datetime import datetime
 
 from app.database import get_db, AsyncSessionLocal
 from app.config import get_settings
@@ -67,20 +68,17 @@ async def chat_stream(
     except Exception:
         session_uuid = uuid.uuid5(uuid.NAMESPACE_DNS, str(req.session_id))
 
-    if db is not None:
-        try:
-            result = await db.execute(select(SessionModel).where(SessionModel.id == session_uuid))
-            session_obj = result.scalar_one_or_none()
-            if not session_obj:
-                session_obj = SessionModel(id=session_uuid, title=req.message[:50] + "...")
-                db.add(session_obj)
-                await db.commit()
-        except Exception as e:
-            try:
-                await db.rollback()
-            except Exception:
-                pass
-            logger.warning(f"Could not persist session to DB: {e}")
+    # Ensure session exists in memory store immediately (0ms latency)
+    from app.api.sessions import IN_MEMORY_SESSIONS
+    str_session_id = str(session_uuid)
+    if str_session_id not in IN_MEMORY_SESSIONS:
+        IN_MEMORY_SESSIONS[str_session_id] = {
+            "id": str_session_id,
+            "title": req.message[:50] + "...",
+            "created_at": datetime.utcnow().isoformat(),
+            "updated_at": datetime.utcnow().isoformat(),
+            "messages": []
+        }
 
     # 2. Select Provider (request body > header > default)
     selected_provider = req.provider or x_llm_provider or settings.DEFAULT_PROVIDER
@@ -446,7 +444,11 @@ async def _persist_conversation(
         async with AsyncSessionLocal() as session:
             res = await session.execute(select(SessionModel).where(SessionModel.id == session_id))
             session_obj = res.scalar_one_or_none()
-            if session_obj and (not session_obj.title or session_obj.title.startswith(("New", "Session"))):
+            if not session_obj:
+                session_obj = SessionModel(id=session_id, title=format_session_title(user_msg))
+                session.add(session_obj)
+                await session.flush()
+            elif not session_obj.title or session_obj.title.startswith(("New", "Session")):
                 session_obj.title = format_session_title(user_msg)
 
             user_record = MessageModel(

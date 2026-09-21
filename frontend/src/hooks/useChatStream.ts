@@ -77,7 +77,8 @@ export function useChatStream({ sessionId, onStreamFinish, onArtifactGenerated }
       if (!messageText.trim()) return;
 
       setIsStreaming(true);
-      setCurrentStatus("Contacting assistant...");
+      const isShipMode = mode === "ship" || mode === "ship30" || messageText.toLowerCase().startsWith("/ship");
+      setCurrentStatus(isShipMode ? "Drafting Ship 30 for 30 essay in Artifacts..." : "Searching 200+ curated podcast transcripts...");
       setCurrentSources([]);
 
       abortControllerRef.current = new AbortController();

@@ -1,4 +1,8 @@
-# Environment files
+# ==============================================================================
+# The Lenny Growth Assistant - Comprehensive Monorepo .gitignore
+# ==============================================================================
+
+# ── Environment & Secrets ─────────────────────────────────────────────────────
 .env
 .env*.local
 .env.development
@@ -6,13 +10,12 @@
 .env.production
 !.env.example
 
-# Python
+# ── Python & Bytecode ─────────────────────────────────────────────────────────
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
 .Python
-# Python build artifacts
 build/
 develop-eggs/
 dist/
@@ -32,24 +35,27 @@ wheels/
 *.manifest
 *.spec
 
-# Python Virtual Environments
+# ── Python Virtual Environments ───────────────────────────────────────────────
 venv/
 .venv/
 env/
 ENV/
 env.bak/
 venv.bak/
+backend/venv/
+backend/.venv/
 
-# Testing & Linting
+# ── Testing, Coverage & Linters ───────────────────────────────────────────────
 .pytest_cache/
 .coverage
+.coverage.*
 htmlcov/
 .tox/
 .nox/
 .mypy_cache/
 .ruff_cache/
 
-# Node & Next.js
+# ── Node, Next.js & Frontend ──────────────────────────────────────────────────
 node_modules/
 frontend/node_modules/
 .next/
@@ -58,41 +64,49 @@ out/
 frontend/out/
 .npm/
 *.tsbuildinfo
+frontend/tsconfig.tsbuildinfo
 next-env.d.ts.bak
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 .eslintcache
+.turbo/
+.vercel/
 
-# Logs & Temporary Files
-*.log
-logs/
-*.tmp
-*.temp
-
-# Database & Local Storage
+# ── Database & Persistent Data Stores ─────────────────────────────────────────
 *.sqlite
 *.sqlite3
 *.db
 pgdata/
+postgres_data/
 backend/data/sessions_store.json
-
-# Local Transcript Cache (downloaded dynamically or seeded)
+backend/data/sessions_store*.json
 backend/data/transcripts/
+!backend/data/transcripts/.gitkeep
 
-# Media & Pitch Videos
+# ── Logs & Temporary Scratch Files ────────────────────────────────────────────
+*.log
+logs/
+*.tmp
+*.temp
+scratch/
+tmp/
+temp/
+
+# ── Media & Heavy Pitch Video Deliverables ────────────────────────────────────
 *.mp4
 *.mov
 *.avi
 *.mkv
 *.webm
 
-# Root Scratch & Verification Scripts
-/scripts/
+# ── Docker & Local Verification Scripts ───────────────────────────────────────
+docker-compose.override.yml
 enable_docker_virtualization.bat
+/scripts/
 
-# IDE & Editor files
+# ── IDEs & Operating System Artifacts ─────────────────────────────────────────
 .vscode/
 .idea/
 *.swp
@@ -100,8 +114,6 @@ enable_docker_virtualization.bat
 *~
 *.sublime-project
 *.sublime-workspace
-
-# OS Files
 .DS_Store
 .DS_Store?
 ._*
@@ -111,7 +123,10 @@ ehthumbs.db
 Thumbs.db
 [Dd]esktop.ini
 
-# Agent / AI local runs & caches
+# ── AI Agents & Local Caches ──────────────────────────────────────────────────
 .agent/
 .cache/
+hf_cache/
+torch_cache/
+
 
