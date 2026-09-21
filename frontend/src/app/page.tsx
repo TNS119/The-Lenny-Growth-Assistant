@@ -103,17 +103,62 @@ export default function Home() {
     openArtifactDrawer(art, activeSessionId);
   }, [activeSessionId, openArtifactDrawer]);
 
-  // Initial Load: Fetch sessions with local persistence restore
+  // Synchronize sessions list to localStorage for refresh reliability
+  useEffect(() => {
+    if (sessions.length > 0 && typeof window !== "undefined") {
+      try {
+        localStorage.setItem("lenny_cached_sessions", JSON.stringify(sessions));
+      } catch (e) {}
+    }
+  }, [sessions]);
+
+  // Synchronize per-session messages to localStorage for refresh reliability
+  useEffect(() => {
+    if (Object.keys(messagesBySession).length > 0 && typeof window !== "undefined") {
+      try {
+        localStorage.setItem("lenny_cached_messages", JSON.stringify(messagesBySession));
+      } catch (e) {}
+    }
+  }, [messagesBySession]);
+
+  // Initial Load: Restore from local persistence immediately, then reconcile with server
   useEffect(() => {
     async function init() {
+      let cachedSessions: Session[] = [];
+      let cachedMessages: Record<string, Message[]> = {};
+      let lastActive: string | null = null;
+
+      if (typeof window !== "undefined") {
+        lastActive = localStorage.getItem("lenny_last_active_session");
+        try {
+          const rawSess = localStorage.getItem("lenny_cached_sessions");
+          if (rawSess) cachedSessions = JSON.parse(rawSess);
+        } catch (e) {}
+        try {
+          const rawMsgs = localStorage.getItem("lenny_cached_messages");
+          if (rawMsgs) cachedMessages = JSON.parse(rawMsgs);
+        } catch (e) {}
+      }
+
+      if (cachedSessions.length > 0) {
+        setSessions(cachedSessions);
+        if (Object.keys(cachedMessages).length > 0) {
+          setMessagesBySession(cachedMessages);
+        }
+        const matched = lastActive ? cachedSessions.find((s) => s.id === lastActive) : null;
+        const initialId = matched ? matched.id : cachedSessions[0].id;
+        setActiveSessionId(initialId);
+      }
+
+      // Reconcile with server in background without wiping local state
       const sessList = await fetchSessions();
       if (sessList && sessList.length > 0) {
         setSessions(sessList);
-        const lastActive = typeof window !== "undefined" ? localStorage.getItem("lenny_last_active_session") : null;
-        const matched = lastActive ? sessList.find((s) => s.id === lastActive) : null;
+        const currentActive = lastActive || (cachedSessions.length > 0 ? cachedSessions[0].id : null);
+        const matched = currentActive ? sessList.find((s) => s.id === currentActive) : null;
         const initialId = matched ? matched.id : sessList[0].id;
         setActiveSessionId(initialId);
-      } else {
+      } else if (cachedSessions.length === 0) {
         const newId = (typeof crypto !== "undefined" && crypto.randomUUID) 
           ? crypto.randomUUID() 
           : `sess-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;

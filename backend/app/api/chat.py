@@ -149,12 +149,13 @@ async def chat_stream(
 
         # Step B: Retrieve relevant chunks from pgvector / local archive
         retriever_sess = AsyncSessionLocal() if AsyncSessionLocal is not None else None
+        effective_threshold = min(settings.SIMILARITY_THRESHOLD, 0.30)
         try:
             retriever = TranscriptRetriever(retriever_sess, get_embedding)
             chunks = await retriever.retrieve_relevant_chunks(
                 query=clean_message,
                 top_k=settings.TOP_K_CHUNKS,
-                similarity_threshold=settings.SIMILARITY_THRESHOLD
+                similarity_threshold=effective_threshold
             )
         finally:
             if retriever_sess is not None:
@@ -195,12 +196,13 @@ async def chat_stream(
                         chunks = await retriever_jit.retrieve_relevant_chunks(
                             query=clean_message,
                             top_k=settings.TOP_K_CHUNKS,
-                            similarity_threshold=settings.SIMILARITY_THRESHOLD
+                            similarity_threshold=0.28
                         )
                     finally:
                         if retriever_sess2 is not None:
                             await retriever_sess2.close()
                     # Update sources on client
+                    yield f"data: {json.dumps({'type': 'sources', 'data': chunks})}\n\n"
                 except Exception as jit_err:
                     logger.error(f"JIT ingestion error for {matching_ep['slug']}: {jit_err}")
                     # Resilient fallback: Retrieve directly from the downloaded transcript file
@@ -209,7 +211,7 @@ async def chat_stream(
                         chunks = fallback_retriever._retrieve_from_local_transcripts(
                             query=clean_message,
                             top_k=settings.TOP_K_CHUNKS,
-                            similarity_threshold=settings.SIMILARITY_THRESHOLD
+                            similarity_threshold=0.28
                         )
                         if chunks:
                             yield f"data: {json.dumps({'type': 'sources', 'data': chunks})}\n\n"
