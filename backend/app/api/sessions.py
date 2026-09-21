@@ -149,18 +149,14 @@ async def clear_all_sessions(db: AsyncSession = Depends(get_db)):
 @router.get("", response_model=List[SessionResponse])
 @router.get("/", response_model=List[SessionResponse])
 async def list_sessions(db: AsyncSession = Depends(get_db)):
-    """List recent sessions sorted by updated_at descending."""
+    """List recent sessions sorted by updated_at descending without duplicates."""
     unique_sessions: Dict[str, Dict[str, Any]] = {}
-    for s in IN_MEMORY_SESSIONS.values():
-        if isinstance(s, dict) and "id" in s:
-            unique_sessions[str(s["id"])] = s
 
     if db is not None:
         try:
             result = await db.execute(select(SessionModel).order_by(desc(SessionModel.updated_at)))
             db_sessions = result.scalars().all()
             if db_sessions:
-                # Merge DB sessions over memory sessions
                 for dbs in db_sessions:
                     unique_sessions[str(dbs.id)] = {
                         "id": str(dbs.id),
@@ -170,6 +166,13 @@ async def list_sessions(db: AsyncSession = Depends(get_db)):
                     }
         except Exception as e:
             logger.warning(f"Could not load sessions from DB: {e}")
+
+    # Merge in-memory fallback sessions only if not already present from DB
+    for s in IN_MEMORY_SESSIONS.values():
+        if isinstance(s, dict) and "id" in s:
+            sid = str(s["id"])
+            if sid not in unique_sessions:
+                unique_sessions[sid] = s
 
     sorted_sess = sorted(unique_sessions.values(), key=lambda s: str(s.get("updated_at", "")), reverse=True)
     return [SessionResponse(**s) for s in sorted_sess]
@@ -242,26 +245,34 @@ async def get_session(session_id: str, db: AsyncSession = Depends(get_db)):
 @router.delete("/{session_id}", status_code=status.HTTP_204_NO_CONTENT)
 @router.delete("/{session_id}/", status_code=status.HTTP_204_NO_CONTENT)
 async def delete_session(session_id: str, db: AsyncSession = Depends(get_db)):
-    """Delete a session and all its messages/artifacts."""
+    """Delete a session and all its messages/artifacts from both database and memory store."""
+    clean_id = str(session_id).strip()
+
+    # 1. Delete from PostgreSQL if database is active
     if db is not None:
         try:
-            session_uuid = uuid.UUID(session_id)
+            try:
+                session_uuid = uuid.UUID(clean_id)
+            except (ValueError, TypeError):
+                session_uuid = uuid.uuid5(uuid.NAMESPACE_DNS, clean_id)
             result = await db.execute(select(SessionModel).where(SessionModel.id == session_uuid))
             session_obj = result.scalar_one_or_none()
             if session_obj:
                 await db.delete(session_obj)
                 await db.commit()
-                return
-        except Exception:
-            pass
+        except Exception as e:
+            logger.warning(f"Could not delete session from DB: {e}")
+            try:
+                await db.rollback()
+            except Exception:
+                pass
 
-    deleted = False
-    if str(session_id) in IN_MEMORY_SESSIONS:
-        del IN_MEMORY_SESSIONS[str(session_id)]
-        deleted = True
-    for k, v in list(IN_MEMORY_SESSIONS.items()):
-        if str(v.get("id")) == str(session_id):
-            del IN_MEMORY_SESSIONS[k]
-            deleted = True
-    if deleted:
-        save_in_memory_sessions()
+    # 2. ALWAYS delete from IN_MEMORY_SESSIONS and disk store
+    keys_to_del = [
+        k for k, v in list(IN_MEMORY_SESSIONS.items())
+        if str(k) == clean_id or (isinstance(v, dict) and str(v.get("id")) == clean_id)
+    ]
+    for k in keys_to_del:
+        IN_MEMORY_SESSIONS.pop(k, None)
+
+    save_in_memory_sessions()

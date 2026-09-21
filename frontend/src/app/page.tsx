@@ -279,6 +279,11 @@ export default function Home() {
       if (isDeletingActive) {
         targetNextActiveId = remaining.length > 0 ? remaining[0].id : null;
       }
+      if (typeof window !== "undefined") {
+        try {
+          localStorage.setItem("lenny_cached_sessions", JSON.stringify(remaining));
+        } catch (e) {}
+      }
       return remaining;
     });
 
@@ -286,6 +291,11 @@ export default function Home() {
     setMessagesBySession((prev) => {
       const copy = { ...prev };
       delete copy[id];
+      if (typeof window !== "undefined") {
+        try {
+          localStorage.setItem("lenny_cached_messages", JSON.stringify(copy));
+        } catch (e) {}
+      }
       return copy;
     });
     setArtifactsBySession((prev) => {
@@ -304,18 +314,22 @@ export default function Home() {
         }
       } else {
         // No remaining sessions -> create a fresh session
-        try {
-          const freshSess = await createSession("New Growth Conversation");
-          if (freshSess) {
-            setSessions([freshSess]);
-            setActiveSessionId(freshSess.id);
-            if (typeof window !== "undefined") {
-              localStorage.setItem("lenny_last_active_session", freshSess.id);
-            }
-          }
-        } catch (e) {
-          console.error("Failed to create fresh session after deleting last session:", e);
+        const newId = (typeof crypto !== "undefined" && crypto.randomUUID)
+          ? crypto.randomUUID()
+          : `sess-${Date.now()}`;
+        const freshSess: Session = {
+          id: newId,
+          title: "New Growth Conversation",
+          created_at: new Date().toISOString(),
+          updated_at: new Date().toISOString(),
+        };
+        setSessions([freshSess]);
+        setActiveSessionId(freshSess.id);
+        if (typeof window !== "undefined") {
+          localStorage.setItem("lenny_last_active_session", freshSess.id);
+          localStorage.setItem("lenny_cached_sessions", JSON.stringify([freshSess]));
         }
+        createSession("New Growth Conversation", newId).catch(() => {});
       }
     }
 

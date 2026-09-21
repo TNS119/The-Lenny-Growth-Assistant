@@ -422,8 +422,9 @@ async def _persist_conversation(
             "messages": []
         }
         IN_MEMORY_SESSIONS[str(session_id)] = sess
-    if raw_session_id and raw_session_id != str(session_id):
-        IN_MEMORY_SESSIONS[str(raw_session_id)] = sess
+    # Clean up raw_session_id key if it was aliased to prevent duplicate ghost sessions
+    if raw_session_id and raw_session_id != str(session_id) and raw_session_id in IN_MEMORY_SESSIONS:
+        IN_MEMORY_SESSIONS.pop(raw_session_id, None)
 
     current_title = sess.get("title", "")
     if not current_title or current_title.startswith(("New", "Session")):
