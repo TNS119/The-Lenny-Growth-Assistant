@@ -206,7 +206,8 @@ async def ingest_single_episode(transcript_path: Path) -> int:
     )
 
     settings = get_settings()
-    dsn = settings.DATABASE_URL.replace("postgresql+asyncpg://", "postgresql://")
+    from app.database import normalize_database_url
+    dsn = normalize_database_url(settings.DATABASE_URL).replace("postgresql+asyncpg://", "postgresql://")
     conn = await asyncpg.connect(dsn)
     try:
         await conn.execute("CREATE EXTENSION IF NOT EXISTS vector;")
@@ -239,7 +240,8 @@ async def ingest_single_episode(transcript_path: Path) -> int:
 
 async def upsert_chunks(chunks: List[Dict[str, Any]], embeddings: List[List[float]]):
     settings = get_settings()
-    dsn = settings.DATABASE_URL.replace("postgresql+asyncpg://", "postgresql://")
+    from app.database import normalize_database_url
+    dsn = normalize_database_url(settings.DATABASE_URL).replace("postgresql+asyncpg://", "postgresql://")
     conn = await asyncpg.connect(dsn)
     try:
         await conn.execute("CREATE EXTENSION IF NOT EXISTS vector;")

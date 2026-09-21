@@ -201,9 +201,20 @@ async def chat_stream(
                         if retriever_sess2 is not None:
                             await retriever_sess2.close()
                     # Update sources on client
-                    yield f"data: {json.dumps({'type': 'sources', 'data': chunks})}\n\n"
                 except Exception as jit_err:
                     logger.error(f"JIT ingestion error for {matching_ep['slug']}: {jit_err}")
+                    # Resilient fallback: Retrieve directly from the downloaded transcript file
+                    try:
+                        fallback_retriever = TranscriptRetriever(None, get_embedding)
+                        chunks = fallback_retriever._retrieve_from_local_transcripts(
+                            query=clean_message,
+                            top_k=settings.TOP_K_CHUNKS,
+                            similarity_threshold=settings.SIMILARITY_THRESHOLD
+                        )
+                        if chunks:
+                            yield f"data: {json.dumps({'type': 'sources', 'data': chunks})}\n\n"
+                    except Exception as fallback_err:
+                        logger.error(f"Local transcript fallback error: {fallback_err}")
 
             # If still no chunks found after JIT attempt (or no matching episode in catalog)
             if not chunks:
