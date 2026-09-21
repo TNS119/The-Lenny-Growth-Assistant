@@ -39,7 +39,7 @@ class EpisodeDiscoveryService:
     In-memory discovery engine for Lenny's podcast transcript archive.
     Matches queries against the 269-episode catalog via guest names and topic keywords.
     """
-
+ 
     def __init__(self, manifest_path: Path = MANIFEST_PATH):
         self.manifest_path = manifest_path
         self.episodes: List[Dict[str, Any]] = []

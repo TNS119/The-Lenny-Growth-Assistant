@@ -8,7 +8,7 @@ import uuid
 import logging
 from typing import Optional
 from datetime import datetime
-
+ 
 from app.database import get_db, AsyncSessionLocal
 from app.config import get_settings
 from app.models.db_models import SessionModel, MessageModel, ArtifactModel

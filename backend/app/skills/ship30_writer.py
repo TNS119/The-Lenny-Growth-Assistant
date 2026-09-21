@@ -38,7 +38,7 @@ Context Material from Lenny's Podcast Archive:
 User Topic / Prompt:
 {user_query}
 """
-
+  
 def build_ship30_prompt(user_query: str, retrieved_chunks: List[Dict[str, Any]]) -> str:
     """Compile retrieved transcript context into the Ship 30 for 30 essay prompt."""
     formatted_context = "\n\n".join([

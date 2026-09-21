@@ -7,7 +7,7 @@ interface SandboxedIframeProps {
   content: string;
   title: string;
 }
-
+ 
 export const SandboxedIframe: React.FC<SandboxedIframeProps> = ({ content, title }) => {
   // Sanitize markup prior to mounting in iframe srcDoc
   const cleanHtml = useMemo(() => {

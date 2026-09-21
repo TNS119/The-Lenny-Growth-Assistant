@@ -132,7 +132,7 @@ class CloudProvider(BaseLLMProvider):
         self.service = service.lower()
         self.api_key = api_key
         self.model = model
-
+ 
     async def generate_response(
         self,
         messages: List[Dict[str, str]],

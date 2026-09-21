@@ -3,7 +3,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import text
 from typing import List, Dict, Any, Callable
 import logging
-
+ 
 logger = logging.getLogger(__name__)
 
 class TranscriptRetriever:
@@ -22,7 +22,7 @@ class TranscriptRetriever:
         top_k: int = 5,
         similarity_threshold: float = 0.35
     ) -> List[Dict[str, Any]]:
-        """
+        """ 
         Compute query embedding and retrieve top K chunks with cosine similarity >= threshold.
         Falls back directly to local transcript search if database session is None.
         """

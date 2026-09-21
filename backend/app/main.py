@@ -5,7 +5,7 @@ from fastapi.responses import JSONResponse
 from contextlib import asynccontextmanager
 import logging
 import sys
-
+ 
 from app.config import get_settings
 from app.database import init_db
 from app.api import sessions_router, chat_router, health_router, providers_router

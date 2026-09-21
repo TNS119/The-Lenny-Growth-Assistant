@@ -6,7 +6,7 @@ import ctypes
 from typing import List, Tuple
 from functools import lru_cache
 import asyncio
-
+ 
 logger = logging.getLogger(__name__)
 
 # Enforce strict thread and memory limits BEFORE importing torch/BLAS
@@ -27,7 +27,7 @@ torch.set_num_interop_threads(1)
 
 _model_instance = None
 
-def reclaim_memory():
+def reclaim_memory(): 
     """Forces Python garbage collection and returns free heap memory to OS on Linux."""
     gc.collect()
     try:
